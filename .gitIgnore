@@ -6,3 +6,8 @@ _ReSharper.*
 bin
 obj
 packages
+
+# User-specific files
+*.rsuser
+*.userosscache
+*.sln.docstates
