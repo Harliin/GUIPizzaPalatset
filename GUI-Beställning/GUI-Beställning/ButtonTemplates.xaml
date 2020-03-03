@@ -8,7 +8,7 @@
             <Setter.Value>
                 <ControlTemplate>
 
-                    <Border Background="White" BorderBrush="Black" BorderThickness="2" CornerRadius="25">
+                    <Border Background="#D70F64" BorderBrush="Black" BorderThickness="2" CornerRadius="25">
 
                         <Border.Triggers>
                             <EventTrigger RoutedEvent="MouseEnter">
