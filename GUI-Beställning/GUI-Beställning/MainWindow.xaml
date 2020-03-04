@@ -9,6 +9,7 @@
 
         Title="MainWindow" Height="1200" Width="1000" MinWidth="500" MinHeight="600">
     <Grid>
+        <!-- Ett Grid för hela ytan-->
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
@@ -20,16 +21,37 @@
             <RowDefinition Height="1*"/>
             <RowDefinition Height="0.7*"/>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Text="Välkommen till" FontSize="60" VerticalAlignment="Center"
+        
+        <!-- internt grid för välkomsmenyn-->
+        <Grid Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="0" Grid.RowSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Viewbox Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="3" Stretch="Uniform">
+                <TextBlock Text="Välkommen till" VerticalAlignment="Center"
                    HorizontalAlignment="Center" FontWeight="Bold"/>
-        <TextBlock Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Text="Pizza Palatset" FontSize="60" VerticalAlignment="Bottom"
+            </Viewbox>
+            <Viewbox Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="3" VerticalAlignment="Bottom" Stretch="Uniform">
+                <TextBlock Text="Pizza Palatset" FontSize="60"
                    HorizontalAlignment="Center" FontWeight="Bold"/>
-        <materialDesign:PackIcon Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Kind="House" VerticalAlignment="Top" HorizontalAlignment="Center"
-                                 Height="300" Width="300" Foreground="#D70F64"/>
+            </Viewbox>
+            <Viewbox Grid.Row="2" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="3" Stretch="Uniform">
+                <materialDesign:PackIcon  Kind="House" VerticalAlignment="Top" HorizontalAlignment="Center"
+                    Height="300" Width="300" Foreground="#D70F64"/>
+            </Viewbox>
+        </Grid>
 
-
-
-
+        <!-- Internt grid för Orderinfo / betalning-->
         <Grid Grid.Row="2" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="3" Background="#97AABD">
             <Grid>
                 <Grid.RowDefinitions>
@@ -56,13 +78,12 @@
                         <materialDesign:PackIcon Kind="Payment" Width="70" Height="80" DockPanel.Dock="Top" Margin="0 0 0 -5"/>
                         <TextBlock Margin="0 -5 0 0" DockPanel.Dock="Bottom" Text="Betala" VerticalAlignment="Center" FontSize="20"/>
                     </DockPanel>
-
                 </Button>
             </Grid>
 
         </Grid>
 
-
+        <!-- Internt Grid för  menyvalen-->
         <Grid Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" Background="#314455">
             <Grid.RowDefinitions>
                 <RowDefinition Height="1.2*"/>
