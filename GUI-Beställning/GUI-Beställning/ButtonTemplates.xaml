@@ -8,14 +8,14 @@
             <Setter.Value>
                 <ControlTemplate>
 
-                    <Border Background="#D70F64" BorderBrush="Black" BorderThickness="2" CornerRadius="25">
+                    <Border Background="{TemplateBinding Background}" BorderBrush="#314455" BorderThickness="2">
 
                         <Border.Triggers>
                             <EventTrigger RoutedEvent="MouseEnter">
                                 <BeginStoryboard>
                                     <Storyboard>
                                         <DoubleAnimation Storyboard.TargetProperty="Opacity" To=".25" Duration="00:00:00.15"/>
-                                        <ColorAnimation Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" To="White" Duration="00:00:00.15"/>
+                                        <!--<ColorAnimation Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" To="White" Duration="00:00:00.15"/>-->
                                     </Storyboard>
                                 </BeginStoryboard>
                             </EventTrigger>
@@ -24,7 +24,7 @@
                                 <BeginStoryboard>
                                     <Storyboard>
                                         <DoubleAnimation Storyboard.TargetProperty="Opacity" To="1" Duration="00:00:00.15"/>
-                                        <ColorAnimation Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" To="Black" Duration="00:00:00.15"/>
+                                        <!--<ColorAnimation Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" To="Black" Duration="00:00:00.15"/>-->
                                     </Storyboard>
                                 </BeginStoryboard>
                             </EventTrigger>
