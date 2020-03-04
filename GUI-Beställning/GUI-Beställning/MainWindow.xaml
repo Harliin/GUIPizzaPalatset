@@ -22,12 +22,10 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" Background="#97AABD">
-            <StackPanel>
-                    <Button Style="{StaticResource TemplatedButton}" Width="50" Height="50"/>
-            </StackPanel>
+            
         </Grid>
 
-
+       
         <Grid Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" Background="#314455">
             <Grid.RowDefinitions>
                 <RowDefinition Height="1.2*"/>
@@ -37,44 +35,50 @@
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
-
-
-            <Button Style="{StaticResource TemplatedButton}" Grid.Row="1" Background="{x:Null}" Foreground="#D70F64" FontWeight="Bold" Margin="0 3">
-                    <DockPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <materialDesign:PackIcon Kind="Pizza" FontSize="70" MaxWidth="70" MaxHeight="100" DockPanel.Dock="Top" HorizontalAlignment="Center"/>
-                        <TextBlock DockPanel.Dock="Bottom" HorizontalAlignment="Center" Margin="4" FontSize="20" Text="Pizza"/>
+            <Viewbox Grid.Row="1" Stretch="Uniform">
+                <Button Style="{StaticResource TemplatedButton}" Background="{x:Null}" Foreground="#D70F64" FontWeight="Bold">
+                    <DockPanel LastChildFill="True" Margin="10">
+                        <TextBlock Text="Pizza" DockPanel.Dock="Bottom" />
+                        <materialDesign:PackIcon Kind="Pizza" DockPanel.Dock="Top" HorizontalAlignment="Center"/>
                     </DockPanel>
                 </Button>
-                
+            </Viewbox>
 
-                <Button Style="{StaticResource TemplatedButton}" Grid.Row="2" Background="{x:Null}" Foreground="#D70F64" FontWeight="Bold" Margin="0 3">
-                    <DockPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <materialDesign:PackIcon Kind="Pizza" FontSize="40" MaxHeight="80" MaxWidth="250" DockPanel.Dock="Top" HorizontalAlignment="Center"/>
-                        <TextBlock DockPanel.Dock="Bottom" HorizontalAlignment="Center" Margin="4" FontSize="20" Text="Pasta"/>
+            <Viewbox Grid.Row="2" Stretch="Uniform">
+                <Button Style="{StaticResource TemplatedButton}" Background="{x:Null}" Foreground="#D70F64" FontWeight="Bold">
+                    <DockPanel LastChildFill="True" Margin="10">
+                        <TextBlock Text="Pasta" DockPanel.Dock="Bottom" />
+                        <materialDesign:PackIcon Kind="Pasta" DockPanel.Dock="Top" HorizontalAlignment="Center"/>
                     </DockPanel>
                 </Button>
+            </Viewbox>
 
-            <Button Style="{StaticResource TemplatedButton}" Grid.Row="3" Background="{x:Null}" Foreground="#D70F64" FontWeight="Bold" Margin="0 3">
-                    <DockPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <materialDesign:PackIcon Kind="Pizza" FontSize="40" Height="80" Width="250" DockPanel.Dock="Top" HorizontalAlignment="Center"/>
-                        <TextBlock DockPanel.Dock="Bottom" HorizontalAlignment="Center" Margin="4" FontSize="20" Text="Sallad"/>
+            <Viewbox Grid.Row="3" Stretch="Uniform">
+                <Button Style="{StaticResource TemplatedButton}" Background="{x:Null}" Foreground="#D70F64" FontWeight="Bold">
+                    <DockPanel LastChildFill="True" Margin="10">
+                        <TextBlock Text="Sallad" DockPanel.Dock="Bottom" />
+                        <materialDesign:PackIcon Kind="Apple" DockPanel.Dock="Top" HorizontalAlignment="Center"/>
                     </DockPanel>
                 </Button>
+            </Viewbox>
 
-            <Button Style="{StaticResource TemplatedButton}" Grid.Row="4" Background="{x:Null}" Foreground="#D70F64" FontWeight="Bold" Margin="0 3">
-                <DockPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <materialDesign:PackIcon Kind="Pizza" FontSize="40" Height="80" Width="250" DockPanel.Dock="Top" HorizontalAlignment="Center"/>
-                        <TextBlock DockPanel.Dock="Bottom" HorizontalAlignment="Center" Margin="4" FontSize="20" Text="Dryck"/>
+            <Viewbox Grid.Row="4" Stretch="Uniform">
+                <Button Style="{StaticResource TemplatedButton}" Background="{x:Null}" Foreground="#D70F64" FontWeight="Bold">
+                    <DockPanel LastChildFill="True" Margin="10">
+                        <TextBlock Text="Drinks" DockPanel.Dock="Bottom" />
+                        <materialDesign:PackIcon Kind="Drink" DockPanel.Dock="Top" HorizontalAlignment="Center"/>
                     </DockPanel>
                 </Button>
+            </Viewbox>
 
-            <Button Style="{StaticResource TemplatedButton}" Grid.Row="5" Background="{x:Null}" Foreground="#D70F64" FontWeight="Bold" Margin="0 3">
-                <DockPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <materialDesign:PackIcon Kind="Pizza" FontSize="40" Height="80" Width="250" DockPanel.Dock="Top" HorizontalAlignment="Center"/>
-                    <TextBlock DockPanel.Dock="Bottom" HorizontalAlignment="Center" Margin="4" FontSize="20" Text="Extra"/>
-                </DockPanel>
-            </Button>
-
+            <Viewbox Grid.Row="5" Stretch="Uniform">
+                <Button Style="{StaticResource TemplatedButton}" Background="{x:Null}" Foreground="#D70F64" FontWeight="Bold">
+                    <DockPanel LastChildFill="True" Margin="10">
+                        <TextBlock Text="Extra" DockPanel.Dock="Bottom" />
+                        <materialDesign:PackIcon Kind="AddCircle" DockPanel.Dock="Top" HorizontalAlignment="Center"/>
+                    </DockPanel>
+                </Button>
+            </Viewbox>
 
         </Grid>
         
