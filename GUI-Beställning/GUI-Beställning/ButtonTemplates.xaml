@@ -8,9 +8,9 @@
             <Setter.Value>
                 <ControlTemplate>
 
-                    <Border Background="{TemplateBinding Background}" BorderBrush="#314455" BorderThickness="2">
+                    <Button Background="{TemplateBinding Background}" BorderBrush="{x:Null}" BorderThickness="2">
 
-                        <Border.Triggers>
+                        <Button.Triggers>
                             <EventTrigger RoutedEvent="MouseEnter">
                                 <BeginStoryboard>
                                     <Storyboard>
@@ -28,13 +28,13 @@
                                     </Storyboard>
                                 </BeginStoryboard>
                             </EventTrigger>
-                        </Border.Triggers>
+                        </Button.Triggers>
 
                         <ContentPresenter Content="{TemplateBinding Button.Content}"
                                           VerticalAlignment="Center" HorizontalAlignment="Center"
                                           TextBlock.FontSize="{TemplateBinding Button.Content}"/>
 
-                    </Border>
+                    </Button>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
