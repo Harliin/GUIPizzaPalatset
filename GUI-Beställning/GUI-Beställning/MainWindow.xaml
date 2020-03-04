@@ -20,11 +20,42 @@
             <RowDefinition Height="1*"/>
             <RowDefinition Height="0.7*"/>
         </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Text="Välkommen till" FontSize="60" VerticalAlignment="Center"
+                   HorizontalAlignment="Center" FontWeight="Bold"/>
+        <TextBlock Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Text="Pizza Palatset" FontSize="60" VerticalAlignment="Bottom"
+                   HorizontalAlignment="Center" FontWeight="Bold"/>
+        <materialDesign:PackIcon Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Kind="House" VerticalAlignment="Top" HorizontalAlignment="Center"
+                                 Height="300" Width="300" Foreground="#D70F64"/>
 
-        <Grid Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" Background="#97AABD">
-            <StackPanel>
-                    <Button Style="{StaticResource TemplatedButton}" Width="50" Height="50"/>
-            </StackPanel>
+        <Grid Grid.Row="2" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="3" Background="#97AABD">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="2" Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Text="Totalsumma :" FontSize="20" FontWeight="Bold" VerticalAlignment="Center"/>
+                    <TextBlock x:Name="TotalSum" Text="90kr" Grid.Column="2" FontSize="18" VerticalAlignment="Center" Margin="4 0 0 0"/>
+                </Grid>
+                <Button Style="{StaticResource TemplatedButton}" Grid.Column="2" Grid.Row="2" Background="{x:Null}"
+                        Foreground="#D70F64" FontWeight="Bold">
+                    <DockPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <materialDesign:PackIcon Kind="Payment" Width="70" Height="80" DockPanel.Dock="Top" Margin="0 0 0 -5"/>
+                        <TextBlock Margin="0 -5 0 0" DockPanel.Dock="Bottom" Text="Betala" VerticalAlignment="Center" FontSize="20"/>
+                    </DockPanel>
+                    
+                </Button>
+            </Grid>
         </Grid>
 
 
