@@ -26,27 +26,30 @@
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*"/>
-                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1.5*"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="0.6*"/>
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Column="2" Grid.Row="0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" Text="Totalsumma :" FontSize="20" FontWeight="Bold" VerticalAlignment="Center"/>
-                    <TextBlock x:Name="TotalSum" Text="90kr" Grid.Column="2" FontSize="18" VerticalAlignment="Center" Margin="4 0 0 0"/>
+                    <TextBlock Grid.Column="0" Text="Totalsumma :" FontSize="20" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                    <TextBlock x:Name="TotalSum" Text="90kr" Grid.Column="2" FontSize="18" VerticalAlignment="Center" Margin="10 0 0 0"/>
                 </Grid>
-                <Button Style="{StaticResource TemplatedButton}" Grid.Column="2" Grid.Row="2" Background="{x:Null}"
-                            Foreground="#D70F64" FontWeight="Bold" HorizontalAlignment="Right">
-                    <DockPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <materialDesign:PackIcon Kind="Payment" Width="120" Height="90" DockPanel.Dock="Top"/>
-                        <TextBlock DockPanel.Dock="Right" Text="Betala" VerticalAlignment="Center" FontSize="20"/>
-                    </DockPanel>
-                </Button>
+                <Viewbox Grid.Column="2" Grid.Row="2" Stretch="Uniform" >
+                    <Button Style="{StaticResource TemplatedButton}" Grid.Column="2" Grid.Row="2" Background="{x:Null}" BorderBrush="#97AABD"
+                            Foreground="#D70F64" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Bottom" >
+                        <DockPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <materialDesign:PackIcon Kind="Payment" Width="120" Height="90" DockPanel.Dock="Top"/>
+                            <TextBlock DockPanel.Dock="Bottom" Text="Betala" HorizontalAlignment="Center" FontSize="20"/>
+                        </DockPanel>
+                    </Button>
+                </Viewbox>
+                
             </Grid>
         </Grid>
         <!-- Internt Grid för  menyvalen-->
@@ -60,7 +63,7 @@
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
             <Viewbox Grid.Row="1" Stretch="Uniform">
-                <Button Style="{StaticResource TemplatedButton}" Background="{x:Null}" Foreground="#D70F64" FontWeight="Bold">
+                <Button Style="{StaticResource TemplatedButton}" Background="{x:Null}" Foreground="#D70F64" FontWeight="Bold" BorderBrush="#314455">
                     <DockPanel LastChildFill="True" Margin="10">
                         <TextBlock Text="Pizza" DockPanel.Dock="Bottom" />
                         <materialDesign:PackIcon Kind="Pizza" DockPanel.Dock="Top" HorizontalAlignment="Center"/>
@@ -69,7 +72,7 @@
             </Viewbox>
 
             <Viewbox Grid.Row="2" Stretch="Uniform">
-                <Button Style="{StaticResource TemplatedButton}" Background="{x:Null}" Foreground="#D70F64" FontWeight="Bold">
+                <Button Style="{StaticResource TemplatedButton}" Background="{x:Null}" Foreground="#D70F64" FontWeight="Bold" BorderBrush="#314455">
                     <DockPanel LastChildFill="True" Margin="10">
                         <TextBlock Text="Pasta" DockPanel.Dock="Bottom" />
                         <materialDesign:PackIcon Kind="Pasta" DockPanel.Dock="Top" HorizontalAlignment="Center"/>
@@ -78,7 +81,7 @@
             </Viewbox>
 
             <Viewbox Grid.Row="3" Stretch="Uniform">
-                <Button Style="{StaticResource TemplatedButton}" Background="{x:Null}" Foreground="#D70F64" FontWeight="Bold">
+                <Button Style="{StaticResource TemplatedButton}" Background="{x:Null}" Foreground="#D70F64" FontWeight="Bold" BorderBrush="#314455">
                     <DockPanel LastChildFill="True" Margin="10">
                         <TextBlock Text="Sallad" DockPanel.Dock="Bottom" />
                         <materialDesign:PackIcon Kind="Apple" DockPanel.Dock="Top" HorizontalAlignment="Center"/>
@@ -87,7 +90,7 @@
             </Viewbox>
 
             <Viewbox Grid.Row="4" Stretch="Uniform">
-                <Button Style="{StaticResource TemplatedButton}" Background="{x:Null}" Foreground="#D70F64" FontWeight="Bold">
+                <Button Style="{StaticResource TemplatedButton}" Background="{x:Null}" Foreground="#D70F64" FontWeight="Bold" BorderBrush="#314455">
                     <DockPanel LastChildFill="True" Margin="10">
                         <TextBlock Text="Drinks" DockPanel.Dock="Bottom" />
                         <materialDesign:PackIcon Kind="Drink" DockPanel.Dock="Top" HorizontalAlignment="Center"/>
@@ -96,7 +99,7 @@
             </Viewbox>
 
             <Viewbox Grid.Row="5" Stretch="Uniform">
-                <Button Style="{StaticResource TemplatedButton}" Background="{x:Null}" Foreground="#D70F64" FontWeight="Bold">
+                <Button Style="{StaticResource TemplatedButton}" Background="{x:Null}" Foreground="#D70F64" FontWeight="Bold" BorderBrush="#314455">
                     <DockPanel LastChildFill="True" Margin="10">
                         <TextBlock Text="Extra" DockPanel.Dock="Bottom" />
                         <materialDesign:PackIcon Kind="AddCircle" DockPanel.Dock="Top" HorizontalAlignment="Center"/>

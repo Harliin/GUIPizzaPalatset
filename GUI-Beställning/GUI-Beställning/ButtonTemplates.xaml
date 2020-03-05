@@ -8,7 +8,7 @@
             <Setter.Value>
                 <ControlTemplate>
 
-                    <Button Background="{TemplateBinding Background}" BorderBrush="#314455" BorderThickness="2">
+                    <Button Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="2">
 
                         <Button.Triggers>
                             <EventTrigger RoutedEvent="MouseEnter">
