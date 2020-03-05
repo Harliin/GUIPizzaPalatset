@@ -5,8 +5,52 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GUI_Kassörska"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="1080" Width="1920" FontFamily="SegoeUI">
     <Grid>
-        <TextBlock>Hejsan</TextBlock>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <!--Title -->
+        <TextBlock
+            Grid.Column="4"
+            FontSize="30">PizzaPalatset</TextBlock>
+        <StackPanel
+            Width="420"
+            Height="550"
+            Grid.Column="2"
+            Grid.Row="2"
+            Grid.ColumnSpan="2">
+            <TextBlock>Pågående ordrar</TextBlock>
+        </StackPanel>
+        <StackPanel
+            Width="420"
+            Height="550"
+            Grid.Column="6"
+            Grid.Row="2"
+            Grid.ColumnSpan="2">
+            <TextBlock>Färdiga ordrar</TextBlock>
+        </StackPanel>
     </Grid>
 </Window>
