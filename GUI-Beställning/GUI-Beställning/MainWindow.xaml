@@ -7,11 +7,11 @@
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
 
-        Title="MainWindow" Height="1200" Width="1000" MinWidth="500" MinHeight="600">
+        Title="MainWindow" Height="1000" Width="800" MinWidth="500" MinHeight="600">
     <Grid>
         <!-- Ett Grid för hela ytan-->
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="0.8*"/>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
@@ -37,11 +37,13 @@
                         <ColumnDefinition Width="2.4*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <Viewbox>
+                    <Viewbox Grid.Column="0" Stretch="Uniform">
                         <TextBlock Grid.Column="0" Text="Totalsumma :" FontSize="20" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Right"/>
                     </Viewbox>
-                    <TextBlock Grid.Column="0" Text="Totalsumma :" FontSize="20" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Right"/>
-                    <TextBlock x:Name="TotalSum" Text="90kr" Grid.Column="2" FontSize="18" VerticalAlignment="Center" Margin="10 0 0 0"/>
+                    <Viewbox Grid.Column="2" Stretch="Uniform">
+                        <TextBlock x:Name="TotalSum" Text="90kr" Grid.Column="2" FontSize="18" VerticalAlignment="Center" Margin="10 0 0 0"/>
+                    </Viewbox>
+                    
                 </Grid>
                 <Viewbox Grid.Column="2" Grid.Row="2" Stretch="Uniform" >
                     <Button Style="{StaticResource TemplatedButton}" Grid.Column="2" Grid.Row="2" Background="{x:Null}" BorderBrush="#97AABD"
@@ -65,8 +67,8 @@
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
-            <Viewbox Grid.Row="1" Stretch="Uniform">
-                <Button Style="{StaticResource TemplatedButton}" Background="{x:Null}" Foreground="#D70F64" FontWeight="Bold" BorderBrush="#314455">
+            <Viewbox Grid.Row="1" Grid.Column="0" Stretch="Uniform">
+                <Button Style="{StaticResource TemplatedButton}" Background="{x:Null}" Foreground="#D70F64" FontWeight="Bold" BorderBrush="#314455" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                     <DockPanel LastChildFill="True" Margin="10">
                         <TextBlock Text="Pizza" DockPanel.Dock="Bottom" />
                         <materialDesign:PackIcon Kind="Pizza" DockPanel.Dock="Top" HorizontalAlignment="Center"/>
