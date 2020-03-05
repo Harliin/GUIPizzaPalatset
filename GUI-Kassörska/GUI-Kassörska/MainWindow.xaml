@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GUI_Kassörska"
         mc:Ignorable="d"
-        Title="MainWindow" Height="1080" Width="1920" FontFamily="SegoeUI">
+        Title="MainWindow" Height="1080" Width="1920" MinHeight="1280" MinWidth="800" FontFamily="SegoeUI">
     <Grid>
+        <!-- Grid- och rowdefinitions -->
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
@@ -32,25 +33,144 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         
-        <!--Title -->
+        <!-- Logga -->
+        
+        <!-- Rubrik -->
         <TextBlock
             Grid.Column="4"
-            FontSize="30">PizzaPalatset</TextBlock>
-        <StackPanel
-            Width="420"
-            Height="550"
+            FontSize="80"
+            Grid.ColumnSpan="3">PizzaPalatset</TextBlock>
+
+        <!-- Logga ut -->
+        <TextBlock
+            Grid.Column="9"
+            FontSize="40">Logga ut</TextBlock>
+        
+        <!-- Pågående ordrar -->
+        <TextBlock
             Grid.Column="2"
             Grid.Row="2"
-            Grid.ColumnSpan="2">
-            <TextBlock>Pågående ordrar</TextBlock>
-        </StackPanel>
-        <StackPanel
-            Width="420"
-            Height="550"
+            Grid.ColumnSpan="2"
+            VerticalAlignment="Bottom"
+            FontSize="45">
+            Pågående ordrar
+        </TextBlock>
+        <ListView
+            Grid.Column="2"
+            Grid.Row="3"
+            Grid.ColumnSpan="2"
+            Grid.RowSpan="5"
+            BorderThickness="5"
+            Padding="5"
+            ScrollViewer.CanContentScroll="True">
+            <ListViewItem
+                FontSize="40"
+                Background="#DFA4BD">
+                Order 5
+            </ListViewItem>
+            <ListViewItem
+                FontSize="40">
+                Order 6
+            </ListViewItem>
+            <ListViewItem
+                FontSize="40"
+                Background="#DFA4BD">
+                Order 7
+            </ListViewItem>
+            <ListViewItem
+                FontSize="40">
+                Order 8
+            </ListViewItem>
+            <ListViewItem
+                FontSize="40"
+                Background="#DFA4BD">
+                Order 5
+            </ListViewItem>
+            <ListViewItem
+                FontSize="40">
+                Order 6
+            </ListViewItem>
+            <ListViewItem
+                FontSize="40"
+                Background="#DFA4BD">
+                Order 7
+            </ListViewItem>
+            <ListViewItem
+                FontSize="40">
+                Order 8
+            </ListViewItem>
+            <ListViewItem
+                FontSize="40"
+                Background="#DFA4BD">
+                Order 5
+            </ListViewItem>
+            <ListViewItem
+                FontSize="40">
+                Order 6
+            </ListViewItem>
+            <ListViewItem
+                FontSize="40"
+                Background="#DFA4BD">
+                Order 7
+            </ListViewItem>
+            <ListViewItem
+                FontSize="40">
+                Order 8
+            </ListViewItem>
+            <ListViewItem
+                FontSize="40"
+                Background="#DFA4BD">
+                Order 5
+            </ListViewItem>
+            <ListViewItem
+                FontSize="40">
+                Order 6
+            </ListViewItem>
+            <ListViewItem
+                FontSize="40"
+                Background="#DFA4BD">
+                Order 7
+            </ListViewItem>
+            <ListViewItem
+                FontSize="40">
+                Order 8
+            </ListViewItem>
+        </ListView>
+        
+        <!-- Färdiga ordrar -->
+        <TextBlock
             Grid.Column="6"
             Grid.Row="2"
-            Grid.ColumnSpan="2">
-            <TextBlock>Färdiga ordrar</TextBlock>
-        </StackPanel>
+            Grid.ColumnSpan="2"
+            VerticalAlignment="Bottom"
+            FontSize="45">
+            Färdiga ordrar
+        </TextBlock>
+        <ListView
+            Grid.Column="6"
+            Grid.Row="3"
+            Grid.ColumnSpan="2"
+            Grid.RowSpan="5"
+            BorderThickness="5"
+            Padding="5">
+            <ListViewItem
+                FontSize="40"
+                Background="#DFA4BD">
+                Order 1
+            </ListViewItem>
+            <ListViewItem
+                FontSize="40">
+                Order 2
+            </ListViewItem>
+            <ListViewItem
+                FontSize="40"
+                Background="#DFA4BD">
+                Order 3
+            </ListViewItem>
+            <ListViewItem
+                FontSize="40">
+                Order 4
+            </ListViewItem>
+        </ListView>
     </Grid>
 </Window>
