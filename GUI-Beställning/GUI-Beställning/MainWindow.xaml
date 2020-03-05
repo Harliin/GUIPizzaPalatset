@@ -34,9 +34,12 @@
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Column="2" Grid.Row="0">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2.4*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
+                    <Viewbox>
+                        <TextBlock Grid.Column="0" Text="Totalsumma :" FontSize="20" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                    </Viewbox>
                     <TextBlock Grid.Column="0" Text="Totalsumma :" FontSize="20" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Right"/>
                     <TextBlock x:Name="TotalSum" Text="90kr" Grid.Column="2" FontSize="18" VerticalAlignment="Center" Margin="10 0 0 0"/>
                 </Grid>
