@@ -10,8 +10,7 @@
         Width="1920"
         MinHeight="1280"
         MinWidth="800"
-        FontFamily="SegoeUI"
-        Margin="10">
+        FontFamily="SegoeUI">
     <Grid>
         <Grid.Resources>
             <AlternationConverter x:Key="BackgroundConverter">
@@ -27,7 +26,6 @@
             </Style>
         </Grid.Resources>
 
-        
         <!-- Grid- och rowdefinitions -->
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -70,7 +68,7 @@
         <TextBlock
             Grid.Column="4"
             FontSize="80"
-            Grid.ColumnSpan="5"
+            Grid.ColumnSpan="3"
             Grid.RowSpan="2">
             PizzaPalatset
         </TextBlock>
@@ -79,19 +77,25 @@
         <StackPanel
             Grid.Column="8"
             Grid.ColumnSpan="2"
+            Grid.Row="1"
             Orientation="Horizontal">
             <Path 
-                  Fill="#FFD70F64"
-                  Data="M30 33.75A16.875 16.875 0 1 0 13.125 16.875 16.879 16.879 0 0 0 30 33.75ZM45 37.5H38.543a20.4 20.4 0 0 1-17.086 0H15a15 15 0 0 0-15 15v1.875A5.626 5.626 0 0 0 5.625 60h48.75A5.626 5.626 0 0 0 60 54.375V52.5A15 15 0 0 0 45 37.5Z"
-                  HorizontalAlignment="Left"/>
+                Fill="#FFD70F64"
+                Data="M30 33.75A16.875 16.875 0 1 0 13.125 16.875 16.879 16.879 0 0 0 30 33.75ZM45 37.5H38.543a20.4 20.4 0 0 1-17.086 0H15a15 15 0 0 0-15 15v1.875A5.626 5.626 0 0 0 5.625 60h48.75A5.626 5.626 0 0 0 60 54.375V52.5A15 15 0 0 0 45 37.5Z"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"/>
             <TextBlock
                 FontSize="40"
-                Padding="5">User</TextBlock>
-            <Button>
+                Padding="5"
+                VerticalAlignment="Center">User</TextBlock>
+            <Button
+                Background="#FFFFFF"
+                BorderThickness="0"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center">
                 <Path
-               Fill="#707070"
-               Data="M18.846,0V7.09H43.974V42.542H18.846v7.09h31.41V0ZM12.564,14.181,0,24.816,12.564,35.452v-7.09H37.692v-7.09H12.564Z"
-                HorizontalAlignment="Right"/>
+                Fill="#707070"
+                Data="M18.846,0V7.09H43.974V42.542H18.846v7.09h31.41V0ZM12.564,14.181,0,24.816,12.564,35.452v-7.09H37.692v-7.09H12.564Z"/>
             </Button>
         </StackPanel>
 
@@ -101,7 +105,8 @@
             Grid.Row="5"
             Grid.ColumnSpan="3"
             VerticalAlignment="Bottom"
-            FontSize="45">
+            FontSize="45"
+            FontWeight="Bold">
             Pågående ordrar
         </TextBlock>
         <ListBox
@@ -115,15 +120,18 @@
             AlternationCount="2"
             ItemContainerStyle="{StaticResource alternateBackgroundcolor}">
             <ListBoxItem
-                FontSize="40">
+                FontSize="40"
+                BorderThickness="0">
                 Order 5
             </ListBoxItem>
             <ListViewItem
-                FontSize="40">
+                FontSize="40"
+                BorderThickness="0">
                 Order 6
             </ListViewItem>
             <ListBoxItem
-                FontSize="40">
+                FontSize="40"
+                BorderThickness="0">
                 Order 7
             </ListBoxItem>
         </ListBox>
@@ -134,7 +142,8 @@
             Grid.Row="5"
             Grid.ColumnSpan="3"
             VerticalAlignment="Bottom"
-            FontSize="45">
+            FontSize="45"
+            FontWeight="Bold">
             Färdiga ordrar
         </TextBlock>
         <ListBox
@@ -142,24 +151,27 @@
             Grid.Row="6"
             Grid.ColumnSpan="2"
             Grid.RowSpan="10"
-            Padding="5"
             BorderThickness="0"
             AlternationCount="2"
             ItemContainerStyle="{StaticResource alternateBackgroundcolor}">
             <ListBoxItem
-                FontSize="40">
+                FontSize="40"
+                BorderThickness="0">
                 Order 1
             </ListBoxItem>
             <ListBoxItem
-                FontSize="40">
+                FontSize="40"
+                BorderThickness="0">
                 Order 2
             </ListBoxItem>
             <ListBoxItem
-                FontSize="40">
+                FontSize="40"
+                BorderThickness="0">
                 Order 3
             </ListBoxItem>
             <ListBoxItem
-                FontSize="40">
+                FontSize="40"
+                BorderThickness="0">
                 Order 4
             </ListBoxItem>
         </ListBox>
