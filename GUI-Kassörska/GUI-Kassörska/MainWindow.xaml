@@ -5,7 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GUI_Kassörska"
         mc:Ignorable="d"
-        Title="MainWindow" Height="1080" Width="1920" MinHeight="1280" MinWidth="800" FontFamily="SegoeUI">
+        Title="MainWindow"
+        Height="1080"
+        Width="1920"
+        MinHeight="1280"
+        MinWidth="800"
+        FontFamily="SegoeUI">
     <Grid>
         <Grid.Resources>
             <AlternationConverter x:Key="BackgroundConverter">
@@ -54,14 +59,15 @@
         <TextBox
             Grid.Column="4"
             FontSize="80"
-            Grid.ColumnSpan="3">PizzaPalatset</TextBox>
+            Grid.ColumnSpan="3"
+            BorderThickness="0">PizzaPalatset</TextBox>
 
         <!-- Logga ut -->
         <Button
             Grid.Column="9"
-            FontSize="40">Logga ut</Button>
-        
-        <!-- Pågående ordrar -->
+            FontSize="40"></Button>
+
+            <!-- Pågående ordrar -->
         <TextBlock
             Grid.Column="2"
             Grid.Row="2"
@@ -75,8 +81,8 @@
             Grid.Row="3"
             Grid.ColumnSpan="2"
             Grid.RowSpan="5"
-            BorderThickness="5"
             Padding="5"
+            BorderThickness="0"
             ScrollViewer.CanContentScroll="True"
             AlternationCount="2"
             ItemContainerStyle="{StaticResource alternateBackgroundcolor}">
@@ -108,8 +114,8 @@
             Grid.Row="3"
             Grid.ColumnSpan="2"
             Grid.RowSpan="5"
-            BorderThickness="5"
             Padding="5"
+            BorderThickness="0"
             AlternationCount="2"
             ItemContainerStyle="{StaticResource alternateBackgroundcolor}">
             <ListBoxItem

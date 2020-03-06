@@ -8,7 +8,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Images\" />
+    <Page Remove="Images\userLogo.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Images\userLogo.xaml" />
   </ItemGroup>
 
 </Project>
