@@ -10,7 +10,8 @@
         Width="1920"
         MinHeight="1280"
         MinWidth="800"
-        FontFamily="SegoeUI">
+        FontFamily="SegoeUI"
+        Margin="10">
     <Grid>
         <Grid.Resources>
             <AlternationConverter x:Key="BackgroundConverter">
@@ -51,36 +52,63 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         
         <!-- Logga -->
         
         <!-- Rubrik -->
-        <TextBox
+        <TextBlock
             Grid.Column="4"
             FontSize="80"
-            Grid.ColumnSpan="3"
-            BorderThickness="0">PizzaPalatset</TextBox>
+            Grid.ColumnSpan="5"
+            Grid.RowSpan="2">
+            PizzaPalatset
+        </TextBlock>
 
-        <!-- Logga ut -->
-        <Button
-            Grid.Column="9"
-            FontSize="40"></Button>
+        <!-- Inloggad användare, logga ut -->
+        <StackPanel
+            Grid.Column="8"
+            Grid.ColumnSpan="2"
+            Orientation="Horizontal">
+            <Path 
+                  Fill="#FFD70F64"
+                  Data="M30 33.75A16.875 16.875 0 1 0 13.125 16.875 16.879 16.879 0 0 0 30 33.75ZM45 37.5H38.543a20.4 20.4 0 0 1-17.086 0H15a15 15 0 0 0-15 15v1.875A5.626 5.626 0 0 0 5.625 60h48.75A5.626 5.626 0 0 0 60 54.375V52.5A15 15 0 0 0 45 37.5Z"
+                  HorizontalAlignment="Left"/>
+            <TextBlock
+                FontSize="40"
+                Padding="5">User</TextBlock>
+            <Button>
+                <Path
+               Fill="#707070"
+               Data="M18.846,0V7.09H43.974V42.542H18.846v7.09h31.41V0ZM12.564,14.181,0,24.816,12.564,35.452v-7.09H37.692v-7.09H12.564Z"
+                HorizontalAlignment="Right"/>
+            </Button>
+        </StackPanel>
 
-            <!-- Pågående ordrar -->
+        <!-- Pågående ordrar -->
         <TextBlock
             Grid.Column="2"
-            Grid.Row="2"
-            Grid.ColumnSpan="2"
+            Grid.Row="5"
+            Grid.ColumnSpan="3"
             VerticalAlignment="Bottom"
             FontSize="45">
             Pågående ordrar
         </TextBlock>
         <ListBox
             Grid.Column="2"
-            Grid.Row="3"
+            Grid.Row="6"
             Grid.ColumnSpan="2"
-            Grid.RowSpan="5"
+            Grid.RowSpan="10"
             Padding="5"
             BorderThickness="0"
             ScrollViewer.CanContentScroll="True"
@@ -103,17 +131,17 @@
         <!-- Färdiga ordrar -->
         <TextBlock
             Grid.Column="6"
-            Grid.Row="2"
-            Grid.ColumnSpan="2"
+            Grid.Row="5"
+            Grid.ColumnSpan="3"
             VerticalAlignment="Bottom"
             FontSize="45">
             Färdiga ordrar
         </TextBlock>
         <ListBox
             Grid.Column="6"
-            Grid.Row="3"
+            Grid.Row="6"
             Grid.ColumnSpan="2"
-            Grid.RowSpan="5"
+            Grid.RowSpan="10"
             Padding="5"
             BorderThickness="0"
             AlternationCount="2"

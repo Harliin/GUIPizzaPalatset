@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
 
-namespace GUI_Kassörska
+namespace GUI_Kassörska.ViewModels
 {
     public class Order : INotifyPropertyChanged
     {
