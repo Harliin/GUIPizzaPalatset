@@ -9,14 +9,20 @@
     <Grid>
         <Grid.Resources>
             <AlternationConverter x:Key="BackgroundConverter">
-                <SolidColorBrush>Blue</SolidColorBrush>
-                <SolidColorBrush>CornflowerBlue</SolidColorBrush>
-                <SolidColorBrush>LightBlue</SolidColorBrush>
+                <SolidColorBrush Color="#DFA4BD"/>
+                <SolidColorBrush Color="#FFFFFF"/>
             </AlternationConverter>
+
+            <Style x:Key="alternateBackgroundcolor" TargetType="{x:Type ListBoxItem}">
+                <Setter Property="Background" 
+              Value="{Binding RelativeSource={RelativeSource Self},
+                     Path=(ItemsControl.AlternationIndex),
+                     Converter={StaticResource BackgroundConverter}}"/>
+            </Style>
         </Grid.Resources>
 
         
-            <!-- Grid- och rowdefinitions -->
+        <!-- Grid- och rowdefinitions -->
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
@@ -45,15 +51,15 @@
         <!-- Logga -->
         
         <!-- Rubrik -->
-        <ListBoxItem
+        <TextBox
             Grid.Column="4"
             FontSize="80"
-            Grid.ColumnSpan="3">PizzaPalatset</ListBoxItem>
+            Grid.ColumnSpan="3">PizzaPalatset</TextBox>
 
         <!-- Logga ut -->
-        <TextBlock
+        <Button
             Grid.Column="9"
-            FontSize="40">Logga ut</TextBlock>
+            FontSize="40">Logga ut</Button>
         
         <!-- Pågående ordrar -->
         <TextBlock
@@ -64,87 +70,29 @@
             FontSize="45">
             Pågående ordrar
         </TextBlock>
-        <ListView
+        <ListBox
             Grid.Column="2"
             Grid.Row="3"
             Grid.ColumnSpan="2"
             Grid.RowSpan="5"
             BorderThickness="5"
             Padding="5"
-            ScrollViewer.CanContentScroll="True">
-            <ListViewItem
-                FontSize="40"
-                Background="#DFA4BD">
+            ScrollViewer.CanContentScroll="True"
+            AlternationCount="2"
+            ItemContainerStyle="{StaticResource alternateBackgroundcolor}">
+            <ListBoxItem
+                FontSize="40">
                 Order 5
-            </ListViewItem>
+            </ListBoxItem>
             <ListViewItem
                 FontSize="40">
                 Order 6
             </ListViewItem>
-            <ListViewItem
-                FontSize="40"
-                Background="#DFA4BD">
+            <ListBoxItem
+                FontSize="40">
                 Order 7
-            </ListViewItem>
-            <ListViewItem
-                FontSize="40">
-                Order 8
-            </ListViewItem>
-            <ListViewItem
-                FontSize="40"
-                Background="#DFA4BD">
-                Order 5
-            </ListViewItem>
-            <ListViewItem
-                FontSize="40">
-                Order 6
-            </ListViewItem>
-            <ListViewItem
-                FontSize="40"
-                Background="#DFA4BD">
-                Order 7
-            </ListViewItem>
-            <ListViewItem
-                FontSize="40">
-                Order 8
-            </ListViewItem>
-            <ListViewItem
-                FontSize="40"
-                Background="#DFA4BD">
-                Order 5
-            </ListViewItem>
-            <ListViewItem
-                FontSize="40">
-                Order 6
-            </ListViewItem>
-            <ListViewItem
-                FontSize="40"
-                Background="#DFA4BD">
-                Order 7
-            </ListViewItem>
-            <ListViewItem
-                FontSize="40">
-                Order 8
-            </ListViewItem>
-            <ListViewItem
-                FontSize="40"
-                Background="#DFA4BD">
-                Order 5
-            </ListViewItem>
-            <ListViewItem
-                FontSize="40">
-                Order 6
-            </ListViewItem>
-            <ListViewItem
-                FontSize="40"
-                Background="#DFA4BD">
-                Order 7
-            </ListViewItem>
-            <ListViewItem
-                FontSize="40">
-                Order 8
-            </ListViewItem>
-        </ListView>
+            </ListBoxItem>
+        </ListBox>
         
         <!-- Färdiga ordrar -->
         <TextBlock
@@ -155,32 +103,31 @@
             FontSize="45">
             Färdiga ordrar
         </TextBlock>
-        <ListView
+        <ListBox
             Grid.Column="6"
             Grid.Row="3"
             Grid.ColumnSpan="2"
             Grid.RowSpan="5"
             BorderThickness="5"
-            Padding="5">
-            <ListViewItem
-                FontSize="40"
-                Background="#DFA4BD">
+            Padding="5"
+            AlternationCount="2"
+            ItemContainerStyle="{StaticResource alternateBackgroundcolor}">
+            <ListBoxItem
+                FontSize="40">
                 Order 1
-            </ListViewItem>
-            <ListViewItem
+            </ListBoxItem>
+            <ListBoxItem
                 FontSize="40">
                 Order 2
-            </ListViewItem>
-            <ListViewItem
-                FontSize="40"
-                Background="#DFA4BD">
+            </ListBoxItem>
+            <ListBoxItem
+                FontSize="40">
                 Order 3
-            </ListViewItem>
-            <ListViewItem
+            </ListBoxItem>
+            <ListBoxItem
                 FontSize="40">
                 Order 4
-            </ListViewItem>
-        </ListView>
-            
+            </ListBoxItem>
+        </ListBox>
     </Grid>
 </Window>
