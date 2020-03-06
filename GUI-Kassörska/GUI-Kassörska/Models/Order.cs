@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 
 namespace GUI_Kassörska
 {
-    public class Order
+    public class Order : INotifyPropertyChanged
     {
         private int orderNumber;
 
@@ -18,5 +19,7 @@ namespace GUI_Kassörska
             get { return orderNumber; }
             set { }
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

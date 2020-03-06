@@ -15,4 +15,8 @@
     <Content Include="Images\userLogo.xaml" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\" />
+  </ItemGroup>
+
 </Project>
