@@ -7,7 +7,16 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="1080" Width="1920" MinHeight="1280" MinWidth="800" FontFamily="SegoeUI">
     <Grid>
-        <!-- Grid- och rowdefinitions -->
+        <Grid.Resources>
+            <AlternationConverter x:Key="BackgroundConverter">
+                <SolidColorBrush>Blue</SolidColorBrush>
+                <SolidColorBrush>CornflowerBlue</SolidColorBrush>
+                <SolidColorBrush>LightBlue</SolidColorBrush>
+            </AlternationConverter>
+        </Grid.Resources>
+
+        
+            <!-- Grid- och rowdefinitions -->
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
@@ -36,10 +45,10 @@
         <!-- Logga -->
         
         <!-- Rubrik -->
-        <TextBlock
+        <ListBoxItem
             Grid.Column="4"
             FontSize="80"
-            Grid.ColumnSpan="3">PizzaPalatset</TextBlock>
+            Grid.ColumnSpan="3">PizzaPalatset</ListBoxItem>
 
         <!-- Logga ut -->
         <TextBlock
@@ -172,5 +181,6 @@
                 Order 4
             </ListViewItem>
         </ListView>
+            
     </Grid>
 </Window>
