@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace GUI_Kock
+namespace GUI_Kock.Views
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
