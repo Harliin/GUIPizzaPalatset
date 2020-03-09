@@ -8,7 +8,7 @@
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       d:DesignHeight="450" d:DesignWidth="500"
       Title="PizzaMeny">
-    <!-- FÄRGKODER
+    <!--FÄRGKODER
     Rosa: #D70F64
     Mörkblå: #314455
     Ljusgrå: #97AABD
@@ -27,7 +27,6 @@
             <RowDefinition Height="1*"/>
             <RowDefinition Height="0.5*"/>
         </Grid.RowDefinitions>
-
         <!--Knappar(?) för huvudinnehåll Pizza-->
         <StackPanel Grid.Column="1" Grid.ColumnSpan="3" Grid.RowSpan="2" >
             <Button Style="{StaticResource TemplatedButton}" Background="{x:Null}" BorderBrush="#D70F64" Margin="4 2">
@@ -107,7 +106,6 @@
                 </Viewbox>
             </Grid>
         </Grid>
-
         <!-- Internt Grid för  menyvalen-->
         <Grid Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" Background="#314455">
             <Grid.RowDefinitions>
