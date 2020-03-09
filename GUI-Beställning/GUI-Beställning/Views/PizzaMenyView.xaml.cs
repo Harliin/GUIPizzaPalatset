@@ -14,11 +14,11 @@ using System.Windows.Shapes;
 namespace GUI_Beställning.Views
 {
     /// <summary>
-    /// Interaction logic for StartMenyView.xaml
+    /// Interaction logic for PizzaMenyView.xaml
     /// </summary>
-    public partial class StartMenyView : Page
+    public partial class PizzaMenyView : Page
     {
-        public StartMenyView()
+        public PizzaMenyView()
         {
             InitializeComponent();
         }
