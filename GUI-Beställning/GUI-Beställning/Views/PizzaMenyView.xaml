@@ -7,9 +7,14 @@
       mc:Ignorable="d"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       d:DesignHeight="450" d:DesignWidth="500"
-      Title="PizzaMeny" Height="600" Width="500" MinWidth="250" MinHeight="300">
-
-    <Grid Background="#fff">
+      Title="PizzaMeny">
+    <!-- FÄRGKODER
+    Rosa: #D70F64
+    Mörkblå: #314455
+    Ljusgrå: #97AABD
+    Vit : #FFFFFF
+    -->
+    <Grid Background="#FFFFFF">
         <!-- Ett Grid för hela ytan-->
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.8*"/>
@@ -23,7 +28,7 @@
             <RowDefinition Height="0.5*"/>
         </Grid.RowDefinitions>
 
-        <!--Vy för huvudinnehåll, t.ex pizzor, pasta-->
+        <!--Knappar(?) för huvudinnehåll Pizza-->
         <StackPanel Grid.Column="1" Grid.ColumnSpan="3" Grid.RowSpan="2" >
             <Button Style="{StaticResource TemplatedButton}" Background="{x:Null}" BorderBrush="#D70F64" Margin="4 2">
                 <StackPanel>
@@ -64,11 +69,10 @@
             <Button Style="{StaticResource TemplatedButton}" Background="{x:Null}" BorderBrush="#D70F64" Margin="4 2">
                 <StackPanel>
                     <TextBlock x:Name="pizza7" Text="Husets Special" FontWeight="Bold" HorizontalAlignment="Center"/>
-                    <TextBlock x:Name="ing7" Text="Tomatsås - Ost - Oxfilé - " Foreground="#D70F64"/>
+                    <TextBlock x:Name="ing7" Text="Tomatsås - Ost - Oxfilé - Bearnaise " Foreground="#D70F64"/>
                 </StackPanel>
             </Button>
         </StackPanel>
-
         <!-- Internt grid för Orderinfo / betalning-->
         <Grid Grid.Row="2" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="3" Background="#97AABD">
             <Grid>
