@@ -98,7 +98,7 @@
                 <Viewbox Grid.Column="2" Grid.Row="2" Stretch="Uniform" >
                     <Button Style="{StaticResource TemplatedButton}" Grid.Column="2" Grid.Row="2" Background="{x:Null}" BorderBrush="#97AABD"
                             Foreground="#D70F64" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Bottom" >
-                        <DockPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <DockPanel>
                             <materialDesign:PackIcon Kind="Payment" Width="120" Height="90" DockPanel.Dock="Top"/>
                             <TextBlock DockPanel.Dock="Bottom" Text="Betala" HorizontalAlignment="Center" FontSize="20"/>
                         </DockPanel>
