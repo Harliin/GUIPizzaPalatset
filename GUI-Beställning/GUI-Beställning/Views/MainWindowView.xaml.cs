@@ -8,17 +8,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace GUI_Beställning.Views
 {
     /// <summary>
-    /// Interaction logic for StartMenyView.xaml
+    /// Interaction logic for MainWindowView.xaml
     /// </summary>
-    public partial class StartMenyView : Page
+    public partial class MainWindowView : Window
     {
-        public StartMenyView()
+        public MainWindowView()
         {
             InitializeComponent();
         }
