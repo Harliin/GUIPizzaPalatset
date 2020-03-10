@@ -53,8 +53,9 @@
                    HorizontalAlignment="Center" FontWeight="Bold"/>
             </Viewbox>
             <Viewbox Grid.Row="1" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="3" Stretch="Uniform">
-                <materialDesign:PackIcon Kind="House" VerticalAlignment="Top" HorizontalAlignment="Center"
-                    Height="300" Width="300" Foreground="#D70F64"/>
+                <!--<materialDesign:PackIcon Kind="House" VerticalAlignment="Top" HorizontalAlignment="Center"
+                    Height="300" Width="300" Foreground="#D70F64"/>-->
+                <MediaElement Source="pack://application:,,,/Images/pizzalogga.svg" Height="300" Width="300"/>
             </Viewbox>
         </Grid>
         <!-- Internt Grid för  menyvalen-->

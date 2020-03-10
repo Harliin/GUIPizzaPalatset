@@ -17,7 +17,8 @@
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="0" Background="#D70F64"/>
         <TextBlock Text="VÄLKOMMEN TILL PIZZA PALATSET" FontSize="40" FontWeight="DemiBold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <materialDesign:PackIcon Kind="House" Grid.Row="1" Grid.RowSpan="2" Width="300" Height="300" HorizontalAlignment="Center" Foreground="#D70F64"/>
+        <Image Grid.Row="1" Grid.RowSpan="2" Source="pack://application:,,,/Images/pizzalogga2.png" Height="400" Width="400" HorizontalAlignment="Center"/>
+        <!--<materialDesign:PackIcon Kind="House" Grid.Row="1" Grid.RowSpan="2" Width="300" Height="300" HorizontalAlignment="Center" Foreground="#D70F64"/>-->
         <Button Content="Klicka här för att påbörja beställning hehe" Grid.Row="3" Background="{x:Null}" FontWeight="DemiBold" BorderBrush="{x:Null}"/>
     </Grid>
 </Page>
