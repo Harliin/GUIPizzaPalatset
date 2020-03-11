@@ -4,9 +4,60 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:GUI_Beställning.Views"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" Background="#FFFFFF"
+             d:DesignHeight="400" d:DesignWidth="400">
+    <!--FÄRGKODER
+    Rosa: #D70F64
+    Mörkblå: #314455
+    Ljusgrå: #97AABD
+    Vit : #FFFFFF
+    -->
     <Grid>
-            
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Viewbox Stretch="Uniform">
+            <DockPanel Grid.Column="0" Grid.Row="0">
+                <ItemsControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ItemsSource="{Binding Extras}" BorderBrush="#D70F64">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Margin="0 20 0 0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="3*"/>
+                                    <ColumnDefinition Width="auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <materialDesign:Card Grid.Column="0" Grid.ColumnSpan="4" Margin="5" Background="#FFFFFF" BorderBrush="#D70F64" 
+                                                     Foreground="#D70F64" UniformCornerRadius="5" BorderThickness="20" materialDesign:ShadowAssist.ShadowDepth="Depth3">
+                                    <StackPanel Orientation="Horizontal" Margin="10">
+                                        <StackPanel Orientation="Vertical">
+                                            <TextBlock Text="{Binding Name}" FontSize="35" FontWeight="Bold" VerticalAlignment="Top" Foreground="Black"/>
+                                            <TextBlock Text="{Binding ID}"  VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="25" FontWeight="DemiBold"/>
+                                        </StackPanel>
+
+                                        <StackPanel Orientation="Horizontal" Margin="250 0 10 0">
+                                            <TextBlock Margin="0 0 10 5" FontSize="25" VerticalAlignment="Bottom" Foreground="Black">
+                                                <Run Text="{Binding Price}"/> kr</TextBlock>
+                                            <Button Content="{materialDesign:PackIcon Kind=AddCircle, Size=40}" Style="{StaticResource TemplatedButton}"
+                                               Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#D70F64" Margin="0 0 5 0" VerticalAlignment="Bottom"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </materialDesign:Card>
+                            </Grid>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </DockPanel>
+        </Viewbox>
     </Grid>
 </UserControl>
