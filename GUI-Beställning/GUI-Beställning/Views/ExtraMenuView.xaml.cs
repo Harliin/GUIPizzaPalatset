@@ -1,15 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Windows;
+﻿using GUI_Beställning.ViewModels;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+
 
 namespace GUI_Beställning.Views
 {
@@ -21,6 +12,7 @@ namespace GUI_Beställning.Views
         public ExtraMenuView()
         {
             InitializeComponent();
+            this.DataContext = new ExtraMenuViewModel();
         }
     }
 }
