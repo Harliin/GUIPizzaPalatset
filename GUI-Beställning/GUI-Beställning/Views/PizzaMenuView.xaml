@@ -39,7 +39,7 @@
                                     <RowDefinition />
                                 </Grid.RowDefinitions>
                                 <materialDesign:Card Grid.Column="0" Grid.ColumnSpan="4" Margin="5" Background="#FFFFFF" BorderBrush="#D70F64" 
-                                                     Foreground="#D70F64" UniformCornerRadius="3" BorderThickness="20" materialDesign:ShadowAssist.ShadowDepth="Depth3">
+                                                     Foreground="#D70F64" UniformCornerRadius="5" BorderThickness="20" materialDesign:ShadowAssist.ShadowDepth="Depth3">
                                     <StackPanel Orientation="Horizontal" Margin="10">
                                         <StackPanel Orientation="Vertical">
                                             <TextBlock Text="{Binding Name}" FontSize="35" FontWeight="Bold" VerticalAlignment="Top"/>
@@ -48,7 +48,7 @@
                                         
                                         <StackPanel Orientation="Horizontal" Margin="250 0 10 0">
                                             <TextBlock Text="{Binding Price}"  Margin="0 0 10 5" FontSize="25" VerticalAlignment="Bottom"/>
-                                            <Button Content="{materialDesign:PackIcon Kind=AddCircle, Size=40}" 
+                                            <Button Content="{materialDesign:PackIcon Kind=AddCircle, Size=40}" Style="{StaticResource TemplatedButton}"
                                                Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#D70F64" Margin="0 0 5 0" VerticalAlignment="Bottom"/>
                                         </StackPanel>
                                     </StackPanel>
