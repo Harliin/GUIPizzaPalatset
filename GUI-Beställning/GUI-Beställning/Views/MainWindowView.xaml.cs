@@ -1,4 +1,5 @@
 ﻿
+using GUI_Beställning.ViewModels;
 using System.Windows;
 
 
@@ -11,6 +12,7 @@ namespace GUI_Beställning.Views
     {
         public MainWindowView()
         {
+            this.DataContext = new MainWindowViewModel();
             InitializeComponent();
         }
     }

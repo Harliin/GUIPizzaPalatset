@@ -14,6 +14,7 @@ namespace GUI_Beställning.ViewModels
         public OrderRepository repo = new OrderRepository();
         public ObservableCollection<Sallad> Sallads { get; set; }
 
+
         public SalladMenuViewModel()
         {
             Sallads = new ObservableCollection<Sallad>();

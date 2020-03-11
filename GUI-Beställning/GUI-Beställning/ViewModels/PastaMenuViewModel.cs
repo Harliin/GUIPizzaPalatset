@@ -15,6 +15,7 @@ namespace GUI_Beställning.ViewModels
 
         public ObservableCollection<Pasta> Pastas { get; set; }
 
+
         public PastaMenuViewModel()
         {
             Pastas = new ObservableCollection<Pasta>();
