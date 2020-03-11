@@ -27,6 +27,8 @@
             <RowDefinition Height="0.5*"/>
         </Grid.RowDefinitions>
         <!--#endregion-->
+        
+        
 
         <!--#region Lower Bar-->
         <Grid Grid.Row="2" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="3" Background="#97AABD">
@@ -65,7 +67,7 @@
         <!--#endregion-->
         
         <!--#region Left Navigation Bar-->
-
+       
         <Grid Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" Background="#314455">
             <Grid.RowDefinitions>
                 <RowDefinition Height="1.2*"/>
@@ -75,9 +77,10 @@
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
-            
+            <!--<Button x:Name="GoPizzaMenu" Content="pizza" Grid.Column="1" Grid.Row="0"/>-->
+
             <Viewbox Grid.Row="1" Grid.Column="0" Stretch="Uniform">
-                <Button x:Name="GoPizzaMenu" Style="{StaticResource TemplatedButton}" Background="{x:Null}" Foreground="#D70F64" FontWeight="Bold" 
+                <Button x:Name="GoPizzaMenu"  Background="{x:Null}" Foreground="#D70F64" FontWeight="Bold" 
                         BorderBrush="#314455" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                     <DockPanel LastChildFill="True" Margin="10">
                         <TextBlock Text="Pizza" DockPanel.Dock="Bottom" />
@@ -86,7 +89,7 @@
                 </Button>
             </Viewbox>
             <Viewbox Grid.Row="2" Stretch="Uniform">
-                <Button x:Name="GoPastaMenu" Style="{StaticResource TemplatedButton}" Background="{x:Null}" Foreground="#D70F64" FontWeight="Bold" BorderBrush="#314455">
+                <Button x:Name="GoPastaMenu"  Background="{x:Null}" Foreground="#D70F64" FontWeight="Bold" BorderBrush="#314455">
                     <DockPanel LastChildFill="True" Margin="10">
                         <TextBlock Text="Pasta" DockPanel.Dock="Bottom" />
                         <materialDesign:PackIcon Kind="Pasta" DockPanel.Dock="Top" HorizontalAlignment="Center"/>
@@ -117,12 +120,13 @@
                     </DockPanel>
                 </Button>
             </Viewbox>
+            
         </Grid>
         <!--#endregion-->
 
-        <rxui:RoutedViewHost x:Name="RoutedViewHost" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="0" Grid.RowSpan="2"
-                             HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"/>
 
+
+        <rxui:RoutedViewHost Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="0" Grid.RowSpan="2" x:Name="RoutedViewHost" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"/>
 
     </Grid>
 </rxui:ReactiveWindow>

@@ -7,9 +7,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate>
-
                     <Button Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="2">
-
                         <Button.Triggers>
                             <EventTrigger RoutedEvent="MouseEnter">
                                 <BeginStoryboard>
@@ -29,7 +27,6 @@
                                 </BeginStoryboard>
                             </EventTrigger>
                         </Button.Triggers>
-
                         <ContentPresenter Content="{TemplateBinding Button.Content}"
                                           VerticalAlignment="Center" HorizontalAlignment="Center"
                                           TextBlock.FontSize="{TemplateBinding Button.Content}"/>
