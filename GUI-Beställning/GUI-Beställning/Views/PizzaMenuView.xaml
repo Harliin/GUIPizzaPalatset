@@ -13,25 +13,21 @@
     Ljusgrå: #97AABD
     Vit : #FFFFFF
     -->
-    
+
     <Grid>
-        <ListView.ItemContainerStyle>
-            <Style TargetType="ListViewItem" BasedOn="{StaticResource MaterialDesignListBoxItem}">
-                <Setter Property="Background" Value="Green" />
-            </Style>
-        </ListView.ItemContainerStyle>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <!--<Viewbox Stretch="Uniform">
+        
+        <Viewbox Stretch="Uniform">
             <DockPanel Grid.Column="0" Grid.Row="0">
-                <ListView SelectionMode="Single"  Margin="10" Name="PizzaTable" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ItemsSource="{Binding Pizzas}" BorderBrush="#D70F64">
-                    <ListView.ItemTemplate>
+                <ItemsControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ItemsSource="{Binding Pizzas}" BorderBrush="#D70F64">
+                    <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <Grid>
+                            <Grid Margin="0 20 0 0">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="auto"/>
                                     <ColumnDefinition Width="auto"/>
@@ -42,62 +38,29 @@
                                     <RowDefinition />
                                     <RowDefinition />
                                 </Grid.RowDefinitions>
-                                <materialDesign:Card Grid.Column="0" Grid.ColumnSpan="4" Margin="5" Background="{x:Null}" BorderBrush="#D70F64" 
+                                <materialDesign:Card Grid.Column="0" Grid.ColumnSpan="4" Margin="5" Background="#FFFFFF" BorderBrush="#D70F64" 
                                                      Foreground="#D70F64" UniformCornerRadius="3" BorderThickness="20" materialDesign:ShadowAssist.ShadowDepth="Depth3">
-                                    <StackPanel Orientation="Horizontal" Margin="5">
+                                    <StackPanel Orientation="Horizontal" Margin="10">
                                         <StackPanel Orientation="Vertical">
                                             <TextBlock Text="{Binding Name}" FontSize="35" FontWeight="Bold" VerticalAlignment="Top"/>
                                             <TextBlock Text="{Binding ID}"  VerticalAlignment="Bottom" HorizontalAlignment="Left" FontSize="25" FontWeight="DemiBold"/>
                                         </StackPanel>
-                                        <materialDesign:Underline Grid.Column="2"/>
-                                        --><!--<StackPanel Orientation="Vertical" Margin="250 0 10 0">--><!--
-                                        <TextBlock Text="{Binding Price}"  Margin="250 0 10 5" FontSize="25" VerticalAlignment="Bottom"/>
-                                        <Button Content="{materialDesign:PackIcon Kind=AddCircle, Size=40}" 
-                                               Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#314455" Margin="0 0 10 0" VerticalAlignment="Bottom"/>
-                                        --><!--</StackPanel>--><!--
+                                        
+                                        <StackPanel Orientation="Horizontal" Margin="250 0 10 0">
+                                            <TextBlock Text="{Binding Price}"  Margin="0 0 10 5" FontSize="25" VerticalAlignment="Bottom"/>
+                                            <Button Content="{materialDesign:PackIcon Kind=AddCircle, Size=40}" 
+                                               Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#D70F64" Margin="0 0 5 0" VerticalAlignment="Bottom"/>
+                                        </StackPanel>
                                     </StackPanel>
                                 </materialDesign:Card>
                             </Grid>
                         </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
             </DockPanel>
-        </Viewbox>-->
-
-        <ListBox ItemsSource="{Binding Pizzas}">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="auto"/>
-                            <ColumnDefinition Width="auto"/>
-                            <ColumnDefinition Width="3*"/>
-                            <ColumnDefinition Width="auto"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition />
-                            <RowDefinition />
-                        </Grid.RowDefinitions>
-                        <materialDesign:Card Grid.Column="0" Grid.ColumnSpan="4" Margin="5" Background="{x:Null}" BorderBrush="#D70F64" 
-                                                     Foreground="#D70F64" UniformCornerRadius="3" BorderThickness="20" materialDesign:ShadowAssist.ShadowDepth="Depth3">
-                            <StackPanel Orientation="Horizontal" Margin="5">
-                                <StackPanel Orientation="Vertical">
-                                    <TextBlock Text="{Binding Name}" FontSize="35" FontWeight="Bold" VerticalAlignment="Top"/>
-                                    <TextBlock Text="{Binding ID}"  VerticalAlignment="Bottom" HorizontalAlignment="Left" FontSize="25" FontWeight="DemiBold"/>
-                                </StackPanel>
-                                <materialDesign:Underline Grid.Column="2"/>
-                                <!--<StackPanel Orientation="Vertical" Margin="250 0 10 0">-->
-                                <TextBlock Text="{Binding Price}"  Margin="250 0 10 5" FontSize="25" VerticalAlignment="Bottom"/>
-                                <Button Content="{materialDesign:PackIcon Kind=AddCircle, Size=40}" 
-                                               Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#314455" Margin="0 0 10 0" VerticalAlignment="Bottom"/>
-                                <!--</StackPanel>-->
-                            </StackPanel>
-                        </materialDesign:Card>
-                    </Grid>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-            
-        </ListBox>
+        </Viewbox>
+        
+        
         
 
     </Grid>
