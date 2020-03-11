@@ -17,10 +17,11 @@
     <Grid Background="#FFFFFF">
         <!-- Ett Grid för hela ytan-->
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.8*"/>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="105*"/>
+            <ColumnDefinition Width="68*"/>
+            <ColumnDefinition Width="64*"/>
+            <ColumnDefinition Width="132*"/>
+            <ColumnDefinition Width="132*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
@@ -28,7 +29,7 @@
             <RowDefinition Height="0.5*"/>
         </Grid.RowDefinitions>
         <!--Knappar(?) för huvudinnehåll Pizza-->
-        <StackPanel Grid.Column="1" Grid.ColumnSpan="3" Grid.RowSpan="2" >
+        <StackPanel Grid.ColumnSpan="5" Grid.RowSpan="2" Margin="105,0,0,0" >
             <Button Style="{StaticResource TemplatedButton}" Background="{x:Null}" BorderBrush="#D70F64" Margin="4 2">
                 <StackPanel>
                     <TextBlock x:Name="pizza1" Text="Vesuvio" FontWeight="Bold" HorizontalAlignment="Center"/>
@@ -73,7 +74,7 @@
             </Button>
         </StackPanel>
         <!-- Internt grid för Orderinfo / betalning-->
-        <Grid Grid.Row="2" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="3" Background="#97AABD">
+        <Grid Grid.Row="2" Grid.ColumnSpan="5" Background="#97AABD" Margin="105,0,0,0">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*"/>
