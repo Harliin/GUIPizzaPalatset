@@ -23,10 +23,10 @@ namespace GUI_Beställning.ViewModels
 
         public void GetPizzas()
         {
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 10; i++)
             {
                 Pizza pizza = new Pizza();
-                pizza.ID = 1;
+                pizza.ID = i+1;
                 pizza.Name = "Vesuvio";
                 pizza.Price = 90;
                 Pizzas.Add(pizza);

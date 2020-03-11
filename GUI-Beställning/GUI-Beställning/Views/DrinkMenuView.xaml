@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="GUI_Beställning.Views.PizzaMenuView"
+﻿<UserControl x:Class="GUI_Beställning.Views.DrinkMenuView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -23,7 +23,7 @@
 
         <Viewbox Stretch="Uniform">
             <DockPanel Grid.Column="0" Grid.Row="0">
-                <ItemsControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ItemsSource="{Binding Pizzas}" BorderBrush="#D70F64">
+                <ItemsControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ItemsSource="{Binding Drinks}" BorderBrush="#D70F64">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <Grid Margin="0 20 0 0">

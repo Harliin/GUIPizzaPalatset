@@ -1,19 +1,17 @@
 ﻿using GUI_Beställning.ViewModels;
 using System.Windows.Controls;
 
-
 namespace GUI_Beställning.Views
 {
     /// <summary>
-    /// Interaction logic for PizzaMenuView.xaml
+    /// Interaction logic for PastaMenuView.xaml
     /// </summary>
-    public partial class PizzaMenuView : UserControl
+    public partial class PastaMenuView : UserControl
     {
-        public PizzaMenuView()
+        public PastaMenuView()
         {
             InitializeComponent();
-
-            this.DataContext = new PizzaMenuViewModel();
+            this.DataContext = new PastaMenuViewModel();
         }
     }
 }

@@ -5,15 +5,14 @@ using System.Windows.Controls;
 namespace GUI_Beställning.Views
 {
     /// <summary>
-    /// Interaction logic for PizzaMenuView.xaml
+    /// Interaction logic for SalladMenuView.xaml
     /// </summary>
-    public partial class PizzaMenuView : UserControl
+    public partial class SalladMenuView : UserControl
     {
-        public PizzaMenuView()
+        public SalladMenuView()
         {
             InitializeComponent();
-
-            this.DataContext = new PizzaMenuViewModel();
+            this.DataContext = new SalladMenuViewModel();
         }
     }
 }
