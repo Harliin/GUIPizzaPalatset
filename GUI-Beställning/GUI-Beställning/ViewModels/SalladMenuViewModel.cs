@@ -1,5 +1,6 @@
 ﻿using GUI_Beställning.Models.Data;
 using ReactiveUI;
+using Splat;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;

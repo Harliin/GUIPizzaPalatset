@@ -1,6 +1,7 @@
 ﻿
 using GUI_Beställning.ViewModels;
 using ReactiveUI;
+using System.Reactive.Disposables;
 using System.Windows;
 
 

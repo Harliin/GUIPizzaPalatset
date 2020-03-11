@@ -77,7 +77,7 @@
             </Grid.RowDefinitions>
             
             <Viewbox Grid.Row="1" Grid.Column="0" Stretch="Uniform">
-                <Button  x:Name="PizzaMenu" Style="{StaticResource TemplatedButton}" Background="{x:Null}" Foreground="#D70F64" FontWeight="Bold" 
+                <Button x:Name="GoPizzaMenu" Style="{StaticResource TemplatedButton}" Background="{x:Null}" Foreground="#D70F64" FontWeight="Bold" 
                         BorderBrush="#314455" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                     <DockPanel LastChildFill="True" Margin="10">
                         <TextBlock Text="Pizza" DockPanel.Dock="Bottom" />
@@ -86,7 +86,7 @@
                 </Button>
             </Viewbox>
             <Viewbox Grid.Row="2" Stretch="Uniform">
-                <Button Style="{StaticResource TemplatedButton}" Background="{x:Null}" Foreground="#D70F64" FontWeight="Bold" BorderBrush="#314455">
+                <Button x:Name="GoPastaMenu" Style="{StaticResource TemplatedButton}" Background="{x:Null}" Foreground="#D70F64" FontWeight="Bold" BorderBrush="#314455">
                     <DockPanel LastChildFill="True" Margin="10">
                         <TextBlock Text="Pasta" DockPanel.Dock="Bottom" />
                         <materialDesign:PackIcon Kind="Pasta" DockPanel.Dock="Top" HorizontalAlignment="Center"/>
@@ -94,7 +94,7 @@
                 </Button>
             </Viewbox>
             <Viewbox Grid.Row="3" Stretch="Uniform">
-                <Button Style="{StaticResource TemplatedButton}" Background="{x:Null}" Foreground="#D70F64" FontWeight="Bold" BorderBrush="#314455">
+                <Button x:Name="GoSalladMenu" Style="{StaticResource TemplatedButton}" Background="{x:Null}" Foreground="#D70F64" FontWeight="Bold" BorderBrush="#314455">
                     <DockPanel LastChildFill="True" Margin="10">
                         <TextBlock Text="Sallad" DockPanel.Dock="Bottom" />
                         <materialDesign:PackIcon Kind="Apple" DockPanel.Dock="Top" HorizontalAlignment="Center"/>
@@ -102,7 +102,7 @@
                 </Button>
             </Viewbox>
             <Viewbox Grid.Row="4" Stretch="Uniform">
-                <Button Style="{StaticResource TemplatedButton}" Background="{x:Null}" Foreground="#D70F64" FontWeight="Bold" BorderBrush="#314455">
+                <Button x:Name="GoDrinkMenu" Style="{StaticResource TemplatedButton}" Background="{x:Null}" Foreground="#D70F64" FontWeight="Bold" BorderBrush="#314455">
                     <DockPanel LastChildFill="True" Margin="10">
                         <TextBlock Text="Drinks" DockPanel.Dock="Bottom" />
                         <materialDesign:PackIcon Kind="Drink" DockPanel.Dock="Top" HorizontalAlignment="Center"/>
@@ -110,7 +110,7 @@
                 </Button>
             </Viewbox>
             <Viewbox Grid.Row="5" Stretch="Uniform">
-                <Button Style="{StaticResource TemplatedButton}" Background="{x:Null}" Foreground="#D70F64" FontWeight="Bold" BorderBrush="#314455">
+                <Button x:Name="GoExtraMenu" Style="{StaticResource TemplatedButton}" Background="{x:Null}" Foreground="#D70F64" FontWeight="Bold" BorderBrush="#314455">
                     <DockPanel LastChildFill="True" Margin="10">
                         <TextBlock Text="Extra" DockPanel.Dock="Bottom" />
                         <materialDesign:PackIcon Kind="AddCircle" DockPanel.Dock="Top" HorizontalAlignment="Center"/>
