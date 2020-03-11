@@ -1,4 +1,6 @@
 ﻿using GUI_Beställning.Models.Data;
+using ReactiveUI;
+using Splat;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -7,15 +9,21 @@ using System.Text;
 
 namespace GUI_Beställning.ViewModels
 {
-    class ExtraMenuViewModel : INotifyPropertyChanged
+    public class ExtraMenuViewModel : ReactiveObject, IRoutableViewModel
     {
-        public event PropertyChangedEventHandler PropertyChanged = (sender, e) => { };
+        #region For Reactive UI
+        public string UrlPathSegment => "ExtraMenu";
+
+        public IScreen HostScreen { get; }
+
+        #endregion
 
         public OrderRepository repo = new OrderRepository();
         public ObservableCollection<Extra> Extras { get; set; }
 
-        public ExtraMenuViewModel()
+        public ExtraMenuViewModel(IScreen screen = null)
         {
+            HostScreen = screen ?? Locator.Current.GetService<IScreen>();
             Extras = new ObservableCollection<Extra>();
             GetExtras();
         }

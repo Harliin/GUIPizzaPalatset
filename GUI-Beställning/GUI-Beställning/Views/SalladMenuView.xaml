@@ -1,4 +1,9 @@
-﻿<UserControl x:Class="GUI_Beställning.Views.SalladMenuView"
+﻿<rxui:ReactiveUserControl x:Class="GUI_Beställning.Views.SalladMenuView"
+             
+             x:TypeArguments="vm:SalladMenuViewModel"
+             xmlns:rxui="http://reactiveui.net"
+             xmlns:vm="clr-namespace:GUI_Beställning.ViewModels"
+             
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -62,4 +67,4 @@
         </Viewbox>
 
     </Grid>
-</UserControl>
+</rxui:ReactiveUserControl>
