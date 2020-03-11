@@ -1,22 +1,17 @@
-﻿<Window x:Class="GUI_Beställning.Views.MainWindowView"
+﻿<rxui:ReactiveWindow x:Class="GUI_Beställning.Views.MainWindowView"
+        
+        xmlns:vm="clr-namespace:GUI_Beställning.ViewModels"
+        xmlns:rxui="http://reactiveui.net"
+        x:TypeArguments="vm:MainWindowViewModel"
+        
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:GUI_Beställning.Views"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        xmlns:vm="clr-namespace:GUI_Beställning.ViewModels"
         mc:Ignorable="d"
         Title="MainWindowView" Height="450" Width="500">
 
-    <Window.Resources>
-        <DataTemplate DataType="{x:Type vm:PizzaMenuViewModel}">
-            <local:PizzaMenuView/>
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type vm:PastaMenuViewModel}">
-            <local:PastaMenuView/>
-        </DataTemplate>
-    </Window.Resources>
     
     <Grid>
         <!--#region Grid Specification-->
@@ -71,13 +66,6 @@
         
         <!--#region Left Navigation Bar-->
 
-        <!--<ItemsControl ItemsSource="{Binding PageViewModels}">
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>-->
         <Grid Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" Background="#314455">
             <Grid.RowDefinitions>
                 <RowDefinition Height="1.2*"/>
@@ -89,8 +77,8 @@
             </Grid.RowDefinitions>
             
             <Viewbox Grid.Row="1" Grid.Column="0" Stretch="Uniform">
-                <Button Style="{StaticResource TemplatedButton}" Background="{x:Null}" Foreground="#D70F64" FontWeight="Bold" 
-                        BorderBrush="#314455" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Command="{Binding PageViewModels , RelativeSource={RelativeSource AncestorType={x:Type Window}}}">
+                <Button  x:Name="PizzaMenu" Style="{StaticResource TemplatedButton}" Background="{x:Null}" Foreground="#D70F64" FontWeight="Bold" 
+                        BorderBrush="#314455" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                     <DockPanel LastChildFill="True" Margin="10">
                         <TextBlock Text="Pizza" DockPanel.Dock="Bottom" />
                         <materialDesign:PackIcon Kind="Pizza" DockPanel.Dock="Top" HorizontalAlignment="Center"/>
@@ -131,7 +119,10 @@
             </Viewbox>
         </Grid>
         <!--#endregion-->
-        
-        
+
+        <rxui:RoutedViewHost x:Name="RoutedViewHost" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="0" Grid.RowSpan="2"
+                             HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"/>
+
+
     </Grid>
-</Window>
+</rxui:ReactiveWindow>
