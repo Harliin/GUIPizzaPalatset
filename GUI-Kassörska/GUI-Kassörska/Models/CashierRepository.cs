@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Dapper;
 using GUI_Kassörska.ViewModels;
+using static GUI_Kassörska.ViewModels.Order;
 
 namespace GUI_Kassörska
 {
@@ -25,6 +26,8 @@ namespace GUI_Kassörska
                 return con;
             }
         }
+
+        //Anslutning till databasen
         public CashierRepository()
         {
 

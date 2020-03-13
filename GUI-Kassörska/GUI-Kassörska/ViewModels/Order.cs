@@ -14,6 +14,9 @@ namespace GUI_Kassörska.ViewModels
 
         }
 
+        public eStatus Status { get; set; }
+        public enum eStatus { Pågående = 1, Tillagning = 2, Klar = 3, Avhämtat = 4 }
+
         public int OrderNumber
         {
             get { return orderNumber; }
