@@ -4,16 +4,16 @@
                     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
 
     <Style TargetType="Button" x:Key="TemplatedButton">
-        <Setter Property="Template">
+        <!--<Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate>
-                    <Button Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="2">
+                    <Button Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="2" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
                         <Button.Triggers>
                             <EventTrigger RoutedEvent="MouseEnter">
                                 <BeginStoryboard>
                                     <Storyboard>
                                         <DoubleAnimation Storyboard.TargetProperty="Opacity" To=".15" Duration="00:00:00.15"/>
-                                        <!--<ColorAnimation Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" To="White" Duration="00:00:00.15"/>-->
+                                        --><!--<ColorAnimation Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" To="White" Duration="00:00:00.15"/>--><!--
                                     </Storyboard>
                                 </BeginStoryboard>
                             </EventTrigger>
@@ -22,7 +22,7 @@
                                 <BeginStoryboard>
                                     <Storyboard>
                                         <DoubleAnimation Storyboard.TargetProperty="Opacity" To="1" Duration="00:00:00.15"/>
-                                        <!--<ColorAnimation Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" To="Black" Duration="00:00:00.15"/>-->
+                                        --><!--<ColorAnimation Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" To="Black" Duration="00:00:00.15"/>--><!--
                                     </Storyboard>
                                 </BeginStoryboard>
                             </EventTrigger>
@@ -32,6 +32,15 @@
                                           TextBlock.FontSize="{TemplateBinding Button.Content}"/>
 
                     </Button>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>-->
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="Transparent">
+                        <ContentPresenter/>
+                    </Border>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

@@ -7,6 +7,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Text;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace GUI_Beställning.ViewModels
 {
@@ -28,20 +29,11 @@ namespace GUI_Beställning.ViewModels
             //gets hostscreen??
             HostScreen = screen ?? Locator.Current.GetService<IScreen>();
 
-            Pizzas = new ObservableCollection<Pizza>();
-            GetPizzas();
-        }
+            var PizzaIE = repo.GetPizzas();
 
-        public void GetPizzas()
-        {
-            for (int i = 0; i < 10; i++)
-            {
-                Pizza pizza = new Pizza();
-                pizza.ID = i+1;
-                pizza.Name = "Vesuvio";
-                pizza.Price = 90;
-                Pizzas.Add(pizza);
-            }
+
+            Pizzas = new ObservableCollection<Pizza>(PizzaIE.ToList());
+            
         }
 
     }

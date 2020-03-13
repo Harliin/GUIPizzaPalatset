@@ -134,14 +134,14 @@ namespace GUI_Beställning.Models.Data
                 return pizza;
             }
         }
-        public async Task<IEnumerable<Pizza>> GetPizzas()
+        public IEnumerable<Pizza> GetPizzas()
         {
             using (IDbConnection con = Connection)
             {
-                IEnumerable<Pizza> pizzas = await connection.QueryAsync<Pizza>("\"ShowPizzas\"", commandType: CommandType.StoredProcedure);
+                IEnumerable<Pizza> pizzas = connection.Query<Pizza>("\"ShowPizzas\"", commandType: CommandType.StoredProcedure);
                 foreach (Pizza pizza in pizzas)
                 {
-                    pizza.Ingredients = (await connection.QueryAsync<Ingredient>("\"ShowPizzaIngredientsByID\"", new { id = pizza.ID }, commandType: CommandType.StoredProcedure)).ToList();
+                    pizza.Ingredients = (connection.Query<Ingredient>("\"ShowPizzaIngredientsByID\"", new { inid = pizza.ID }, commandType: CommandType.StoredProcedure)).ToList();
                 }
                 return pizzas;
             }
