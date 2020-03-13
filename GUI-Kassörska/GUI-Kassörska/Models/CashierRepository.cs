@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Dapper;
 using static DB_Kassörska.Order;
 
-namespace DB_Kassörska
+namespace GUI_Kassörska
 {
     public class CashierRepository
     {
