@@ -6,26 +6,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Dapper;
-using Food;
 using static DB_Kassörska.Order;
-using Npgsql;
 
 namespace DB_Kassörska
 {
     public class CashierRepository
     {
         private string ConnectionString { get; }
-        private IDbConnection connection { get; }
+        private SQLConnection connection { get; }
         public static int Backend { get; set; }
         private IDbConnection Connection
         {
             get
             {
                 IDbConnection con;
-                
-                    con = new SqlConnection(ConnectionString);
-                
-                
+                con = new SqlConnection(ConnectionString);
                 con.Open();
                 return con;
             }
