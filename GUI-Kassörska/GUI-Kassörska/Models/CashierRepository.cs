@@ -6,14 +6,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Dapper;
-using static DB_Kassörska.Order;
 
 namespace GUI_Kassörska
 {
     public class CashierRepository
     {
         private string ConnectionString { get; }
-        private SQLConnection connection { get; }
+        private SqlConnection connection { get; }
         public static int Backend { get; set; }
         private IDbConnection Connection
         {
