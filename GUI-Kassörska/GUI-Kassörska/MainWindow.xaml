@@ -98,7 +98,7 @@
                 Data="M18.846,0V7.09H43.974V42.542H18.846v7.09h31.41V0ZM12.564,14.181,0,24.816,12.564,35.452v-7.09H37.692v-7.09H12.564Z"/>
             </Button>
         </StackPanel>
-
+        
         <!-- Pågående ordrar -->
         <TextBlock
             Grid.Column="2"
