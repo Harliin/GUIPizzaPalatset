@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Dapper;
+using GUI_Kassörska.ViewModels;
 
 namespace GUI_Kassörska
 {
@@ -39,22 +40,28 @@ namespace GUI_Kassörska
                 return orders;
             }
         }
-        public async Task UpdateOrderStatus(int orderNumber) //Uppdatera orderns status
+
+        //Uppdatera orderns status
+        public async Task UpdateOrderStatus(int orderNumber)
         {
             using (IDbConnection con = Connection)
             {
-                await connection.QueryAsync<Pizza>("\"UpdateOrderStatus\"",
+                await connection.QueryAsync<Order>("\"UpdateOrderStatus\"",
                 new { @inid = orderNumber }, commandType: CommandType.StoredProcedure);
             }
         }
+
+        //Ta bort order
         public async Task DeleteOrder(int orderNumber)
         {
             using (IDbConnection con = Connection)
             {
-                await connection.QueryAsync<Pizza>("\"DeleteOrder\"",
+                await connection.QueryAsync<Order>("\"DeleteOrder\"",
                 new { @inid = orderNumber }, commandType: CommandType.StoredProcedure);
             }
-        } //Ta bort order
+        }
+
+        //Visa alla ordrar
         public async Task<IEnumerable<Order>> ShowAllOrdersAsync()
         {
             using (IDbConnection con = Connection)
@@ -63,6 +70,6 @@ namespace GUI_Kassörska
                 return allOrders;
             }
 
-        } //Visa alla ordrar
+        }
     }
 }
