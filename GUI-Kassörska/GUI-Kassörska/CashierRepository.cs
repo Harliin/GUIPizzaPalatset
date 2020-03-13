@@ -22,14 +22,10 @@ namespace DB_Kassörska
             get
             {
                 IDbConnection con;
-                if (Backend == 1)
-                {
+                
                     con = new SqlConnection(ConnectionString);
-                }
-                else
-                {
-                    con = new NpgsqlConnection(ConnectionString);
-                }
+                
+                
                 con.Open();
                 return con;
             }
@@ -37,16 +33,9 @@ namespace DB_Kassörska
         public CashierRepository()
         {
 
-            if (Backend == 1)//Backend == MSSQL
-            {
                 ConnectionString = "Data Source=SQL6009.site4now.net;Initial Catalog=DB_A53DDD_Grupp1;User Id=DB_A53DDD_Grupp1_admin;Password=Password123;";
                 connection = new SqlConnection(ConnectionString);
-            }
-            else//Backend == PostgreSQL
-            {
-                ConnectionString = "Host=weboholics-demo.dyndns-ip.com;Port=5433;Username=grupp1;Password=grupp1;Database=grupp1";
-                connection = new NpgsqlConnection(ConnectionString);
-            }
+            
         }
         public async Task<IEnumerable<Order>> ShowOrderByStatusAsync(eStatus status)
         {
