@@ -63,7 +63,10 @@
         </Grid.RowDefinitions>
         
         <!-- Logga -->
-        
+        <Image Source="/pizzalogga2.png"
+               Grid.Column="3"
+               Width="100"
+               Height="100"/>
         <!-- Rubrik -->
         <TextBlock
             Grid.Column="4"
