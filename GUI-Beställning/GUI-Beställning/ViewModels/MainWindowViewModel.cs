@@ -23,6 +23,8 @@ namespace GUI_Beställning.ViewModels
         public ReactiveCommand<Unit, IRoutableViewModel> DrinkMenu { get; }
         public ReactiveCommand<Unit, IRoutableViewModel> ExtraMenu { get; }
 
+        public ReactiveCommand<Unit, IRoutableViewModel> PaymentMenu { get; }
+
         #endregion
 
 
@@ -40,6 +42,8 @@ namespace GUI_Beställning.ViewModels
 
             Locator.CurrentMutable.Register(() => new ExtraMenuView(), typeof(IViewFor<ExtraMenuViewModel>));
 
+            Locator.CurrentMutable.Register(() => new PaymentView(), typeof(IViewFor<PaymentViewModel>));
+
 
 
             PizzaMenu = ReactiveCommand.CreateFromObservable(() => Router.Navigate.Execute(new PizzaMenuViewModel()));
@@ -51,6 +55,8 @@ namespace GUI_Beställning.ViewModels
             DrinkMenu = ReactiveCommand.CreateFromObservable(() => Router.Navigate.Execute(new DrinkMenuViewModel()));
 
             ExtraMenu = ReactiveCommand.CreateFromObservable(() => Router.Navigate.Execute(new ExtraMenuViewModel()));
+
+            PaymentMenu = ReactiveCommand.CreateFromObservable(() => Router.Navigate.Execute(new PaymentViewModel()));
 
         }
     }
