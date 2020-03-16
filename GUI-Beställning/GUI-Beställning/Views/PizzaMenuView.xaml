@@ -51,9 +51,11 @@
                                             </Grid.ColumnDefinitions>
                                             <StackPanel Orientation="Vertical" Grid.Column="0" HorizontalAlignment="Left">
                                                 <TextBlock Text="{Binding Name}" FontSize="30" FontWeight="Bold" VerticalAlignment="Top" Foreground="Black"/>
-                                                <TextBlock Text="{Binding Ingredients}"  VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="25" FontWeight="DemiBold"/>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <ListBox ItemsSource="{Binding Ingredients}" DisplayMemberPath="Name"/>
+                                                </StackPanel>
                                             </StackPanel>
-
+                                            <!--Text="{Binding Ingredients}"  VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="25" FontWeight="DemiBold" -->
                                             <StackPanel Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Right">
                                                 <TextBlock Margin="0 0 10 5" FontSize="25" VerticalAlignment="Bottom" Foreground="Black">
                                                 <Run Text="{Binding Price}"/> kr</TextBlock>

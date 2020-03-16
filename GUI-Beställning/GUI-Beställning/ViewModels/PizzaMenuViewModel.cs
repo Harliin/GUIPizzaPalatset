@@ -30,7 +30,7 @@ namespace GUI_Beställning.ViewModels
             HostScreen = screen ?? Locator.Current.GetService<IScreen>();
 
             var PizzaIE = repo.GetPizzas();
-
+            
 
             Pizzas = new ObservableCollection<Pizza>(PizzaIE.ToList());
             
