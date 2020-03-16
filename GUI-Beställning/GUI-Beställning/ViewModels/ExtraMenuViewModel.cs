@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Text;
 
 namespace GUI_Beställning.ViewModels
@@ -24,22 +25,11 @@ namespace GUI_Beställning.ViewModels
         public ExtraMenuViewModel(IScreen screen = null)
         {
             HostScreen = screen ?? Locator.Current.GetService<IScreen>();
-            Extras = new ObservableCollection<Extra>();
-            GetExtras();
+
+            var extrasIE = repo.ShowExtra();
+            Extras = new ObservableCollection<Extra>(extrasIE.ToList());
+           
         }
 
-        private void GetExtras()
-        {
-            for (int i = 0; i < 4; i++)
-            {
-                Extra extra = new Extra
-                {
-                    OrderID = i + 1,
-                    Name = "Vitlöksbröd",
-                    Price = 20
-                };
-                Extras.Add(extra);
-            }
-        }
     }
 }

@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Text;
 
 namespace GUI_Beställning.ViewModels
@@ -26,20 +27,10 @@ namespace GUI_Beställning.ViewModels
         public PastaMenuViewModel(IScreen screen = null)
         {
             HostScreen = screen ?? Locator.Current.GetService<IScreen>();
-            Pastas = new ObservableCollection<Pasta>();
-            GetPastas();
+            var PastaIE = repo.ShowPastas();
+            Pastas = new ObservableCollection<Pasta>(PastaIE.ToList());
+            
         }
 
-        public void GetPastas()
-        {
-            for (int i = 0; i < 4; i++)
-            {
-                Pasta pasta = new Pasta();
-                pasta.ID = i+1;
-                pasta.Name = "Bolognese";
-                pasta.Price = 90;
-                Pastas.Add(pasta);
-            }
-        }
     }
 }

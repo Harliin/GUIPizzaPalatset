@@ -36,29 +36,32 @@
                                 <Grid Margin="0 20 0 0">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="auto"/>
-                                        <ColumnDefinition Width="auto"/>
                                         <ColumnDefinition Width="3*"/>
                                         <ColumnDefinition Width="auto"/>
                                     </Grid.ColumnDefinitions>
                                     <Grid.RowDefinitions>
                                         <RowDefinition />
                                         <RowDefinition />
+                                        <RowDefinition />
                                     </Grid.RowDefinitions>
                                     <materialDesign:Card Grid.Column="0" Grid.ColumnSpan="4" Margin="5" Background="#FFFFFF" BorderBrush="#D70F64" 
-                                                     Foreground="#D70F64" UniformCornerRadius="5" BorderThickness="20" materialDesign:ShadowAssist.ShadowDepth="Depth3">
-                                        <StackPanel Orientation="Horizontal" Margin="10">
-                                            <StackPanel Orientation="Vertical">
-                                                <TextBlock Text="{Binding Name}" FontSize="35" FontWeight="Bold" VerticalAlignment="Top" Foreground="Black"/>
-                                                <TextBlock Text="{Binding ID}"  VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="25" FontWeight="DemiBold"/>
-                                            </StackPanel>
-
-                                            <StackPanel Orientation="Horizontal" Margin="250 0 10 0">
+                                                     Foreground="#D70F64" UniformCornerRadius="5" BorderThickness="20" materialDesign:ShadowAssist.ShadowDepth="Depth3" Width="550">
+                                        <Grid Margin="10">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="3*"/>
+                                                <ColumnDefinition Width="1*"/>
+                                            </Grid.ColumnDefinitions>
+                                            
+                                            <TextBlock Grid.Column="0" Text="{Binding Name}" FontSize="30" FontWeight="Bold" VerticalAlignment="Center" Foreground="Black"/>
+                                            
+    
+                                            <StackPanel Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Right">
                                                 <TextBlock Margin="0 0 10 5" FontSize="25" VerticalAlignment="Bottom" Foreground="Black">
                                                 <Run Text="{Binding Price}"/> kr</TextBlock>
                                                 <Button Content="{materialDesign:PackIcon Kind=AddCircle, Size=40}" Style="{StaticResource TemplatedButton}"
                                                Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#D70F64" Margin="0 0 5 0" VerticalAlignment="Bottom"/>
                                             </StackPanel>
-                                        </StackPanel>
+                                        </Grid>
                                     </materialDesign:Card>
                                 </Grid>
                             </DataTemplate>

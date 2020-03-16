@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Text;
 
 namespace GUI_Beställning.ViewModels
@@ -25,21 +26,11 @@ namespace GUI_Beställning.ViewModels
         public SalladMenuViewModel(IScreen screen = null)
         {
             HostScreen = screen ?? Locator.Current.GetService<IScreen>();
-            Sallads = new ObservableCollection<Sallad>();
-            GetSallads();
-        }
-        public void GetSallads()
-        {
-            for (int i = 0; i < 4; i++)
-            {
-                Sallad sallad = new Sallad();
-                sallad.ID = i + 1;
-                sallad.Name = "Aglio Olio";
-                sallad.Price = 85;
 
-                Sallads.Add(sallad);
-
-            }
+            var salladIE = repo.ShowSallads();
+            Sallads = new ObservableCollection<Sallad>(salladIE.ToList());
+            
         }
+        
     }
 }

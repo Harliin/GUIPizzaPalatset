@@ -246,35 +246,35 @@ namespace GUI_Beställning.Models.Data
                 return ingredients;
             }
         }
-        public async Task<IEnumerable<Pasta>> ShowPastasAsync()
+        public IEnumerable<Pasta> ShowPastas()
         {
             using (IDbConnection con = Connection)
             {
-                IEnumerable<Pasta> pastas = await connection.QueryAsync<Pasta>("\"ShowPastas\"", commandType: CommandType.StoredProcedure);
+                IEnumerable<Pasta> pastas = connection.Query<Pasta>("\"ShowPastas\"", commandType: CommandType.StoredProcedure);
                 return pastas;
             }
         }
-        public async Task<IEnumerable<Sallad>> ShowSalladsAsync()
+        public IEnumerable<Sallad> ShowSallads()
         {
             using (IDbConnection con = Connection)
             {
-                IEnumerable<Sallad> sallads = await connection.QueryAsync<Sallad>("\"ShowSallads\"", commandType: CommandType.StoredProcedure);
+                IEnumerable<Sallad> sallads = connection.Query<Sallad>("\"ShowSallads\"", commandType: CommandType.StoredProcedure);
                 return sallads;
             }
         }
-        public async Task<IEnumerable<Drink>> ShowDrinksAsync()
+        public IEnumerable<Drink> ShowDrinks()
         {
             using (IDbConnection con = Connection)
             {
-                IEnumerable<Drink> drinks = await connection.QueryAsync<Drink>("\"ShowDrinks\"", commandType: CommandType.StoredProcedure);
+                IEnumerable<Drink> drinks = connection.Query<Drink>("\"ShowDrinks\"", commandType: CommandType.StoredProcedure);
                 return drinks;
             }
         }
-        public async Task<IEnumerable<Extra>> ShowExtraAsync()
+        public IEnumerable<Extra> ShowExtra()
         {
             using (IDbConnection con = Connection)
             {
-                IEnumerable<Extra> drinks = await connection.QueryAsync<Extra>("\"ShowExtras\"", commandType: CommandType.StoredProcedure);
+                IEnumerable<Extra> drinks = connection.Query<Extra>("\"ShowExtras\"", commandType: CommandType.StoredProcedure);
                 return drinks;
             }
         }
