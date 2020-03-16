@@ -20,7 +20,6 @@ namespace GUI_Kassörska.ViewModels
         public int OrderNumber
         {
             get { return orderNumber; }
-            set { }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
