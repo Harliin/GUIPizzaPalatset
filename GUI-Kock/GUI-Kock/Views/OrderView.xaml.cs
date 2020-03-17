@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GUI_Kock.ViewModels;
+using ReactiveUI;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -14,13 +16,14 @@ using System.Windows.Shapes;
 namespace GUI_Kock.Views
 {
     /// <summary>
-    /// Interaction logic for PreparingView.xaml
+    /// Interaction logic for OrderView.xaml
     /// </summary>
-    public partial class PreparingView : Page
+    public partial class OrderView : ReactiveUserControl<OrderViewModel>
     {
-        public PreparingView()
+        public OrderView()
         {
             InitializeComponent();
+
         }
     }
 }

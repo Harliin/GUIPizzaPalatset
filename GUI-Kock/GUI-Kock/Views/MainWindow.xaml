@@ -1,13 +1,16 @@
-﻿<Window x:Class="GUI_Kock.Views.MainWindow"
+﻿<reactiveui:ReactiveWindow
+        x:Class="GUI_Kock.Views.MainWindow"
+        x:TypeArguments="vms:MainWindowViewModel"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:GUI_Kock.Views"
+        xmlns:vms="clr-namespace:GUI_Kock.ViewModels"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:reactiveui="http://reactiveui.net"
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="400" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Background="#FFD70F64">
-    
+
     <Grid>
         <StackPanel Margin="50">
             <!-- Add logo -->
@@ -22,12 +25,19 @@
                     </ComboBox>
                     <TextBox Margin="15" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:HintAssist.Hint="Lösenord"/>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                        <Button Margin="15 10" Content="Logga in" Background="#314455 "/>
+                        <Button x:Name="loginBtm" Margin="15 10" Content="Logga in" Background="#314455 "/>
                     </StackPanel>
                 </StackPanel>
-                
             </Border>
         </StackPanel>
+        <reactiveui:RoutedViewHost
+            Grid.Row="2" 
+            Grid.RowSpan="2"
+            Grid.Column="1"
+            Grid.ColumnSpan="2" 
+            x:Name="appNav"
+            HorizontalContentAlignment="Stretch"
+            VerticalContentAlignment="Stretch" />
     </Grid>
 
-</Window>
+</reactiveui:ReactiveWindow>

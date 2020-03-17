@@ -9,11 +9,11 @@
 
   <ItemGroup>
     <PackageReference Include="MaterialDesignThemes" Version="3.0.1" />
+    <PackageReference Include="ReactiveUI.WPF" Version="11.2.3" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Models\" />
-    <Folder Include="ViewModels\" />
   </ItemGroup>
 
 </Project>
