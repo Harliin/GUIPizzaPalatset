@@ -1,8 +1,11 @@
 Aata:
 2/3 Gjorde grunden på designen för kockterminal i Adobe XD
 4/3 Gjorde klar designen för kockterminal i Adobe XD
-8/5 Skapade MainView i VS
-9/5 Skapade OrderListView och PreparingView i VS för kock terminal
+8/3 Skapade MainView i VS
+9/3 Skapade OrderListView och PreparingView i VS för kock terminal
+16/3 Började skapa bygga upp kock terminal med MVVM och ReactiveUI
+17/3 Förtsätt med navigering med ReactiveUI
+
 
 Pontus:
 2/3. Gjorde grunden på designen för beställningsterminalen, i Adobe XD
