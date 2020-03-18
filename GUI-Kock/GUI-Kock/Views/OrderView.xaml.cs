@@ -24,6 +24,8 @@ namespace GUI_Kock.Views
         {
             InitializeComponent();
 
+            // Use this to open connection to databas
+            // ViewModel.Populate();
         }
     }
 }

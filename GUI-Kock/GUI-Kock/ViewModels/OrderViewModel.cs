@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Reactive;
 using System.Text;
 using GUI_Kock.Views;
+using DB_Kock;
 
 namespace GUI_Kock.ViewModels
 {
@@ -29,5 +30,6 @@ namespace GUI_Kock.ViewModels
             GoToOrderView = ReactiveCommand.CreateFromObservable(() => Router.Navigate.Execute(new OrderViewModel(Router)));
 
         }
+
     }
 }
