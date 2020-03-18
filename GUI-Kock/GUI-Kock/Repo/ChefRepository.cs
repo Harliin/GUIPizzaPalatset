@@ -17,6 +17,13 @@ namespace DB_Kock
         private IDbConnection connection { get; }
         public static int Backend { get; set; }
 
+        public ChefRepository()
+        {
+            ConnectionString = "Data Source=SQL6009.site4now.net;Initial Catalog=DB_A53DDD_Grupp1;User Id=DB_A53DDD_Grupp1_admin;Password=Password123;";
+            connection = new SqlConnection(ConnectionString);
+            connection.Open();
+        }
+
         private IDbConnection Connection
         {
             get
@@ -28,11 +35,6 @@ namespace DB_Kock
             }
         }
 
-        public ChefRepository()
-        {
-                ConnectionString = "Data Source=SQL6009.site4now.net;Initial Catalog=DB_A53DDD_Grupp1;User Id=DB_A53DDD_Grupp1_admin;Password=Password123;";
-                connection = new SqlConnection(ConnectionString);
-        }
 
         public async Task<IEnumerable<Employee>> GetChefs(string userName, string Password)
         {

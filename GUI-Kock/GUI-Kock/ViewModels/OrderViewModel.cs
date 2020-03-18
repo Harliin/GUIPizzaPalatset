@@ -11,6 +11,8 @@ namespace GUI_Kock.ViewModels
 {
     public class OrderViewModel : ReactiveObject, IRoutableViewModel
     {
+
+        public ChefRepository repo = new ChefRepository();
         public ReactiveCommand<Unit, IRoutableViewModel> GoToPreparingView { get; private set; }
         public ReactiveCommand<Unit, IRoutableViewModel> GoToOrderView { get; private set; }
 
