@@ -13,7 +13,7 @@ namespace GUI_Kock.ViewModels
 
 
         #region Routing
-        public string UrlPathSegment => "Order";
+        public string UrlPathSegment => "Preparing";
         public IScreen HostScreen { get; }
         public RoutingState Router { get; }
         #endregion

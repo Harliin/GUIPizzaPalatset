@@ -12,23 +12,22 @@
         Title="MainWindow" Height="600" Width="400" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Background="#FFD70F64">
 
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="15"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="15"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="15"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
         <StackPanel Margin="50">
             <!-- Add logo -->
             <!-- <Images Source="/Images/PizzaPalatset.svg" 
                    Width="96" Height="96" /> -->
-            <Border Background="White" Margin="10 20" CornerRadius="5">
-                <StackPanel Margin="25">
-                    <ComboBox Margin="15" Style="{StaticResource MaterialDesignFloatingHintComboBox}" materialDesign:HintAssist.Hint="Användare">
-                        <ComboBoxItem Content="Bagare1" />
-                        <ComboBoxItem Content="Bagare2" />
-                        <ComboBoxItem Content="Tony" />
-                    </ComboBox>
-                    <TextBox Margin="15" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:HintAssist.Hint="Lösenord"/>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                        <Button x:Name="loginBtm" Margin="15 10" Content="Logga in" Background="#314455 "/>
-                    </StackPanel>
-                </StackPanel>
-            </Border>
+        
         </StackPanel>
         <reactiveui:RoutedViewHost
             Grid.Row="2" 

@@ -2,10 +2,7 @@
 using ReactiveUI;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -15,31 +12,28 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Reactive.Disposables;
-
-
 
 namespace GUI_Kock.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for LoginView.xaml
     /// </summary>
-    public partial class MainWindow : ReactiveWindow<MainWindowViewModel>
+    public partial class LoginView : ReactiveUserControl<LoginViewModel>
     {
-
-        public MainWindow()
+        public LoginView()
         {
             InitializeComponent();
-
-            this.ViewModel = new MainWindowViewModel(this);
             this.WhenActivated(disposables =>
             {
-       
-                this.OneWayBind(ViewModel, x => x.Router, x => x.appNav.Router)
-                    .DisposeWith(disposables);
+                int x = 1;
+                this.BindCommand(ViewModel, x => x.GoToOrderView, x => x.loginBtm);
+
+                //this.OneWayBind(ViewModel, x => x.UrlPathSegment, x => x.PathTextBlock.Text)
+                //    .DisposeWith(disposables);
+
+
+
             });
         }
- 
     }
-
 }

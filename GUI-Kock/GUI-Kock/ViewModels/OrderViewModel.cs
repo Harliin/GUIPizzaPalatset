@@ -14,10 +14,10 @@ namespace GUI_Kock.ViewModels
 
         public ChefRepository repo = new ChefRepository();
         public ReactiveCommand<Unit, IRoutableViewModel> GoToPreparingView { get; private set; }
-        public ReactiveCommand<Unit, IRoutableViewModel> GoToOrderView { get; private set; }
+       
 
         #region Routing
-        public string UrlPathSegment => "start";
+        public string UrlPathSegment => "Order";
         public IScreen HostScreen { get; private set; }
         public RoutingState Router { get; private set; }
         #endregion
@@ -29,7 +29,6 @@ namespace GUI_Kock.ViewModels
             HostScreen = screen ?? Locator.Current.GetService<IScreen>();
             Router = state;
             GoToPreparingView = ReactiveCommand.CreateFromObservable(() => Router.Navigate.Execute(new PreparingOrderViewModel(Router)));
-            GoToOrderView = ReactiveCommand.CreateFromObservable(() => Router.Navigate.Execute(new OrderViewModel(Router)));
 
         }
 

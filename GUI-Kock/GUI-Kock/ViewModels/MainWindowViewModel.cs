@@ -16,7 +16,7 @@ namespace GUI_Kock.ViewModels
         public RoutingState Router { get; }
 
         //Command to navigate to another view
-        public ReactiveCommand<Unit, IRoutableViewModel> GoToOrderView { get; }
+        public ReactiveCommand<Unit, IRoutableViewModel> GoToView { get; }
 
         public Window thisWindow { get; set; }
 
@@ -27,14 +27,20 @@ namespace GUI_Kock.ViewModels
 
             this.thisWindow = thisWindow;
 
+            //Jesse Comments Detta Behövs inte då vi under App starten registerar alla vyer
 
             // Instead of registering views manually, you 
             // can use custom IViewLocator implementation,
             // see "View Location" section for details.
             //
-            Locator.CurrentMutable.Register(() => new OrderView(), typeof(IViewFor<OrderViewModel>));
+            Locator.CurrentMutable.Register(() => new LoginView(), typeof(IViewFor<LoginViewModel>));
 
-            GoToOrderView = ReactiveCommand.CreateFromObservable(() => Router.Navigate.Execute(new OrderViewModel(Router)));
+
+            //Jesse detta är om du vill byta frame genom en knapp
+            //GoToView = ReactiveCommand.CreateFromObservable(() => Router.Navigate.Execute(new StartViewModel()));
+
+            Router.Navigate.Execute(new LoginViewModel(Router));
         }
     }
+    
 }
