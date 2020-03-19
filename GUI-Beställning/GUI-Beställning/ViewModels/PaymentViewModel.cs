@@ -23,9 +23,12 @@ namespace GUI_Beställning.ViewModels
         public PaymentViewModel(IScreen screen = null)
         {
             HostScreen = screen ?? Locator.Current.GetService<IScreen>();
-            var ordersIE = AllOrders();
+            var ordersIE = repo.ShowOrders();
+            //var ordersIE = AllOrders();
             Orders = new ObservableCollection<Order>(ordersIE);
         }
+
+        // Kanske kan använda oss av något som detta för att komma åt alla namn / priser per föremål
         public List<object> AllOrders()
         {
             List<object> menuItems = new List<object>();

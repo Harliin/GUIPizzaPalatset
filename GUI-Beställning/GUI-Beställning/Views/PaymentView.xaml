@@ -11,17 +11,9 @@
              mc:Ignorable="d" Background="LightGray"
              d:DesignHeight="400" d:DesignWidth="400">
     <Grid>
-        <TreeView ItemsSource="{Binding Orders}">
-            <TreeView.ItemTemplate>
-                <DataTemplate DataType="{x:Type data:Order}" ItemsSource="{Binding Pizzas}">
-                    <TextBlock Text="{Binding Description}" />
-                    <DataTemplate.ItemTemplate>
-                        <DataTemplate DataType="{x:Type data:Field}">
-                            <TextBlock Text="{Binding Description}" />
-                        </DataTemplate>
-                    </DataTemplate.ItemTemplate>
-                </DataTemplate>
-            </TreeView.ItemTemplate>
-        </TreeView>
+        <StackPanel>
+            <ItemsControl ItemsSource="{Binding Orders}" DisplayMemberPath="ID" FontSize="25" Foreground="#D70F64" BorderBrush="{x:Null}" FontWeight="DemiBold" >
+            </ItemsControl>
+        </StackPanel>
     </Grid>
 </rxui:ReactiveUserControl>
