@@ -114,44 +114,11 @@
             FontWeight="Bold">
             Pågående ordrar
         </TextBlock>
-        <ListBox
-            Grid.Column="2"
-            Grid.Row="6"
-            Grid.RowSpan="10"
-            Grid.ColumnSpan="2"
-            BorderThickness="0"
-            ScrollViewer.CanContentScroll="True"
-            AlternationCount="2"
-            ItemContainerStyle="{StaticResource alternateBackgroundcolor}">
-            <ListBoxItem>
-                <StackPanel
-                    Orientation="Horizontal">
-                    <TextBlock
-                        FontSize="40">
-                        Order 5
-                    </TextBlock>
-                    <Path
-                        Data="M31.448.563A30.885,30.885,0,1,1,.563,31.448,30.88,30.88,0,0,1,31.448.563ZM17,36.927H31.448v8.83A1.5,1.5,0,0,0,34,46.815L48.235,32.506a1.481,1.481,0,0,0,0-2.1L34,16.08a1.494,1.494,0,0,0-2.553,1.059v8.83H17a1.5,1.5,0,0,0-1.494,1.494v7.97A1.5,1.5,0,0,0,17,36.927Z"
-                        Fill="#D71365"/>
-                </StackPanel>
-            </ListBoxItem>
-            <ListBoxItem
-                FontSize="40"
-                BorderThickness="0">
-                <StackPanel
-                    Orientation="Horizontal">
-                    <TextBlock>Order 6</TextBlock>
-                    <Path
-                        Data="M41.033,6H7.226a4.18,4.18,0,0,0-4.2,4.2L3,35.386a4.2,4.2,0,0,0,4.226,4.2H41.033a4.2,4.2,0,0,0,4.226-4.2V10.2A4.2,4.2,0,0,0,41.033,6Zm0,29.386H7.226V22.792H41.033Zm0-20.99H7.226V10.2H41.033Z"
-                        Fill="#D71365"/>
-                </StackPanel>
-            </ListBoxItem>
-            <ListBoxItem
-                FontSize="40"
-                BorderThickness="0">
-                Order 7
-            </ListBoxItem>
-        </ListBox>
+        <StackPanel Grid.Row="6"
+                    Grid.Column="2">
+            <ListBox
+        </StackPanel>
+        
 
         <!-- Separating line -->
         <Line
