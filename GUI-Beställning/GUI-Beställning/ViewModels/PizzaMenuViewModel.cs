@@ -8,6 +8,7 @@ using System.ComponentModel;
 using System.Text;
 using System.Threading.Tasks;
 using System.Linq;
+using System.Windows.Input;
 
 namespace GUI_Beställning.ViewModels
 {
@@ -24,8 +25,10 @@ namespace GUI_Beställning.ViewModels
         public OrderRepository repo = new OrderRepository();
         public ObservableCollection<Pizza> Pizzas { get; set; }
 
+        var command = new ReactiveCommand();
         public PizzaMenuViewModel(IScreen screen = null)
         {
+            
             //gets hostscreen??
             HostScreen = screen ?? Locator.Current.GetService<IScreen>();
 
