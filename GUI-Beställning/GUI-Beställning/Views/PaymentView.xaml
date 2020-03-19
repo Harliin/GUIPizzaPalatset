@@ -11,6 +11,10 @@
              mc:Ignorable="d" Background="LightGray"
              d:DesignHeight="400" d:DesignWidth="400">
     <Grid>
-        <TextBlock Text="Payment" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="70"/>
+        <StackPanel Orientation="Horizontal">
+            <ItemsControl ItemsSource="{Binding Orders}" DisplayMemberPath="ID" FontSize="25" Foreground="#D70F64" BorderBrush="{x:Null}" FontWeight="DemiBold">
+                
+            </ItemsControl>
+        </StackPanel>
     </Grid>
 </rxui:ReactiveUserControl>

@@ -13,5 +13,7 @@ namespace GUI_Beställning.Models.Data
         public List<Sallad> sallad { get; set; }
         public List<Drink> drink { get; set; }
         public List<Extra> extra { get; set; }
+
+        
     }
 }

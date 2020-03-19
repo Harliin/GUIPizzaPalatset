@@ -4,6 +4,7 @@ using Splat;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
 
 namespace GUI_Beställning.ViewModels
@@ -17,12 +18,14 @@ namespace GUI_Beställning.ViewModels
         #endregion
 
         public OrderRepository repo = new OrderRepository();
-
+        public ObservableCollection<Order> Orders { get; set; }
 
         public PaymentViewModel(IScreen screen = null)
         {
             HostScreen = screen ?? Locator.Current.GetService<IScreen>();
-            
+            var ordersIE = repo.ShowOrders();
+
+            Orders = new ObservableCollection<Order>(ordersIE.ToList());
         }
     }
 }

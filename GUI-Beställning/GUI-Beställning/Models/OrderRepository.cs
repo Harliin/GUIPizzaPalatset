@@ -278,5 +278,14 @@ namespace GUI_Beställning.Models.Data
                 return drinks;
             }
         }
+
+        public IEnumerable<Order> ShowOrders()
+        {
+            using (IDbConnection con = Connection)
+            {
+                IEnumerable<Order> orders = connection.Query<Order>("\"ShowOrders\"", commandType: CommandType.StoredProcedure);
+                return orders;
+            }
+        }
     }
 }
