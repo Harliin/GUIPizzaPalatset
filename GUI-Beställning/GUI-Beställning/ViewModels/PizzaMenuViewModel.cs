@@ -31,7 +31,6 @@ namespace GUI_Beställning.ViewModels
 
             var PizzaIE = repo.GetPizzas();
             
-
             Pizzas = new ObservableCollection<Pizza>(PizzaIE.ToList());
             
         }

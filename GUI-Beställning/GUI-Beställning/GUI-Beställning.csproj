@@ -24,7 +24,7 @@
 
   <ItemGroup>
     <Resource Include="Images\pizzalogga2.png" />
-    <Resource Include="Views\pizzalogga2.png" />
+    <Resource Include="Views\Images\pizzalogga2.png" />
   </ItemGroup>
 
 </Project>
