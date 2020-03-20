@@ -41,7 +41,7 @@ namespace GUI_Beställning.ViewModels
 
         public void AddPizzaToOrder(object id)
         {
-            var pizzaID = id;
+            repo.AddPizzaToOrder(2, (int)id);
         }
     }
 }

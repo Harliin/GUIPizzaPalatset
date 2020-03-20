@@ -76,11 +76,11 @@ namespace GUI_Beställning.Models.Data
                 return order;
             }
         }
-        public async Task AddPizzaToOrder(int orderID, int pizzaID)
+        public void AddPizzaToOrder(int orderID, int pizzaID)
         {
             using (IDbConnection con = Connection)
             {
-                await connection.QueryAsync<Pizza>("\"sp_OrderPizza\"", new { orderid = orderID, pizzaid = pizzaID }, commandType: CommandType.StoredProcedure);
+                connection.Query<Pizza>("\"sp_OrderPizza\"", new { orderid = orderID, pizzaid = pizzaID }, commandType: CommandType.StoredProcedure);
             }
         }
         public async Task UpdateOrderStatus(int orderID)
