@@ -1,12 +1,10 @@
 ﻿using GUI_Beställning.Models.Data;
+using GUI_Beställning.ViewModels.Commands;
 using ReactiveUI;
 using Splat;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Linq;
-using System.Text;
+
 
 namespace GUI_Beställning.ViewModels
 {
@@ -22,15 +20,19 @@ namespace GUI_Beställning.ViewModels
         public OrderRepository repo = new OrderRepository();
 
         public ObservableCollection<Pasta> Pastas { get; set; }
-
+        public RelayCommand AddPastaCommand { get; set; }
 
         public PastaMenuViewModel(IScreen screen = null)
         {
+            AddPastaCommand = new RelayCommand(AddPastaToOrder);
             HostScreen = screen ?? Locator.Current.GetService<IScreen>();
             var PastaIE = repo.ShowPastas();
-            Pastas = new ObservableCollection<Pasta>(PastaIE.ToList());
-            
+            Pastas = new ObservableCollection<Pasta>(PastaIE.ToList()); 
         }
 
+        private void AddPastaToOrder(object id)
+        {
+            repo.AddPastaToOrder(2, (int)id);
+        }
     }
 }

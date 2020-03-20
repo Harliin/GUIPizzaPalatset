@@ -1,14 +1,8 @@
 ﻿using GUI_Beställning.Models.Data;
 using ReactiveUI;
 using Splat;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Text;
-using System.Threading.Tasks;
 using System.Linq;
-using System.Windows.Input;
 using GUI_Beställning.ViewModels.Commands;
 
 namespace GUI_Beställning.ViewModels
@@ -39,7 +33,7 @@ namespace GUI_Beställning.ViewModels
             
         }
 
-        public void AddPizzaToOrder(object id)
+        private void AddPizzaToOrder(object id)
         {
             repo.AddPizzaToOrder(2, (int)id);
         }

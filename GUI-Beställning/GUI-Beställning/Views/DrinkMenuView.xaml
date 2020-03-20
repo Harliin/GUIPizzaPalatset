@@ -30,7 +30,7 @@
         <ScrollViewer VerticalScrollBarVisibility="Hidden">
             <Viewbox Stretch="Uniform">
                 <DockPanel Grid.Column="0" Grid.Row="0">
-                    <ItemsControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ItemsSource="{Binding Drinks}" BorderBrush="#D70F64">
+                    <ItemsControl x:Name="myControl" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ItemsSource="{Binding Drinks}" BorderBrush="#D70F64">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <Grid Margin="0 20 0 0">
@@ -58,6 +58,7 @@
                                                 <TextBlock Margin="0 0 10 5" FontSize="25" VerticalAlignment="Bottom" Foreground="Black">
                                                 <Run Text="{Binding Price}"/> kr</TextBlock>
                                                 <Button Content="{materialDesign:PackIcon Kind=AddCircle, Size=40}" Style="{StaticResource TemplatedButton}"
+                                                        Command="{Binding Path=DataContext.AddDrinkCommand, ElementName=myControl}" CommandParameter="{Binding ID}"
                                                 Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#D70F64" Margin="0 0 5 0" VerticalAlignment="Bottom"/>
                                             </StackPanel>
                                         </Grid>

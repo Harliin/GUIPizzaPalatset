@@ -23,23 +23,13 @@ namespace GUI_Beställning.ViewModels
         public PaymentViewModel(IScreen screen = null)
         {
             HostScreen = screen ?? Locator.Current.GetService<IScreen>();
-            var ordersIE = repo.ShowOrders();
+            var ordersIE = repo.ShowOrderByID(2);
             //var ordersIE = AllOrders();
             Orders = new ObservableCollection<Order>(ordersIE);
         }
 
         // Kanske kan använda oss av något som detta för att komma åt alla namn / priser per föremål
-        public List<object> AllOrders()
-        {
-            List<object> menuItems = new List<object>();
-            order.pizza.ForEach(pizza => { menuItems.Add(pizza.Name); });
-            order.pasta.ForEach(pasta => { menuItems.Add(pasta.Name); });
-            order.sallad.ForEach(sallad => { menuItems.Add(sallad.Name); });
-            order.drink.ForEach(drink => { menuItems.Add(drink.Name); });
-            order.extra.ForEach(extra => { menuItems.Add(extra.Name); });
 
-            return menuItems;
-            
-        }
+
     }
 }

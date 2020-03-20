@@ -1,12 +1,10 @@
 ﻿using GUI_Beställning.Models.Data;
+using GUI_Beställning.ViewModels.Commands;
 using ReactiveUI;
 using Splat;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Linq;
-using System.Text;
+
 
 namespace GUI_Beställning.ViewModels
 {
@@ -22,6 +20,7 @@ namespace GUI_Beställning.ViewModels
         public OrderRepository repo = new OrderRepository();
         public ObservableCollection<Sallad> Sallads { get; set; }
 
+        public RelayCommand AddSalladCommand { get; set; }
 
         public SalladMenuViewModel(IScreen screen = null)
         {
@@ -29,8 +28,13 @@ namespace GUI_Beställning.ViewModels
 
             var salladIE = repo.ShowSallads();
             Sallads = new ObservableCollection<Sallad>(salladIE.ToList());
-            
+
+            AddSalladCommand = new RelayCommand(AddSalladToOrder);
         }
         
+        private void AddSalladToOrder(object id)
+        {
+            repo.AddSalladToOrder(2, (int)id);
+        }
     }
 }

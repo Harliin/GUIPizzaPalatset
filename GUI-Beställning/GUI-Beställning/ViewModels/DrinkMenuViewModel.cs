@@ -1,4 +1,5 @@
 ﻿using GUI_Beställning.Models.Data;
+using GUI_Beställning.ViewModels.Commands;
 using ReactiveUI;
 using Splat;
 using System.Collections.ObjectModel;
@@ -19,15 +20,19 @@ namespace GUI_Beställning.ViewModels
         public OrderRepository repo = new OrderRepository();
 
         public ObservableCollection<Drink> Drinks { get; set; }
-
+        public RelayCommand AddDrinkCommand { get; set; }
         public DrinkMenuViewModel(IScreen screen = null)
         {
             HostScreen = screen ?? Locator.Current.GetService<IScreen>();
 
             var drinksIE = repo.ShowDrinks();
             Drinks = new ObservableCollection<Drink>(drinksIE.ToList());
-            
+            AddDrinkCommand = new RelayCommand(AddDrinkToOrder);
         }
 
+        private void AddDrinkToOrder(object id)
+        {
+            repo.AddDrinkToOrder(2, (int)id);
+        }
     }
 }
