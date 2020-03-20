@@ -26,7 +26,7 @@ namespace GUI_Beställning.ViewModels
         public OrderRepository repo = new OrderRepository();
         public ObservableCollection<Pizza> Pizzas { get; set; }
 
-        public ICommand AddPizzaCommand;
+        public ICommand AddPizzaCommand { get; set; }
         public PizzaMenuViewModel(IScreen screen = null)
         {
             AddPizzaCommand = new RelayCommand(AddPizzaToOrder);
@@ -39,9 +39,9 @@ namespace GUI_Beställning.ViewModels
             
         }
 
-        public void AddPizzaToOrder()
+        public void AddPizzaToOrder(object id)
         {
-
+            var pizzaID = id;
         }
     }
 }

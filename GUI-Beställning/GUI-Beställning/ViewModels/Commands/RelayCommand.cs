@@ -11,7 +11,7 @@ namespace GUI_Beställning.ViewModels.Commands
         /// <summary>
         /// The action to run
         /// </summary>
-        private Action mAction;
+        private Action<object> mAction;
 
 
         #endregion
@@ -25,7 +25,7 @@ namespace GUI_Beställning.ViewModels.Commands
         #endregion
 
         #region Default Constructor with only Action
-        public RelayCommand(Action action)
+        public RelayCommand(Action<object> action)
         {
             mAction = action;
         }
@@ -42,7 +42,7 @@ namespace GUI_Beställning.ViewModels.Commands
         /// <param name="parameter"></param>
         public void Execute(object parameter)
         {
-            mAction();
+            mAction(parameter);
         }
 
         /// <summary>
