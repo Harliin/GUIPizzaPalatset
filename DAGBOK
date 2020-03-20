@@ -14,6 +14,8 @@ Pontus:
 9/3. Försökte fixa till Välkomsskärmen och startmeny i beställningsterminale WPF
 10/3. Började göra views för att maträtter
 11/3 Fortsatte med view och gjorde alla viewmodels.
+13-20/3 Jobbat med reactiveui respons. Kopplat ihop med databasen och försökt få till så vi kan lägga till ordrar. 
+        Det funkar nu. Nästa steg är att fixa betalningsknappen och få ut alla ordrar korrekt
 
 Elchin:
 2/3 Började skissa på InfoOrder  terminal i Adobe XD
