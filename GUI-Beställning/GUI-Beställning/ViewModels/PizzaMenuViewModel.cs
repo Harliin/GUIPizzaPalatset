@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Linq;
 using System.Windows.Input;
+using GUI_Beställning.ViewModels.Commands;
 
 namespace GUI_Beställning.ViewModels
 {
@@ -25,10 +26,10 @@ namespace GUI_Beställning.ViewModels
         public OrderRepository repo = new OrderRepository();
         public ObservableCollection<Pizza> Pizzas { get; set; }
 
-        var command = new ReactiveCommand();
+        public ICommand AddPizzaCommand;
         public PizzaMenuViewModel(IScreen screen = null)
         {
-            
+            AddPizzaCommand = new RelayCommand(AddPizzaToOrder);
             //gets hostscreen??
             HostScreen = screen ?? Locator.Current.GetService<IScreen>();
 
@@ -38,5 +39,9 @@ namespace GUI_Beställning.ViewModels
             
         }
 
+        public void AddPizzaToOrder()
+        {
+
+        }
     }
 }

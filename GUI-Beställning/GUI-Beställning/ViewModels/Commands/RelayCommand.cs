@@ -7,42 +7,53 @@ namespace GUI_Beställning.ViewModels.Commands
 {
     public class RelayCommand : ICommand
     {
+        #region Private Members
         /// <summary>
-        /// Fires when CanExecute is changed
+        /// The action to run
+        /// </summary>
+        private Action mAction;
+
+
+        #endregion
+
+        #region Public Events
+        /// <summary>
+        /// The event thats fired when the <see cref="CanExecute(object)"/> value has changed
         /// </summary>
         public event EventHandler CanExecuteChanged = (sender, e) => { };
 
-        /// <summary>
-        /// Command Variables
-        /// </summary>
-        #region Variables
-        public Action<object> action;
-        public Predicate<object> _CanBeExecuted;
         #endregion
 
-        /// <summary>
-        /// Default Constructor
-        /// </summary>
-        /// <param name="_action"></param>
-        /// <param name="_predicate"></param>
-        public RelayCommand(Action<object> _action, Predicate<object> _predicate)
+        #region Default Constructor with only Action
+        public RelayCommand(Action action)
         {
-
-            this.action = _action;
-
-            this._CanBeExecuted = _predicate;
+            mAction = action;
         }
+        #endregion
+
+
+
+        #region Command Methods
+        
+
         /// <summary>
-        /// If command can be executed
+        /// Executes the commands action
+        /// </summary>
+        /// <param name="parameter"></param>
+        public void Execute(object parameter)
+        {
+            mAction();
+        }
+
+        /// <summary>
+        /// Always returns true
         /// </summary>
         /// <param name="parameter"></param>
         /// <returns></returns>
-        public bool CanExecute(object parameter) => _CanBeExecuted.Invoke(parameter);
-
-        /// <summary>
-        /// Execute the command
-        /// </summary>
-        /// <param name="parameter"></param>
-        public void Execute(object parameter) => action.Invoke(parameter);
+        public bool CanExecute(object parameter)
+        {
+            return true;
+        }
+        #endregion
     }
 }
