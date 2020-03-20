@@ -21,7 +21,5 @@ namespace GUI_Kassörska.ViewModels
         {
             get { return orderNumber; }
         }
-
-        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

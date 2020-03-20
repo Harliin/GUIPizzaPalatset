@@ -7,23 +7,21 @@ namespace GUI_Kassörska.Models
 {
     public class User : ObservableObject
     {
-        private string _userName;
-        private string _employeeNumber;
+        private string userName;
+        private string employeeNumber;
         public string UserName
         {
             get
             {
-                return _userName;
+                return userName;
             }
 
             set
             {
-                _userName = value;
-                OnPropertyChanged(_userName);
+                userName = value;
+                OnPropertyChanged(userName);
             }
         }
         public int EmployeeNumber { get; set; }
-
-        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

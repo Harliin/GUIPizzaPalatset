@@ -35,6 +35,8 @@ namespace GUI_Kassörska
                 connection = new SqlConnection(ConnectionString);
             
         }
+
+        //Visa order med statusnummer
         public async Task<IEnumerable<Order>> ShowOrderByStatusAsync(eStatus status)
         {
             using (IDbConnection con = Connection)
@@ -72,7 +74,6 @@ namespace GUI_Kassörska
                 IEnumerable<Order> allOrders = (await connection.QueryAsync<Order>("\"ShowOrders\"", commandType: CommandType.StoredProcedure));
                 return allOrders;
             }
-
         }
     }
 }
