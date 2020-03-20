@@ -7,19 +7,10 @@ namespace GUI_Kassörska.ViewModels
 {
     public class Order : ObservableObject
     {
-        private int orderNumber;
-
-        public Order()
-        {
-
-        }
-
+        public int ID { get; set; }
         public eStatus Status { get; set; }
-        public enum eStatus { Pågående = 1, Tillagning = 2, Klar = 3, Avhämtat = 4 }
-
-        public int OrderNumber
-        {
-            get { return orderNumber; }
-        }
+        public int EmployeeID { get; set; }
+        public enum eStatus { UnderBeställning = 1, Tillagning = 2, Klar = 3, Avhämtad = 4 }
+        public List<Order> Orders { get; set; }
     }
 }
