@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GUI_Kassörska.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,13 @@ namespace GUI_Kassörska
     /// </summary>
     public partial class MainWindow : Window
     {
+        MainViewModel Main = new MainViewModel();
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = Main;
         }
+
+        
     }
 }
