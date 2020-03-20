@@ -5,19 +5,23 @@ using System.Text;
 
 namespace GUI_Kassörska.Models
 {
-    public class User : INotifyPropertyChanged
+    public class User : ObservableObject
     {
-        private string userName;
-        private string employeeNumber;
-        public string UserName {
+        private string _userName;
+        private string _employeeNumber;
+        public string UserName
+        {
             get
             {
-                return userName;
-            };
+                return _userName;
+            }
+
             set
             {
-                
-            }; }
+                _userName = value;
+                OnPropertyChanged(_userName);
+            }
+        }
         public int EmployeeNumber { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace GUI_Kassörska.ViewModels
 {
-    public class Order : INotifyPropertyChanged
+    public class Order : ObservableObject
     {
         private int orderNumber;
 
