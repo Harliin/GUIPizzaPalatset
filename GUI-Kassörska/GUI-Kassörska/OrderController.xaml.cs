@@ -1,9 +1,6 @@
-﻿using GUI_Kassörska.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -17,20 +14,13 @@ using System.Windows.Shapes;
 namespace GUI_Kassörska
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for OrderController.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class OrderController : UserControl
     {
-        public MainViewModel Main = new MainViewModel() 
-        {
-            OrderString = "hej"
-        };
-        public MainWindow()
+        public OrderController()
         {
             InitializeComponent();
-            this.DataContext = Main;
         }
-
-        
     }
 }

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace GUI_Kassörska.ViewModels
 {
-    public class Order : ObservableObject
+    public class Order // : ObservableObject
     {
         public int ID { get; set; }
         public eStatus Status { get; set; }

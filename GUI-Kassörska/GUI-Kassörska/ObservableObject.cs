@@ -7,7 +7,7 @@ namespace GUI_Kassörska
 {
     public class ObservableObject : INotifyPropertyChanged
     {
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler PropertyChanged = (sender, e) => { };
 
         protected void OnPropertyChanged(string name)
         {
