@@ -1,17 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using DB_OrderInfo;
+using DB_OrderInfo.Food;
+using System;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace GUI_OrderInfo
 {
@@ -24,5 +16,39 @@ namespace GUI_OrderInfo
         {
             InitializeComponent();
         }
+
+        public static OrderInfoRepository repo;
+        static async Task Main(string[] args)
+        {
+            //await ChooseBackend();
+            do
+            {
+                Thread.Sleep(1550);// Sidan uppdateras varje 1,5 sekunder
+                await Run();
+            } while (true);
+        }
+
+        static async Task Run()
+        {
+            Console.Clear();
+            OrderInfoRepository repository = new OrderInfoRepository();
+
+            // Printar ut pågående och färdiga ordrar
+            Console.WriteLine("Pågående ordrar:\n");
+            foreach (Order ongoingOrder in await repository.OngoingOrder())
+            {
+                //Console.WriteLine(ongoingOrder.ID);
+
+            }
+
+            Console.WriteLine("\nFärdiga ordrar:\n");
+            foreach (Order completeOrder in await repository.CompleteOrder())
+            {
+                //Console.WriteLine(completeOrder.ID);
+            }
+            Thread.Sleep(3000);
+            await Run();
+        }
+
     }
 }
