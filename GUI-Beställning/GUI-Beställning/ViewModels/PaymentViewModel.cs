@@ -25,7 +25,7 @@ namespace GUI_Beställning.ViewModels
             HostScreen = screen ?? Locator.Current.GetService<IScreen>();
             var ordersIE = repo.ShowOrderByID(2);
             //var ordersIE = AllOrders();
-            Orders = new ObservableCollection<Order>(ordersIE);
+            //Orders = new ObservableCollection<Order>(ordersIE);
         }
 
         // Kanske kan använda oss av något som detta för att komma åt alla namn / priser per föremål
