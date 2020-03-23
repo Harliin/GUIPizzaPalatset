@@ -30,8 +30,11 @@
   <ItemGroup>
     <Resource Include="Styles\Colors.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Styles\Images.xaml" />
+    <Resource Include="Styles\Images.xaml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
 </Project>

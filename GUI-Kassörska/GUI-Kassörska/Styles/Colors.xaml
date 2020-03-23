@@ -1,6 +1,5 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:MainWindow.xaml>
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Color x:Key="DarkGrey">#707070</Color>
     <Color x:Key="DeepPink">#D71365</Color>
     <Color x:Key="LightPink">#E072A0</Color>
