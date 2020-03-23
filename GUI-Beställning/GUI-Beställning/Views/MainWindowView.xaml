@@ -27,8 +27,6 @@
             <RowDefinition Height="0.5*"/>
         </Grid.RowDefinitions>
         <!--#endregion-->
-        
-        
 
         <!--#region Lower Bar-->
         <Grid Grid.Row="2" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="3" Background="#97AABD">
@@ -122,8 +120,6 @@
             </Viewbox>
         </Grid>
         <!--#endregion-->
-
-
 
         <rxui:RoutedViewHost Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="0" Grid.RowSpan="2" x:Name="RoutedViewHost" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"/>
 
