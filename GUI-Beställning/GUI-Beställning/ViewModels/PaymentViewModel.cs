@@ -28,7 +28,7 @@ namespace GUI_Beställning.ViewModels
             //Orders = new ObservableCollection<Order>(ordersIE);
         }
 
-        // Kanske kan använda oss av något som detta för att komma åt alla namn / priser per föremål
+        
 
 
     }
