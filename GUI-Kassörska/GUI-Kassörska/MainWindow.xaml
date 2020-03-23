@@ -42,26 +42,26 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="63.202"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
 
         <!-- Logo -->
@@ -73,14 +73,14 @@
         </Viewbox>-->
         <!-- Header -->
         <TextBlock
-            Grid.Column="4"
             FontSize="80"
-            Grid.ColumnSpan="3"
-            Grid.RowSpan="2">
+            Grid.ColumnSpan="10"
+            Grid.RowSpan="2"
+            HorizontalAlignment="Center">
             PizzaPalatset
         </TextBlock>
 
-        <!-- User logged in, log out -->
+        <!-- User: User image, log in, log out -->
         <StackPanel
             Grid.Column="8"
             Grid.ColumnSpan="2"

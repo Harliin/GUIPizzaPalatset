@@ -39,7 +39,7 @@
             ScrollViewer.CanContentScroll="True"
             AlternationCount="2"
             ItemContainerStyle="{StaticResource alternateBackgroundcolor}">
-            <ListBoxItem HorizontalContentAlignment="Stretch" >
+            <ListBoxItem HorizontalContentAlignment="Stretch">
                 <Grid Margin="5,5,5,5">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -58,6 +58,5 @@
                 </Grid>
             </ListBoxItem>
         </ListBox>
-
     </Grid>
 </UserControl>
