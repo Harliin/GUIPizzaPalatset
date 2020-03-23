@@ -1,4 +1,5 @@
-﻿using ReactiveUI;
+﻿using GUI_Kock.Views;
+using ReactiveUI;
 using Splat;
 using System;
 using System.Collections.Generic;
@@ -23,6 +24,10 @@ namespace GUI_Kock.ViewModels
         {
             HostScreen = screen ?? Locator.Current.GetService<IScreen>();
             Router = state;
+
+            //Registrerar din nästa view. denna behövs för att kunna koppla den mot ett command
+            Locator.CurrentMutable.Register(() => new OrderView(), typeof(IViewFor<OrderViewModel>));
+
             GoToOrderView = ReactiveCommand.CreateFromObservable(() => Router.Navigate.Execute(new OrderViewModel(Router)));
         
         }

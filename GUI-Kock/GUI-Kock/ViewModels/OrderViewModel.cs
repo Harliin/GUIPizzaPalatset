@@ -28,6 +28,10 @@ namespace GUI_Kock.ViewModels
         {
             HostScreen = screen ?? Locator.Current.GetService<IScreen>();
             Router = state;
+
+            //Registrerar din nästa view. denna behövs för att kunna koppla den mot ett command
+            Locator.CurrentMutable.Register(() => new PreparingOrderView(), typeof(IViewFor<PreparingOrderViewModel>));
+
             GoToPreparingView = ReactiveCommand.CreateFromObservable(() => Router.Navigate.Execute(new PreparingOrderViewModel(Router)));
 
         }

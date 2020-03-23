@@ -25,7 +25,6 @@ namespace GUI_Kock.Views
             InitializeComponent();
             this.WhenActivated(disposables =>
             {
-                int x = 1;
                 this.BindCommand(ViewModel, x => x.GoToOrderView, x => x.loginBtm);
 
                 //this.OneWayBind(ViewModel, x => x.UrlPathSegment, x => x.PathTextBlock.Text)
