@@ -12,6 +12,20 @@
         MinWidth="800"
         FontFamily="SegoeUI"
         >
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="\Styles\Images.xaml" />
+                <ResourceDictionary Source="\Styles\Colors.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <SolidColorBrush x:Key="BlueBrush" Color="{StaticResource Blue}" />
+            <SolidColorBrush x:Key="DarkGreyBrush" Color="{StaticResource DarkGrey}" />
+            <SolidColorBrush x:Key="DeepPinkBrush" Color="{StaticResource DeepPink}" />
+            <SolidColorBrush x:Key="LightPinkBrush" Color="{StaticResource LightPink}" />
+        </ResourceDictionary>
+    </Window.Resources>
     <Grid>
         <Grid.Resources>
             <AlternationConverter x:Key="BackgroundConverter">
@@ -87,7 +101,7 @@
             Grid.Row="1"
             Orientation="Horizontal">
             <Path 
-                Fill="#FFD70F64"
+                Fill="{StaticResource DeepPinkBrush}"
                 Data="M30 33.75A16.875 16.875 0 1 0 13.125 16.875 16.879 16.879 0 0 0 30 33.75ZM45 37.5H38.543a20.4 20.4 0 0 1-17.086 0H15a15 15 0 0 0-15 15v1.875A5.626 5.626 0 0 0 5.625 60h48.75A5.626 5.626 0 0 0 60 54.375V52.5A15 15 0 0 0 45 37.5Z"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center"/>
@@ -145,19 +159,12 @@
                 </Grid>
             </ListBoxItem>            
         </ListBox>-->
-        <local:OrderController 
+        <local:OrderController
             Grid.Column="2"
             Grid.Row="6"
             Grid.ColumnSpan="3"
             Grid.RowSpan="10"
             DataContext="Pågåendeordrar"/>
-
-        <local:OrderController 
-            Grid.Column="5"
-            Grid.Row="8"
-            Grid.ColumnSpan="3"
-            Grid.RowSpan="10"
-            DataContext="Färdiag ordrar"/>
 
         <!-- Separating line -->
         <Line

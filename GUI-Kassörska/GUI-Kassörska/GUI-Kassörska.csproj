@@ -9,6 +9,8 @@
 
   <ItemGroup>
     <Page Remove="Images\userLogo.xaml" />
+    <Page Remove="Styles\Colors.xaml" />
+    <Page Remove="Styles\Images.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -23,6 +25,13 @@
   <ItemGroup>
     <PackageReference Include="Dapper" Version="2.0.30" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Styles\Colors.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Resource>
+    <Resource Include="Styles\Images.xaml" />
   </ItemGroup>
 
 </Project>
