@@ -131,11 +131,12 @@
         </TextBlock>
        
         <local:OrderController
+            DataContext="{Binding Order}"
             Grid.Column="2"
             Grid.Row="6"
             Grid.ColumnSpan="3"
             Grid.RowSpan="10"
-            DataContext="Pågåendeordrar"/>
+            />
 
         <!-- Separating line -->
         <Line

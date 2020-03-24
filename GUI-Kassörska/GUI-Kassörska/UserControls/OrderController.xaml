@@ -27,15 +27,7 @@
                      Converter={StaticResource BackgroundConverter}}"/>
             </Style>
         </Grid.Resources>
-        <TextBlock
-            Grid.Column="2"
-            Grid.Row="5"
-            Grid.ColumnSpan="3"
-            VerticalAlignment="Bottom"
-            FontSize="45"
-            FontWeight="Bold">
-            Pågående ordrar
-        </TextBlock>
+        
         <ListBox
             Grid.Column="2"
             Grid.Row="6"
@@ -44,7 +36,8 @@
             BorderThickness="0"
             ScrollViewer.CanContentScroll="True"
             AlternationCount="2"
-            ItemContainerStyle="{StaticResource alternateBackgroundcolor}">
+            ItemContainerStyle="{StaticResource alternateBackgroundcolor}"
+            ItemsSource="{Binding Order}">
             <ListBoxItem HorizontalContentAlignment="Stretch">
                 <Grid Margin="5,5,5,5">
                     <Grid.ColumnDefinitions>
@@ -54,8 +47,7 @@
                     <TextBlock
                         Grid.Column="0"
                         FontSize="40" Grid.ColumnSpan="3"
-                        VerticalAlignment="Center"
-                        Text="Order 1">
+                        VerticalAlignment="Center">
                     </TextBlock>
                     <Path
                         Grid.Column="2"
