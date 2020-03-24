@@ -44,7 +44,16 @@ namespace DB_Kock
                 return chef;
             }
         }
-        
+
+        public async Task<IEnumerable<Employee>> GetChefsList()
+        {
+            using (IDbConnection con = Connection)
+            {
+                IEnumerable<Employee> chefs = await connection.QueryAsync<Employee>("\"GetChefsList\"", new {}, commandType: CommandType.StoredProcedure);
+                return chefs;
+            }
+        }
+
         public async Task<Pizza> GetPizzaByID(int pizzaID)
         {
             using (IDbConnection con = Connection)
