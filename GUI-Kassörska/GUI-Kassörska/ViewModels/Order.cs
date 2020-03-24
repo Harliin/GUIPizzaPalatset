@@ -6,7 +6,7 @@ using System.Text;
 
 namespace GUI_Kassörska.ViewModels
 {
-    public class Order : ObservableCollection<Order>
+    public class Order
     {
         public int ID { get; set; }
         public eStatus Status { get; set; }
