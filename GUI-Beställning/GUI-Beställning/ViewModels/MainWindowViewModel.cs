@@ -14,8 +14,9 @@ using System.Windows.Input;
 
 namespace GUI_Beställning.ViewModels
 {
-    public class MainWindowViewModel : ReactiveObject, IScreen
+    public class MainWindowViewModel : ReactiveObject, IScreen, INotifyPropertyChanged
     {
+        public event  PropertyChangedEventHandler PropertyChanged = (sender, e) => { };
         public OrderRepository repo = new OrderRepository();
         public RoutingState Router { get; }
         public List<string> CurOrder { get; set; }
@@ -41,6 +42,8 @@ namespace GUI_Beställning.ViewModels
 
             Router = new RoutingState();
 
+            #region Navigation Reactive UI
+
             Locator.CurrentMutable.Register(() => new PizzaMenuView(), typeof(IViewFor<PizzaMenuViewModel>));
 
             Locator.CurrentMutable.Register(() => new PastaMenuView(), typeof(IViewFor<PastaMenuViewModel>));
@@ -54,7 +57,6 @@ namespace GUI_Beställning.ViewModels
             Locator.CurrentMutable.Register(() => new PaymentView(), typeof(IViewFor<PaymentViewModel>));
 
 
-
             PizzaMenu = ReactiveCommand.CreateFromObservable(() => Router.Navigate.Execute(new PizzaMenuViewModel()));
 
             PastaMenu = ReactiveCommand.CreateFromObservable(() => Router.Navigate.Execute(new PastaMenuViewModel()));
@@ -66,6 +68,9 @@ namespace GUI_Beställning.ViewModels
             ExtraMenu = ReactiveCommand.CreateFromObservable(() => Router.Navigate.Execute(new ExtraMenuViewModel()));
 
             PaymentMenu = ReactiveCommand.CreateFromObservable(() => Router.Navigate.Execute(new PaymentViewModel()));
+
+            #endregion
+
             ShowOrder();
         }
 
@@ -82,33 +87,8 @@ namespace GUI_Beställning.ViewModels
             CurrentOrder.sallad.ForEach(sallad => { CurOrder.Add(sallad.Name); });
             CurrentOrder.drink.ForEach(drink => { CurOrder.Add(drink.Name); });
             CurrentOrder.extra.ForEach(extra => { CurOrder.Add(extra.Name); });
-            
-            //List<Pizza> pizza = new List<Pizza>();
-            //  pizza.Add(CurrentOrder.Select(x => x.pizza));
 
-            //foreach (var food in ordersIE)
-            //{
-            //    foreach (var fooditem in food.pizza)
-            //    {
-            //        this.OrderNames.Add(fooditem.Name.ToString());
-            //    }
-            //    foreach (var fooditem in food.pasta)
-            //    {
-            //        this.OrderNames.Add(fooditem.Name.ToString());
-            //    }
-            //    foreach (var fooditem in food.sallad)
-            //    {
-            //        this.OrderNames.Add(fooditem.Name.ToString());
-            //    }
-            //    foreach (var fooditem in food.drink)
-            //    {
-            //        this.OrderNames.Add(fooditem.Name.ToString());
-            //    }
-            //    foreach (var fooditem in food.extra)
-            //    {
-            //        this.OrderNames.Add(fooditem.Name.ToString());
-            //    }
-            //}
+            PropertyChanged(this, new PropertyChangedEventArgs(nameof(CurOrder)));
         }
     }
 }
