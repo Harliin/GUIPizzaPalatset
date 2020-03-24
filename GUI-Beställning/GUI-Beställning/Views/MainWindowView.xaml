@@ -39,7 +39,9 @@
                     <ColumnDefinition Width="0.6*"/>
                 </Grid.ColumnDefinitions>
 
-                <TextBlock Text="{Binding CurrentOrder}"/>
+                <StackPanel>
+                    <ItemsControl ItemsSource="{Binding CurOrder}"/>
+                </StackPanel>
                 <Grid Grid.Column="1" Grid.Row="0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="2.4*"/>
