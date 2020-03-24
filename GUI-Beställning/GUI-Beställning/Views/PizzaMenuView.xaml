@@ -41,7 +41,6 @@
                                     </Grid.ColumnDefinitions>
                                     <Grid.RowDefinitions>
                                         <RowDefinition />
-                                        <RowDefinition />
                                     </Grid.RowDefinitions>
                                     <materialDesign:Card Grid.Column="0" Grid.ColumnSpan="4" Margin="5" Background="#FFFFFF" BorderBrush="#D70F64" 
                                                      Foreground="#D70F64" UniformCornerRadius="5" BorderThickness="20" materialDesign:ShadowAssist.ShadowDepth="Depth3" Width="550">
@@ -65,11 +64,13 @@
                                                     </ItemsControl.ItemsPanel>
                                                 </ItemsControl>
                                             </StackPanel>
-                                            <StackPanel Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Right">
-                                                <TextBlock Margin="0 0 10 5" FontSize="25" VerticalAlignment="Bottom" Foreground="Black">
+                                            <StackPanel Orientation="Horizontal"  Grid.Column="1" HorizontalAlignment="Center">
+                                                <TextBlock  FontSize="25" VerticalAlignment="Center" Foreground="Black">
                                                 <Run Text="{Binding Price}"/> kr</TextBlock>
-                                                <Button Content="{materialDesign:PackIcon Kind=AddCircle, Size=40}" Style="{StaticResource TemplatedButton}" Command="{Binding Path=DataContext.AddPizzaCommand, ElementName=myControl}"
-                                               Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#D70F64" Margin="0 0 5 0" VerticalAlignment="Bottom" CommandParameter="{Binding ID}"/>
+                                                <Button Command="{Binding Path=DataContext.AddPizzaCommand, ElementName=myControl}"
+                                               Background="{x:Null}"  Foreground="#D70F64" VerticalAlignment="Center" CommandParameter="{Binding ID}">
+                                                    <materialDesign:PackIcon Kind="AddCircle" FontSize="35" Width="35" Height="40" Margin="-7"/>
+                                                </Button>
                                             </StackPanel>
                                         </Grid>
                                     </materialDesign:Card>
