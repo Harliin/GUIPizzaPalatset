@@ -13,5 +13,8 @@ namespace GUI_Kassörska.ViewModels
         public int EmployeeID { get; set; }
         public enum eStatus { UnderBeställning = 1, Tillagning = 2, Klar = 3, Avhämtad = 4 }
         public ObservableCollection<Order> Orders { get; set; }
+
+        
+        
     }
 }

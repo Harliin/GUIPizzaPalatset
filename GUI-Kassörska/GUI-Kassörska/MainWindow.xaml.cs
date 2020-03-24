@@ -8,6 +8,8 @@ namespace GUI_Kassörska
     /// </summary>
     public partial class MainWindow : Window
     {
+        Order order = new Order();
+
         public MainViewModel Main = new MainViewModel() 
         {
             OrderString = "hej"
@@ -15,7 +17,7 @@ namespace GUI_Kassörska
         public MainWindow()
         {
             InitializeComponent();
-            this.DataContext = Main;
+            this.DataContext = order;
         }
     }
 }
