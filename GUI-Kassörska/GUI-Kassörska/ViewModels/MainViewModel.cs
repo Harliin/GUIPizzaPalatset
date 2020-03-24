@@ -15,7 +15,7 @@ namespace GUI_Kassörska.ViewModels
 		{
 			get { return orderString; }
 			set 
-			{ 
+			{
 				orderString = value;
 				PropertyChanged(this, new PropertyChangedEventArgs(nameof(OrderString)));
 
