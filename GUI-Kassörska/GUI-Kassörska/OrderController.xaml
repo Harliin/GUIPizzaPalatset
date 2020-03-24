@@ -52,15 +52,17 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock
-                            Grid.Column="0"
-                            FontSize="40" Grid.ColumnSpan="3" VerticalAlignment="Center" Text="Pizza">
-
+                        Grid.Column="0"
+                        FontSize="40" Grid.ColumnSpan="3"
+                        VerticalAlignment="Center"
+                        Text="Pizza">
                     </TextBlock>
                     <Path
-                            Grid.Column="2"
-                            Data="{StaticResource RightArrowImage}"
-                            Fill="#D71365" HorizontalAlignment="Right" VerticalAlignment="Center"/>
-
+                        Grid.Column="2"
+                        Data="{StaticResource RightArrowImage}"
+                        Fill="#D71365"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center"/>
                 </Grid>
             </ListBoxItem>
         </ListBox>
