@@ -19,7 +19,7 @@ namespace GUI_Beställning.ViewModels
         public OrderRepository repo = new OrderRepository();
         public RoutingState Router { get; }
 
-        public ObservableCollection<Order> CurrentOrder { get; set; }
+        public Order CurrentOrder { get; set; }
         public ObservableCollection<string> OrderNames { get; set; }
         public int OrderID { get; set; }
 
@@ -37,7 +37,7 @@ namespace GUI_Beställning.ViewModels
 
         public MainWindowViewModel()
         {
-            OrderID = 3;
+            OrderID = 124;
 
             Router = new RoutingState();
 
@@ -72,7 +72,11 @@ namespace GUI_Beställning.ViewModels
         public void ShowOrder()
         {
             var ordersIE = repo.ShowOrderByID(this.OrderID);
-            this.CurrentOrder = new ObservableCollection<Order>(ordersIE.ToList());
+            //this.CurrentOrder = new ObservableCollection<Order>(ordersIE.ToList());
+            var temp = ordersIE.ToList();
+            CurrentOrder = temp[0];
+            //List<Pizza> pizza = new List<Pizza>();
+            //  pizza.Add(CurrentOrder.Select(x => x.pizza));
 
             //foreach (var food in ordersIE)
             //{
