@@ -39,8 +39,9 @@
                     <ColumnDefinition Width="0.6*"/>
                 </Grid.ColumnDefinitions>
 
-                <StackPanel>
-                    <ItemsControl ItemsSource="{Binding CurOrder}"/>
+                <StackPanel Grid.RowSpan="2">
+                    <Label Content="Nuvarande order :" FontSize="15" FontWeight="Bold"/>
+                    <ItemsControl ItemsSource="{Binding CurOrder}" FontSize="14" FontWeight="DemiBold"/>
                 </StackPanel>
                 <Grid Grid.Column="1" Grid.Row="0">
                     <Grid.ColumnDefinitions>

@@ -78,10 +78,10 @@ namespace GUI_Beställning.ViewModels
 
             CurrentOrder = temp[0];
             CurrentOrder.pizza.ForEach(pizza => { CurOrder.Add(pizza.Name); });
-            CurrentOrder.pizza.ForEach(pasta => { CurOrder.Add(pasta.Name); });
-            CurrentOrder.pizza.ForEach(sallad => { CurOrder.Add(sallad.Name); });
-            CurrentOrder.pizza.ForEach(drink => { CurOrder.Add(drink.Name); });
-            CurrentOrder.pizza.ForEach(extra => { CurOrder.Add(extra.Name); });
+            CurrentOrder.pasta.ForEach(pasta => { CurOrder.Add(pasta.Name); });
+            CurrentOrder.sallad.ForEach(sallad => { CurOrder.Add(sallad.Name); });
+            CurrentOrder.drink.ForEach(drink => { CurOrder.Add(drink.Name); });
+            CurrentOrder.extra.ForEach(extra => { CurOrder.Add(extra.Name); });
             
             //List<Pizza> pizza = new List<Pizza>();
             //  pizza.Add(CurrentOrder.Select(x => x.pizza));
