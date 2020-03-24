@@ -20,7 +20,7 @@ namespace GUI_Beställning.ViewModels
         public OrderRepository repo = new OrderRepository();
         public ObservableCollection<Sallad> Sallads { get; set; }
 
-        public MainWindowViewModel MainWindowViewModel;
+        public MainWindowViewModel MainWindowViewModel = new MainWindowViewModel();
         public RelayCommand AddSalladCommand { get; set; }
 
         public SalladMenuViewModel(IScreen screen = null)

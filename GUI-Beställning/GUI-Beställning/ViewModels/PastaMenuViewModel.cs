@@ -19,7 +19,7 @@ namespace GUI_Beställning.ViewModels
 
         public OrderRepository repo = new OrderRepository();
 
-        public MainWindowViewModel MainWindowViewModel;
+        public MainWindowViewModel MainWindowViewModel = new MainWindowViewModel();
         public ObservableCollection<Pasta> Pastas { get; set; }
         public RelayCommand AddPastaCommand { get; set; }
 

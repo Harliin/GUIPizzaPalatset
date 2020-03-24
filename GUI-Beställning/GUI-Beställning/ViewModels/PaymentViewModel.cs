@@ -28,8 +28,5 @@ namespace GUI_Beställning.ViewModels
             //Orders = new ObservableCollection<Order>(ordersIE);
         }
 
-        
-
-
     }
 }
