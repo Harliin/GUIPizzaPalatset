@@ -69,9 +69,9 @@ namespace GUI_Beställning.ViewModels
 
         }
 
-        public static void ShowOrder()
+        public void ShowOrder()
         {
-            var ordersIE = this.repo.ShowOrderByID(this.OrderID);
+            var ordersIE = repo.ShowOrderByID(this.OrderID);
             this.CurrentOrder = new ObservableCollection<Order>(ordersIE.ToList());
         }
     }

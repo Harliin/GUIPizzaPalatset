@@ -22,6 +22,7 @@ namespace GUI_Beställning.ViewModels
 
         public OrderRepository repo = new OrderRepository();
         public ObservableCollection<Extra> Extras { get; set; }
+        public MainWindowViewModel MainWindowViewModel;
         public RelayCommand AddExtraCommand { get; set; }
         public ExtraMenuViewModel(IScreen screen = null)
         {
