@@ -20,7 +20,7 @@ namespace GUI_Beställning.ViewModels
         public RoutingState Router { get; }
 
         public ObservableCollection<Order> CurrentOrder { get; set; }
-
+        public ObservableCollection<string> OrderNames { get; set; }
         public int OrderID { get; set; }
 
         #region Commands
@@ -66,13 +66,14 @@ namespace GUI_Beställning.ViewModels
             ExtraMenu = ReactiveCommand.CreateFromObservable(() => Router.Navigate.Execute(new ExtraMenuViewModel()));
 
             PaymentMenu = ReactiveCommand.CreateFromObservable(() => Router.Navigate.Execute(new PaymentViewModel()));
-
+            ShowOrder();
         }
 
         public void ShowOrder()
         {
             var ordersIE = repo.ShowOrderByID(this.OrderID);
             this.CurrentOrder = new ObservableCollection<Order>(ordersIE.ToList());
+            this.OrderNames = CurrentOrder
         }
     }
 }

@@ -38,11 +38,21 @@
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="0.6*"/>
                 </Grid.ColumnDefinitions>
-                <ItemsControl Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" ItemsSource="{Binding CurrentOrder}">
-                    <WrapPanel Orientation="Vertical">
-                        <TextBlock Text="{Binding Name}" FontSize="20" FontWeight="DemiBold"/>
-                    </WrapPanel>
-                </ItemsControl>
+                <WrapPanel Orientation="Vertical" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2">
+                    <ItemsControl ItemsSource="{Binding CurrentOrder}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Vertical" Margin="3">
+                                    <ItemsControl ItemsSource="{Binding CurrentOrder.Pizza}" DisplayMemberPath="Name"/>
+                                    <ItemsControl ItemsSource="{Binding CurrentOrder.Pasta}" DisplayMemberPath="Name"/>
+                                    <ItemsControl ItemsSource="{Binding CurrentOrder.Sallad}" DisplayMemberPath="Name"/>
+                                    <ItemsControl ItemsSource="{Binding CurrentOrder.Extra}" DisplayMemberPath="Name"/>
+                                    <ItemsControl ItemsSource="{Binding CurrentOrder.Drink}" DisplayMemberPath="Name"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </WrapPanel>
                 <Grid Grid.Column="1" Grid.Row="0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="2.4*"/>
