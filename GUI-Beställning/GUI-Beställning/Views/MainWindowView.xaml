@@ -32,17 +32,18 @@
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*"/>
-                    <RowDefinition Height="1.5*"/>
+                    <RowDefinition Height="3*"/>
+                    
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="0.6*"/>
                 </Grid.ColumnDefinitions>
 
-                <StackPanel Grid.RowSpan="2">
-                    <Label Content="Nuvarande order :" FontSize="15" FontWeight="Bold"/>
+                <Label Content="Nuvarande order :" FontSize="15" FontWeight="Bold"/>
+                <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Hidden" Margin="3">
                     <ItemsControl ItemsSource="{Binding CurOrder}" FontSize="14" FontWeight="DemiBold"/>
-                </StackPanel>
+                </ScrollViewer>
                 <Grid Grid.Column="1" Grid.Row="0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="2.4*"/>
