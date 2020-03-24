@@ -1,9 +1,11 @@
-﻿using GUI_Beställning.ViewModels.Commands;
+﻿using GUI_Beställning.Models.Data;
+using GUI_Beställning.ViewModels.Commands;
 using GUI_Beställning.Views;
 using ReactiveUI;
 using Splat;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Reactive;
@@ -14,7 +16,12 @@ namespace GUI_Beställning.ViewModels
 {
     public class MainWindowViewModel : ReactiveObject, IScreen
     {
+        public OrderRepository repo = new OrderRepository();
         public RoutingState Router { get; }
+
+        public ObservableCollection<Order> CurrentOrder { get; set; }
+
+        public int OrderID { get; set; }
 
         #region Commands
         public ReactiveCommand<Unit, IRoutableViewModel> PizzaMenu { get; }
@@ -30,6 +37,8 @@ namespace GUI_Beställning.ViewModels
 
         public MainWindowViewModel()
         {
+            OrderID = 2;
+
             Router = new RoutingState();
 
             Locator.CurrentMutable.Register(() => new PizzaMenuView(), typeof(IViewFor<PizzaMenuViewModel>));
@@ -58,6 +67,12 @@ namespace GUI_Beställning.ViewModels
 
             PaymentMenu = ReactiveCommand.CreateFromObservable(() => Router.Navigate.Execute(new PaymentViewModel()));
 
+        }
+
+        public static void ShowOrder()
+        {
+            var ordersIE = this.repo.ShowOrderByID(this.OrderID);
+            this.CurrentOrder = new ObservableCollection<Order>(ordersIE.ToList());
         }
     }
 }

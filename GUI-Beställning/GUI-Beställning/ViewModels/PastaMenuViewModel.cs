@@ -33,6 +33,7 @@ namespace GUI_Beställning.ViewModels
         private void AddPastaToOrder(object id)
         {
             repo.AddPastaToOrder(2, (int)id);
+            MainWindowViewModel.ShowOrder();
         }
     }
 }
