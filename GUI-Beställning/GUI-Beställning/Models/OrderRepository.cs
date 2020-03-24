@@ -186,18 +186,18 @@ namespace GUI_Beställning.Models.Data
                 return extra;
             }
         }
-        public async Task<IEnumerable<Order>> ShowOrderByID(int orderID)
+        public IEnumerable<Order> ShowOrderByID(int orderID)
         {
             using (IDbConnection con = Connection)
             {
-                IEnumerable<Order> orders = (await connection.QueryAsync<Order>("\"ShowOrderByID\"", new { inid = orderID }, commandType: CommandType.StoredProcedure)).ToList();
+                IEnumerable<Order> orders = ( connection.Query<Order>("\"ShowOrderByID\"", new { inid = orderID }, commandType: CommandType.StoredProcedure)).ToList();
                 foreach (Order order in orders)
                 {
-                    order.pizza = (await connection.QueryAsync<Pizza>("\"GetOrderPizzas\"", new { inid = order.ID }, commandType: CommandType.StoredProcedure)).ToList();
-                    order.pasta = (await connection.QueryAsync<Pasta>("\"GetOrderPastas\"", new { inid = order.ID }, commandType: CommandType.StoredProcedure)).ToList();
-                    order.sallad = (await connection.QueryAsync<Sallad>("\"GetOrderSallads\"", new { inid = order.ID }, commandType: CommandType.StoredProcedure)).ToList();
-                    order.drink = (await connection.QueryAsync<Drink>("\"GetOrderDrinks\"", new { inid = order.ID }, commandType: CommandType.StoredProcedure)).ToList();
-                    order.extra = (await connection.QueryAsync<Extra>("\"GetOrderExtras\"", new { inid = order.ID }, commandType: CommandType.StoredProcedure)).ToList();
+                    order.pizza = (connection.Query<Pizza>("\"GetOrderPizzas\"", new { inid = order.ID }, commandType: CommandType.StoredProcedure)).ToList();
+                    order.pasta = (connection.Query<Pasta>("\"GetOrderPastas\"", new { inid = order.ID }, commandType: CommandType.StoredProcedure)).ToList();
+                    order.sallad = ( connection.Query<Sallad>("\"GetOrderSallads\"", new { inid = order.ID }, commandType: CommandType.StoredProcedure)).ToList();
+                    order.drink = ( connection.Query<Drink>("\"GetOrderDrinks\"", new { inid = order.ID }, commandType: CommandType.StoredProcedure)).ToList();
+                    order.extra = ( connection.Query<Extra>("\"GetOrderExtras\"", new { inid = order.ID }, commandType: CommandType.StoredProcedure)).ToList();
                 }
                 return orders;
             }
