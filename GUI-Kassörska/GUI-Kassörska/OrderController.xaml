@@ -55,7 +55,7 @@
                         Grid.Column="0"
                         FontSize="40" Grid.ColumnSpan="3"
                         VerticalAlignment="Center"
-                        Text="Pizza">
+                        Text="Order 1">
                     </TextBlock>
                     <Path
                         Grid.Column="2"

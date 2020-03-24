@@ -10,8 +10,7 @@
         Width="1920"
         MinHeight="1280"
         MinWidth="800"
-        FontFamily="SegoeUI"
-        >
+        FontFamily="SegoeUI">
 
     <Window.Resources>
         <ResourceDictionary>
