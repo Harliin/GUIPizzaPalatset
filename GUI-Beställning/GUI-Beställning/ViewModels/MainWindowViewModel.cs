@@ -73,7 +73,31 @@ namespace GUI_Beställning.ViewModels
         {
             var ordersIE = repo.ShowOrderByID(this.OrderID);
             this.CurrentOrder = new ObservableCollection<Order>(ordersIE.ToList());
-            this.OrderNames = CurrentOrder
+
+            foreach (var food in ordersIE)
+            {
+                foreach (var fooditem in food.pizza)
+                {
+                    this.OrderNames.Add(fooditem.Name);
+                }
+                foreach (var fooditem in food.pasta)
+                {
+                    this.OrderNames.Add(fooditem.Name);
+                }
+                foreach (var fooditem in food.sallad)
+                {
+                    this.OrderNames.Add(fooditem.Name);
+                }
+                foreach (var fooditem in food.drink)
+                {
+                    this.OrderNames.Add(fooditem.Name);
+                }
+                foreach (var fooditem in food.extra)
+                {
+                    this.OrderNames.Add(fooditem.Name);
+                }
+            }
+            
         }
     }
 }
