@@ -35,7 +35,7 @@ namespace GUI_Beställning.ViewModels
 
         private void AddExtraToOrder(object id)
         {
-            repo.AddExtraToOrder(2, (int)id);
+            repo.AddExtraToOrder(MainWindowViewModel.OrderID, (int)id);
             MainWindowViewModel.ShowOrder();
         }
     }

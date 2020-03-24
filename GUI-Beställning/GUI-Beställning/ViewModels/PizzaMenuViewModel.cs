@@ -36,7 +36,7 @@ namespace GUI_Beställning.ViewModels
 
         private void AddPizzaToOrder(object id)
         {
-            repo.AddPizzaToOrder(2, (int)id);
+            repo.AddPizzaToOrder(MainWindowViewModel.OrderID, (int)id);
             MainWindowViewModel.ShowOrder();
         }
     }

@@ -37,7 +37,7 @@ namespace GUI_Beställning.ViewModels
 
         public MainWindowViewModel()
         {
-            OrderID = 2;
+            OrderID = 3;
 
             Router = new RoutingState();
 
@@ -74,30 +74,29 @@ namespace GUI_Beställning.ViewModels
             var ordersIE = repo.ShowOrderByID(this.OrderID);
             this.CurrentOrder = new ObservableCollection<Order>(ordersIE.ToList());
 
-            foreach (var food in ordersIE)
-            {
-                foreach (var fooditem in food.pizza)
-                {
-                    this.OrderNames.Add(fooditem.Name);
-                }
-                foreach (var fooditem in food.pasta)
-                {
-                    this.OrderNames.Add(fooditem.Name);
-                }
-                foreach (var fooditem in food.sallad)
-                {
-                    this.OrderNames.Add(fooditem.Name);
-                }
-                foreach (var fooditem in food.drink)
-                {
-                    this.OrderNames.Add(fooditem.Name);
-                }
-                foreach (var fooditem in food.extra)
-                {
-                    this.OrderNames.Add(fooditem.Name);
-                }
-            }
-            
+            //foreach (var food in ordersIE)
+            //{
+            //    foreach (var fooditem in food.pizza)
+            //    {
+            //        this.OrderNames.Add(fooditem.Name.ToString());
+            //    }
+            //    foreach (var fooditem in food.pasta)
+            //    {
+            //        this.OrderNames.Add(fooditem.Name.ToString());
+            //    }
+            //    foreach (var fooditem in food.sallad)
+            //    {
+            //        this.OrderNames.Add(fooditem.Name.ToString());
+            //    }
+            //    foreach (var fooditem in food.drink)
+            //    {
+            //        this.OrderNames.Add(fooditem.Name.ToString());
+            //    }
+            //    foreach (var fooditem in food.extra)
+            //    {
+            //        this.OrderNames.Add(fooditem.Name.ToString());
+            //    }
+            //}
         }
     }
 }
