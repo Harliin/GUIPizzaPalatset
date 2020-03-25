@@ -47,7 +47,7 @@
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <Button Content="{materialDesign:PackIcon Kind=RemoveCircle,Size=25}" Foreground="#D70F64" 
-                            Command="{Binding Path=DataContext.RemoveCommand, ElementName=myControl}" CommandParameter="{Binding}" HorizontalAlignment="Left"/>
+                            Command="{Binding Path=DataContext.RemoveCommand, ElementName=myControl}" CommandParameter="{Binding CurrentOrderName}" HorizontalAlignment="Left"/>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>

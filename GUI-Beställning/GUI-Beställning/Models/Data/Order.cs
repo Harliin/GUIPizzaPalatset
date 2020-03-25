@@ -14,6 +14,7 @@ namespace GUI_Beställning.Models.Data
         public List<Drink> drink { get; set; }
         public List<Extra> extra { get; set; }
 
-        
+        public enum eFoodType { pizza = 1, pasta = 2, sallad = 3, drink = 4, extra = 5}
+        public eFoodType FoodType { get; set; }
     }
 }
