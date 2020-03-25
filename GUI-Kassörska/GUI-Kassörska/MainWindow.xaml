@@ -165,27 +165,9 @@
             Grid.RowSpan="10"
             BorderThickness="0"
             AlternationCount="2"
-            ItemContainerStyle="{StaticResource alternateBackgroundcolor}">
-            <ListBoxItem
-                FontSize="40"
-                BorderThickness="0">
-                Order 1
-            </ListBoxItem>
-            <ListBoxItem
-                FontSize="40"
-                BorderThickness="0">
-                Order 2
-            </ListBoxItem>
-            <ListBoxItem
-                FontSize="40"
-                BorderThickness="0">
-                Order 3
-            </ListBoxItem>
-            <ListBoxItem
-                FontSize="40"
-                BorderThickness="0">
-                Order 4
-            </ListBoxItem>
+            ItemContainerStyle="{StaticResource alternateBackgroundcolor}"
+            ItemsSource="{Binding OrderList}">
+            
         </ListBox>
     </Grid>
 </Window>

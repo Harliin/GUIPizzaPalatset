@@ -37,8 +37,8 @@
             ScrollViewer.CanContentScroll="True"
             AlternationCount="2"
             ItemContainerStyle="{StaticResource alternateBackgroundcolor}"
-            ItemsSource="{Binding Order}">
-            <ListBoxItem HorizontalContentAlignment="Stretch">
+            ItemsSource="{Binding OrderList}">
+            <!--<ListBoxItem HorizontalContentAlignment="Stretch">
                 <Grid Margin="5,5,5,5">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -56,7 +56,7 @@
                         HorizontalAlignment="Right"
                         VerticalAlignment="Center"/>
                 </Grid>
-            </ListBoxItem>
+            </ListBoxItem>-->
         </ListBox>
     </Grid>
 </UserControl>
