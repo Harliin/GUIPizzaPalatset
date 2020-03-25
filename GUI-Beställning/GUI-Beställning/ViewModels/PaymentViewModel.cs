@@ -19,12 +19,12 @@ namespace GUI_Beställning.ViewModels
 
         public IScreen HostScreen { get; }
         #endregion
-        public Order CurrentOrders { get; set; }
+        public Order CurrentOrder { get; set; }
         public OrderRepository repo = new OrderRepository();
         public List<string> CurrentOrderName { get; set; }
         public List<int> CurrentOrderPrice { get; set; }
-        //public List<List<int>> CurrentFoodID { get; set; }
-        public int[,] CurrentFoodID { get; set; }
+        public List<int> CurrentFoodID { get; set; }
+        public List<Order.eFoodType> foodType { get; set; }
 
         public RelayCommand RemoveCommand { get; set; }
         public ObservableCollection<Order> Orders { get; set; }
@@ -42,33 +42,19 @@ namespace GUI_Beställning.ViewModels
         {
             CurrentOrderName = new List<string>();
             CurrentOrderPrice = new List<int>();
-            CurrentFoodID = new int[new List<int>, new List<int>] ;
+            CurrentFoodID = new List<int>();
 
-            #region Temp Lists
-            List<int> pizzaList = new List<int>();
-            List<int> pastaList = new List<int>();
-            List<int> salladList = new List<int>();
-            List<int> drinkList = new List<int>();
-            List<int> extraList = new List<int>();
-
-            #endregion
 
             var ordersIE = repo.ShowOrderByID(this.OrderID);
             var temp = ordersIE.ToList();
-            CurrentOrders = temp[0];
-            CurrentOrders.pizza.ForEach(pizza => { CurrentOrderName.Add(pizza.Name); CurrentOrderPrice.Add(pizza.Price); pizzaList.Add(pizza.ID); });
-            CurrentOrders.pasta.ForEach(pasta => { CurrentOrderName.Add(pasta.Name); CurrentOrderPrice.Add(pasta.Price); pastaList.Add(pasta.ID); });
-            CurrentOrders.sallad.ForEach(sallad => { CurrentOrderName.Add(sallad.Name); CurrentOrderPrice.Add(sallad.Price); salladList.Add(sallad.ID); });
-            CurrentOrders.drink.ForEach(drink => { CurrentOrderName.Add(drink.Name); CurrentOrderPrice.Add(drink.Price); drinkList.Add(drink.ID); });
-            CurrentOrders.extra.ForEach(extra => { CurrentOrderName.Add(extra.Name); CurrentOrderPrice.Add(extra.Price); extraList.Add(extra.ID); });
+            CurrentOrder = temp[0];
+            CurrentOrder.pizza.ForEach(pizza => { CurrentOrderName.Add(pizza.Name); CurrentOrderPrice.Add(pizza.Price); CurrentFoodID.Add(pizza.ID); foodType.Add(Order.eFoodType.pizza); });
+            CurrentOrder.pasta.ForEach(pasta => { CurrentOrderName.Add(pasta.Name); CurrentOrderPrice.Add(pasta.Price); CurrentFoodID.Add(pasta.ID); foodType.Add(Order.eFoodType.pasta); });
+            CurrentOrder.sallad.ForEach(sallad => { CurrentOrderName.Add(sallad.Name); CurrentOrderPrice.Add(sallad.Price); CurrentFoodID.Add(sallad.ID); foodType.Add(Order.eFoodType.sallad); });
+            CurrentOrder.drink.ForEach(drink => { CurrentOrderName.Add(drink.Name); CurrentOrderPrice.Add(drink.Price); CurrentFoodID.Add(drink.ID); foodType.Add(Order.eFoodType.drink); });
+            CurrentOrder.extra.ForEach(extra => { CurrentOrderName.Add(extra.Name); CurrentOrderPrice.Add(extra.Price); CurrentFoodID.Add(extra.ID); foodType.Add(Order.eFoodType.extra); });
 
-            #region Adds lists of food 
-            CurrentFoodID.Add(pizzaList);
-            CurrentFoodID.Add(pastaList);
-            CurrentFoodID.Add(salladList);
-            CurrentFoodID.Add(drinkList);
-            CurrentFoodID.Add(extraList);
-            #endregion
+            
         }
         public void RemoveFoodFromOrder(object id)
         {
