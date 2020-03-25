@@ -23,6 +23,7 @@ namespace GUI_Kock.ViewModels
         public static ChefRepository repo = new ChefRepository();
 
         public ObservableCollection<Employee> Employees { get; private set; }
+        private Employee admin;
         public ReactiveCommand<Unit, IRoutableViewModel> GoToOrderView { get; private set; }
 
         #region Routing
@@ -36,8 +37,21 @@ namespace GUI_Kock.ViewModels
         {
             HostScreen = screen ?? Locator.Current.GetService<IScreen>();
             Employees = new ObservableCollection<Employee>();
+            admin = new Employee();
             Router = state;
             LoginCommand = new UserLoginCommand(this);
+        }
+
+        /// <summary>
+        /// Gets the Employy instance
+        /// </summary>
+
+        public Employee Admin
+        {
+            get
+            {
+                return admin;
+            }
         }
 
         /// <summary>
@@ -52,8 +66,8 @@ namespace GUI_Kock.ViewModels
 
         public bool CheckUser()
         {
-            string AdminName = userName;
-            string password = loginPassword;
+            string AdminName = admin.name;
+            string password = admin.password;
 
             var admins = repo.GetChefs(AdminName, password);
 
