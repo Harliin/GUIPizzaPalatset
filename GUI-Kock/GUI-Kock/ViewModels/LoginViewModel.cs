@@ -63,7 +63,10 @@ namespace GUI_Kock.ViewModels
             private set;
         }
 
-
+        /// <summary>
+        /// Checks that there's a user in database. Användarnamn: ba1  Lösen: ba1 
+        /// </summary>
+        /// <returns></returns>
         public bool CheckUser()
         {
             string AdminName = admin.name;
@@ -71,14 +74,14 @@ namespace GUI_Kock.ViewModels
 
             var admins = repo.GetChefs(AdminName, password);
 
-            if (admins.Count() == 0)
+            if (admins == admin)
             {
-                MessageBox.Show("Felaktigt inloggning!");
-                CheckUser();
+                return true;     
             }
             else
             {
-                return true;
+                MessageBox.Show("Felaktigt inloggning!");
+                CheckUser();
             }
             return true;
         }
@@ -91,9 +94,9 @@ namespace GUI_Kock.ViewModels
             GoToOrderView = ReactiveCommand.CreateFromObservable(() => Router.Navigate.Execute(new OrderViewModel(Router)));
         }
 
-        public async Task Populate()
+        public void Populate()
         {
-            IEnumerable<Employee> employee = await repo.GetChefsList();
+            IEnumerable<Employee> employee = repo.GetChefsList();
             Employees.AddRange(employee);
         }
 

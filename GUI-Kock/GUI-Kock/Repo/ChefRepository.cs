@@ -15,7 +15,6 @@ namespace DB_Kock
     {
         private string ConnectionString { get; }
         private IDbConnection connection { get; }
-        public static int Backend { get; set; }
 
         public ChefRepository()
         {
@@ -36,20 +35,20 @@ namespace DB_Kock
         }
 
 
-        public async Task<IEnumerable<Employee>> GetChefs(string userName, string Password)
+        public IEnumerable<Employee> GetChefs(string userName, string Password)
         {
             using (IDbConnection con = Connection)
             {
-                IEnumerable<Employee> chef = await connection.QueryAsync<Employee>("\"GetChefs\"", new { username = userName, passcode = Password }, commandType: CommandType.StoredProcedure);
+                IEnumerable<Employee> chef = connection.Query<Employee>("\"GetChefs\"", new { username = userName, passcode = Password }, commandType: CommandType.StoredProcedure);
                 return chef;
             }
         }
 
-        public async Task<IEnumerable<Employee>> GetChefsList()
+        public IEnumerable<Employee> GetChefsList()
         {
             using (IDbConnection con = Connection)
             {
-                IEnumerable<Employee> chefs = await connection.QueryAsync<Employee>("\"GetChefsList\"", new {}, commandType: CommandType.StoredProcedure);
+                IEnumerable<Employee> chefs = connection.Query<Employee>("\"GetChefsList\"", new {}, commandType: CommandType.StoredProcedure);
                 return chefs;
             }
         }
