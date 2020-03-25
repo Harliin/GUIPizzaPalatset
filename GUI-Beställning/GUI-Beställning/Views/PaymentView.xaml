@@ -43,7 +43,7 @@
                 </Style>
             </ItemsControl.ItemContainerStyle>
         </ItemsControl>
-        <ItemsControl Grid.Row="1" Grid.Column="2" ItemsSource="{Binding CurrentOrderID}" x:Name="myControl">
+        <ItemsControl Grid.Row="1" Grid.Column="2" ItemsSource="{Binding CurrentFoodID}" x:Name="myControl">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <Button Content="{materialDesign:PackIcon Kind=RemoveCircle,Size=25}" Foreground="#D70F64" 

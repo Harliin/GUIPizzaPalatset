@@ -25,7 +25,7 @@ namespace GUI_Beställning.ViewModels
 
         public RelayCommand RemoveCommand { get; set; }
         //public ReactiveCommand<Unit, >
-        public List<int> CurrentOrderID { get; set; }
+        public List<int> CurrentFoodID { get; set; }
         public ObservableCollection<Order> Orders { get; set; }
         public int OrderID { get; set; }
         public PaymentViewModel(IScreen screen = null)
@@ -41,15 +41,15 @@ namespace GUI_Beställning.ViewModels
         {
             CurrentOrderName = new List<string>();
             CurrentOrderPrice = new List<int>();
-            CurrentOrderID = new List<int>();
+            CurrentFoodID = new List<int>();
             var ordersIE = repo.ShowOrderByID(this.OrderID);
             var temp = ordersIE.ToList();
             CurrentOrders = temp[0];
-            CurrentOrders.pizza.ForEach(pizza => { CurrentOrderName.Add(pizza.Name); CurrentOrderPrice.Add(pizza.Price); CurrentOrderID.Add(pizza.ID); });
-            CurrentOrders.pasta.ForEach(pasta => { CurrentOrderName.Add(pasta.Name); CurrentOrderPrice.Add(pasta.Price); CurrentOrderID.Add(pasta.ID); });
-            CurrentOrders.sallad.ForEach(sallad => { CurrentOrderName.Add(sallad.Name); CurrentOrderPrice.Add(sallad.Price); CurrentOrderID.Add(sallad.ID); });
-            CurrentOrders.drink.ForEach(drink => { CurrentOrderName.Add(drink.Name); CurrentOrderPrice.Add(drink.Price); CurrentOrderID.Add(drink.ID); });
-            CurrentOrders.extra.ForEach(extra => { CurrentOrderName.Add(extra.Name); CurrentOrderPrice.Add(extra.Price); CurrentOrderID.Add(extra.ID); });
+            CurrentOrders.pizza.ForEach(pizza => { CurrentOrderName.Add(pizza.Name); CurrentOrderPrice.Add(pizza.Price); CurrentFoodID.Add(pizza.ID); });
+            CurrentOrders.pasta.ForEach(pasta => { CurrentOrderName.Add(pasta.Name); CurrentOrderPrice.Add(pasta.Price); CurrentFoodID.Add(pasta.ID); });
+            CurrentOrders.sallad.ForEach(sallad => { CurrentOrderName.Add(sallad.Name); CurrentOrderPrice.Add(sallad.Price); CurrentFoodID.Add(sallad.ID); });
+            CurrentOrders.drink.ForEach(drink => { CurrentOrderName.Add(drink.Name); CurrentOrderPrice.Add(drink.Price); CurrentFoodID.Add(drink.ID); });
+            CurrentOrders.extra.ForEach(extra => { CurrentOrderName.Add(extra.Name); CurrentOrderPrice.Add(extra.Price); CurrentFoodID.Add(extra.ID); });
         }
         public void RemoveFoodFromOrder(object id)
         {
