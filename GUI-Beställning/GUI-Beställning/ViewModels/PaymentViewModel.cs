@@ -43,6 +43,7 @@ namespace GUI_Beställning.ViewModels
             CurrentOrderName = new List<string>();
             CurrentOrderPrice = new List<int>();
             CurrentFoodID = new List<int>();
+            foodType = new List<Order.eFoodType>();
 
 
             var ordersIE = repo.ShowOrderByID(this.OrderID);
