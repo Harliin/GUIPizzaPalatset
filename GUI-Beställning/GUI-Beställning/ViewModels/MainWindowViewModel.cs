@@ -22,6 +22,7 @@ namespace GUI_Beställning.ViewModels
         public List<string> CurOrder { get; set; }
         public Order CurrentOrder { get; set; }
         public ObservableCollection<string> OrderNames { get; set; }
+        public int TotalPrice { get; set; }
         public int OrderID { get; set; }
 
         #region Commands
@@ -76,17 +77,18 @@ namespace GUI_Beställning.ViewModels
 
         public void ShowOrder()
         {
+            TotalPrice = 0;
             CurOrder = new List<string>();
             var ordersIE = repo.ShowOrderByID(this.OrderID);
             //this.CurrentOrder = new ObservableCollection<Order>(ordersIE.ToList());
+            
             var temp = ordersIE.ToList();
-
             CurrentOrder = temp[0];
-            CurrentOrder.pizza.ForEach(pizza => { CurOrder.Add(pizza.Name); });
-            CurrentOrder.pasta.ForEach(pasta => { CurOrder.Add(pasta.Name); });
-            CurrentOrder.sallad.ForEach(sallad => { CurOrder.Add(sallad.Name); });
-            CurrentOrder.drink.ForEach(drink => { CurOrder.Add(drink.Name); });
-            CurrentOrder.extra.ForEach(extra => { CurOrder.Add(extra.Name); });
+            CurrentOrder.pizza.ForEach(pizza => { CurOrder.Add(pizza.Name); TotalPrice += pizza.Price; });
+            CurrentOrder.pasta.ForEach(pasta => { CurOrder.Add(pasta.Name); TotalPrice += pasta.Price; });
+            CurrentOrder.sallad.ForEach(sallad => { CurOrder.Add(sallad.Name); TotalPrice += sallad.Price; });
+            CurrentOrder.drink.ForEach(drink => { CurOrder.Add(drink.Name); TotalPrice += drink.Price; });
+            CurrentOrder.extra.ForEach(extra => { CurOrder.Add(extra.Name); TotalPrice += extra.Price; });
 
             PropertyChanged(this, new PropertyChangedEventArgs(nameof(CurOrder)));
         }

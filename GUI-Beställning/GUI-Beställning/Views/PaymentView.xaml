@@ -8,12 +8,39 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             mc:Ignorable="d" Background="LightGray"
+             mc:Ignorable="d" Background="#FFF"
              d:DesignHeight="400" d:DesignWidth="400">
+    <!--FÄRGKODER
+    Rosa: #D70F64
+    Mörkblå: #314455
+    Ljusgrå: #97AABD
+    Vit : #FFFFFF
+    -->
     <Grid>
-        <StackPanel>
-            <ItemsControl ItemsSource="{Binding Orders}" DisplayMemberPath="ID" FontSize="25" Foreground="#D70F64" BorderBrush="{x:Null}" FontWeight="DemiBold" >
-            </ItemsControl>
-        </StackPanel>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="5*"/>
+        </Grid.RowDefinitions>
+        <Label Content="Order" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="DemiBold"/>
+        <Label Content="Pris Kr" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="DemiBold"/>
+        <Separator Grid.ColumnSpan="2" VerticalAlignment="Bottom" Height="7" Background="Black"/>
+        <ItemsControl Grid.Row="1" Grid.Column="0" ItemsSource="{Binding CurrentOrderName}" HorizontalAlignment="Center" FontWeight="DemiBold" FontSize="15">
+            <ItemsControl.ItemContainerStyle>
+                <Style>
+                    <Setter Property="FrameworkElement.Margin" Value="3"/>
+                </Style>
+            </ItemsControl.ItemContainerStyle>
+        </ItemsControl>
+        <ItemsControl Grid.Row="1" Grid.Column="1" ItemsSource="{Binding CurrentOrderPrice}" HorizontalAlignment="Center" FontWeight="DemiBold" FontSize="15">
+            <ItemsControl.ItemContainerStyle>
+                <Style>
+                    <Setter Property="FrameworkElement.Margin" Value="3"/>
+                </Style>
+            </ItemsControl.ItemContainerStyle>
+        </ItemsControl>
     </Grid>
 </rxui:ReactiveUserControl>

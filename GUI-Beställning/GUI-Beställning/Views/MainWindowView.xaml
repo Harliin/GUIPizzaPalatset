@@ -50,10 +50,10 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <Viewbox Grid.Column="0" Stretch="Uniform">
-                        <TextBlock Grid.Column="0" Text="Totalsumma :" FontSize="20" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 5 0"/>
+                        <TextBlock Grid.Column="0" Text="Totalsumma :" FontSize="15" FontWeight="DemiBold" VerticalAlignment="Center" HorizontalAlignment="Right"/>
                     </Viewbox>
                     <Viewbox Grid.Column="1" Stretch="Uniform">
-                        <TextBlock x:Name="TotalSum" Text="90kr" Grid.Column="2" FontSize="18" VerticalAlignment="Center" Margin="10 0 10 0"/>
+                        <TextBlock Text="{Binding TotalPrice, StringFormat={}{0} Kr}" FontSize="15" Padding="3" Grid.Column="2" HorizontalAlignment="Left" FontWeight="DemiBold"/>
                     </Viewbox>
                 </Grid>
                 <Viewbox Grid.Column="1" Grid.Row="1" Stretch="Uniform" >
