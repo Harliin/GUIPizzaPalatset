@@ -57,7 +57,7 @@
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>
-            <RowDefinition Height="63.202"/>
+            <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
@@ -84,6 +84,7 @@
             Stretch="Fill">
             <Image Grid.Row="0" Source="C:\Users\RolfC\Documents\TestGitHub\GUIPizzaPalatset\GUI-Kassörska\GUI-Kassörska\Images\pizzalogga2.png" Width="125" Height="125"/>
         </Viewbox>-->
+        
         <!-- Header -->
         <TextBlock
             FontSize="80"
