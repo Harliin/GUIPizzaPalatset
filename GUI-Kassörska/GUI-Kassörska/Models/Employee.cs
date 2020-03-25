@@ -5,7 +5,7 @@ using System.Text;
 
 namespace GUI_Kassörska.Models
 {
-    public class User : ObservableObject
+    public class Employee : ObservableObject
     {
         private string userName;
         private string employeeNumber;

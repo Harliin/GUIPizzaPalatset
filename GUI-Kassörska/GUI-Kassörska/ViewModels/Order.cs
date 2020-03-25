@@ -12,16 +12,9 @@ namespace GUI_Kassörska.ViewModels
         {
             OrderList = new ObservableCollection<string>()
             {
-                "One",
-                "Two",
-                "Three",
-                "Four",
-                "Five",
-                "Six",
-                "Seven",
-                "Eight",
-                "Nine",
-                "Ten"
+                "Pågående order 1",
+                "Pågående order 2",
+                "Pågående order 3"
             };
         }
         public int ID { get; set; }
