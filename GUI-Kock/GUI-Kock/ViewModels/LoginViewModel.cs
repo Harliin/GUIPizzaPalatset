@@ -57,7 +57,7 @@ namespace GUI_Kock.ViewModels
         /// <summary>
         /// Gets the loginCommand for the ViewModel  
         /// </summary>
-        public ICommand LoginCommand
+        public RelayCommand LoginCommand
         {
             get;
             set;

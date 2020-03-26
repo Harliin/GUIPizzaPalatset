@@ -7,36 +7,54 @@ namespace GUI_Kock.ViewModels.Commands
 {
     public class RelayCommand : ICommand
     {
+        #region Private Members
         /// <summary>
-        /// Initializes a new instance of the CustomerUpdateCommand class.
+        /// The action to run
         /// </summary>
-        /// <param name="viewModel"></param>
-       
-            public Predicate<object> Predicate { get; set; }
-        public Action<object> Action { get; set; }
-        public RelayCommand(Action<object> action)
-        {
-            Action = action;
-        }
+        private Action mAction;
 
-        private LoginViewModel viewModel;
 
-        #region ICommand members
+        #endregion
 
+        #region Public Events
+        /// <summary>
+        /// The event thats fired when the <see cref="CanExecute(object)"/> value has changed
+        /// </summary>
         public event EventHandler CanExecuteChanged = (sender, e) => { };
 
+        #endregion
 
-        public bool CanExecute(object parameter)
+        #region Default Constructor with only Action
+        public RelayCommand(Action action)
         {
-            //return viewModel.CheckUser();
-            return true;
+            mAction = action;
         }
+        #endregion
 
+
+
+        #region Command Methods
+
+
+        /// <summary>
+        /// Executes the commands action
+        /// </summary>
+        /// <param name="parameter"></param>
         public void Execute(object parameter)
         {
-            Execute();
+            //mAction(parameter);
+            Execute(mAction);
         }
 
+        /// <summary>
+        /// Always returns true
+        /// </summary>
+        /// <param name="parameter"></param>
+        /// <returns></returns>
+        public bool CanExecute(object parameter)
+        {
+            return true;
+        }
         #endregion
     }
 }
