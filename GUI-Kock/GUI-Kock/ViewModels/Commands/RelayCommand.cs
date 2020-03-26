@@ -11,7 +11,11 @@ namespace GUI_Kock.ViewModels.Commands
         /// <summary>
         /// The action to run
         /// </summary>
-        private Action mAction;
+        private Action _Action;
+
+        //Lägg till senare
+        //private Predicate<object> _CanBeExecuted;
+
 
 
         #endregion
@@ -25,9 +29,14 @@ namespace GUI_Kock.ViewModels.Commands
         #endregion
 
         #region Default Constructor with only Action
-        public RelayCommand(Action action)
+        public RelayCommand(Action action) //Lägg till senare när knappen fungerar -> Predicate CanExecute
         {
-            mAction = action;
+            // Set command action
+            this._Action = action;
+
+            // Set command conditions
+            //Lägg till när knappen fungerar
+            //this._CanBeExecuted = CanExecute;
         }
         #endregion
 
@@ -43,7 +52,7 @@ namespace GUI_Kock.ViewModels.Commands
         public void Execute(object parameter)
         {
             //mAction(parameter);
-            Execute(mAction);
+            Execute(_Action);
         }
 
         /// <summary>
@@ -54,6 +63,9 @@ namespace GUI_Kock.ViewModels.Commands
         public bool CanExecute(object parameter)
         {
             return true;
+
+            //Lägg till senare
+           // => _CanBeExecuted.Invoke(parameter);
         }
         #endregion
     }

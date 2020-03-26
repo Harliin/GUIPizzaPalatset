@@ -25,6 +25,7 @@ namespace GUI_Kock.ViewModels
         public ObservableCollection<Employee> Employees { get; private set; }
         private Employee admin;
         public ReactiveCommand<Unit, IRoutableViewModel> GoToOrderView { get; private set; }
+        private OrderViewModel orderViewModel;
 
         #region Routing
         public string UrlPathSegment => "Login";
@@ -39,7 +40,7 @@ namespace GUI_Kock.ViewModels
             Employees = new ObservableCollection<Employee>();
             admin = new Employee();
             Router = state;
-            LoginCommand = new RelayCommand(Login);
+            LoginCommand = new RelayCommand(Login); //Lägg till (CheckUser) när Binding knappen fungerar
         }
 
         /// <summary>
@@ -88,9 +89,8 @@ namespace GUI_Kock.ViewModels
 
         public void Login()
         {
-            //Registrerar din nästa view. denna behövs för att kunna koppla den mot ett command
+            //Registrerar nästa view. Denna behövs för att kunna koppla den mot ett command
             Locator.CurrentMutable.Register(() => new OrderView(), typeof(IViewFor<OrderViewModel>));
-
             GoToOrderView = ReactiveCommand.CreateFromObservable(() => Router.Navigate.Execute(new OrderViewModel(Router)));
         }
 

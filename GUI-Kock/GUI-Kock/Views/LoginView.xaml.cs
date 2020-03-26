@@ -31,12 +31,9 @@ namespace GUI_Kock.Views
                 .DisposeWith(disposables);
                 ViewModel.Populate();
 
-<<<<<<< HEAD
-=======
-                //this.BindCommand(ViewModel, x => x.LoginCommand, x => x.loginBtm)
-                //.DisposeWith(disposables);
+                this.BindCommand(ViewModel, x => x.LoginCommand, x => x.loginBtm)
+                .DisposeWith(disposables);
 
->>>>>>> 106ea308d0c15c153de804aa3053ad5557ccd71b
             });
         }
     }

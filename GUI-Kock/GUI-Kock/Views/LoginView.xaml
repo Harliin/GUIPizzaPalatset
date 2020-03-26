@@ -22,15 +22,8 @@
                 </ComboBox>
 
                 <TextBox x:Name="password" Text="{Binding password}" Margin="15" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:HintAssist.Hint="Lösenord"/>
-<<<<<<< HEAD
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-
-                    <Button Command="{Binding LoginCommand}" Margin="15 10" Content="Logga in" Background="#314455 "/>
-=======
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" >
-       
-                    <Button x:Name="loginBtm" Margin="15 10" Content="Logga in" Background="#314455" Command="{Binding LoginCommand}"/>
->>>>>>> 106ea308d0c15c153de804aa3053ad5557ccd71b
+                    <Button x:Name="loginBtm" Margin="15 10" Content="Logga in" Background="#314455" />
                 </StackPanel>
             </StackPanel>
         </Border>
