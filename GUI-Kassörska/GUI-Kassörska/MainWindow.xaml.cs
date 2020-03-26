@@ -8,10 +8,7 @@ namespace GUI_Kassörska
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainViewModel Main = new MainViewModel() 
-        {
-            OrderString = "hej"
-        };
+        //public MainViewModel Main = new MainViewModel();
         public MainWindow()
         {
             InitializeComponent();
