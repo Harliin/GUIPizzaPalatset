@@ -8,6 +8,7 @@ namespace GUI_Kassörska.ViewModels
 {
     public class Order
     {
+        public ObservableCollection<string> OrderList { get; set; }
         public Order()
         {
             OrderList = new ObservableCollection<string>()
@@ -20,11 +21,6 @@ namespace GUI_Kassörska.ViewModels
         public int ID { get; set; }
         public eStatus Status { get; set; }
         public int EmployeeID { get; set; }
-        public enum eStatus { UnderBeställning = 1, Tillagning = 2, Klar = 3, Avhämtad = 4 }
-
-        
-        public ObservableCollection<string> OrderList { get; set; }
-
-        
+        public enum eStatus { UnderBeställning = 1, Tillagning = 2, Klar = 3, Avhämtad = 4 }  
     }
 }

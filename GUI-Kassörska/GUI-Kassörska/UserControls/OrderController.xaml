@@ -13,6 +13,7 @@
     </UserControl.Resources>
 
     <Grid>
+        <!-- Color resources for alternating colors in the lists -->
         <Grid.Resources>
             <AlternationConverter x:Key="BackgroundConverter">
                 <SolidColorBrush Color="#DFA4BD"/>
@@ -27,7 +28,7 @@
                      Converter={StaticResource BackgroundConverter}}"/>
             </Style>
         </Grid.Resources>
-        
+
         <ListBox
             Grid.Column="2"
             Grid.Row="6"

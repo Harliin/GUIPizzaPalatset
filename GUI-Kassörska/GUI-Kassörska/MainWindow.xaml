@@ -135,9 +135,8 @@
             DataContext="{Binding Order}"
             Grid.Column="2"
             Grid.Row="6"
-            Grid.ColumnSpan="3"
-            Grid.RowSpan="10"
-            />
+            Grid.ColumnSpan="2"
+            Grid.RowSpan="10"/>
 
         <!-- Separating line -->
         <Line
@@ -147,7 +146,7 @@
             X1="0" Y1="0"  
             X2="0" Y2="700"  
             Stroke="#707070"  
-            StrokeThickness="10" />
+            StrokeThickness="10"/>
 
         <!-- Ready orders -->
         <TextBlock
@@ -168,7 +167,6 @@
             AlternationCount="2"
             ItemContainerStyle="{StaticResource alternateBackgroundcolor}"
             ItemsSource="{Binding OrderList}">
-            
         </ListBox>
     </Grid>
 </Window>
