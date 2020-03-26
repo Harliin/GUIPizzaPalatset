@@ -18,7 +18,7 @@ namespace GUI_Kassörska.ViewModels
 		public MainViewModel()
 		{
 			var OrderIE = repo.ShowAllOrdersAsync();
-			Orders = new ObservableCollection<Order>(OrderIE.ToList());
+			//Orders = new ObservableCollection<Order>(OrderIE.ToList);
 		}
 
 		public string OrderString
