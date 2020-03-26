@@ -30,10 +30,8 @@ namespace GUI_Kassörska
         //Anslutning till databasen
         public CashierRepository()
         {
-
-                ConnectionString = "Data Source=SQL6009.site4now.net;Initial Catalog=DB_A53DDD_Grupp1;User Id=DB_A53DDD_Grupp1_admin;Password=Password123;";
-                connection = new SqlConnection(ConnectionString);
-            
+            ConnectionString = "Data Source=SQL6009.site4now.net;Initial Catalog=DB_A53DDD_Grupp1;User Id=DB_A53DDD_Grupp1_admin;Password=Password123;";
+            connection = new SqlConnection(ConnectionString);   
         }
 
         //Visa order med statusnummer
@@ -67,11 +65,11 @@ namespace GUI_Kassörska
         }
 
         //Visa alla ordrar
-        public async Task<IEnumerable<Order>> ShowAllOrdersAsync()
+        public IEnumerable<Order> ShowAllOrders()
         {
             using (IDbConnection con = Connection)
             {
-                IEnumerable<Order> allOrders = (await connection.QueryAsync<Order>("\"ShowOrders\"", commandType: CommandType.StoredProcedure));
+                IEnumerable<Order> allOrders = (connection.Query<Order>("\"ShowOrders\"", commandType: CommandType.StoredProcedure));
                 return allOrders;
             }
         }

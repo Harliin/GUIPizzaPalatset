@@ -15,7 +15,7 @@ namespace GUI_Kassörska.ViewModels
         {
             do
             {
-                var orders = await repo.ShowAllOrdersAsync();
+                var orders = repo.ShowAllOrders();
                 List<Order> orderList = orders.ToList();
 
                 //Skriver ut pågående ordrar
