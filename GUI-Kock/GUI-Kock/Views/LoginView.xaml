@@ -23,8 +23,8 @@
 
                 <TextBox x:Name="password" Text="{Binding password}" Margin="15" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:HintAssist.Hint="Lösenord"/>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-       
-                    <Button x:Name="loginBtm" Margin="15 10" Content="Logga in" Background="#314455 "/>
+
+                    <Button Command="{Binding LoginCommand}" Margin="15 10" Content="Logga in" Background="#314455 "/>
                 </StackPanel>
             </StackPanel>
         </Border>
