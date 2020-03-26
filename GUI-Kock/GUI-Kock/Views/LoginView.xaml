@@ -10,7 +10,7 @@
              xmlns:reactiveui="http://reactiveui.net"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <StackPanel Margin="50">
+    <StackPanel Margin="50" x:Name="name">
         <Border Background="White" Margin="10 20" CornerRadius="5">
             <StackPanel Margin="25">
                 <ComboBox x:Name="userName" Margin="15" Style="{StaticResource MaterialDesignFloatingHintComboBox}" materialDesign:HintAssist.Hint="Användare">
@@ -22,9 +22,15 @@
                 </ComboBox>
 
                 <TextBox x:Name="password" Text="{Binding password}" Margin="15" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:HintAssist.Hint="Lösenord"/>
+<<<<<<< HEAD
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
 
                     <Button Command="{Binding LoginCommand}" Margin="15 10" Content="Logga in" Background="#314455 "/>
+=======
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" >
+       
+                    <Button x:Name="loginBtm" Margin="15 10" Content="Logga in" Background="#314455" Command="{Binding LoginCommand}"/>
+>>>>>>> 106ea308d0c15c153de804aa3053ad5557ccd71b
                 </StackPanel>
             </StackPanel>
         </Border>
