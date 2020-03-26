@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.ComponentModel;
+using System.Collections.ObjectModel;
 
 namespace GUI_Kassörska.ViewModels
 {
@@ -11,11 +12,13 @@ namespace GUI_Kassörska.ViewModels
 
 		public CashierRepository repo = new CashierRepository();
 
+		public ObservableCollection<Order> Orders { get; set; }
 		private string orderString;
 
 		public MainViewModel()
 		{
 			var OrderIE = repo.ShowAllOrdersAsync();
+			Orders = new ObservableCollection<Order>(OrderIE.ToList());
 		}
 
 		public string OrderString
