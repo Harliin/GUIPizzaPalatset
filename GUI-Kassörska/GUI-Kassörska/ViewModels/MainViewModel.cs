@@ -9,7 +9,14 @@ namespace GUI_Kassörska.ViewModels
 	{
 		public event PropertyChangedEventHandler PropertyChanged = (sender, e) => { };
 
+		public CashierRepository repo = new CashierRepository();
+
 		private string orderString;
+
+		public MainViewModel()
+		{
+			var OrderIE = repo.ShowAllOrdersAsync();
+		}
 
 		public string OrderString
 		{
