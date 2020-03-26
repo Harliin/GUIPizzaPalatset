@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using DB_OrderInfo;
 using DB_OrderInfo.Food;
 using Food;
 using Npgsql;
@@ -7,7 +8,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
 
-namespace DB_OrderInfo
+namespace GUI_OrderInfo
 {
     public class OrderInfoRepository : IRepository
     {
