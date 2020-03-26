@@ -39,7 +39,7 @@ namespace GUI_Kock.ViewModels
             Employees = new ObservableCollection<Employee>();
             admin = new Employee();
             Router = state;
-            LoginCommand = new UserLoginCommand(this);
+            LoginCommand = new RelayCommand(Login);
         }
 
         /// <summary>
@@ -60,7 +60,7 @@ namespace GUI_Kock.ViewModels
         public ICommand LoginCommand
         {
             get;
-            private set;
+            set;
         }
 
         /// <summary>

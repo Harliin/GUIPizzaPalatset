@@ -5,15 +5,18 @@ using System.Windows.Input;
 
 namespace GUI_Kock.ViewModels.Commands
 {
-    public class UserLoginCommand : ICommand
+    public class RelayCommand : ICommand
     {
         /// <summary>
         /// Initializes a new instance of the CustomerUpdateCommand class.
         /// </summary>
         /// <param name="viewModel"></param>
-        public UserLoginCommand(LoginViewModel viewModel)
+       
+            public Predicate<object> Predicate { get; set; }
+        public Action<object> Action { get; set; }
+        public RelayCommand(Action<object> action)
         {
-            this.viewModel = viewModel;
+            Action = action;
         }
 
         private LoginViewModel viewModel;
@@ -25,12 +28,13 @@ namespace GUI_Kock.ViewModels.Commands
 
         public bool CanExecute(object parameter)
         {
-            return viewModel.CheckUser();
+            //return viewModel.CheckUser();
+            return true;
         }
 
         public void Execute(object parameter)
         {
-            viewModel.Login();
+            Execute();
         }
 
         #endregion

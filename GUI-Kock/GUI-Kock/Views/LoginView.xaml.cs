@@ -24,14 +24,15 @@ namespace GUI_Kock.Views
         public LoginView()
         {
             InitializeComponent();
+            
             this.WhenActivated(disposables =>
             {
                 this.OneWayBind(ViewModel, x => x.Employees, view => view.userName.ItemsSource)
                 .DisposeWith(disposables);
                 ViewModel.Populate();
 
-                this.BindCommand(ViewModel, x => x.GoToOrderView, x => x.loginBtm)
-                .DisposeWith(disposables);
+                //this.BindCommand(ViewModel, x => x.LoginCommand, x => x.loginBtm)
+                //.DisposeWith(disposables);
 
             });
         }
