@@ -27,17 +27,12 @@ namespace GUI_Kock.ViewModels
 
             this.thisWindow = thisWindow;
 
-            //Jesse Comments Detta Behövs inte då vi under App starten registerar alla vyer
 
             // Instead of registering views manually, you 
             // can use custom IViewLocator implementation,
             // see "View Location" section for details.
             //
             Locator.CurrentMutable.Register(() => new LoginView(), typeof(IViewFor<LoginViewModel>));
-
-
-            //Jesse detta är om du vill byta frame genom en knapp
-            //GoToView = ReactiveCommand.CreateFromObservable(() => Router.Navigate.Execute(new StartViewModel()));
 
             Router.Navigate.Execute(new LoginViewModel(Router));
         }

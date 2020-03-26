@@ -26,13 +26,12 @@ namespace GUI_Kock.Views
             InitializeComponent();
             this.WhenActivated(disposables =>
             {
-                this.BindCommand(ViewModel, x => x.GoToOrderView, x => x.loginBtm);
-
-                this.OneWayBind(ViewModel,
-                              x => x.Employees,
-                              view => view.userName.ItemsSource)
+                this.OneWayBind(ViewModel, x => x.Employees, view => view.userName.ItemsSource)
                 .DisposeWith(disposables);
                 ViewModel.Populate();
+
+                this.BindCommand(ViewModel, x => x.GoToOrderView, x => x.loginBtm)
+                .DisposeWith(disposables);
 
             });
         }
