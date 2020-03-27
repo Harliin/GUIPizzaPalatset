@@ -16,6 +16,7 @@ namespace GUI_Kassörska.ViewModels
             OrderList = new ObservableCollection<string>();
             
         }
+
         public int ID { get; set; }
         public eStatus Status { get; set; }
         public int EmployeeID { get; set; }
