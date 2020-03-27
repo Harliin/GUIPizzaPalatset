@@ -44,15 +44,17 @@ namespace GUI_Beställning.ViewModels
             set
             {
                 var pizzaIE = repo.GetPizzas();
-                pizzas = new ObservableCollection<Pizza>(pizzaIE.ToList()); 
+                pizzas = new ObservableCollection<Pizza>(pizzaIE.ToList());
             }
         }
 
 
-        private void AddPizzaToOrder(object id)
+        private void AddPizzaToOrder(object id, object foodtype)
         {
             repo.AddPizzaToOrder(MainWindowViewModel.OrderID, (int)id);
             MainWindowViewModel.ShowOrder();
         }
     }
+
+    
 }

@@ -57,9 +57,11 @@ namespace GUI_Beställning.ViewModels
 
             
         }
-        public void RemoveFoodFromOrder(object id)
+        public void RemoveFoodFromOrder(object parameter)
         {
-            var kind = id;
+            var values = (object[])parameter;
+            var id = (int)values[0];
+            var foodType = (Order.eFoodType)values[1];
         }
     }
 }
