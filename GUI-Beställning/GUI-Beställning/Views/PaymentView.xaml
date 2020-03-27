@@ -30,7 +30,7 @@
         <Label Content="Order" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="DemiBold"/>
         <Label Content="Pris Kr" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="DemiBold"/>
         <Separator Grid.ColumnSpan="3" VerticalAlignment="Bottom" Height="7" Background="Black"/>
-        <ItemsControl Grid.Row="1" Grid.Column="0" ItemsSource="{Binding CurrentOrderName}" HorizontalAlignment="Center" FontWeight="DemiBold" FontSize="15">
+        <!--<ItemsControl Grid.Row="1" Grid.Column="0" ItemsSource="{Binding CurrentOrderName}" HorizontalAlignment="Center" FontWeight="DemiBold" FontSize="15">
             <ItemsControl.ItemContainerStyle>
                 <Style>
                     <Setter Property="FrameworkElement.Margin" Value="3"/>
@@ -54,11 +54,24 @@
                             Command="{Binding Path=DataContext.RemoveCommand, ElementName=myControl}"  HorizontalAlignment="Left">
                         <Button.CommandParameter>
                             <MultiBinding Converter="{x:Static cnv:OrderConverter.Instance}">
-                                <Binding  Path="CurrentFoodID" ElementName="ThisWindow"/>
+                                <Binding  Path="CurrentFoodID" ElementName="myControl"/>
                                 <Binding Path="FoodType" ElementName="ThisWindow"/>
                             </MultiBinding>
                         </Button.CommandParameter>
                     </Button>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>-->
+        <ItemsControl ItemsSource="{Binding CurrentOrder}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <ItemsControl ItemsSource="{Binding pizza}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Name}"/>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
