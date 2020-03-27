@@ -1,12 +1,9 @@
 ﻿using Dapper;
 using DB_OrderInfo;
 using DB_OrderInfo.Food;
-using Food;
-using Npgsql;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Threading.Tasks;
 
 namespace GUI_OrderInfo
 {
@@ -17,9 +14,9 @@ namespace GUI_OrderInfo
         public static int Backend { get; set; }
         public OrderInfoRepository()
         {
-                ConnectionString = "Data Source=SQL6009.site4now.net;Initial Catalog=DB_A53DDD_Grupp1;User Id=DB_A53DDD_Grupp1_admin;Password=Password123;";
-                connection = new SqlConnection(ConnectionString);
-                connection.Open();
+            ConnectionString = "Data Source=SQL6009.site4now.net;Initial Catalog=DB_A53DDD_Grupp1;User Id=DB_A53DDD_Grupp1_admin;Password=Password123;";
+            connection = new SqlConnection(ConnectionString);
+            connection.Open();
 
         }
         private IDbConnection Connection
@@ -27,14 +24,7 @@ namespace GUI_OrderInfo
             get
             {
                 IDbConnection con;
-                if (Backend == 1)
-                {
-                    con = new SqlConnection(ConnectionString);
-                }
-                else
-                {
-                    con = new NpgsqlConnection(ConnectionString);
-                }
+                con = new SqlConnection(ConnectionString);
                 con.Open();
                 return con;
             }
@@ -58,6 +48,6 @@ namespace GUI_OrderInfo
             }
         }
 
-        
+
     }
 }

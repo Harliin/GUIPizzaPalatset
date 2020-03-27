@@ -10,7 +10,6 @@ namespace GUI_OrderInfo
         public MainWindow()
         {
             InitializeComponent();
-            //this.DataContext = ViewModels.MainWindowViewModel;
         }
     }
 }
