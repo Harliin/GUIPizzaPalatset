@@ -11,7 +11,13 @@ namespace GUI_Beställning.Models
     {
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
-            return new FoodModel() { ID = values[0] as string, FoodType = values[1] as string};
+            int id = 0;
+            if (values[0] is int)
+            {
+                id = (int)values[0];
+            }
+            
+            return new FoodModel() { ID = id, FoodType = values[1] as string};
         }
 
         public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)

@@ -6,7 +6,7 @@ namespace GUI_Beställning.Models.Data
 {
    public  class FoodModel
     {
-        public string ID { get; set; }
+        public int ID { get; set; }
 
         public string FoodType { get; set; }
     }

@@ -9,6 +9,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" Background="#FFF"
+                          x:Name="ThisWindow"
              d:DesignHeight="400" d:DesignWidth="400">
     <!--FÄRGKODER
     Rosa: #D70F64
@@ -53,8 +54,8 @@
                             Command="{Binding Path=DataContext.RemoveCommand, ElementName=myControl}"  HorizontalAlignment="Left">
                         <Button.CommandParameter>
                             <MultiBinding Converter="{x:Static cnv:OrderConverter.Instance}">
-                                <Binding ElementName="myControl"/>
-                                <Binding Path="Text" ElementName="foodType"/>
+                                <Binding  Path="CurrentFoodID" ElementName="ThisWindow"/>
+                                <Binding Path="FoodType" ElementName="ThisWindow"/>
                             </MultiBinding>
                         </Button.CommandParameter>
                     </Button>

@@ -63,5 +63,8 @@ namespace GUI_Beställning.ViewModels
             var id = (int)values[0];
             var foodType = (string)values[1];
         }
+
+        public int ID { get; set; }
+        public string foodType { get; set; }
     }
 }
