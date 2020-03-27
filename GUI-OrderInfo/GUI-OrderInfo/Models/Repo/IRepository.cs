@@ -6,14 +6,14 @@ namespace DB_OrderInfo
 {
     public interface IRepository
     {
-        Task AddIngredientToPizzaAsync(int pizzaID, int[] ingridients);
-        Task<IEnumerable<Drink>> ShowDrinksAsync();
-        Task<IEnumerable<Extra>> ShowExtraAsync();
-        Task<IEnumerable<Ingredient>> ShowIngredientsAsync();
-        //Task<IEnumerable<OrderFood>> ShowOrderFood();
-        Task<IEnumerable<Pasta>> ShowPastasAsync();
-        //Task<IEnumerable<PizzaIngredient>> ShowPizzaAndIngredients();
-        Task<IEnumerable<Pizza>> ShowPizzasAsync();
-        Task<IEnumerable<Sallad>> ShowSalladsAsync();
+        //AddIngredientToPizzaAsync(int pizzaID, int[] ingridients);
+       //IEnumerable<Drink>> ShowDrinks();
+       //IEnumerable<Extra>> ShowExtra();
+       //IEnumerable<Ingredient>> ShowIngredients();
+       //IEnumerable<OrderFood>> ShowOrderFood();
+       //IEnumerable<Pasta>> ShowPastasAsync();
+       //IEnumerable<PizzaIngredient>> ShowPizzaAndIngredients();
+       //IEnumerable<Pizza>> ShowPizzasAsync();
+       //IEnumerable<Sallad>> ShowSalladsAsync();
     }
 }

@@ -6,7 +6,6 @@
         xmlns:local="clr-namespace:GUI_OrderInfo"
         xmlns:Repository="clr-namespace:GUI_OrderInfo.Repository" x:Class="GUI_OrderInfo.MainWindow"
         mc:Ignorable="d"
-        DataContext="{Binding Source={StaticResource MainWindowViewModel}}"
         Title="MainWindow" Height="450" Width="800">
 
     <Border Margin="20" Background="Beige" CornerRadius="5">
