@@ -18,7 +18,7 @@ namespace GUI_Beställning.ViewModels
 
 
         public OrderRepository repo = new OrderRepository();
-        public ObservableCollection<Pizza> Pizzas { get; set; }
+        //public ObservableCollection<Pizza> _Pizzas { get; set; }
 
         public MainWindowViewModel MainWindowViewModel = new MainWindowViewModel();
         public RelayCommand AddPizzaCommand { get; set; }
@@ -28,11 +28,26 @@ namespace GUI_Beställning.ViewModels
             //gets hostscreen??
             HostScreen = screen ?? Locator.Current.GetService<IScreen>();
 
-            var PizzaIE = repo.GetPizzas();
+            Pizzas = new ObservableCollection<Pizza>();
+
+            //var PizzaIE = repo.GetPizzas();
             
-            Pizzas = new ObservableCollection<Pizza>(PizzaIE.ToList());
+            //Pizzas = new ObservableCollection<Pizza>(PizzaIE.ToList());
             
         }
+
+        private ObservableCollection<Pizza> pizzas;
+
+        public ObservableCollection<Pizza> Pizzas
+        {
+            get { return pizzas; }
+            set
+            {
+                var pizzaIE = repo.GetPizzas();
+                pizzas = new ObservableCollection<Pizza>(pizzaIE.ToList()); 
+            }
+        }
+
 
         private void AddPizzaToOrder(object id)
         {
