@@ -9,14 +9,12 @@ namespace GUI_Kassörska.ViewModels
     public class Order
     {
         public ObservableCollection<string> OrderList { get; set; }
+
+        CashierRepository repo = new CashierRepository();
         public Order()
         {
-            OrderList = new ObservableCollection<string>()
-            {
-                "Pågående order 1",
-                "Pågående order 2",
-                "Pågående order 3"
-            };
+            OrderList = new ObservableCollection<string>();
+            
         }
         public int ID { get; set; }
         public eStatus Status { get; set; }
