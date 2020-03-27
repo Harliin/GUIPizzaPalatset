@@ -32,7 +32,7 @@ namespace GUI_Beställning.ViewModels
         public PaymentViewModel(IScreen screen = null)
         {
             RemoveCommand = new RelayCommand(RemoveFoodFromOrder);
-            OrderID = 124;
+            OrderID = 125;
             HostScreen = screen ?? Locator.Current.GetService<IScreen>();
             ShowOrder();
             

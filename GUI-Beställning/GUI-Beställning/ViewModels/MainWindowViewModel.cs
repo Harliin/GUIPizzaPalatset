@@ -39,7 +39,7 @@ namespace GUI_Beställning.ViewModels
 
         public MainWindowViewModel()
         {
-            OrderID = 124;
+            OrderID = 125;
 
             Router = new RoutingState();
 

@@ -1,5 +1,5 @@
 ﻿<rxui:ReactiveUserControl x:Class="GUI_Beställning.Views.PaymentView"
-             
+             xmlns:cnv="clr-namespace:GUI_Beställning.Models"
              x:TypeArguments="vm:PaymentViewModel"
              xmlns:rxui="http://reactiveui.net"
              xmlns:vm="clr-namespace:GUI_Beställning.ViewModels"
@@ -16,7 +16,7 @@
     Ljusgrå: #97AABD
     Vit : #FFFFFF
     -->
-    <Grid>
+    <Grid x:Name="myControl2">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
@@ -49,9 +49,9 @@
                     <Button Content="{materialDesign:PackIcon Kind=RemoveCircle,Size=25}" Foreground="#D70F64" 
                             Command="{Binding Path=DataContext.RemoveCommand, ElementName=myControl}"  HorizontalAlignment="Left">
                         <Button.CommandParameter>
-                            <MultiBinding Converter="{StaticResource OrderConverter}">
-                                <Binding Path="id" ElementName="myCanvas"/>
-                                <Binding Path="foodType" ElementName="myCanvas"/>
+                            <MultiBinding Converter="{x:Static cnv:OrderConverter.Instance}">
+                                <Binding Path="id" ElementName="myControl2"/>
+                                <Binding Path="foodType" ElementName="myControl2"/>
                             </MultiBinding>
                         </Button.CommandParameter>
                     </Button>
