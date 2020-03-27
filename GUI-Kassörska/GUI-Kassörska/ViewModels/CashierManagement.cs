@@ -58,7 +58,7 @@ namespace GUI_Kassörska.ViewModels
                 isValid = int.TryParse(Console.ReadLine(), out int cashierOrderChoice);
                 if (isValid)
                 {
-                    if ((listOfOrders.Exists(x => x.ID == cashierOrderChoice)))
+                    if ((listOfOrders.Exists(x => x.OrderID == cashierOrderChoice)))
                     {
                         orderID = cashierOrderChoice;
                     }
