@@ -49,7 +49,7 @@ namespace GUI_Beställning.ViewModels
             var ordersIE = repo.ShowOrderByID(this.OrderID);
             var temp = ordersIE.ToList();
             CurrentOrder = temp[0];
-            CurrentOrder.pizza.ForEach(pizza => { CurrentOrderName.Add(pizza.Name); CurrentOrderPrice.Add(pizza.Price); CurrentFoodID.Add(pizza.ID); FoodType.Add("pizza"); });
+            CurrentOrder.pizza.ForEach(pizza => { CurrentOrderName.Add(pizza.Name); CurrentOrderPrice.Add(pizza.Price); CurrentFoodID.Add(pizza.ID); FoodType.Add(pizza.Type); });
             CurrentOrder.pasta.ForEach(pasta => { CurrentOrderName.Add(pasta.Name); CurrentOrderPrice.Add(pasta.Price); CurrentFoodID.Add(pasta.ID); FoodType.Add("pasta"); });
             CurrentOrder.sallad.ForEach(sallad => { CurrentOrderName.Add(sallad.Name); CurrentOrderPrice.Add(sallad.Price); CurrentFoodID.Add(sallad.ID); FoodType.Add("sallad"); });
             CurrentOrder.drink.ForEach(drink => { CurrentOrderName.Add(drink.Name); CurrentOrderPrice.Add(drink.Price); CurrentFoodID.Add(drink.ID); FoodType.Add("drink"); });

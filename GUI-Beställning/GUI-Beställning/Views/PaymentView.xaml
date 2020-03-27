@@ -62,18 +62,7 @@
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>-->
-        <ItemsControl ItemsSource="{Binding CurrentOrder}">
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <ItemsControl ItemsSource="{Binding pizza}">
-                        <ItemsControl.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding Name}"/>
-                            </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                    </ItemsControl>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
+        <ItemsControl Grid.Row="1" ItemsSource="{Binding CurrentOrderType}">
         </ItemsControl>
     </Grid>
 </rxui:ReactiveUserControl>
