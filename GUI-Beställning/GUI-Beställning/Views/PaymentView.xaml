@@ -43,6 +43,9 @@
                 </Style>
             </ItemsControl.ItemContainerStyle>
         </ItemsControl>
+        <ItemsControl ItemsSource="{Binding foodType}" x:Name="foodType">
+            
+        </ItemsControl>
         <ItemsControl Grid.Row="1" Grid.Column="2" ItemsSource="{Binding CurrentFoodID}" x:Name="myControl">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
@@ -50,8 +53,8 @@
                             Command="{Binding Path=DataContext.RemoveCommand, ElementName=myControl}"  HorizontalAlignment="Left">
                         <Button.CommandParameter>
                             <MultiBinding Converter="{x:Static cnv:OrderConverter.Instance}">
-                                <Binding Path="id" ElementName="myControl2"/>
-                                <Binding Path="foodType" ElementName="myControl2"/>
+                                <Binding ElementName="myControl"/>
+                                <Binding Path="Text" ElementName="foodType"/>
                             </MultiBinding>
                         </Button.CommandParameter>
                     </Button>
