@@ -87,6 +87,7 @@ namespace GUI_Beställning.ViewModels
                 repo.RemoveExtraFromOrder(OrderID, extra.ID);
             }
             MainWindowViewModel.Order = new ObservableCollection<object>();
+            this.RaisePropertyChanged(nameof(Foods));
         }
     }
 

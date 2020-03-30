@@ -34,6 +34,7 @@ namespace GUI_Beställning.ViewModels
             {
                 this.RaiseAndSetIfChanged(ref _Order, ShowOrder());
                 this.RaisePropertyChanged(nameof(Order));
+                //this.RaisePropertyChanged(nameof(Payment.Foods));
             }
         }
 
@@ -53,7 +54,7 @@ namespace GUI_Beställning.ViewModels
 
         public MainWindowViewModel()
         {
-            Payment = new PaymentViewModel();
+            
             OrderID = 125;
 
             Router = new RoutingState();
@@ -90,7 +91,7 @@ namespace GUI_Beställning.ViewModels
 
             #endregion
 
-            //this.Order = new ObservableCollection<object>();
+            this.Order = new ObservableCollection<object>();
         }
 
         /// <summary>
