@@ -25,7 +25,7 @@ namespace GUI_Kock.ViewModels
         public ObservableCollection<Employee> Employees { get; private set; }
         private Employee admin;
         public ReactiveCommand<Unit, IRoutableViewModel> GoToOrderView { get; private set; }
-        private OrderViewModel orderViewModel;
+        public ReactiveCommand<Unit, Unit> LoginCommand { get; private set; }
 
         #region Routing
         public string UrlPathSegment => "Login";
@@ -40,7 +40,8 @@ namespace GUI_Kock.ViewModels
             Employees = new ObservableCollection<Employee>();
             admin = new Employee();
             Router = state;
-            LoginCommand = new RelayCommand(Login); //Lägg till (CheckUser) när Binding knappen fungerar
+            LoginCommand = ReactiveCommand.Create(Login, canLogin);
+            // LoginCommand = new RelayCommand(Login); //Lägg till (CheckUser) när Binding knappen fungerar
         }
 
         /// <summary>
@@ -58,34 +59,48 @@ namespace GUI_Kock.ViewModels
         /// <summary>
         /// Gets the loginCommand for the ViewModel  
         /// </summary>
-        public RelayCommand LoginCommand
-        {
-            get;
-            set;
-        }
+        //public RelayCommand LoginCommand
+        //{
+        //    get;
+        //    set;
+        //}
 
         /// <summary>
         /// Checks that there's a user in database. Användarnamn: ba1  Lösen: ba1 
         /// </summary>
         /// <returns></returns>
-        public bool CheckUser()
-        {
-            string AdminName = admin.name;
-            string password = admin.password;
+        //public bool CheckUser()
+        //{
+        //    string AdminName = admin.name;
+        //    string password = admin.password;
 
-            var admins = repo.GetChefs(AdminName, password);
+        //    var admins = repo.GetChefs(AdminName, password);
 
-            if (admins == admin)
-            {
-                return true;     
-            }
-            else
-            {
-                MessageBox.Show("Felaktigt inloggning!");
-                CheckUser();
-            }
-            return true;
-        }
+        //    if (admins == admin)
+        //    {
+        //        return true;
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show("Felaktigt inloggning!");
+        //        CheckUser();
+        //    }
+        //    return true;
+        //}
+
+
+        //Parameter for LoginCommand, preventing the user from proceeding until the validation conditions are met.
+        var canLogin => this.WhenAnyValue(
+           ( x => x.admin.name, x => x.admin.password,
+            (user, pass) =>
+                !string.IsNullOrWhiteSpace(user) &&
+                !string.IsNullOrWhiteSpace(pass) &&
+                user == "Tony" && pass == "admin123" || 
+                user == "Giovanni" && pass == "bagare2" || 
+                user == "ba1" && pass == "ba1" ||
+                user == "VD" && pass == "123"))
+
+           .DistinctUntilChanged();
 
         public void Login()
         {

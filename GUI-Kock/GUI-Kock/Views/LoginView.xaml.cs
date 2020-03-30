@@ -34,6 +34,9 @@ namespace GUI_Kock.Views
                 this.BindCommand(ViewModel, x => x.LoginCommand, x => x.loginBtm)
                 .DisposeWith(disposables);
 
+                //this.BindCommand(ViewModel, x => x.GoToOrderView, x => x.loginBtm)
+                //.DisposeWith(disposables);
+
             });
         }
     }
