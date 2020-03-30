@@ -23,7 +23,7 @@ namespace GUI_Beställning.ViewModels
         public MainWindowViewModel MainWindowViewModel = new MainWindowViewModel();
         public RelayCommand AddPizzaCommand { get; set; }
 
-        PaymentViewModel payment;
+        PaymentViewModel Payment;
         public PizzaMenuViewModel(IScreen screen = null)
         {
             AddPizzaCommand = new RelayCommand(AddPizzaToOrder);
@@ -32,10 +32,7 @@ namespace GUI_Beställning.ViewModels
 
             Pizzas = new ObservableCollection<Pizza>();
 
-            //var PizzaIE = repo.GetPizzas();
-            
-            //Pizzas = new ObservableCollection<Pizza>(PizzaIE.ToList());
-            
+            Payment = new PaymentViewModel();
         }
 
         private ObservableCollection<Pizza> pizzas;
@@ -55,7 +52,7 @@ namespace GUI_Beställning.ViewModels
         {
             Pizza pizza = (Pizza)Pizza;
             repo.AddPizzaToOrder(MainWindowViewModel.OrderID, pizza.ID);
-            payment.Foods = new ObservableCollection<object>();
+            Payment.Foods = new ObservableCollection<object>();
         }
     }
 

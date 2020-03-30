@@ -31,6 +31,8 @@ namespace GUI_Beställning.ViewModels
             Sallads = new ObservableCollection<Sallad>(salladIE.ToList());
 
             AddSalladCommand = new RelayCommand(AddSalladToOrder);
+
+            Payment = new PaymentViewModel();
         }
         
         private void AddSalladToOrder(object Sallad)

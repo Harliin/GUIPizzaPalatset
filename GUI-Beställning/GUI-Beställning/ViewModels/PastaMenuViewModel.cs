@@ -23,21 +23,22 @@ namespace GUI_Beställning.ViewModels
         public ObservableCollection<Pasta> Pastas { get; set; }
         public RelayCommand AddPastaCommand { get; set; }
 
-        PaymentViewModel payment;
+        PaymentViewModel Payment;
 
         public PastaMenuViewModel(IScreen screen = null)
         {
             AddPastaCommand = new RelayCommand(AddPastaToOrder);
             HostScreen = screen ?? Locator.Current.GetService<IScreen>();
             var PastaIE = repo.ShowPastas();
-            Pastas = new ObservableCollection<Pasta>(PastaIE.ToList()); 
+            Pastas = new ObservableCollection<Pasta>(PastaIE.ToList());
+            Payment = new PaymentViewModel();
         }
 
         private void AddPastaToOrder(object Pasta)
         {
             Pasta pasta = (Pasta)Pasta;
             repo.AddPastaToOrder(MainWindowViewModel.OrderID, pasta.ID);
-            payment.Foods = new ObservableCollection<object>();
+            Payment.Foods = new ObservableCollection<object>();
         }
     }
 }
