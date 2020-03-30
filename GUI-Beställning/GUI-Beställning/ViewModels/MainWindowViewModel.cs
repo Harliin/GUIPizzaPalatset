@@ -21,10 +21,12 @@ namespace GUI_Beställning.ViewModels
         public RoutingState Router { get; }
         public Order CurrentOrder { get; set; }
 
+
         public PaymentViewModel Payment;
         //public ObservableCollection<object> Order => Payment.Foods;
 
         private ObservableCollection<object> _Order;
+
         public ObservableCollection<object> Order
         {
             get { return _Order; }
@@ -38,8 +40,6 @@ namespace GUI_Beställning.ViewModels
         public int TotalPrice { get; set; }
         public static int OrderID { get; set; }
 
-
-
         #region Commands
         public ReactiveCommand<Unit, IRoutableViewModel> PizzaMenu { get; }
         public ReactiveCommand<Unit, IRoutableViewModel> PastaMenu { get; }
@@ -50,7 +50,6 @@ namespace GUI_Beställning.ViewModels
         public ReactiveCommand<Unit, IRoutableViewModel> PaymentMenu { get; }
 
         #endregion
-
 
         public MainWindowViewModel()
         {

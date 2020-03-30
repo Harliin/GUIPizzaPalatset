@@ -20,7 +20,7 @@ namespace GUI_Beställning.ViewModels
 
         #endregion
 
-        PaymentViewModel Payment;
+        
         public OrderRepository repo = new OrderRepository();
         public ObservableCollection<Extra> Extras { get; set; }
         public MainWindowViewModel MainWindowViewModel = new MainWindowViewModel();
@@ -28,7 +28,6 @@ namespace GUI_Beställning.ViewModels
         public ExtraMenuViewModel(IScreen screen = null)
         {
             HostScreen = screen ?? Locator.Current.GetService<IScreen>();
-            Payment = new PaymentViewModel();
             var extrasIE = repo.ShowExtra();
             Extras = new ObservableCollection<Extra>(extrasIE.ToList());
             AddExtraCommand = new RelayCommand(AddExtraToOrder);
@@ -38,7 +37,7 @@ namespace GUI_Beställning.ViewModels
         {
             Extra extra = (Extra)Extra;
             repo.AddExtraToOrder(MainWindowViewModel.OrderID, extra.ID);
-            Payment.Foods = new ObservableCollection<object>();
+            MainWindowViewModel.Order = new ObservableCollection<object>();
         }
     }
 }

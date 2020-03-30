@@ -49,29 +49,10 @@ namespace GUI_Beställning.ViewModels
             HostScreen = screen ?? Locator.Current.GetService<IScreen>();
             //_Foods = new ObservableCollection<object>();
             //Foods = new ObservableCollection<object>();
-            
+
         }
 
-        /// <summary>
-        /// Adds all the foods in a order to a observable Collection
-        /// </summary>
-        //public ObservableCollection<object> ShowOrder()
-        //{
-
-        //    var ordersIE = repo.ShowOrderByID(this.OrderID);
-        //    var temp = ordersIE.ToList();
-        //    List<object> myList = new List<object>();
-        //    CurrentOrder = temp[0];
-
-        //    CurrentOrder.pizza.ForEach(pizza => { myList.Add(pizza); });
-        //    CurrentOrder.pasta.ForEach(pasta => { myList.Add(pasta); });
-        //    CurrentOrder.sallad.ForEach(sallad => { myList.Add(sallad); });
-        //    CurrentOrder.drink.ForEach(drink => { myList.Add(drink); });
-        //    CurrentOrder.extra.ForEach(extra => { myList.Add(extra); });
-
-        //    return new ObservableCollection<object>(myList);
-        //}
-
+    
         /// <summary>
         /// Method To remove Food From a Order
         /// </summary>
