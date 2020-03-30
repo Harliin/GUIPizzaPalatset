@@ -22,6 +22,8 @@ namespace GUI_Beställning.ViewModels
         public MainWindowViewModel MainWindowViewModel = new MainWindowViewModel();
         public ObservableCollection<Drink> Drinks { get; set; }
         public RelayCommand AddDrinkCommand { get; set; }
+
+        PaymentViewModel payment;
         public DrinkMenuViewModel(IScreen screen = null)
         {
             HostScreen = screen ?? Locator.Current.GetService<IScreen>();
@@ -35,7 +37,7 @@ namespace GUI_Beställning.ViewModels
         {
             Drink drink = (Drink)Drink;
             repo.AddDrinkToOrder(MainWindowViewModel.OrderID, drink.ID);
-            MainWindowViewModel.ShowOrder();
+            payment.Foods = new ObservableCollection<object>();
         }
     }
 }

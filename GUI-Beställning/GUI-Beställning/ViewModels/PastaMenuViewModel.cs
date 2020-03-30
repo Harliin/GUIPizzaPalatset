@@ -23,6 +23,8 @@ namespace GUI_Beställning.ViewModels
         public ObservableCollection<Pasta> Pastas { get; set; }
         public RelayCommand AddPastaCommand { get; set; }
 
+        PaymentViewModel payment;
+
         public PastaMenuViewModel(IScreen screen = null)
         {
             AddPastaCommand = new RelayCommand(AddPastaToOrder);
@@ -35,7 +37,7 @@ namespace GUI_Beställning.ViewModels
         {
             Pasta pasta = (Pasta)Pasta;
             repo.AddPastaToOrder(MainWindowViewModel.OrderID, pasta.ID);
-            MainWindowViewModel.ShowOrder();
+            payment.Foods = new ObservableCollection<object>();
         }
     }
 }
