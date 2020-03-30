@@ -31,6 +31,7 @@ namespace GUI_Beställning.ViewModels
             {
                 this.RaiseAndSetIfChanged(ref _Foods, ShowOrder());
                 this.RaisePropertyChanged(nameof(Foods));
+                this.RaisePropertyChanged(nameof(MainWindowViewModel.Order));
             }
         }
 

@@ -21,8 +21,8 @@ namespace GUI_Beställning.ViewModels
         public RoutingState Router { get; }
         public Order CurrentOrder { get; set; }
 
-        public PaymentViewModel payment;
-        public ObservableCollection<object> Order => payment.Foods;
+        public PaymentViewModel Payment;
+        public ObservableCollection<object> Order => Payment.Foods;
         //public ObservableCollection<object> _Order;
 
 
@@ -55,6 +55,7 @@ namespace GUI_Beställning.ViewModels
 
         public MainWindowViewModel()
         {
+            Payment = new PaymentViewModel();
             OrderID = 125;
 
             Router = new RoutingState();
