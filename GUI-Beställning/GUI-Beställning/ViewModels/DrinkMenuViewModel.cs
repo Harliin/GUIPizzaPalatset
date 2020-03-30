@@ -23,11 +23,11 @@ namespace GUI_Beställning.ViewModels
         public ObservableCollection<Drink> Drinks { get; set; }
         public RelayCommand AddDrinkCommand { get; set; }
 
-        PaymentViewModel payment;
+        PaymentViewModel Payment;
         public DrinkMenuViewModel(IScreen screen = null)
         {
             HostScreen = screen ?? Locator.Current.GetService<IScreen>();
-
+            Payment = new PaymentViewModel();
             var drinksIE = repo.ShowDrinks();
             Drinks = new ObservableCollection<Drink>(drinksIE.ToList());
             AddDrinkCommand = new RelayCommand(AddDrinkToOrder);
@@ -37,7 +37,7 @@ namespace GUI_Beställning.ViewModels
         {
             Drink drink = (Drink)Drink;
             repo.AddDrinkToOrder(MainWindowViewModel.OrderID, drink.ID);
-            payment.Foods = new ObservableCollection<object>();
+            Payment.Foods = new ObservableCollection<object>();
         }
     }
 }
