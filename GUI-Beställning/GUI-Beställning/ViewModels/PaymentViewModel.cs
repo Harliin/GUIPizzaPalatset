@@ -23,19 +23,21 @@ namespace GUI_Beställning.ViewModels
         #endregion
         public Order CurrentOrder { get; set; }
         public OrderRepository repo = new OrderRepository();
-        private ObservableCollection<object> _Foods;
-        public ObservableCollection<object> Foods
-        {
-            get { return _Foods; }
-            set
-            {
-                this.RaiseAndSetIfChanged(ref _Foods, ShowOrder());
-                this.RaisePropertyChanged(nameof(Foods));
-                this.RaisePropertyChanged(nameof(MainWindowViewModel.Order));
-            }
-        }
+        //private ObservableCollection<object> _Foods;
+        //public ObservableCollection<object> Foods
+        //{
+        //    get { return _Foods; }
+        //    set
+        //    {
+        //        this.RaiseAndSetIfChanged(ref _Foods, ShowOrder());
+        //        this.RaisePropertyChanged(nameof(Foods));
+        //        this.RaisePropertyChanged(nameof(MainWindowViewModel.Order));
+        //    }
+        //}
 
+        public ObservableCollection<object> Foods => MainWindowViewModel.Order;
 
+        public MainWindowViewModel MainWindowViewModel = new MainWindowViewModel();
 
         public RelayCommand RemoveCommand { get; set; }
         public ObservableCollection<Order> Orders { get; set; }
@@ -43,32 +45,32 @@ namespace GUI_Beställning.ViewModels
         public PaymentViewModel(IScreen screen = null)
         {
             RemoveCommand = new RelayCommand(RemoveFoodFromOrder);
-            OrderID = MainWindowViewModel.OrderID;
+            OrderID = 125;
             HostScreen = screen ?? Locator.Current.GetService<IScreen>();
             //_Foods = new ObservableCollection<object>();
             //Foods = new ObservableCollection<object>();
-            this.Foods = new ObservableCollection<object>();
+            
         }
 
         /// <summary>
         /// Adds all the foods in a order to a observable Collection
         /// </summary>
-        public ObservableCollection<object> ShowOrder()
-        {
+        //public ObservableCollection<object> ShowOrder()
+        //{
 
-            var ordersIE = repo.ShowOrderByID(this.OrderID);
-            var temp = ordersIE.ToList();
-            List<object> myList = new List<object>();
-            CurrentOrder = temp[0];
+        //    var ordersIE = repo.ShowOrderByID(this.OrderID);
+        //    var temp = ordersIE.ToList();
+        //    List<object> myList = new List<object>();
+        //    CurrentOrder = temp[0];
 
-            CurrentOrder.pizza.ForEach(pizza => { myList.Add(pizza); });
-            CurrentOrder.pasta.ForEach(pasta => { myList.Add(pasta); });
-            CurrentOrder.sallad.ForEach(sallad => { myList.Add(sallad); });
-            CurrentOrder.drink.ForEach(drink => { myList.Add(drink); });
-            CurrentOrder.extra.ForEach(extra => { myList.Add(extra); });
+        //    CurrentOrder.pizza.ForEach(pizza => { myList.Add(pizza); });
+        //    CurrentOrder.pasta.ForEach(pasta => { myList.Add(pasta); });
+        //    CurrentOrder.sallad.ForEach(sallad => { myList.Add(sallad); });
+        //    CurrentOrder.drink.ForEach(drink => { myList.Add(drink); });
+        //    CurrentOrder.extra.ForEach(extra => { myList.Add(extra); });
 
-            return new ObservableCollection<object>(myList);
-        }
+        //    return new ObservableCollection<object>(myList);
+        //}
 
         /// <summary>
         /// Method To remove Food From a Order
@@ -103,7 +105,7 @@ namespace GUI_Beställning.ViewModels
                 Extra extra = (Extra)parameter;
                 repo.RemoveExtraFromOrder(OrderID, extra.ID);
             }
-            Foods = new ObservableCollection<object>();
+            MainWindowViewModel.Order = new ObservableCollection<object>();
         }
     }
 

@@ -22,19 +22,18 @@ namespace GUI_Beställning.ViewModels
         public Order CurrentOrder { get; set; }
 
         public PaymentViewModel Payment;
-        public ObservableCollection<object> Order => Payment.Foods;
-        //public ObservableCollection<object> _Order;
+        //public ObservableCollection<object> Order => Payment.Foods;
 
-
-        //public ObservableCollection<object> Order
-        //{
-        //    get { return _Order; }
-        //    set
-        //    {
-        //        this.RaiseAndSetIfChanged(ref _Order, ShowOrder());
-        //        this.RaisePropertyChanged(nameof(Order));
-        //    }
-        //}
+        private ObservableCollection<object> _Order;
+        public ObservableCollection<object> Order
+        {
+            get { return _Order; }
+            set
+            {
+                this.RaiseAndSetIfChanged(ref _Order, ShowOrder());
+                this.RaisePropertyChanged(nameof(Order));
+            }
+        }
 
         public int TotalPrice { get; set; }
         public static int OrderID { get; set; }
@@ -59,7 +58,6 @@ namespace GUI_Beställning.ViewModels
             OrderID = 125;
 
             Router = new RoutingState();
-            payment = new PaymentViewModel();
             #region Navigation Reactive UI
 
             Locator.CurrentMutable.Register(() => new PizzaMenuView(), typeof(IViewFor<PizzaMenuViewModel>));
@@ -96,7 +94,9 @@ namespace GUI_Beställning.ViewModels
             //this.Order = new ObservableCollection<object>();
         }
 
-
+        /// <summary>
+        /// Adds all the foods in a order to a observable collection
+        /// </summary>
         public ObservableCollection<object> ShowOrder()
         {
             TotalPrice = 0;
@@ -114,7 +114,6 @@ namespace GUI_Beställning.ViewModels
 
             return new ObservableCollection<object>(OrderList);
 
-        //    //PropertyChanged(this, new PropertyChangedEventArgs(nameof(CurOrder)));
         }
     }
 }
