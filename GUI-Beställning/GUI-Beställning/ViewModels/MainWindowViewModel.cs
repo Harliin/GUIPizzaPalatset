@@ -20,7 +20,19 @@ namespace GUI_Beställning.ViewModels
         public OrderRepository repo = new OrderRepository();
         public RoutingState Router { get; }
         public Order CurrentOrder { get; set; }
-        public ObservableCollection<object> Order { get; set; }
+        public ObservableCollection<object> _Order;
+        
+
+        public ObservableCollection<object> Order
+        {
+            get { return _Order; }
+            set 
+            {
+                this.RaiseAndSetIfChanged(ref _Order, ShowOrder());
+                this.RaisePropertyChanged(nameof(Order));
+            }
+        }
+
         public int TotalPrice { get; set; }
         public static int OrderID { get; set; }
 
@@ -75,23 +87,25 @@ namespace GUI_Beställning.ViewModels
 
             #endregion
 
-            ShowOrder();
+            this.Order = new ObservableCollection<object>();
         }
 
-        public void ShowOrder()
+        public ObservableCollection<object> ShowOrder()
         {
             TotalPrice = 0;
-            Order = new ObservableCollection<object>();
-
+            //Order = new ObservableCollection<object>();
+            List<object> OrderList = new List<object>();
             var ordersIE = repo.ShowOrderByID(OrderID);
             var temp = ordersIE.ToList();
 
             CurrentOrder = temp[0];
-            CurrentOrder.pizza.ForEach(pizza => { Order.Add(pizza); TotalPrice += pizza.Price; });
-            CurrentOrder.pasta.ForEach(pasta => { Order.Add(pasta); TotalPrice += pasta.Price; });
-            CurrentOrder.sallad.ForEach(sallad => { Order.Add(sallad); TotalPrice += sallad.Price; });
-            CurrentOrder.drink.ForEach(drink => { Order.Add(drink); TotalPrice += drink.Price; });
-            CurrentOrder.extra.ForEach(extra => { Order.Add(extra); TotalPrice += extra.Price; });
+            CurrentOrder.pizza.ForEach(pizza => { OrderList.Add(pizza); TotalPrice += pizza.Price; });
+            CurrentOrder.pasta.ForEach(pasta => { OrderList.Add(pasta); TotalPrice += pasta.Price; });
+            CurrentOrder.sallad.ForEach(sallad => { OrderList.Add(sallad); TotalPrice += sallad.Price; });
+            CurrentOrder.drink.ForEach(drink => { OrderList.Add(drink); TotalPrice += drink.Price; });
+            CurrentOrder.extra.ForEach(extra => { OrderList.Add(extra); TotalPrice += extra.Price; });
+
+            return new ObservableCollection<object>(OrderList);
 
             //PropertyChanged(this, new PropertyChangedEventArgs(nameof(CurOrder)));
         }

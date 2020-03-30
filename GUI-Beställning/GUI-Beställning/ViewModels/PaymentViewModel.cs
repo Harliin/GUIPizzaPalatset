@@ -66,26 +66,6 @@ namespace GUI_Beställning.ViewModels
             CurrentOrder.drink.ForEach(drink => { myList.Add(drink); });
             CurrentOrder.extra.ForEach(extra => { myList.Add(extra); });
 
-            //if (CurrentOrder.pizza != null)
-            //{
-            //    CurrentOrder.pizza.ForEach(pizza => { myList.Add(pizza); });
-            //}
-            //else if (CurrentOrder.pasta != null)
-            //{
-            //    CurrentOrder.pasta.ForEach(pasta => { myList.Add(pasta); });
-            //}
-            //else if (CurrentOrder.sallad != null)
-            //{
-            //    CurrentOrder.sallad.ForEach(sallad => { myList.Add(sallad); });
-            //}
-            //else if (CurrentOrder.drink != null)
-            //{
-            //    CurrentOrder.drink.ForEach(drink => { myList.Add(drink); });
-            //}
-            //else if (CurrentOrder.extra != null)
-            //{
-            //    CurrentOrder.extra.ForEach(extra => { myList.Add(extra); });
-            //}
             return new ObservableCollection<object>(myList);
         }
 
@@ -123,7 +103,7 @@ namespace GUI_Beställning.ViewModels
                 repo.RemoveExtraFromOrder(OrderID, extra.ID);
             }
             Foods = new ObservableCollection<object>();
-            this.RaisePropertyChanged(nameof(Foods));
+            
         }
     }
 
