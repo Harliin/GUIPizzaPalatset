@@ -28,7 +28,7 @@ namespace GUI_Beställning.ViewModels
         public ExtraMenuViewModel(IScreen screen = null)
         {
             HostScreen = screen ?? Locator.Current.GetService<IScreen>();
-
+            Payment = new PaymentViewModel();
             var extrasIE = repo.ShowExtra();
             Extras = new ObservableCollection<Extra>(extrasIE.ToList());
             AddExtraCommand = new RelayCommand(AddExtraToOrder);
