@@ -58,7 +58,7 @@ namespace GUI_Beställning.ViewModels
             OrderID = 125;
 
             Router = new RoutingState();
-
+            payment = new PaymentViewModel();
             #region Navigation Reactive UI
 
             Locator.CurrentMutable.Register(() => new PizzaMenuView(), typeof(IViewFor<PizzaMenuViewModel>));
