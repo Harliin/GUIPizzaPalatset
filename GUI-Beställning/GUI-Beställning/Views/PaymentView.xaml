@@ -28,7 +28,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="5*"/>
-            <RowDefinition Height="100"/>
+            <RowDefinition Height="1.25*"/>
         </Grid.RowDefinitions>
         <Label Content="Order" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="DemiBold"/>
         <Label Content="Pris Kr" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="DemiBold"/>
@@ -51,29 +51,19 @@
                             </Grid.ColumnDefinitions>
                             <TextBlock Text="{Binding Name}" Grid.Column="0" HorizontalAlignment="Center" FontSize="25"/>
                             <TextBlock Text="{Binding Price}" HorizontalAlignment="Center" FontSize="25" Grid.Column="1" Margin="40 0 0 0"/>
-                            <!--<Button Command="{Binding DataContext.RemoveCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}" Grid.Column="2"
-                                CommandParameter="{Binding}" HorizontalAlignment="Right" Width="30" Height="30" Foreground="{x:Null}" Background="{x:Null}">
-                            <materialDesign:PackIcon Kind="RemoveCircle" Foreground="#D70F64" Background="{x:Null}" Width="25" Height="25"/>
-                        </Button>-->
                             <materialDesign:PackIcon Kind="RemoveCircle" Width="40" Height="40" Foreground="#D70F64" Grid.Column="2" HorizontalAlignment="Center"/>
                             <Button Grid.Column="2" Background="{x:Null}" Width="50" Height="50" HorizontalAlignment="Center" CommandParameter="{Binding}"
                                 Command="{Binding DataContext.RemoveCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}" />
                         </Grid>
-
-                        <!--<ItemsControl ItemsSource="{Binding Pizza}">
-                        <ItemsControl.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding Name}"/>
-                            </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                    </ItemsControl>-->
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
         </ScrollViewer>
-       
 
-        <Button Grid.Row="2" Grid.ColumnSpan="3" Width="300" Height="50" VerticalAlignment="Center" 
+        <Viewbox Grid.Row="2" Grid.ColumnSpan="3" Stretch="Uniform">
+            <Button MinWidth="300" MinHeight="50" VerticalAlignment="Center" Margin="15"
                 HorizontalAlignment="Center" Foreground="White" Background="#D70F64" FontSize="23">Betala</Button>
+        </Viewbox>
+        
     </Grid>
 </rxui:ReactiveUserControl>
