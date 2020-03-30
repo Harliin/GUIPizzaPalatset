@@ -13,19 +13,23 @@ namespace GUI_Kassörska.ViewModels
         public eStatus Status { get; set; }
         public int EmployeeID { get; set; }
         public enum eStatus { UnderBeställning = 1, Tillagning = 2, Klar = 3, Avhämtad = 4 }
-        public ObservableCollection<string> OrderList { get; set; }
-        public List<string> Orders { get; set; }
+        public ObservableCollection<Order> OrderList { get; private set; }
+        public List<Order> Orders { get; set; }
 
         CashierRepository repo = new CashierRepository();
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler PropertyChanged = (sender, e) => { };
 
         public Order()
         {
-            OrderList = new ObservableCollection<string>();
+            OrderList = new ObservableCollection<Order>();
             
         }
 
-        
+        public void Populate()
+        {
+            IEnumerable<Order> orders = repo.ShowAllOrders();
+            OrderList.AddRange(orders);
+        }
     }
 }
