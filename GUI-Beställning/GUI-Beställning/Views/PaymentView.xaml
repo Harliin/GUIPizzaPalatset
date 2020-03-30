@@ -8,8 +8,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:local="clr-namespace:GUI_Beställning"         
              mc:Ignorable="d" Background="#FFF"
-                          x:Name="ThisWindow"
+             x:Name="ThisWindow"
              d:DesignHeight="400" d:DesignWidth="400">
     <!--FÄRGKODER
     Rosa: #D70F64
@@ -17,11 +18,12 @@
     Ljusgrå: #97AABD
     Vit : #FFFFFF
     -->
+
     <Grid x:Name="myControl2">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="0.2*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="0.3*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -30,7 +32,7 @@
         <Label Content="Order" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="DemiBold"/>
         <Label Content="Pris Kr" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="DemiBold"/>
         <Separator Grid.ColumnSpan="3" VerticalAlignment="Bottom" Height="7" Background="Black"/>
-        <!--<ItemsControl Grid.Row="1" Grid.Column="0" ItemsSource="{Binding CurrentOrderName}" HorizontalAlignment="Center" FontWeight="DemiBold" FontSize="15">
+        <!--<ItemsControl x:Name="foodName" Grid.Row="1" Grid.Column="0" ItemsSource="{Binding CurrentOrderName}" HorizontalAlignment="Center" FontWeight="DemiBold" FontSize="15">
             <ItemsControl.ItemContainerStyle>
                 <Style>
                     <Setter Property="FrameworkElement.Margin" Value="3"/>
@@ -53,16 +55,53 @@
                     <Button Content="{materialDesign:PackIcon Kind=RemoveCircle,Size=25}" Foreground="#D70F64" 
                             Command="{Binding Path=DataContext.RemoveCommand, ElementName=myControl}"  HorizontalAlignment="Left">
                         <Button.CommandParameter>
-                            <MultiBinding Converter="{x:Static cnv:OrderConverter.Instance}">
-                                <Binding  Path="CurrentFoodID" ElementName="myControl"/>
-                                <Binding Path="FoodType" ElementName="ThisWindow"/>
+                            --><!--<MultiBinding Converter="{Binding Source={StaticResource },
+                                Converter={StaticResource OrderConverter}, Mode=OneWay}">--><!--
+                            <MultiBinding Converter="{StaticResource GUI-}">
+                                <Binding ElementName="myControl" Path="{Binding}" Mode="OneWay"/>
+                                <Binding ElementName="foodName" Path="{Binding}" Mode="OneWay"/>
                             </MultiBinding>
                         </Button.CommandParameter>
+                        
                     </Button>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>-->
-        <ItemsControl Grid.Row="1" ItemsSource="{Binding CurrentOrderType}">
+        <ItemsControl ItemsSource="{Binding Foods}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Vertical"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1.2*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width=".3*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="{Binding Name}" Grid.Column="0" HorizontalAlignment="Center" FontSize="25"/>
+                        <TextBlock Text="{Binding Price}" HorizontalAlignment="Center" FontSize="25" Grid.Column="1" Margin="40 0 0 0"/>
+                        <!--<Button Command="{Binding DataContext.RemoveCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}" Grid.Column="2"
+                                CommandParameter="{Binding}" HorizontalAlignment="Right" Width="30" Height="30" Foreground="{x:Null}" Background="{x:Null}">
+                            <materialDesign:PackIcon Kind="RemoveCircle" Foreground="#D70F64" Background="{x:Null}" Width="25" Height="25"/>
+                        </Button>-->
+                        <materialDesign:PackIcon Kind="RemoveCircle" Width="40" Height="40" Foreground="#D70F64" Grid.Column="2" HorizontalAlignment="Center"/>
+                        <Button Grid.Column="2" Background="{x:Null}" Width="50" Height="50" HorizontalAlignment="Center" CommandParameter="{Binding}"
+                                Command="{Binding DataContext.RemoveCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}" />
+                    </Grid>
+                    
+                    <!--<ItemsControl ItemsSource="{Binding Pizza}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Name}"/>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>-->
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
         </ItemsControl>
+        
     </Grid>
 </rxui:ReactiveUserControl>

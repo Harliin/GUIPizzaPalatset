@@ -21,10 +21,7 @@ namespace GUI_Beställning.ViewModels
         #endregion
         public Order CurrentOrder { get; set; }
         public OrderRepository repo = new OrderRepository();
-        public ObservableCollection<string> CurrentOrderName { get; set; }
-        public ObservableCollection<int> CurrentOrderPrice { get; set; }
-        public ObservableCollection<int> CurrentFoodID { get; set; }
-        public ObservableCollection<string> FoodType { get; set; }
+        public ObservableCollection<object> Foods { get; set; }
 
         public RelayCommand RemoveCommand { get; set; }
         public ObservableCollection<Order> Orders { get; set; }
@@ -40,28 +37,55 @@ namespace GUI_Beställning.ViewModels
 
         public void ShowOrder()
         {
-            CurrentOrderName = new ObservableCollection<string>();
-            CurrentOrderPrice = new ObservableCollection<int>();
-            CurrentFoodID = new ObservableCollection<int>();
-            FoodType = new ObservableCollection<string>();
-
+            Foods = new ObservableCollection<object>();
 
             var ordersIE = repo.ShowOrderByID(this.OrderID);
             var temp = ordersIE.ToList();
             CurrentOrder = temp[0];
-            CurrentOrder.pizza.ForEach(pizza => { CurrentOrderName.Add(pizza.Name); CurrentOrderPrice.Add(pizza.Price); CurrentFoodID.Add(pizza.ID); FoodType.Add(pizza.Type); });
-            CurrentOrder.pasta.ForEach(pasta => { CurrentOrderName.Add(pasta.Name); CurrentOrderPrice.Add(pasta.Price); CurrentFoodID.Add(pasta.ID); FoodType.Add("pasta"); });
-            CurrentOrder.sallad.ForEach(sallad => { CurrentOrderName.Add(sallad.Name); CurrentOrderPrice.Add(sallad.Price); CurrentFoodID.Add(sallad.ID); FoodType.Add("sallad"); });
-            CurrentOrder.drink.ForEach(drink => { CurrentOrderName.Add(drink.Name); CurrentOrderPrice.Add(drink.Price); CurrentFoodID.Add(drink.ID); FoodType.Add("drink"); });
-            CurrentOrder.extra.ForEach(extra => { CurrentOrderName.Add(extra.Name); CurrentOrderPrice.Add(extra.Price); CurrentFoodID.Add(extra.ID); FoodType.Add("extra"); });
 
-            
+            CurrentOrder.pizza.ForEach(pizza => { Foods.Add(pizza); });
+            CurrentOrder.pasta.ForEach(pasta => { Foods.Add(pasta); });
+            CurrentOrder.sallad.ForEach(sallad => { Foods.Add(sallad); });
+            CurrentOrder.drink.ForEach(drink => { Foods.Add(drink); });
+            CurrentOrder.extra.ForEach(extra => { Foods.Add(extra); });
+
+
         }
+
+        /// <summary>
+        /// Method To remove Food From a Order
+        /// </summary>
+        /// <param name="parameter"></param>
         public void RemoveFoodFromOrder(object parameter)
         {
-            var values = (object[])parameter;
-            var id = (int)values[0];
-            var foodType = (string)values[1];
+            var Type = parameter.GetType();
+
+            if (Type == typeof(Pizza))
+            {
+                Pizza pizza = (Pizza)parameter;
+                repo.RemovePizzaFromOrder(OrderID, pizza.ID);
+            }
+            else if(Type == typeof(Pasta))
+            {
+                Pasta pasta = (Pasta)parameter;
+                repo.RemovePastaFromOrder(OrderID, pasta.ID);
+            }
+            else if (Type == typeof(Sallad))
+            {
+                Sallad sallad = (Sallad)parameter;
+                repo.RemoveSalladFromOrder(OrderID, sallad.ID);
+            }
+            else if (Type == typeof(Drink))
+            {
+                Drink drink = (Drink)parameter;
+                repo.RemoveDrinkFromOrder(OrderID, drink.ID);
+            }
+            else if (Type == typeof(Extra))
+            {
+                Extra extra = (Extra)parameter;
+                repo.RemoveExtraFromOrder(OrderID, extra.ID);
+            }
+            
         }
 
         public int ID { get; set; }
