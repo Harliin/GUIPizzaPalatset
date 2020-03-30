@@ -16,12 +16,11 @@ namespace GUI_Beställning.ViewModels
 {
     public class MainWindowViewModel : ReactiveObject, IScreen, INotifyPropertyChanged
     {
-        public event  PropertyChangedEventHandler PropertyChanged = (sender, e) => { };
+        //public event  PropertyChangedEventHandler PropertyChanged = (sender, e) => { };
         public OrderRepository repo = new OrderRepository();
         public RoutingState Router { get; }
-        public List<string> CurOrder { get; set; }
         public Order CurrentOrder { get; set; }
-        public ObservableCollection<string> OrderNames { get; set; }
+        public ObservableCollection<object> Order { get; set; }
         public int TotalPrice { get; set; }
         public int OrderID { get; set; }
 
@@ -78,19 +77,19 @@ namespace GUI_Beställning.ViewModels
         public void ShowOrder()
         {
             TotalPrice = 0;
-            CurOrder = new List<string>();
+            Order = new ObservableCollection<object>();
             var ordersIE = repo.ShowOrderByID(this.OrderID);
-            //this.CurrentOrder = new ObservableCollection<Order>(ordersIE.ToList());
+            
             
             var temp = ordersIE.ToList();
             CurrentOrder = temp[0];
-            CurrentOrder.pizza.ForEach(pizza => { CurOrder.Add(pizza.Name); TotalPrice += pizza.Price; });
-            CurrentOrder.pasta.ForEach(pasta => { CurOrder.Add(pasta.Name); TotalPrice += pasta.Price; });
-            CurrentOrder.sallad.ForEach(sallad => { CurOrder.Add(sallad.Name); TotalPrice += sallad.Price; });
-            CurrentOrder.drink.ForEach(drink => { CurOrder.Add(drink.Name); TotalPrice += drink.Price; });
-            CurrentOrder.extra.ForEach(extra => { CurOrder.Add(extra.Name); TotalPrice += extra.Price; });
+            CurrentOrder.pizza.ForEach(pizza => { Order.Add(pizza); TotalPrice += pizza.Price; });
+            CurrentOrder.pasta.ForEach(pasta => { Order.Add(pasta); TotalPrice += pasta.Price; });
+            CurrentOrder.sallad.ForEach(sallad => { Order.Add(sallad); TotalPrice += sallad.Price; });
+            CurrentOrder.drink.ForEach(drink => { Order.Add(drink); TotalPrice += drink.Price; });
+            CurrentOrder.extra.ForEach(extra => { Order.Add(extra); TotalPrice += extra.Price; });
 
-            PropertyChanged(this, new PropertyChangedEventArgs(nameof(CurOrder)));
+            //PropertyChanged(this, new PropertyChangedEventArgs(nameof(CurOrder)));
         }
     }
 }
