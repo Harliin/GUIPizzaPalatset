@@ -23,7 +23,7 @@ namespace GUI_Beställning.ViewModels
         public Order CurrentOrder { get; set; }
         public ObservableCollection<string> OrderNames { get; set; }
         public int TotalPrice { get; set; }
-        public int OrderID { get; set; }
+        public static int OrderID { get; set; }
 
         #region Commands
         public ReactiveCommand<Unit, IRoutableViewModel> PizzaMenu { get; }
@@ -57,6 +57,8 @@ namespace GUI_Beställning.ViewModels
 
             Locator.CurrentMutable.Register(() => new PaymentView(), typeof(IViewFor<PaymentViewModel>));
 
+            Locator.CurrentMutable.Register(() => new WelcomeView(), typeof(IViewFor<WelcomeViewModel>));
+
 
             PizzaMenu = ReactiveCommand.CreateFromObservable(() => Router.Navigate.Execute(new PizzaMenuViewModel()));
 
@@ -70,6 +72,8 @@ namespace GUI_Beställning.ViewModels
 
             PaymentMenu = ReactiveCommand.CreateFromObservable(() => Router.Navigate.Execute(new PaymentViewModel()));
 
+            Router.Navigate.Execute(new WelcomeViewModel());
+
             #endregion
 
             ShowOrder();
@@ -79,7 +83,7 @@ namespace GUI_Beställning.ViewModels
         {
             TotalPrice = 0;
             CurOrder = new List<string>();
-            var ordersIE = repo.ShowOrderByID(this.OrderID);
+            var ordersIE = repo.ShowOrderByID(OrderID);
             //this.CurrentOrder = new ObservableCollection<Order>(ordersIE.ToList());
             
             var temp = ordersIE.ToList();
