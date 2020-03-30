@@ -31,9 +31,10 @@ namespace GUI_Beställning.ViewModels
             AddDrinkCommand = new RelayCommand(AddDrinkToOrder);
         }
 
-        private void AddDrinkToOrder(object id)
+        private void AddDrinkToOrder(object Drink)
         {
-            repo.AddDrinkToOrder(MainWindowViewModel.OrderID, (int)id);
+            Drink drink = (Drink)Drink;
+            repo.AddDrinkToOrder(MainWindowViewModel.OrderID, drink.ID);
             MainWindowViewModel.ShowOrder();
         }
     }

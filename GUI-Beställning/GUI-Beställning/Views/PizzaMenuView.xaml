@@ -67,10 +67,7 @@
                                             <StackPanel Orientation="Horizontal"  Grid.Column="1" HorizontalAlignment="Center">
                                                 <TextBlock  FontSize="25" VerticalAlignment="Center" Foreground="Black">
                                                 <Run Text="{Binding Price}"/> kr</TextBlock>
-                                                <!--<Button Command="{Binding Path=DataContext.AddPizzaCommand, ElementName=myControl}"
-                                               Background="{x:Null}"  Foreground="#D70F64" VerticalAlignment="Center" CommandParameter="{Binding ID}">
-                                                    <materialDesign:PackIcon Kind="AddCircle" FontSize="35" Width="35" Height="40" Margin="-7"/>
-                                                </Button>-->
+
                                                 <materialDesign:PackIcon Kind="AddCircle" Width="40" Height="40" Foreground="#D70F64" Background="{x:Null}" 
                                                                          VerticalAlignment="Center" HorizontalAlignment="Center" Margin="15 0 0 0"/>
                                                 <Button Command="{Binding Path=DataContext.AddPizzaCommand, ElementName=myControl}" CommandParameter="{Binding}" Background="{x:Null}"

@@ -33,9 +33,10 @@ namespace GUI_Beställning.ViewModels
             AddExtraCommand = new RelayCommand(AddExtraToOrder);
         }
 
-        private void AddExtraToOrder(object id)
+        private void AddExtraToOrder(object Extra)
         {
-            repo.AddExtraToOrder(MainWindowViewModel.OrderID, (int)id);
+            Extra extra = (Extra)Extra;
+            repo.AddExtraToOrder(MainWindowViewModel.OrderID, extra.ID);
             MainWindowViewModel.ShowOrder();
         }
     }

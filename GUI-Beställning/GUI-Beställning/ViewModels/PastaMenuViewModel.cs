@@ -31,9 +31,10 @@ namespace GUI_Beställning.ViewModels
             Pastas = new ObservableCollection<Pasta>(PastaIE.ToList()); 
         }
 
-        private void AddPastaToOrder(object id)
+        private void AddPastaToOrder(object Pasta)
         {
-            repo.AddPastaToOrder(MainWindowViewModel.OrderID, (int)id);
+            Pasta pasta = (Pasta)Pasta;
+            repo.AddPastaToOrder(MainWindowViewModel.OrderID, pasta.ID);
             MainWindowViewModel.ShowOrder();
         }
     }
