@@ -24,16 +24,16 @@ namespace GUI_Beställning.ViewModels
         public Order CurrentOrder { get; set; }
         public OrderRepository repo = new OrderRepository();
         private ObservableCollection<object> _Foods;
-        public ObservableCollection<object> Foods 
+        public ObservableCollection<object> Foods
         {
             get { return _Foods; }
-            set 
+            set
             {
                 this.RaiseAndSetIfChanged(ref _Foods, ShowOrder());
                 this.RaisePropertyChanged(nameof(Foods));
             }
         }
-        
+
 
 
         public RelayCommand RemoveCommand { get; set; }
