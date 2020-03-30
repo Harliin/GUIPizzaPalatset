@@ -28,10 +28,10 @@
                                      Margin="20" HorizontalAlignment="Right" Background="#FFD70F64" BorderBrush="#FFD70F64" FontSize="24" Foreground="#DD0A0000"/>
                 <materialDesign:PackIcon Kind="User" Width="30" Height="30"
                                      Margin="10 60 10 10" HorizontalAlignment="Left"/>
-                <TextBlock x:Name="admin" Text="{Binding name}" Width="auto" Height="auto" FontSize="25" HorizontalAlignment="Left"
-                           Margin="50 60 10 10">
+                <Label x:Name="admin" Content="{Binding name}" Width="60" Height="30" FontSize="25" HorizontalAlignment="Left"
+                           Margin="50 0 10 10">
 
-                </TextBlock>
+                </Label>
             </Grid>
 
             

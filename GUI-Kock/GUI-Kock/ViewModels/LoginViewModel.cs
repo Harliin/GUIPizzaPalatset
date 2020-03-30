@@ -40,10 +40,8 @@ namespace GUI_Kock.ViewModels
             Employees = new ObservableCollection<Employee>();
             admin = new Employee();
             Router = state;
-            //LoginCommand = ReactiveCommand.Create(Login, canLogin);
-            // LoginCommand = new RelayCommand(Login); //Lägg till (CheckUser) när Binding knappen fungerar
-            Locator.CurrentMutable.Register(() => new OrderView(), typeof(IViewFor<OrderViewModel>));
-            GoToOrderView = ReactiveCommand.CreateFromObservable(() => Router.Navigate.Execute(new OrderViewModel(Router)));
+            LoginCommand = ReactiveCommand.Create(Login, canLogin);
+            // LoginCommand = new RelayCommand(Login); //Lägg till (CheckUser) när Binding knappen fungerar. Använd detta eller logik ovanpå.
         }
 
         /// <summary>
@@ -104,11 +102,13 @@ namespace GUI_Kock.ViewModels
 
         //   .DistinctUntilChanged();
 
+
+        //Action till LoginCommand
         public void Login()
         {
             //Registrerar nästa view. Denna behövs för att kunna koppla den mot ett command
-            //Locator.CurrentMutable.Register(() => new OrderView(), typeof(IViewFor<OrderViewModel>));
-            //GoToOrderView = ReactiveCommand.CreateFromObservable(() => Router.Navigate.Execute(new OrderViewModel(Router)));
+            Locator.CurrentMutable.Register(() => new OrderView(), typeof(IViewFor<OrderViewModel>));
+            GoToOrderView = ReactiveCommand.CreateFromObservable(() => Router.Navigate.Execute(new OrderViewModel(Router)));
         }
 
         public void Populate()
