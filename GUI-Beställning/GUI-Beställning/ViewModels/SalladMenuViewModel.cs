@@ -33,9 +33,10 @@ namespace GUI_Beställning.ViewModels
             AddSalladCommand = new RelayCommand(AddSalladToOrder);
         }
         
-        private void AddSalladToOrder(object id)
+        private void AddSalladToOrder(object Sallad)
         {
-            repo.AddSalladToOrder(MainWindowViewModel.OrderID, (int)id);
+            Sallad sallad = (Sallad)Sallad;
+            repo.AddSalladToOrder(MainWindowViewModel.OrderID, sallad.ID);
             MainWindowViewModel.ShowOrder();
         }
     }
