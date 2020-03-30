@@ -28,45 +28,12 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="5*"/>
+            <RowDefinition Height="100"/>
         </Grid.RowDefinitions>
         <Label Content="Order" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="DemiBold"/>
         <Label Content="Pris Kr" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="DemiBold"/>
         <Separator Grid.ColumnSpan="3" VerticalAlignment="Bottom" Height="7" Background="Black"/>
-        <!--<ItemsControl x:Name="foodName" Grid.Row="1" Grid.Column="0" ItemsSource="{Binding CurrentOrderName}" HorizontalAlignment="Center" FontWeight="DemiBold" FontSize="15">
-            <ItemsControl.ItemContainerStyle>
-                <Style>
-                    <Setter Property="FrameworkElement.Margin" Value="3"/>
-                </Style>
-            </ItemsControl.ItemContainerStyle>
-        </ItemsControl>
-        <ItemsControl Grid.Row="1" Grid.Column="1" ItemsSource="{Binding CurrentOrderPrice}" HorizontalAlignment="Center" FontWeight="DemiBold" FontSize="15">
-            <ItemsControl.ItemContainerStyle>
-                <Style>
-                    <Setter Property="FrameworkElement.Margin" Value="3"/>
-                </Style>
-            </ItemsControl.ItemContainerStyle>
-        </ItemsControl>
-        <ItemsControl ItemsSource="{Binding foodType}" x:Name="foodType">
-            
-        </ItemsControl>
-        <ItemsControl Grid.Row="1" Grid.Column="2" ItemsSource="{Binding CurrentFoodID}" x:Name="myControl">
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <Button Content="{materialDesign:PackIcon Kind=RemoveCircle,Size=25}" Foreground="#D70F64" 
-                            Command="{Binding Path=DataContext.RemoveCommand, ElementName=myControl}"  HorizontalAlignment="Left">
-                        <Button.CommandParameter>
-                            --><!--<MultiBinding Converter="{Binding Source={StaticResource },
-                                Converter={StaticResource OrderConverter}, Mode=OneWay}">--><!--
-                            <MultiBinding Converter="{StaticResource GUI-}">
-                                <Binding ElementName="myControl" Path="{Binding}" Mode="OneWay"/>
-                                <Binding ElementName="foodName" Path="{Binding}" Mode="OneWay"/>
-                            </MultiBinding>
-                        </Button.CommandParameter>
-                        
-                    </Button>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>-->
+        
         <ItemsControl ItemsSource="{Binding Foods}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
@@ -102,6 +69,7 @@
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
-        
+
+        <Button Grid.Row="2" Grid.ColumnSpan="3" Width="300" Height="50" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Black" Background="#D70F64">Betala</Button>
     </Grid>
 </rxui:ReactiveUserControl>
