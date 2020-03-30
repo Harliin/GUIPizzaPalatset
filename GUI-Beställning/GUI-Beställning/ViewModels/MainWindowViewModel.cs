@@ -23,18 +23,18 @@ namespace GUI_Beställning.ViewModels
 
         public PaymentViewModel payment;
         public ObservableCollection<object> Order => payment.Foods;
-        public ObservableCollection<object> _Order;
+        //public ObservableCollection<object> _Order;
 
 
-        public ObservableCollection<object> Order
-        {
-            get { return _Order; }
-            set
-            {
-                this.RaiseAndSetIfChanged(ref _Order, ShowOrder());
-                this.RaisePropertyChanged(nameof(Order));
-            }
-        }
+        //public ObservableCollection<object> Order
+        //{
+        //    get { return _Order; }
+        //    set
+        //    {
+        //        this.RaiseAndSetIfChanged(ref _Order, ShowOrder());
+        //        this.RaisePropertyChanged(nameof(Order));
+        //    }
+        //}
 
         public int TotalPrice { get; set; }
         public static int OrderID { get; set; }
@@ -92,7 +92,7 @@ namespace GUI_Beställning.ViewModels
 
             #endregion
 
-            this.Order = new ObservableCollection<object>();
+            //this.Order = new ObservableCollection<object>();
         }
 
 
@@ -114,6 +114,6 @@ namespace GUI_Beställning.ViewModels
             return new ObservableCollection<object>(OrderList);
 
         //    //PropertyChanged(this, new PropertyChangedEventArgs(nameof(CurOrder)));
-        //}
+        }
     }
 }
