@@ -14,7 +14,7 @@ using System.Text;
 
 namespace GUI_Beställning.ViewModels
 {
-    public class PaymentViewModel : ReactiveObject, IRoutableViewModel, INotifyPropertyChanged
+    public class PaymentViewModel : ReactiveObject, IRoutableViewModel
     {
         #region For Reactive UI
         public string UrlPathSegment => "PaymentMenu";
@@ -23,26 +23,14 @@ namespace GUI_Beställning.ViewModels
         #endregion
         public Order CurrentOrder { get; set; }
         public OrderRepository repo = new OrderRepository();
-        //public IObservable<IReactivePropertyChangedEventArgs<T>> Changed { get; }
         private ObservableCollection<object> _Foods;
         public ObservableCollection<object> Foods 
         {
             get { return _Foods; }
             set 
             {
-
-                var ordersIE = repo.ShowOrderByID(this.OrderID);
-                var temp = ordersIE.ToList();
-                CurrentOrder = temp[0];
-
-                CurrentOrder.pizza.ForEach(pizza => { Foods.Add(pizza); });
-                CurrentOrder.pasta.ForEach(pasta => { Foods.Add(pasta); });
-                CurrentOrder.sallad.ForEach(sallad => { Foods.Add(sallad); });
-                CurrentOrder.drink.ForEach(drink => { Foods.Add(drink); });
-                CurrentOrder.extra.ForEach(extra => { Foods.Add(extra); });
-
-                this.RaiseAndSetIfChanged(ref _Foods, Foods);
-                //INotifyPropertyChanged()
+                this.RaiseAndSetIfChanged(ref _Foods, ShowOrder());
+                this.RaisePropertyChanged(nameof(Foods));
             }
         }
         
@@ -56,31 +44,50 @@ namespace GUI_Beställning.ViewModels
             RemoveCommand = new RelayCommand(RemoveFoodFromOrder);
             OrderID = MainWindowViewModel.OrderID;
             HostScreen = screen ?? Locator.Current.GetService<IScreen>();
-            Foods = new ObservableCollection<object>();
-            //Changed = Observable.FromEventPattern<PropertyChangedEventHandler, PropertyChangedEventArgs>
-            //(
-            //t => PropertyChanged += t, // add handler
-            //t => PropertyChanged -= t  // remove handler
-            //// conversion from EventPattern to ReactivePropertyChangedEventArgs
-            //).Select(ev => new ReactivePropertyChangedEventArgs<T>(ev.Sender as T, ev.EventArgs.PropertyName));
+            //_Foods = new ObservableCollection<object>();
+            //Foods = new ObservableCollection<object>();
+            this.Foods = new ObservableCollection<object>();
         }
 
-        //public void ShowOrder()
-        //{
-        //    Foods = new ObservableCollection<object>();
+        /// <summary>
+        /// Adds all the foods in a order to a observable Collection
+        /// </summary>
+        public ObservableCollection<object> ShowOrder()
+        {
 
-        //    var ordersIE = repo.ShowOrderByID(this.OrderID);
-        //    var temp = ordersIE.ToList();
-        //    CurrentOrder = temp[0];
+            var ordersIE = repo.ShowOrderByID(this.OrderID);
+            var temp = ordersIE.ToList();
+            List<object> myList = new List<object>();
+            CurrentOrder = temp[0];
 
-        //    CurrentOrder.pizza.ForEach(pizza => { Foods.Add(pizza); });
-        //    CurrentOrder.pasta.ForEach(pasta => { Foods.Add(pasta); });
-        //    CurrentOrder.sallad.ForEach(sallad => { Foods.Add(sallad); });
-        //    CurrentOrder.drink.ForEach(drink => { Foods.Add(drink); });
-        //    CurrentOrder.extra.ForEach(extra => { Foods.Add(extra); });
+            CurrentOrder.pizza.ForEach(pizza => { myList.Add(pizza); });
+            CurrentOrder.pasta.ForEach(pasta => { myList.Add(pasta); });
+            CurrentOrder.sallad.ForEach(sallad => { myList.Add(sallad); });
+            CurrentOrder.drink.ForEach(drink => { myList.Add(drink); });
+            CurrentOrder.extra.ForEach(extra => { myList.Add(extra); });
 
-
-        //}
+            //if (CurrentOrder.pizza != null)
+            //{
+            //    CurrentOrder.pizza.ForEach(pizza => { myList.Add(pizza); });
+            //}
+            //else if (CurrentOrder.pasta != null)
+            //{
+            //    CurrentOrder.pasta.ForEach(pasta => { myList.Add(pasta); });
+            //}
+            //else if (CurrentOrder.sallad != null)
+            //{
+            //    CurrentOrder.sallad.ForEach(sallad => { myList.Add(sallad); });
+            //}
+            //else if (CurrentOrder.drink != null)
+            //{
+            //    CurrentOrder.drink.ForEach(drink => { myList.Add(drink); });
+            //}
+            //else if (CurrentOrder.extra != null)
+            //{
+            //    CurrentOrder.extra.ForEach(extra => { myList.Add(extra); });
+            //}
+            return new ObservableCollection<object>(myList);
+        }
 
         /// <summary>
         /// Method To remove Food From a Order
@@ -115,7 +122,8 @@ namespace GUI_Beställning.ViewModels
                 Extra extra = (Extra)parameter;
                 repo.RemoveExtraFromOrder(OrderID, extra.ID);
             }
-            
+            Foods = new ObservableCollection<object>();
+            this.RaisePropertyChanged(nameof(Foods));
         }
     }
 
