@@ -6,13 +6,15 @@ using Splat;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Reactive;
+using System.Reactive.Linq;
 using System.Text;
 
 namespace GUI_Beställning.ViewModels
 {
-    public class PaymentViewModel : ReactiveObject, IRoutableViewModel
+    public class PaymentViewModel : ReactiveObject, IRoutableViewModel, INotifyPropertyChanged
     {
         #region For Reactive UI
         public string UrlPathSegment => "PaymentMenu";
@@ -21,7 +23,30 @@ namespace GUI_Beställning.ViewModels
         #endregion
         public Order CurrentOrder { get; set; }
         public OrderRepository repo = new OrderRepository();
-        public ObservableCollection<object> Foods { get; set; }
+        //public IObservable<IReactivePropertyChangedEventArgs<T>> Changed { get; }
+        private ObservableCollection<object> _Foods;
+        public ObservableCollection<object> Foods 
+        {
+            get { return _Foods; }
+            set 
+            {
+
+                var ordersIE = repo.ShowOrderByID(this.OrderID);
+                var temp = ordersIE.ToList();
+                CurrentOrder = temp[0];
+
+                CurrentOrder.pizza.ForEach(pizza => { Foods.Add(pizza); });
+                CurrentOrder.pasta.ForEach(pasta => { Foods.Add(pasta); });
+                CurrentOrder.sallad.ForEach(sallad => { Foods.Add(sallad); });
+                CurrentOrder.drink.ForEach(drink => { Foods.Add(drink); });
+                CurrentOrder.extra.ForEach(extra => { Foods.Add(extra); });
+
+                this.RaiseAndSetIfChanged(ref _Foods, Foods);
+                //INotifyPropertyChanged()
+            }
+        }
+        
+
 
         public RelayCommand RemoveCommand { get; set; }
         public ObservableCollection<Order> Orders { get; set; }
@@ -29,28 +54,33 @@ namespace GUI_Beställning.ViewModels
         public PaymentViewModel(IScreen screen = null)
         {
             RemoveCommand = new RelayCommand(RemoveFoodFromOrder);
-            OrderID = 125;
+            OrderID = MainWindowViewModel.OrderID;
             HostScreen = screen ?? Locator.Current.GetService<IScreen>();
-            ShowOrder();
-            
-        }
-
-        public void ShowOrder()
-        {
             Foods = new ObservableCollection<object>();
-
-            var ordersIE = repo.ShowOrderByID(this.OrderID);
-            var temp = ordersIE.ToList();
-            CurrentOrder = temp[0];
-
-            CurrentOrder.pizza.ForEach(pizza => { Foods.Add(pizza); });
-            CurrentOrder.pasta.ForEach(pasta => { Foods.Add(pasta); });
-            CurrentOrder.sallad.ForEach(sallad => { Foods.Add(sallad); });
-            CurrentOrder.drink.ForEach(drink => { Foods.Add(drink); });
-            CurrentOrder.extra.ForEach(extra => { Foods.Add(extra); });
-
-
+            //Changed = Observable.FromEventPattern<PropertyChangedEventHandler, PropertyChangedEventArgs>
+            //(
+            //t => PropertyChanged += t, // add handler
+            //t => PropertyChanged -= t  // remove handler
+            //// conversion from EventPattern to ReactivePropertyChangedEventArgs
+            //).Select(ev => new ReactivePropertyChangedEventArgs<T>(ev.Sender as T, ev.EventArgs.PropertyName));
         }
+
+        //public void ShowOrder()
+        //{
+        //    Foods = new ObservableCollection<object>();
+
+        //    var ordersIE = repo.ShowOrderByID(this.OrderID);
+        //    var temp = ordersIE.ToList();
+        //    CurrentOrder = temp[0];
+
+        //    CurrentOrder.pizza.ForEach(pizza => { Foods.Add(pizza); });
+        //    CurrentOrder.pasta.ForEach(pasta => { Foods.Add(pasta); });
+        //    CurrentOrder.sallad.ForEach(sallad => { Foods.Add(sallad); });
+        //    CurrentOrder.drink.ForEach(drink => { Foods.Add(drink); });
+        //    CurrentOrder.extra.ForEach(extra => { Foods.Add(extra); });
+
+
+        //}
 
         /// <summary>
         /// Method To remove Food From a Order
@@ -87,8 +117,6 @@ namespace GUI_Beställning.ViewModels
             }
             
         }
-
-        public int ID { get; set; }
-        public string foodType { get; set; }
     }
+
 }
