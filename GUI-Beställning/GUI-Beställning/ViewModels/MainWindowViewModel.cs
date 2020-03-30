@@ -21,25 +21,19 @@ namespace GUI_Beställning.ViewModels
         public RoutingState Router { get; }
         public Order CurrentOrder { get; set; }
 
-        public PaymentViewModel Payment;
-        public ObservableCollection<object> Order => Payment.Foods;
-        //public ObservableCollection<object> _Order;
-
-
-        //public ObservableCollection<object> Order
-        //{
-        //    get { return _Order; }
-        //    set
-        //    {
-        //        this.RaiseAndSetIfChanged(ref _Order, ShowOrder());
-        //        this.RaisePropertyChanged(nameof(Order));
-        //    }
-        //}
+        public ObservableCollection<object> _Order;
+        public ObservableCollection<object> Order
+        {
+            get { return _Order; }
+            set
+            {
+                this.RaiseAndSetIfChanged(ref _Order, ShowOrder());
+                this.RaisePropertyChanged(nameof(Order));
+            }
+        }
 
         public int TotalPrice { get; set; }
         public static int OrderID { get; set; }
-
-
 
         #region Commands
         public ReactiveCommand<Unit, IRoutableViewModel> PizzaMenu { get; }
@@ -52,14 +46,12 @@ namespace GUI_Beställning.ViewModels
 
         #endregion
 
-
         public MainWindowViewModel()
         {
             Payment = new PaymentViewModel();
             OrderID = 125;
 
             Router = new RoutingState();
-            payment = new PaymentViewModel();
             #region Navigation Reactive UI
 
             Locator.CurrentMutable.Register(() => new PizzaMenuView(), typeof(IViewFor<PizzaMenuViewModel>));

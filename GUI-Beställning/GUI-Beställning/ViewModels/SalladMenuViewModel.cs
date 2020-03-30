@@ -16,7 +16,6 @@ namespace GUI_Beställning.ViewModels
         public IScreen HostScreen { get; }
 
         #endregion
-        PaymentViewModel Payment;
         public OrderRepository repo = new OrderRepository();
         public ObservableCollection<Sallad> Sallads { get; set; }
 
@@ -31,15 +30,13 @@ namespace GUI_Beställning.ViewModels
             Sallads = new ObservableCollection<Sallad>(salladIE.ToList());
 
             AddSalladCommand = new RelayCommand(AddSalladToOrder);
-
-            Payment = new PaymentViewModel();
         }
         
         private void AddSalladToOrder(object Sallad)
         {
             Sallad sallad = (Sallad)Sallad;
             repo.AddSalladToOrder(MainWindowViewModel.OrderID, sallad.ID);
-            Payment.Foods = new ObservableCollection<object>();
+            MainWindowViewModel.Order = new ObservableCollection<object>();
         }
     }
 }

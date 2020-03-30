@@ -36,14 +36,14 @@ namespace GUI_Beställning.ViewModels
         }
 
 
-
+        
         public RelayCommand RemoveCommand { get; set; }
         public ObservableCollection<Order> Orders { get; set; }
         public int OrderID { get; set; }
         public PaymentViewModel(IScreen screen = null)
         {
             RemoveCommand = new RelayCommand(RemoveFoodFromOrder);
-            OrderID = MainWindowViewModel.OrderID;
+            OrderID = 125;
             HostScreen = screen ?? Locator.Current.GetService<IScreen>();
             //_Foods = new ObservableCollection<object>();
             //Foods = new ObservableCollection<object>();
@@ -55,7 +55,6 @@ namespace GUI_Beställning.ViewModels
         /// </summary>
         public ObservableCollection<object> ShowOrder()
         {
-
             var ordersIE = repo.ShowOrderByID(this.OrderID);
             var temp = ordersIE.ToList();
             List<object> myList = new List<object>();
