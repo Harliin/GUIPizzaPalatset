@@ -18,6 +18,7 @@ namespace GUI_Beställning.ViewModels
         public WelcomeViewModel(IScreen screen = null)
         {
             HostScreen = screen ?? Locator.Current.GetService<IScreen>();
+            //MainWindowViewModel.OrderID++; sedan för att öka till nästa order
         }
     }
 }

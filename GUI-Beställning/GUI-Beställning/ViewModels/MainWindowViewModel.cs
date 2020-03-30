@@ -22,7 +22,7 @@ namespace GUI_Beställning.ViewModels
         public Order CurrentOrder { get; set; }
         public ObservableCollection<object> Order { get; set; }
         public int TotalPrice { get; set; }
-        public int OrderID { get; set; }
+        public static int OrderID { get; set; }
 
         #region Commands
         public ReactiveCommand<Unit, IRoutableViewModel> PizzaMenu { get; }
@@ -56,6 +56,8 @@ namespace GUI_Beställning.ViewModels
 
             Locator.CurrentMutable.Register(() => new PaymentView(), typeof(IViewFor<PaymentViewModel>));
 
+            Locator.CurrentMutable.Register(() => new WelcomeView(), typeof(IViewFor<WelcomeViewModel>));
+
 
             PizzaMenu = ReactiveCommand.CreateFromObservable(() => Router.Navigate.Execute(new PizzaMenuViewModel()));
 
@@ -69,6 +71,8 @@ namespace GUI_Beställning.ViewModels
 
             PaymentMenu = ReactiveCommand.CreateFromObservable(() => Router.Navigate.Execute(new PaymentViewModel()));
 
+            Router.Navigate.Execute(new WelcomeViewModel());
+
             #endregion
 
             ShowOrder();
@@ -78,10 +82,10 @@ namespace GUI_Beställning.ViewModels
         {
             TotalPrice = 0;
             Order = new ObservableCollection<object>();
-            var ordersIE = repo.ShowOrderByID(this.OrderID);
-            
-            
+
+            var ordersIE = repo.ShowOrderByID(OrderID);
             var temp = ordersIE.ToList();
+
             CurrentOrder = temp[0];
             CurrentOrder.pizza.ForEach(pizza => { Order.Add(pizza); TotalPrice += pizza.Price; });
             CurrentOrder.pasta.ForEach(pasta => { Order.Add(pasta); TotalPrice += pasta.Price; });
