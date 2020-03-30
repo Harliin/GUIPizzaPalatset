@@ -1,5 +1,4 @@
-﻿using GUI_OrderInfo.ViewModels;
-using System.Windows;
+﻿using System.Windows;
 
 namespace GUI_OrderInfo.Views
 {
@@ -11,8 +10,6 @@ namespace GUI_OrderInfo.Views
         public MainWindowView()
         {
             InitializeComponent();
-
-            this.DataContext = new MainWindowViewModels();
         }
     }
 }

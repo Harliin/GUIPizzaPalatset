@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GUI_OrderInfo.Views"
         mc:Ignorable="d"
-        Title="MainWindowView" Height="450" Width="800">
+        Title="PIZZERIA PALATSET" Height="450" Width="800">
+
     <Border Margin="20" Background="Beige" CornerRadius="5">
         <Grid>
 
