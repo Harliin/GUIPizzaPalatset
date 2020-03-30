@@ -40,8 +40,10 @@ namespace GUI_Kock.ViewModels
             Employees = new ObservableCollection<Employee>();
             admin = new Employee();
             Router = state;
-            LoginCommand = ReactiveCommand.Create(Login, canLogin);
+            //LoginCommand = ReactiveCommand.Create(Login, canLogin);
             // LoginCommand = new RelayCommand(Login); //Lägg till (CheckUser) när Binding knappen fungerar
+            Locator.CurrentMutable.Register(() => new OrderView(), typeof(IViewFor<OrderViewModel>));
+            GoToOrderView = ReactiveCommand.CreateFromObservable(() => Router.Navigate.Execute(new OrderViewModel(Router)));
         }
 
         /// <summary>
@@ -90,23 +92,23 @@ namespace GUI_Kock.ViewModels
 
 
         //Parameter for LoginCommand, preventing the user from proceeding until the validation conditions are met.
-        var canLogin => this.WhenAnyValue(
-           ( x => x.admin.name, x => x.admin.password,
-            (user, pass) =>
-                !string.IsNullOrWhiteSpace(user) &&
-                !string.IsNullOrWhiteSpace(pass) &&
-                user == "Tony" && pass == "admin123" || 
-                user == "Giovanni" && pass == "bagare2" || 
-                user == "ba1" && pass == "ba1" ||
-                user == "VD" && pass == "123"))
+        //var canLogin => this.WhenAnyValue(
+        //   ( x => x.admin.name, x => x.admin.password,
+        //    (user, pass) =>
+        //        !string.IsNullOrWhiteSpace(user) &&
+        //        !string.IsNullOrWhiteSpace(pass) &&
+        //        user == "Tony" && pass == "admin123" || 
+        //        user == "Giovanni" && pass == "bagare2" || 
+        //        user == "ba1" && pass == "ba1" ||
+        //        user == "VD" && pass == "123"))
 
-           .DistinctUntilChanged();
+        //   .DistinctUntilChanged();
 
         public void Login()
         {
             //Registrerar nästa view. Denna behövs för att kunna koppla den mot ett command
-            Locator.CurrentMutable.Register(() => new OrderView(), typeof(IViewFor<OrderViewModel>));
-            GoToOrderView = ReactiveCommand.CreateFromObservable(() => Router.Navigate.Execute(new OrderViewModel(Router)));
+            //Locator.CurrentMutable.Register(() => new OrderView(), typeof(IViewFor<OrderViewModel>));
+            //GoToOrderView = ReactiveCommand.CreateFromObservable(() => Router.Navigate.Execute(new OrderViewModel(Router)));
         }
 
         public void Populate()

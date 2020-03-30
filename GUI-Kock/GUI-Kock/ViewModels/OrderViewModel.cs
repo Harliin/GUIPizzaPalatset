@@ -6,6 +6,7 @@ using System.Reactive;
 using System.Text;
 using GUI_Kock.Views;
 using DB_Kock;
+using Food;
 
 namespace GUI_Kock.ViewModels
 {
@@ -14,7 +15,10 @@ namespace GUI_Kock.ViewModels
 
         public ChefRepository repo = new ChefRepository();
         public ReactiveCommand<Unit, IRoutableViewModel> GoToPreparingView { get; private set; }
-       
+        public ReactiveCommand<Unit, IRoutableViewModel> GoToLoginView { get; private set; }
+
+        public Employee Admin;
+
 
         #region Routing
         public string UrlPathSegment => "Order";
@@ -28,12 +32,23 @@ namespace GUI_Kock.ViewModels
         {
             HostScreen = screen ?? Locator.Current.GetService<IScreen>();
             Router = state;
+            Admin = new Employee();
 
             //Registrerar din nästa view. denna behövs för att kunna koppla den mot ett command
             Locator.CurrentMutable.Register(() => new PreparingOrderView(), typeof(IViewFor<PreparingOrderViewModel>));
-
             GoToPreparingView = ReactiveCommand.CreateFromObservable(() => Router.Navigate.Execute(new PreparingOrderViewModel(Router)));
 
+            Locator.CurrentMutable.Register(() => new LoginView(), typeof(IViewFor<LoginViewModel>));
+            GoToLoginView = ReactiveCommand.CreateFromObservable(() => Router.Navigate.Execute(new LoginViewModel(Router)));
+
+        }
+
+        public Employee admin
+        {
+            get
+            {
+                return Admin;
+            }
         }
 
     }

@@ -23,9 +23,10 @@ namespace GUI_Kock.Views
         public OrderView()
         {
             InitializeComponent();
-
-            // Use this to open connection to databas
-            // ViewModel.Populate();
+            this.WhenActivated(disposables =>
+            {
+                this.BindCommand(ViewModel, x => x.GoToLoginView, x => x.exit);
+            });
         }
     }
 }
