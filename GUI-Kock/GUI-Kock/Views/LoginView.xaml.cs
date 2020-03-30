@@ -24,7 +24,7 @@ namespace GUI_Kock.Views
         public LoginView()
         {
             InitializeComponent();
-            
+
             this.WhenActivated(disposables =>
             {
                 this.OneWayBind(ViewModel, x => x.Employees, view => view.userName.ItemsSource)

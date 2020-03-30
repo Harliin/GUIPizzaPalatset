@@ -51,7 +51,7 @@ namespace GUI_Kock.ViewModels.Commands
         /// <param name="parameter"></param>
         public void Execute(object parameter)
         {
-            //mAction(parameter);
+            //_Action(parameter);
             Execute(_Action);
         }
 
@@ -64,8 +64,6 @@ namespace GUI_Kock.ViewModels.Commands
         {
             return true;
 
-            //Lägg till senare
-           // => _CanBeExecuted.Invoke(parameter);
         }
         #endregion
     }

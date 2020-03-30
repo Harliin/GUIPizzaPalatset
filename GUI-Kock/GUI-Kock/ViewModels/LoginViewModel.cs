@@ -41,7 +41,8 @@ namespace GUI_Kock.ViewModels
             admin = new Employee();
             Router = state;
             LoginCommand = ReactiveCommand.Create(Login, canLogin);
-            // LoginCommand = new RelayCommand(Login); //Lägg till (CheckUser) när Binding knappen fungerar. Använd detta eller logik ovanpå.
+            //Använd detta eller logik ovanpå. Plus lägg till (CheckUser) när Binding knappen fungerar. 
+            // LoginCommand = new RelayCommand(Login); 
         }
 
         /// <summary>
