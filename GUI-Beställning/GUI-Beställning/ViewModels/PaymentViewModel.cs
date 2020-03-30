@@ -23,17 +23,6 @@ namespace GUI_Beställning.ViewModels
         #endregion
         public Order CurrentOrder { get; set; }
         public OrderRepository repo = new OrderRepository();
-        //private ObservableCollection<object> _Foods;
-        //public ObservableCollection<object> Foods
-        //{
-        //    get { return _Foods; }
-        //    set
-        //    {
-        //        this.RaiseAndSetIfChanged(ref _Foods, ShowOrder());
-        //        this.RaisePropertyChanged(nameof(Foods));
-        //        this.RaisePropertyChanged(nameof(MainWindowViewModel.Order));
-        //    }
-        //}
 
         public ObservableCollection<object> Foods => MainWindowViewModel.Order;
 
@@ -47,9 +36,6 @@ namespace GUI_Beställning.ViewModels
             RemoveCommand = new RelayCommand(RemoveFoodFromOrder);
             OrderID = 125;
             HostScreen = screen ?? Locator.Current.GetService<IScreen>();
-            //_Foods = new ObservableCollection<object>();
-            //Foods = new ObservableCollection<object>();
-
         }
 
     
@@ -88,6 +74,8 @@ namespace GUI_Beställning.ViewModels
             }
             MainWindowViewModel.Order = new ObservableCollection<object>();
             this.RaisePropertyChanged(nameof(Foods));
+            
+            
         }
     }
 

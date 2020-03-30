@@ -50,7 +50,8 @@ namespace GUI_Beställning.ViewModels
         {
             Pizza pizza = (Pizza)Pizza;
             repo.AddPizzaToOrder(MainWindowViewModel.OrderID, pizza.ID);
-            MainWindowViewModel.Order = new ObservableCollection<object>();
+            //this.MainWindowViewModel.RaisePropertyChanged(nameof(MainWindowViewModel.Order));
+            this.MainWindowViewModel.MyPropertyOrderChanged();
         }
     }
 

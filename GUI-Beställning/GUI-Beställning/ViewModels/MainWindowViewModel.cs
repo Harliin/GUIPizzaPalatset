@@ -14,15 +14,15 @@ using System.Windows.Input;
 
 namespace GUI_Beställning.ViewModels
 {
-    public class MainWindowViewModel : ReactiveObject, IScreen, INotifyPropertyChanged
+    public class MainWindowViewModel : ReactiveObject, IScreen
     {
         //public event  PropertyChangedEventHandler PropertyChanged = (sender, e) => { };
         public OrderRepository repo = new OrderRepository();
         public RoutingState Router { get; }
         public Order CurrentOrder { get; set; }
 
-
-        public PaymentViewModel Payment;
+        public PaymentViewModel PaymentVM { get; set; }
+        public PizzaMenuViewModel PizzaVM { get; set; }
         //public ObservableCollection<object> Order => Payment.Foods;
 
         private ObservableCollection<object> _Order;
@@ -32,7 +32,8 @@ namespace GUI_Beställning.ViewModels
             get { return _Order; }
             set
             {
-                this.RaiseAndSetIfChanged(ref _Order, ShowOrder());
+                var list = ShowOrder();
+                this.RaiseAndSetIfChanged(ref _Order, new ObservableCollection<object>(list));
                 this.RaisePropertyChanged(nameof(Order));
                 //this.RaisePropertyChanged(nameof(Payment.Foods));
             }
@@ -92,12 +93,16 @@ namespace GUI_Beställning.ViewModels
             #endregion
 
             this.Order = new ObservableCollection<object>();
+            //PaymentVM = new PaymentViewModel();
+            //PizzaVM = new PizzaMenuViewModel();
+            //PaymentVM.PropertyChanged += OnProperty2Changed;
+            //PizzaVM.PropertyChanged += OnProperty2Changed;
         }
 
         /// <summary>
         /// Adds all the foods in a order to a observable collection
         /// </summary>
-        public ObservableCollection<object> ShowOrder()
+        public List<object> ShowOrder()
         {
             TotalPrice = 0;
             //Order = new ObservableCollection<object>();
@@ -112,8 +117,15 @@ namespace GUI_Beställning.ViewModels
             CurrentOrder.drink.ForEach(drink => { OrderList.Add(drink); TotalPrice += drink.Price; });
             CurrentOrder.extra.ForEach(extra => { OrderList.Add(extra); TotalPrice += extra.Price; });
 
-            return new ObservableCollection<object>(OrderList);
+            return OrderList;
 
         }
+
+        public void MyPropertyOrderChanged()
+        {
+            this.Order = new ObservableCollection<object>();
+            this.RaisePropertyChanged(nameof(Order));
+        }
+        
     }
 }
