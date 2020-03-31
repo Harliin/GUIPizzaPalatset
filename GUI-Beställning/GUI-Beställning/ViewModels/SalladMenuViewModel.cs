@@ -17,9 +17,9 @@ namespace GUI_Beställning.ViewModels
 
         #endregion
         public OrderRepository repo = new OrderRepository();
+        public static MainWindowViewModel MainWindowViewModel;
         public ObservableCollection<Sallad> Sallads { get; set; }
 
-        public static MainWindowViewModel MainWindowViewModel;
         public RelayCommand AddSalladCommand { get; set; }
 
         public SalladMenuViewModel(MainWindowViewModel viewModel = null, IScreen screen = null)
@@ -27,8 +27,8 @@ namespace GUI_Beställning.ViewModels
             HostScreen = screen ?? Locator.Current.GetService<IScreen>();
 
             AddSalladCommand = new RelayCommand(AddSalladToOrder);
-
-            Sallads = new ObservableCollection<Sallad>();
+            var SalladIE = repo.ShowSallads();
+            Sallads = new ObservableCollection<Sallad>(SalladIE.ToList());
             if(MainWindowViewModel == null)
             {
                 MainWindowViewModel = viewModel;
