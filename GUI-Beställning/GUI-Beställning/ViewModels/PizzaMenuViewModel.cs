@@ -4,6 +4,8 @@ using Splat;
 using System.Collections.ObjectModel;
 using System.Linq;
 using GUI_Beställning.ViewModels.Commands;
+using System;
+using System.ComponentModel;
 
 namespace GUI_Beställning.ViewModels
 {
@@ -15,24 +17,23 @@ namespace GUI_Beställning.ViewModels
         public IScreen HostScreen { get; }
 
         #endregion
-
-
         public OrderRepository repo = new OrderRepository();
-        //public ObservableCollection<Pizza> _Pizzas { get; set; }
+        public static MainWindowViewModel MainWindowViewModel;
 
-        public MainWindowViewModel MainWindowViewModel = new MainWindowViewModel();
         public RelayCommand AddPizzaCommand { get; set; }
 
-        
-        public PizzaMenuViewModel(IScreen screen = null)
+        public PizzaMenuViewModel(MainWindowViewModel viewModel = null ,IScreen screen = null)
         {
             AddPizzaCommand = new RelayCommand(AddPizzaToOrder);
-            //gets hostscreen??
+
             HostScreen = screen ?? Locator.Current.GetService<IScreen>();
 
             Pizzas = new ObservableCollection<Pizza>();
 
-           
+            if(MainWindowViewModel == null)
+            {
+                MainWindowViewModel = viewModel;
+            }
         }
 
         private ObservableCollection<Pizza> pizzas;
@@ -50,8 +51,8 @@ namespace GUI_Beställning.ViewModels
         {
             Pizza pizza = (Pizza)Pizza;
             repo.AddPizzaToOrder(MainWindowViewModel.OrderID, pizza.ID);
-            //this.MainWindowViewModel.RaisePropertyChanged(nameof(MainWindowViewModel.Order));
-            this.MainWindowViewModel.MyPropertyOrderChanged();
+
+            MainWindowViewModel.MyPropertyOrderChanged();
         }
     }
 

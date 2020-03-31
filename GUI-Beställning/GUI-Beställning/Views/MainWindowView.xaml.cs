@@ -42,6 +42,9 @@ namespace GUI_Beställning.Views
 
                 this.BindCommand(ViewModel, x => x.PaymentMenu, x => x.GoPaymentMenu)//ExtraButton
                    .DisposeWith(disposables);
+
+                this.OneWayBind(ViewModel, vm => vm.Order, v => v.Order.ItemsSource)//Bindar Ordern
+                .DisposeWith(disposables);
             });
 
         }

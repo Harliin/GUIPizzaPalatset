@@ -1,4 +1,5 @@
-﻿using GUI_Beställning.Models.Data;
+﻿using DynamicData;
+using GUI_Beställning.Models.Data;
 using GUI_Beställning.ViewModels.Commands;
 using GUI_Beställning.Views;
 using ReactiveUI;
@@ -16,28 +17,15 @@ namespace GUI_Beställning.ViewModels
 {
     public class MainWindowViewModel : ReactiveObject, IScreen
     {
-        //public event  PropertyChangedEventHandler PropertyChanged = (sender, e) => { };
+        //public event EventHandler<string> OrderChanged;
+        //public event CollectionChangeEventHandler OrderChanged;
         public OrderRepository repo = new OrderRepository();
         public RoutingState Router { get; }
         public Order CurrentOrder { get; set; }
-        public static event EventHandler MyPropertyCanged;
         public PaymentViewModel PaymentVM { get; set; }
         public PizzaMenuViewModel PizzaVM { get; set; }
-        //public ObservableCollection<object> Order => Payment.Foods;
+        public ObservableCollection<object> Order { get; set; }
 
-        private ObservableCollection<object> _Order;
-
-        public ObservableCollection<object> Order
-        {
-            get { return _Order; }
-            set
-            {
-                var list = ShowOrder();
-                this.RaiseAndSetIfChanged(ref _Order, new ObservableCollection<object>(list));
-                this.RaisePropertyChanged(nameof(Order));
-                //this.RaisePropertyChanged(nameof(Payment.Foods));
-            }
-        }
 
         public int TotalPrice { get; set; }
         public static int OrderID { get; set; }
@@ -76,7 +64,7 @@ namespace GUI_Beställning.ViewModels
             Locator.CurrentMutable.Register(() => new WelcomeView(), typeof(IViewFor<WelcomeViewModel>));
 
 
-            PizzaMenu = ReactiveCommand.CreateFromObservable(() => Router.Navigate.Execute(new PizzaMenuViewModel()));
+            PizzaMenu = ReactiveCommand.CreateFromObservable(() => Router.Navigate.Execute(new PizzaMenuViewModel(this)));
 
             PastaMenu = ReactiveCommand.CreateFromObservable(() => Router.Navigate.Execute(new PastaMenuViewModel()));
 
@@ -86,18 +74,16 @@ namespace GUI_Beställning.ViewModels
 
             ExtraMenu = ReactiveCommand.CreateFromObservable(() => Router.Navigate.Execute(new ExtraMenuViewModel()));
 
-            PaymentMenu = ReactiveCommand.CreateFromObservable(() => Router.Navigate.Execute(new PaymentViewModel()));
+            PaymentMenu = ReactiveCommand.CreateFromObservable(() => Router.Navigate.Execute(new PaymentViewModel(this)));
 
             Router.Navigate.Execute(new WelcomeViewModel());
 
             #endregion
 
-            this.Order = new ObservableCollection<object>();
-            //PaymentVM = new PaymentViewModel();
-            //PizzaVM = new PizzaMenuViewModel();
-            //PaymentVM.PropertyChanged += OnProperty2Changed;
-            //PizzaVM.PropertyChanged += OnProperty2Changed;
+            this.Order = new ObservableCollection<object>(ShowOrder());
+            
         }
+
 
         /// <summary>
         /// Adds all the foods in a order to a observable collection
@@ -123,9 +109,12 @@ namespace GUI_Beställning.ViewModels
 
         public void MyPropertyOrderChanged()
         {
-            this.Order = new ObservableCollection<object>();
-            this.RaisePropertyChanged(nameof(Order));
+            this.Order.Clear();
+            var list = ShowOrder();
+            this.Order.AddRange(list);
+            //this.RaisePropertyChanged(nameof(Order));
         }
+        
         
     }
 }

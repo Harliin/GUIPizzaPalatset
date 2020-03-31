@@ -16,26 +16,31 @@ namespace GUI_Beställning.ViewModels
 {
     public class PaymentViewModel : ReactiveObject, IRoutableViewModel
     {
+        public OrderRepository repo = new OrderRepository();
+        public static MainWindowViewModel MainWindowViewModel;
+
         #region For Reactive UI
         public string UrlPathSegment => "PaymentMenu";
 
         public IScreen HostScreen { get; }
         #endregion
         public Order CurrentOrder { get; set; }
-        public OrderRepository repo = new OrderRepository();
-
         public ObservableCollection<object> Foods => MainWindowViewModel.Order;
 
-        public MainWindowViewModel MainWindowViewModel = new MainWindowViewModel();
 
         public RelayCommand RemoveCommand { get; set; }
         public ObservableCollection<Order> Orders { get; set; }
-        public int OrderID { get; set; }
-        public PaymentViewModel(IScreen screen = null)
+        public int OrderID => MainWindowViewModel.OrderID;
+        public PaymentViewModel(MainWindowViewModel viewModel = null,IScreen screen = null)
         {
-            RemoveCommand = new RelayCommand(RemoveFoodFromOrder);
-            OrderID = 125;
+            RemoveCommand = new RelayCommand(RemoveFoodFromOrder)
+
             HostScreen = screen ?? Locator.Current.GetService<IScreen>();
+
+            if (MainWindowViewModel == null)
+            {
+                MainWindowViewModel = viewModel;
+            }
         }
 
     
@@ -72,9 +77,8 @@ namespace GUI_Beställning.ViewModels
                 Extra extra = (Extra)parameter;
                 repo.RemoveExtraFromOrder(OrderID, extra.ID);
             }
-            MainWindowViewModel.Order = new ObservableCollection<object>();
-            this.RaisePropertyChanged(nameof(Foods));
-            
+            MainWindowViewModel.MyPropertyOrderChanged();
+            //this.RaisePropertyChanged(nameof(Foods));
             
         }
     }

@@ -44,7 +44,13 @@
                     <Label Content="Nuvarande order :" FontSize="15" FontWeight="Bold"/>
                 </Viewbox>
                 <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Hidden" Margin="3">
-                    <ItemsControl ItemsSource="{Binding Order}" DisplayMemberPath="Name" FontSize="16" FontWeight="DemiBold"/>
+                    <ItemsControl x:Name="Order" FontSize="16" FontWeight="DemiBold">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Name}"/>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
                 </ScrollViewer>
                 <Grid Grid.Column="1" Grid.Row="0">
                     <Grid.ColumnDefinitions>
