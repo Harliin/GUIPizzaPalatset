@@ -14,9 +14,28 @@ namespace GUI_Kassörska.ViewModels
         public int EmployeeID { get; set; }
         public enum eStatus { UnderBeställning = 1, Tillagning = 2, Klar = 3, Avhämtad = 4 }
 
-        private ObservableCollection<Order> orders { get; set; }
+        private ObservableCollection<Order> orders = new ObservableCollection<Order>
+        {
+
+        };
         //Observable collection of orders
-        public ObservableCollection<Order> Orders { get { return orders; } private set { } }
+        public ObservableCollection<Order> Orders { get { return orders; } set { } } // HÄR SKA DET TILL NÅT MAGISKT!
+
+        private List<string> ordersTest = new List<string>
+        {
+            "Capricciosa",
+            "Vesuvio",
+            "Hawaii"
+        };
+
+        public List<string> OrdersTest { get { return ordersTest; } set { ordersTest = value; } }
+
+        
+
+
+
+
+
 
         //Create an instance of Cashier repository
         CashierRepository repo = new CashierRepository();
@@ -29,10 +48,10 @@ namespace GUI_Kassörska.ViewModels
             
         }
 
-        public void Populate()
-        {
-            IEnumerable<Order> orders = repo.ShowAllOrders();
-            Orders.AddRange(orders);
-        }
+        //public void Populate()
+        //{
+        //    IEnumerable<Order> orders = repo.ShowAllOrders();
+        //    Orders.AddRange(Orders);
+        //}
     }
 }
