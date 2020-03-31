@@ -130,13 +130,25 @@
             FontWeight="Bold">
             Pågående ordrar
         </TextBlock>
-       
-        <local:OrderController
+
+        <ListBox
+            Grid.Column="6"
+            Grid.Row="6"
+            Grid.ColumnSpan="2"
+            Grid.RowSpan="10"
+            BorderThickness="0"
+            AlternationCount="2"
+            ItemContainerStyle="{StaticResource alternateBackgroundcolor}"
+            ItemsSource="{Binding OrdersTest}">
+        </ListBox>
+        
+        <!-- Om jag ska använda UserControls -->
+        <!--<local:OrderController
             DataContext="{Binding Order}"
             Grid.Column="2"
             Grid.Row="6"
             Grid.ColumnSpan="2"
-            Grid.RowSpan="10"/>
+            Grid.RowSpan="10"/>-->
 
         <!-- Separating line -->
         <Line
