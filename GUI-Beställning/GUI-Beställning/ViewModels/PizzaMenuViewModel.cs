@@ -52,7 +52,7 @@ namespace GUI_Beställning.ViewModels
             Pizza pizza = (Pizza)Pizza;
             repo.AddPizzaToOrder(MainWindowViewModel.OrderID, pizza.ID);
 
-            MainWindowViewModel.MyPropertyOrderChanged();
+            MainWindowViewModel.OrderChanged();
         }
     }
 

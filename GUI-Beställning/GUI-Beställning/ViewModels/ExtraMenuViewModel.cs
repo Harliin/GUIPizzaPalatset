@@ -23,21 +23,26 @@ namespace GUI_Beställning.ViewModels
         
         public OrderRepository repo = new OrderRepository();
         public ObservableCollection<Extra> Extras { get; set; }
-        public MainWindowViewModel MainWindowViewModel = new MainWindowViewModel();
+        public static MainWindowViewModel MainWindowViewModel;
         public RelayCommand AddExtraCommand { get; set; }
-        public ExtraMenuViewModel(IScreen screen = null)
+        public ExtraMenuViewModel(MainWindowViewModel viewModel =null,IScreen screen = null)
         {
             HostScreen = screen ?? Locator.Current.GetService<IScreen>();
             var extrasIE = repo.ShowExtra();
             Extras = new ObservableCollection<Extra>(extrasIE.ToList());
             AddExtraCommand = new RelayCommand(AddExtraToOrder);
+
+            if (MainWindowViewModel == null)
+            {
+                MainWindowViewModel = viewModel;
+            }
         }
 
         private void AddExtraToOrder(object Extra)
         {
             Extra extra = (Extra)Extra;
             repo.AddExtraToOrder(MainWindowViewModel.OrderID, extra.ID);
-            MainWindowViewModel.Order = new ObservableCollection<object>();
+            MainWindowViewModel.OrderChanged();
         }
     }
 }

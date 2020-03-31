@@ -66,13 +66,13 @@ namespace GUI_Beställning.ViewModels
 
             PizzaMenu = ReactiveCommand.CreateFromObservable(() => Router.Navigate.Execute(new PizzaMenuViewModel(this)));
 
-            PastaMenu = ReactiveCommand.CreateFromObservable(() => Router.Navigate.Execute(new PastaMenuViewModel()));
+            PastaMenu = ReactiveCommand.CreateFromObservable(() => Router.Navigate.Execute(new PastaMenuViewModel(this)));
 
-            SalladMenu = ReactiveCommand.CreateFromObservable(() => Router.Navigate.Execute(new SalladMenuViewModel()));
+            SalladMenu = ReactiveCommand.CreateFromObservable(() => Router.Navigate.Execute(new SalladMenuViewModel(this)));
 
-            DrinkMenu = ReactiveCommand.CreateFromObservable(() => Router.Navigate.Execute(new DrinkMenuViewModel()));
+            DrinkMenu = ReactiveCommand.CreateFromObservable(() => Router.Navigate.Execute(new DrinkMenuViewModel(this)));
 
-            ExtraMenu = ReactiveCommand.CreateFromObservable(() => Router.Navigate.Execute(new ExtraMenuViewModel()));
+            ExtraMenu = ReactiveCommand.CreateFromObservable(() => Router.Navigate.Execute(new ExtraMenuViewModel(this)));
 
             PaymentMenu = ReactiveCommand.CreateFromObservable(() => Router.Navigate.Execute(new PaymentViewModel(this)));
 
@@ -91,7 +91,6 @@ namespace GUI_Beställning.ViewModels
         public List<object> ShowOrder()
         {
             TotalPrice = 0;
-            //Order = new ObservableCollection<object>();
             List<object> OrderList = new List<object>();
             var ordersIE = repo.ShowOrderByID(OrderID);
             var temp = ordersIE.ToList();
@@ -107,12 +106,11 @@ namespace GUI_Beställning.ViewModels
 
         }
 
-        public void MyPropertyOrderChanged()
+        public void OrderChanged()
         {
             this.Order.Clear();
             var list = ShowOrder();
             this.Order.AddRange(list);
-            //this.RaisePropertyChanged(nameof(Order));
         }
         
         

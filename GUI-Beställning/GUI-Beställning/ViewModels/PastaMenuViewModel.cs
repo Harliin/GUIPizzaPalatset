@@ -19,17 +19,21 @@ namespace GUI_Beställning.ViewModels
 
         public OrderRepository repo = new OrderRepository();
 
-        public MainWindowViewModel MainWindowViewModel = new MainWindowViewModel();
+        public static MainWindowViewModel MainWindowViewModel;
         public ObservableCollection<Pasta> Pastas { get; set; }
         public RelayCommand AddPastaCommand { get; set; }
 
-        public PastaMenuViewModel(IScreen screen = null)
+        public PastaMenuViewModel(MainWindowViewModel viewModel = null ,IScreen screen = null)
         {
             AddPastaCommand = new RelayCommand(AddPastaToOrder);
             HostScreen = screen ?? Locator.Current.GetService<IScreen>();
             var PastaIE = repo.ShowPastas();
             Pastas = new ObservableCollection<Pasta>(PastaIE.ToList());
 
+            if (MainWindowViewModel == null)
+            {
+                MainWindowViewModel = viewModel;
+            }
         }
 
         private void AddPastaToOrder(object Pasta)

@@ -19,24 +19,29 @@ namespace GUI_Beställning.ViewModels
         
         public OrderRepository repo = new OrderRepository();
 
-        public MainWindowViewModel MainWindowViewModel = new MainWindowViewModel();
+        public static MainWindowViewModel MainWindowViewModel;
         public ObservableCollection<Drink> Drinks { get; set; }
         public RelayCommand AddDrinkCommand { get; set; }
 
      
-        public DrinkMenuViewModel(IScreen screen = null)
+        public DrinkMenuViewModel(MainWindowViewModel viewModel = null, IScreen screen = null)
         {
             HostScreen = screen ?? Locator.Current.GetService<IScreen>();
             var drinksIE = repo.ShowDrinks();
             Drinks = new ObservableCollection<Drink>(drinksIE.ToList());
             AddDrinkCommand = new RelayCommand(AddDrinkToOrder);
+
+            if (MainWindowViewModel == null)
+            {
+                MainWindowViewModel = viewModel;
+            }
         }
 
         private void AddDrinkToOrder(object Drink)
         {
             Drink drink = (Drink)Drink;
             repo.AddDrinkToOrder(MainWindowViewModel.OrderID, drink.ID);
-            MainWindowViewModel.Order = new ObservableCollection<object>();
+            MainWindowViewModel.OrderChanged();
         }
     }
 }
