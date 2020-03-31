@@ -94,28 +94,28 @@ namespace GUI_Beställning.Models.Data
         {
             using (IDbConnection con = Connection)
             {
-                connection.QueryAsync<Pasta>("\"sp_OrderPasta\"", new { orderid = orderID, pastaid = pastaID }, commandType: CommandType.StoredProcedure);
+                connection.Query<Pasta>("\"sp_OrderPasta\"", new { orderid = orderID, pastaid = pastaID }, commandType: CommandType.StoredProcedure);
             }
         }
         public void AddSalladToOrder(int orderID, int salladID)
         {
             using (IDbConnection con = Connection)
             {
-                connection.QueryAsync<Sallad>("\"sp_OrderSallad\"", new { orderid = orderID, salladid = salladID }, commandType: CommandType.StoredProcedure);
+                connection.Query<Sallad>("\"sp_OrderSallad\"", new { orderid = orderID, salladid = salladID }, commandType: CommandType.StoredProcedure);
             }
         }
         public void AddDrinkToOrder(int orderID, int drinkID)
         {
             using (IDbConnection con = Connection)
             {
-                connection.QueryAsync<Drink>("\"sp_OrderDrink\"", new { orderid = orderID, drinkid = drinkID }, commandType: CommandType.StoredProcedure);
+                connection.Query<Drink>("\"sp_OrderDrink\"", new { orderid = orderID, drinkid = drinkID }, commandType: CommandType.StoredProcedure);
             }
         }
         public void AddExtraToOrder(int orderID, int extraID)
         {
             using (IDbConnection con = Connection)
             {
-                connection.QueryAsync<Extra>("\"sp_OrderExtra\"", new { orderid = orderID, extraid = extraID }, commandType: CommandType.StoredProcedure);
+                connection.Query<Extra>("\"sp_OrderExtra\"", new { orderid = orderID, extraid = extraID }, commandType: CommandType.StoredProcedure);
             }
         }
         public async Task AddOrderToReceipt( string Json, int totalPrice, DateTime Date)
