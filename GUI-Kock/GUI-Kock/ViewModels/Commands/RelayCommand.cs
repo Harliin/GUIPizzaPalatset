@@ -11,12 +11,10 @@ namespace GUI_Kock.ViewModels.Commands
         /// <summary>
         /// The action to run
         /// </summary>
-        private Action _Action;
+        private Action _action;
 
         //Lägg till senare
         //private Predicate<object> _CanBeExecuted;
-
-
 
         #endregion
 
@@ -32,7 +30,7 @@ namespace GUI_Kock.ViewModels.Commands
         public RelayCommand(Action action) //Lägg till senare när knappen fungerar -> Predicate CanExecute
         {
             // Set command action
-            this._Action = action;
+            _action = action;
 
             // Set command conditions
             //Lägg till när knappen fungerar
@@ -51,8 +49,7 @@ namespace GUI_Kock.ViewModels.Commands
         /// <param name="parameter"></param>
         public void Execute(object parameter)
         {
-            //_Action(parameter);
-            Execute(_Action);
+            _action.Invoke();
         }
 
         /// <summary>

@@ -15,8 +15,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\Images\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Images\" />
   </ItemGroup>
 
 </Project>

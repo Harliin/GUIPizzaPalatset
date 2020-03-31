@@ -16,14 +16,14 @@
                 <ComboBox x:Name="userName" Margin="15" Style="{StaticResource MaterialDesignFloatingHintComboBox}" materialDesign:HintAssist.Hint="Användare">
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
-                            <ComboBoxItem Content="{Binding name}" />
+                            <ComboBoxItem Content="{Binding Name}" />
                         </DataTemplate>
                     </ComboBox.ItemTemplate>
                 </ComboBox>
 
-                <TextBox x:Name="password" Text="{Binding password}" Margin="15" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:HintAssist.Hint="Lösenord"/>
+                <TextBox x:Name="password" Text="{Binding Password}" Margin="15" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:HintAssist.Hint="Lösenord"/>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" >
-                    <Button x:Name="loginBtm" Margin="15 10" Content="Logga in" Background="#314455" />
+                    <Button x:Name="loginBtm" Command="{Binding LoginCommand}" Content="Logga in" Margin="15 10" Background="#314455" />
                 </StackPanel>
             </StackPanel>
         </Border>
