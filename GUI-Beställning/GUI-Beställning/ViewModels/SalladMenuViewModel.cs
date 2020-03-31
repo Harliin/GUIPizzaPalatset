@@ -19,24 +19,27 @@ namespace GUI_Beställning.ViewModels
         public OrderRepository repo = new OrderRepository();
         public ObservableCollection<Sallad> Sallads { get; set; }
 
-        public MainWindowViewModel MainWindowViewModel = new MainWindowViewModel();
+        public static MainWindowViewModel MainWindowViewModel;
         public RelayCommand AddSalladCommand { get; set; }
 
-        public SalladMenuViewModel(IScreen screen = null)
+        public SalladMenuViewModel(MainWindowViewModel viewModel = null, IScreen screen = null)
         {
             HostScreen = screen ?? Locator.Current.GetService<IScreen>();
 
-            var salladIE = repo.ShowSallads();
-            Sallads = new ObservableCollection<Sallad>(salladIE.ToList());
-
             AddSalladCommand = new RelayCommand(AddSalladToOrder);
+
+            Sallads = new ObservableCollection<Sallad>();
+            if(MainWindowViewModel == null)
+            {
+                MainWindowViewModel = viewModel;
+            }
         }
         
         private void AddSalladToOrder(object Sallad)
         {
             Sallad sallad = (Sallad)Sallad;
             repo.AddSalladToOrder(MainWindowViewModel.OrderID, sallad.ID);
-            MainWindowViewModel.Order = new ObservableCollection<object>();
+            MainWindowViewModel.MyPropertyOrderChanged();
         }
     }
 }
