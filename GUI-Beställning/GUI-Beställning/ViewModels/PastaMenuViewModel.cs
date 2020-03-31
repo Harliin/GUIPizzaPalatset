@@ -40,7 +40,7 @@ namespace GUI_Beställning.ViewModels
         {
             Pasta pasta = (Pasta)Pasta;
             repo.AddPastaToOrder(MainWindowViewModel.OrderID, pasta.ID);
-            MainWindowViewModel.Order = new ObservableCollection<object>();
+            MainWindowViewModel.OrderChanged();
         }
     }
 }
