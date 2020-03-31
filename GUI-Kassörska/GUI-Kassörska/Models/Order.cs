@@ -18,6 +18,7 @@ namespace GUI_Kassörska.ViewModels
         {
 
         };
+
         //Observable collection of orders
         public ObservableCollection<Order> Orders { get { return orders; } set { } } // HÄR SKA DET TILL NÅT MAGISKT!
 
