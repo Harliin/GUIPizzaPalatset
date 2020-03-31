@@ -37,7 +37,7 @@
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="0.6*"/>
+                    <ColumnDefinition Width="0.8*"/>
                 </Grid.ColumnDefinitions>
 
                 <Viewbox Stretch="Uniform" HorizontalAlignment="Left">
@@ -55,13 +55,19 @@
                 <Grid Grid.Column="1" Grid.Row="0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="2.4*"/>
-                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="1.3*"/>
                     </Grid.ColumnDefinitions>
                     <Viewbox Grid.Column="0" Stretch="Uniform">
                         <TextBlock Grid.Column="0" Text="Totalsumma :" FontSize="15" FontWeight="DemiBold" VerticalAlignment="Center" HorizontalAlignment="Right"/>
                     </Viewbox>
                     <Viewbox Grid.Column="1" Stretch="Uniform">
-                        <TextBlock x:Name="TotalPrice" Text="{Binding TotalPrice, StringFormat={}{0} Kr}" FontSize="15" Padding="3" Grid.Column="2" HorizontalAlignment="Left" FontWeight="DemiBold"/>
+                        <DockPanel>
+                            <TextBlock x:Name="TotalPrice" FontSize="15" Padding="3" Grid.Column="2" 
+                                       HorizontalAlignment="Left" FontWeight="DemiBold" DockPanel.Dock="Left"/>
+                            <TextBlock Text="kr" DockPanel.Dock="Right" FontSize="15" Padding="3" VerticalAlignment="Center"
+                                       FontWeight="DemiBold"/>
+                        </DockPanel>
+                        
                     </Viewbox>
                 </Grid>
                 <Viewbox Grid.Column="1" Grid.Row="1" Stretch="Uniform" >
