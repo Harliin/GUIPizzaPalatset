@@ -20,7 +20,7 @@ namespace GUI_Beställning.ViewModels
         public OrderRepository repo = new OrderRepository();
         public RoutingState Router { get; }
         public Order CurrentOrder { get; set; }
-
+        public static event EventHandler MyPropertyCanged;
         public PaymentViewModel PaymentVM { get; set; }
         public PizzaMenuViewModel PizzaVM { get; set; }
         //public ObservableCollection<object> Order => Payment.Foods;

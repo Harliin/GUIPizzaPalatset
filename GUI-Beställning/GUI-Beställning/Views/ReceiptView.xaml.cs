@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GUI_Beställning.ViewModels;
+using ReactiveUI;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -16,7 +18,7 @@ namespace GUI_Beställning.Views
     /// <summary>
     /// Interaction logic for ReceiptView.xaml
     /// </summary>
-    public partial class ReceiptView : UserControl
+    public partial class ReceiptView : ReactiveUserControl<ReceiptViewModel>
     {
         public ReceiptView()
         {

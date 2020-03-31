@@ -1,6 +1,6 @@
 ﻿<rxui:ReactiveUserControl x:Class="GUI_Beställning.Views.ReceiptView"
 
-    xmlns:vm="clr-namespace:GUI_Beställning.ViewModels"
+        xmlns:vm="clr-namespace:GUI_Beställning.ViewModels"
         xmlns:rxui="http://reactiveui.net"
         x:TypeArguments="vm:ReceiptViewModel"
         

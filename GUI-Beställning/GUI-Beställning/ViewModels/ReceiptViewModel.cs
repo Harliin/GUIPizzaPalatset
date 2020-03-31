@@ -6,7 +6,7 @@ using System.Text;
 
 namespace GUI_Beställning.ViewModels
 {
-    class ReceiptViewModel : ReactiveObject, IRoutableViewModel
+    public class ReceiptViewModel : ReactiveObject, IRoutableViewModel
     {
         #region For Reactive UI
         public string UrlPathSegment => "ReceiptView";
