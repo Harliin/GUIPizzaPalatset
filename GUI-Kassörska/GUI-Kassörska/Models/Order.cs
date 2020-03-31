@@ -26,10 +26,10 @@ namespace GUI_Kassörska.ViewModels
             
         }
 
-        public void Populate()
-        {
-            IEnumerable<Order> orders = repo.ShowAllOrders();
-            OrderList.AddRange(orders);
-        }
+        //public void Populate()
+        //{
+        //    IEnumerable<Order> orders = repo.ShowAllOrders();
+        //    OrderList.AddRange(orders);
+        //}
     }
 }
