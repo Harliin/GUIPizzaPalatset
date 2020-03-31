@@ -45,6 +45,9 @@ namespace GUI_Beställning.Views
 
                 this.OneWayBind(ViewModel, vm => vm.Order, v => v.Order.ItemsSource)//Bindar Ordern
                 .DisposeWith(disposables);
+
+                this.OneWayBind(ViewModel, vm => vm.TotalPrice, v => v.TotalPrice.Text)
+                .DisposeWith(disposables);
             });
 
         }

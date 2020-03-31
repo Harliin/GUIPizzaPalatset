@@ -61,7 +61,7 @@
                         <TextBlock Grid.Column="0" Text="Totalsumma :" FontSize="15" FontWeight="DemiBold" VerticalAlignment="Center" HorizontalAlignment="Right"/>
                     </Viewbox>
                     <Viewbox Grid.Column="1" Stretch="Uniform">
-                        <TextBlock Text="{Binding TotalPrice, StringFormat={}{0} Kr}" FontSize="15" Padding="3" Grid.Column="2" HorizontalAlignment="Left" FontWeight="DemiBold"/>
+                        <TextBlock x:Name="TotalPrice" Text="{Binding TotalPrice, StringFormat={}{0} Kr}" FontSize="15" Padding="3" Grid.Column="2" HorizontalAlignment="Left" FontWeight="DemiBold"/>
                     </Viewbox>
                 </Grid>
                 <Viewbox Grid.Column="1" Grid.Row="1" Stretch="Uniform" >

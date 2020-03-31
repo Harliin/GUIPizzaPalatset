@@ -101,7 +101,7 @@ namespace GUI_Beställning.ViewModels
             CurrentOrder.sallad.ForEach(sallad => { OrderList.Add(sallad); TotalPrice += sallad.Price; });
             CurrentOrder.drink.ForEach(drink => { OrderList.Add(drink); TotalPrice += drink.Price; });
             CurrentOrder.extra.ForEach(extra => { OrderList.Add(extra); TotalPrice += extra.Price; });
-
+            this.RaisePropertyChanged(nameof(TotalPrice));
             return OrderList;
 
         }
