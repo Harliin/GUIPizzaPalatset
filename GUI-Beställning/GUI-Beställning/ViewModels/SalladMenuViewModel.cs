@@ -39,7 +39,7 @@ namespace GUI_Beställning.ViewModels
         {
             Sallad sallad = (Sallad)Sallad;
             repo.AddSalladToOrder(MainWindowViewModel.OrderID, sallad.ID);
-            MainWindowViewModel.MyPropertyOrderChanged();
+            MainWindowViewModel.OrderChanged();
         }
     }
 }
