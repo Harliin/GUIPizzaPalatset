@@ -16,31 +16,43 @@ namespace GUI_Beställning.ViewModels
 {
     public class PaymentViewModel : ReactiveObject, IRoutableViewModel
     {
-        public OrderRepository repo = new OrderRepository();
-        public static MainWindowViewModel MainWindowViewModel;
 
         #region For Reactive UI
         public string UrlPathSegment => "PaymentMenu";
 
         public IScreen HostScreen { get; }
         #endregion
+        #region Properties
+        public OrderRepository repo = new OrderRepository();
+        public static MainWindowViewModel MainWindowViewModel;
         public Order CurrentOrder { get; set; }
         public ObservableCollection<object> Foods => MainWindowViewModel.Order;
-
-
-        public RelayCommand RemoveCommand { get; set; }
-        public ObservableCollection<Order> Orders { get; set; }
         public int OrderID => MainWindowViewModel.OrderID;
+
+        #endregion
+
+        #region Commands
+        public RelayCommand RemoveCommand { get; set; }
+        public RelayCommand PaymentCommand { get; set; }
+        #endregion
+
+        /// <summary>
+        /// Default Constructor
+        /// </summary>
+        /// <param name="viewModel"></param>
+        /// <param name="screen"></param>
         public PaymentViewModel(MainWindowViewModel viewModel = null,IScreen screen = null)
         {
-            RemoveCommand = new RelayCommand(RemoveFoodFromOrder);
-
             HostScreen = screen ?? Locator.Current.GetService<IScreen>();
 
             if (MainWindowViewModel == null)
             {
                 MainWindowViewModel = viewModel;
             }
+
+            //Commands
+            RemoveCommand = new RelayCommand(RemoveFoodFromOrder);
+            PaymentCommand = new RelayCommand(MainWindowViewModel.PaymentCommandMethod);
         }
 
     
@@ -80,6 +92,7 @@ namespace GUI_Beställning.ViewModels
             MainWindowViewModel.OrderChanged();
             
         }
+
     }
 
 }

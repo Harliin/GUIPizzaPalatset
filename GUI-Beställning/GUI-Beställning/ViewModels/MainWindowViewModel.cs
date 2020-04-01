@@ -63,6 +63,8 @@ namespace GUI_Beställning.ViewModels
 
             Locator.CurrentMutable.Register(() => new WelcomeView(), typeof(IViewFor<WelcomeViewModel>));
 
+            Locator.CurrentMutable.Register(() => new ReceiptView(), typeof(IViewFor<ReceiptViewModel>));
+
 
             PizzaMenu = ReactiveCommand.CreateFromObservable(() => Router.Navigate.Execute(new PizzaMenuViewModel(this)));
 
@@ -113,6 +115,12 @@ namespace GUI_Beställning.ViewModels
             this.Order.AddRange(list);
         }
         
-        
+        public void PaymentCommandMethod(object parameter)
+        {
+            if (Order.Count != 0)
+            {
+                Router.Navigate.Execute(new ReceiptViewModel(this));
+            }
+        }
     }
 }

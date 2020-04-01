@@ -61,7 +61,7 @@
         </ScrollViewer>
 
         <Viewbox Grid.Row="2" Grid.ColumnSpan="3" Stretch="Uniform">
-            <Button MinWidth="300" MinHeight="50" VerticalAlignment="Center" Margin="15"
+            <Button Command="{Binding PaymentCommand}" MinWidth="300" MinHeight="50" VerticalAlignment="Center" Margin="15"
                 HorizontalAlignment="Center" Foreground="White" Background="#D70F64" FontSize="23">Betala</Button>
         </Viewbox>
         

@@ -23,6 +23,8 @@ namespace GUI_Beställning.Views
         public ReceiptView()
         {
             InitializeComponent();
+
+            this.DataContext = new ReceiptViewModel();
         }
     }
 }
