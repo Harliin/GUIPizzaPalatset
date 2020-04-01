@@ -70,12 +70,12 @@
                     <!-- Price in SEK -->
                     <StackPanel Orientation="Horizontal" Grid.Row="2" >
                         <TextBlock Text="Totalt pris i SEK: " FontSize="20" FontWeight="DemiBold" />
-                        <TextBlock Text="{Binding TotalPrice, StringFormat={}{0} kr}" FontSize="20" FontWeight="DemiBold"/>
+                        <TextBlock Text="{Binding SEKPrice, StringFormat={}{0} kr}" FontSize="20" FontWeight="DemiBold"/>
                     </StackPanel>
                     <!-- Price in EURO-->
                     <StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center">
                         <TextBlock Text="Totalt pris i EURO: " FontSize="20" FontWeight="DemiBold" />
-                        <TextBlock Text="{Binding TotalPrice, StringFormat={}{0} euro}" FontSize="20" FontWeight="DemiBold"/>
+                        <TextBlock Text="{Binding EuroPrice, StringFormat={}{0} euro}" FontSize="20" FontWeight="DemiBold"/>
                     </StackPanel>
                 </StackPanel>
             </DockPanel>

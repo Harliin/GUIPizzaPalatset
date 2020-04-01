@@ -20,7 +20,9 @@ namespace GUI_Beställning.ViewModels
         public static MainWindowViewModel MainWindowViewModel;
         public ObservableCollection<object> RecieptFoods => MainWindowViewModel.Order;
         public int OrderID => MainWindowViewModel.OrderID;
-        public int TotalPrice => MainWindowViewModel.TotalPrice;
+        public int SEKPrice => MainWindowViewModel.TotalPrice;
+
+        public int EuroPrice { get; set; }
 
         #endregion
         public ReceiptViewModel(MainWindowViewModel viewModel = null,IScreen screen = null)
