@@ -35,6 +35,11 @@ Jonathan:
 Jobbade mycket på att få sidorna responsiva vilket nästan är helt klart. 
 Sedan började jag med att koppla upp mot databasen.
 16-20/3 Jobbat en del med reactive UI. Vi har kopplat ihop så att vi kan lägga till maträtter till en Order.
+23-27/3 Jobbat mycket med betalningsskärmen och att kunna visa vilka ordrar man har där.
+fortfarande inte löst att kunna ta bort mat från en färdig order.
+30/3-3/4 Denna veckan har vi fått till så att man kan ta bort mat från en order, vi jobbade även mycket med 
+att få Guin att uppdateras när mat läggs till/tas bort. vilket vi löste tillslut.
+Sedan började vi med att få ner WebApi för valuta kurs samt så har vi fixas kvittot.
 
 
 
