@@ -131,8 +131,8 @@
             Pågående ordrar
         </TextBlock>
 
-        <!--<ListBox
-            Grid.Column="6"
+        <ListBox
+            Grid.Column="2"
             Grid.Row="6"
             Grid.ColumnSpan="2"
             Grid.RowSpan="10"
@@ -140,7 +140,8 @@
             AlternationCount="2"
             ItemContainerStyle="{StaticResource alternateBackgroundcolor}"
             ItemsSource="{Binding OngoingOrders}"
-            SelectedItem="{Binding CurrentOrder}">
+            SelectedItem="{Binding CurrentOrder}"
+            SelectionMode="Single">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
@@ -152,31 +153,7 @@
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
-        </ListBox>-->
-
-        <ListView
-            Grid.Column="6"
-            Grid.Row="6"
-            Grid.ColumnSpan="2"
-            Grid.RowSpan="10"
-            BorderThickness="0"
-            ItemsSource="{Binding OngoingOrders}"
-            SelectedItem="{Binding CurrentOrder}">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn DisplayMemberBinding="{Binding Status}"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding OrderID}"/>
-                </GridView>
-            </ListView.View>
-        </ListView>
-        
-        <!-- Om jag ska använda UserControls -->
-        <!--<local:OrderController
-            DataContext="{Binding Order}"
-            Grid.Column="2"
-            Grid.Row="6"
-            Grid.ColumnSpan="2"
-            Grid.RowSpan="10"/>-->
+        </ListBox>
 
         <!-- Separating line -->
         <Line
@@ -198,6 +175,7 @@
             FontWeight="Bold">
             Färdiga ordrar
         </TextBlock>
+
         <ListBox
             Grid.Column="6"
             Grid.Row="6"
@@ -206,7 +184,20 @@
             BorderThickness="0"
             AlternationCount="2"
             ItemContainerStyle="{StaticResource alternateBackgroundcolor}"
-            ItemsSource="{Binding OrdersTest}">
+            ItemsSource="{Binding ReadyOrders}"
+            SelectedItem="{Binding CurrentOrder}"
+            SelectionMode="Single">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <Button
+                            Height="50"
+                            Width="50"
+                            Foreground="Black"
+                            Content="{Binding Status}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
         </ListBox>
     </Grid>
 </Window>

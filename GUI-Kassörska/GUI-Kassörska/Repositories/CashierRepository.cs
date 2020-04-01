@@ -39,8 +39,7 @@ namespace GUI_Kassörska
         {
             using (IDbConnection con = Connection)
             {
-                IEnumerable<Order> orders = await connection.QueryAsync<Order>("\"ShowOrderByStatus\"", new { status = (int)status }, commandType: CommandType.StoredProcedure);
-                return orders;
+                return (await connection.QueryAsync<Order>("\"ShowOrderByStatus\"", new { status = (int)status }, commandType: CommandType.StoredProcedure));
             }
         }
 
@@ -65,12 +64,11 @@ namespace GUI_Kassörska
         }
 
         //Visa alla ordrar
-        public async Task<IEnumerable<Order>> ShowAllOrders()
+        public async Task<IEnumerable<Order>> ShowAllOrdersAsync()
         {
             using (IDbConnection con = Connection)
             {
-                IEnumerable<Order> allOrders = (await connection.QueryAsync<Order>("\"ShowOrders\"", commandType: CommandType.StoredProcedure));
-                return allOrders;
+                return (await connection.QueryAsync<Order>("\"ShowOrders\"", commandType: CommandType.StoredProcedure));
             }
         }
     }

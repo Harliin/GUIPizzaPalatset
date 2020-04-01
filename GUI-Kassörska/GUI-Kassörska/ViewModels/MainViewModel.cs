@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Collections;
 using System.Threading.Tasks;
+using GUI_Kassörska.Command;
 
 namespace GUI_Kassörska.ViewModels
 {
@@ -21,6 +22,8 @@ namespace GUI_Kassörska.ViewModels
 			}
 		}
 
+		public RelayCommand Serve { get; set; }
+
 		private IEnumerable databaseList;
 
 		public IEnumerable DatabaseList
@@ -32,6 +35,19 @@ namespace GUI_Kassörska.ViewModels
 				OnPropertyChanged("DatabaseList");
 			}
 		}
+
+		private ObservableCollection<Order> readyOrders;
+
+		public ObservableCollection<Order> ReadyOrders
+		{
+			get { return readyOrders; }
+			set
+			{
+				readyOrders = value;
+				OnPropertyChanged("ReadyOrders");
+			}
+		}
+
 
 		private ObservableCollection<Order> ongoingOrders;
 
@@ -53,6 +69,7 @@ namespace GUI_Kassörska.ViewModels
 			set
 			{
 				currentOrder = value;
+				OrderID = CurrentOrder.OrderID;
 				OnPropertyChanged("CurrentOrder");
 			}
 		}
@@ -81,9 +98,24 @@ namespace GUI_Kassörska.ViewModels
 			}
 		}
 
+		public async Task<ObservableCollection<Order>> ShowAllReadyOrders()
+		{
+			DatabaseList = await repo.ShowOrderByStatusAsync(Order.eStatus.Klar);
+			ReadyOrders = new ObservableCollection<Order>();
+			foreach (Order item in DatabaseList)
+			{
+				Order order = new Order();
+				order.OrderID = item.OrderID;
+				order.Status = item.Status;
+				ReadyOrders.Add(order);
+			}
+
+			return ReadyOrders;
+		}
+
 		public async Task<ObservableCollection<Order>> ShowAllOngoingOrders()
 		{
-			DatabaseList = await repo.ShowAllOrders();
+			DatabaseList = await repo.ShowOrderByStatusAsync(Order.eStatus.Tillagning);
 			OngoingOrders = new ObservableCollection<Order>();
 			foreach(Order item in DatabaseList)
 			{
@@ -92,12 +124,30 @@ namespace GUI_Kassörska.ViewModels
 				order.Status = item.Status;
 				OngoingOrders.Add(order);
 			}
+
+			DatabaseList = await repo.ShowOrderByStatusAsync(Order.eStatus.UnderBeställning);
+			foreach (Order item in DatabaseList)
+			{
+				Order order = new Order();
+				order.OrderID = item.OrderID;
+				order.Status = item.Status;
+				OngoingOrders.Add(order);
+			}
+
 			return OngoingOrders;
+		}
+
+		private async void Update(object u)
+		{
+			await repo.UpdateOrderStatus(OrderID);
+			await ShowAllReadyOrders();
 		}
 
 		public MainViewModel()
 		{
 			ShowAllOngoingOrders();
+			ShowAllReadyOrders();
+			Serve = new RelayCommand(Update);
 		}
 
 		public CashierRepository repo = new CashierRepository();
