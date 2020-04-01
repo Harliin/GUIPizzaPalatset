@@ -131,7 +131,7 @@
             Pågående ordrar
         </TextBlock>
 
-        <ListBox
+        <!--<ListBox
             Grid.Column="6"
             Grid.Row="6"
             Grid.ColumnSpan="2"
@@ -139,8 +139,36 @@
             BorderThickness="0"
             AlternationCount="2"
             ItemContainerStyle="{StaticResource alternateBackgroundcolor}"
-            ItemsSource="{Binding OrdersTest}">
-        </ListBox>
+            ItemsSource="{Binding OngoingOrders}"
+            SelectedItem="{Binding CurrentOrder}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <Button
+                            Height="50"
+                            Width="50"
+                            Foreground="Black"
+                            Content="{Binding Status}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>-->
+
+        <ListView
+            Grid.Column="6"
+            Grid.Row="6"
+            Grid.ColumnSpan="2"
+            Grid.RowSpan="10"
+            BorderThickness="0"
+            ItemsSource="{Binding OngoingOrders}"
+            SelectedItem="{Binding CurrentOrder}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding Status}"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding OrderID}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
         
         <!-- Om jag ska använda UserControls -->
         <!--<local:OrderController

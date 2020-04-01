@@ -12,7 +12,7 @@ namespace GUI_Kassörska
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = new Order();
+            DataContext = new MainViewModel();
         }
     }
 }

@@ -65,11 +65,11 @@ namespace GUI_Kassörska
         }
 
         //Visa alla ordrar
-        public IEnumerable<Order> ShowAllOrders()
+        public async Task<IEnumerable<Order>> ShowAllOrders()
         {
             using (IDbConnection con = Connection)
             {
-                IEnumerable<Order> allOrders = (connection.Query<Order>("\"ShowOrders\"", commandType: CommandType.StoredProcedure));
+                IEnumerable<Order> allOrders = (await connection.QueryAsync<Order>("\"ShowOrders\"", commandType: CommandType.StoredProcedure));
                 return allOrders;
             }
         }
