@@ -151,33 +151,5 @@ namespace GUI_Kassörska.ViewModels
 		}
 
 		public CashierRepository repo = new CashierRepository();
-
-		
-
-
-		//public event PropertyChangedEventHandler PropertyChanged = (sender, e) => { };
-
-		//public CashierRepository repo = new CashierRepository();
-
-		//public ObservableCollection<Order> Orders { get; set; }
-		//private string orderString;
-
-		//public MainViewModel()
-		//{
-		//	var OrderIE = repo.ShowAllOrders();
-		//	Orders = new ObservableCollection<Order>(OrderIE.ToList());
-		//}
-
-		//public string OrderString
-		//{
-		//	get { return orderString; }
-		//	set 
-		//	{
-		//		orderString = value;
-		//		PropertyChanged(this, new PropertyChangedEventArgs(nameof(OrderString)));
-
-		//	}
-		//}
-
 	}
 }
