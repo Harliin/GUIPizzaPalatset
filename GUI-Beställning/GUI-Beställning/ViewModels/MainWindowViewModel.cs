@@ -11,6 +11,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Reactive;
 using System.Text;
+using System.Windows;
 using System.Windows.Input;
 
 namespace GUI_Beställning.ViewModels
@@ -138,13 +139,14 @@ namespace GUI_Beställning.ViewModels
         /// <param name="parameter"></param>
         public void CheckoutCommandMethod(object parameter)
         {
-            repo.UpdateOrderStatus(OrderID);
+            //repo.UpdateOrderStatus(OrderID);
             Order.Clear();
 
             //todoo
             //OrderID++;
             //repo.CreateNewOrder(OrderID);
-
+            MessageBox.Show("*Skriver ut kvitto*");
+            Router.Navigate.Execute(new WelcomeViewModel());
         }
 
         #endregion

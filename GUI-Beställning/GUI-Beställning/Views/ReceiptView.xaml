@@ -89,15 +89,15 @@
                 </DockPanel>
             </Viewbox>
 
-            
-                <Viewbox Grid.Column="1" Margin="1 5 2 1">
+            <!-- Column 1 Reciept Button-->
+            <Viewbox Grid.Column="1" Margin="1 5 2 1">
                 <Grid>
                     <Button Background="#D70F64" Height="110" Width="84" Command="{Binding CheckoutCommand}">
                         <StackPanel>
                             <materialDesign:PackIcon Kind="ShoppingCartArrowRight" Foreground="White"
-                                                     Width="30" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                            <TextBlock Text="Betala" FontSize="15" FontWeight="DemiBold"
-                            Foreground="White" VerticalAlignment="Bottom"/>
+                                                    Width="30" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            <TextBlock Text="Kvitto" FontSize="15" FontWeight="DemiBold"
+                        Foreground="White" VerticalAlignment="Bottom"/>
                         </StackPanel>
                     </Button>
 
