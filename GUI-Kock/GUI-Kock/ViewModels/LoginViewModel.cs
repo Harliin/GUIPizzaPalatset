@@ -9,6 +9,7 @@ using Splat;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Reactive;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,54 +20,16 @@ namespace GUI_Kock.ViewModels
 {
     public class LoginViewModel : ReactiveObject, IRoutableViewModel
     {
-
+        #region Properties
         public static ChefRepository repo = new ChefRepository();
 
         public ObservableCollection<Employee> Employees { get; private set; }
 
-        public ReactiveCommand<Unit, IRoutableViewModel> GoToOrderView { get; private set; }
-
-        //public ReactiveCommand<Unit, IRoutableViewModel> LoginCommand { get; private set; }
-
-        public Employee _employee;
-
-        private string _password;
-
-        private string _userName;
-
-        #region Routing
-        public string UrlPathSegment => "Login";
-        public IScreen HostScreen { get; private set; }
-        public RoutingState Router { get; private set; }
-        #endregion
-
-
-        public LoginViewModel(RoutingState state, IScreen screen = null)
-        {
-            HostScreen = screen ?? Locator.Current.GetService<IScreen>();
-            Locator.CurrentMutable.Register(() => new OrderView(), typeof(IViewFor<OrderViewModel>));
-            Employees = new ObservableCollection<Employee>();
-            Router = state;
-            _employee = new Employee();
-            LoginCommand = new RelayCommand(Login); 
-        }
-
-        public string Name
-        {
-            get { return _userName; }
-            set { this.RaiseAndSetIfChanged(ref _userName, value); }
-        }
-
-
-        public string Password
-        {
-            get { return _password; }
-            set { this.RaiseAndSetIfChanged(ref _password, value); }
-        }
-
+        public List<string> EmployeeNames { get; private set; }
         /// <summary>
         /// Gets the Employy instance
         /// </summary>
+        public Employee _employee;
 
         public Employee LoginEmployee
         {
@@ -76,38 +39,70 @@ namespace GUI_Kock.ViewModels
             }
         }
 
+        private string _password;
+
+        private string _userName;
+        public string Name
+        {
+            get { return _userName; }
+            set { this.RaiseAndSetIfChanged(ref _userName, value); this.RaisePropertyChanged(nameof(Name)); }
+        }
+
+        public string Password
+        {
+            get { return _password; }
+            set { this.RaiseAndSetIfChanged(ref _password, value); }
+        }
+        #endregion
+
+        #region Commands
+        public ReactiveCommand<Unit, IRoutableViewModel> GoToOrderView { get; private set; }
         // <summary>
         // Gets the loginCommand for the ViewModel  
         // </summary>
-        public RelayCommand LoginCommand
+        public RelayCommand LoginCommand { get; set; }
+        #endregion
+
+        #region Routing
+        public string UrlPathSegment => "Login";
+        public IScreen HostScreen { get; private set; }
+        public static RoutingState Router { get; private set; }
+        #endregion
+
+        public LoginViewModel(RoutingState state = null, IScreen screen = null)
         {
-            get;
-            set;
+            HostScreen = screen ?? Locator.Current.GetService<IScreen>();
+            Locator.CurrentMutable.Register(() => new OrderView(), typeof(IViewFor<OrderViewModel>));
+            Employees = new ObservableCollection<Employee>();
+            if (Router == null)
+            {
+                Router = state;
+            }
+            
+            _employee = new Employee();
+            EmployeeNames = new List<string>();
+            LoginCommand = new RelayCommand(Login); 
         }
 
         /// <summary>
-        /// Checks that there's a user in database. Användarnamn: ba1  Lösen: ba1 
+        /// Checks if the Pasword and user is correct
         /// </summary>
         /// <returns></returns>
         public bool CheckUser()
         {
-            string AdminName = Name;
-            string password = Password;
+            //Creates a dictionary of the employyes with the Name as key and password as the value
+            var tempList = Employees.ToList();
+            Dictionary<string, string> employeeNames = new Dictionary<string, string>();
+            tempList.ForEach(x => employeeNames.Add(x.Name, x.Password));
 
-            if
-            ((AdminName == "Tony") && (password == "admin123") ||
-            (AdminName == "Giovanni") && (password == "bagare2") ||
-            (AdminName == "ba1") && (password == "ba1") ||
-            (AdminName == "VD") && (password == "123"))
+            if (employeeNames.ContainsKey(Name))
             {
-                return true;
+                if (employeeNames.ContainsValue(Password))
+                {
+                    return true;
+                }
             }
-            else
-            {
-                MessageBox.Show("Felaktigt inloggning!");
-                CheckUser();
-            }
-            return true;
+            return false;
         }
 
         /// <summary>
@@ -116,13 +111,23 @@ namespace GUI_Kock.ViewModels
         /// <returns></returns>
         public void Login()
         {
-            Router.Navigate.Execute(new OrderViewModel(Router));
+            if (Name != null && Password != null)
+            {
+                if (CheckUser())
+                {
+                    Router.Navigate.Execute(new OrderViewModel(Router));
+                }
+            }
         }
-
+        /// <summary>
+        /// Populates the Employee list and employeenames list
+        /// </summary>
         public void Populate()
         {
             IEnumerable<Employee> employee = repo.GetChefsList();
             Employees.AddRange(employee);
+            var templist = employee.ToList();
+            templist.ForEach(x => EmployeeNames.Add(x.Name));
         }
 
     }

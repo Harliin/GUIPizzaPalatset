@@ -24,12 +24,18 @@ namespace GUI_Kock.Views
         public LoginView()
         {
             InitializeComponent();
-
+            this.DataContext = new LoginViewModel();
             this.WhenActivated(disposables =>
             {
-                this.OneWayBind(ViewModel, x => x.Employees, view => view.userName.ItemsSource)
+                this.OneWayBind(ViewModel, x => x.EmployeeNames, view => view.userName.ItemsSource)
                 .DisposeWith(disposables);
                 ViewModel.Populate();
+
+                this.Bind(ViewModel, vm => vm.Name, v => v.userName.Text)
+                .DisposeWith(disposables);
+
+                this.Bind(ViewModel, vm => vm.Password, v => v.password.Text)
+                .DisposeWith(disposables);
 
                 this.BindCommand(ViewModel, x => x.LoginCommand, x => x.loginBtm)
                 .DisposeWith(disposables);
