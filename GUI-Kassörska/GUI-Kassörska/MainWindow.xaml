@@ -197,9 +197,7 @@
                             BorderThickness="0"
                             Background="{x:Null}">
                             <Button.Content>
-                                <Binding Source ="{}"
-                                      Path="{StaticResource myDataSource}"
-                                      Data="{StaticResource RightArrowImage}"
+                                <Path Data="{StaticResource RightArrowImage}"
                                       Fill="{StaticResource DeepPinkBrush}"
                                       Stretch="Uniform"/>
                             </Button.Content>
