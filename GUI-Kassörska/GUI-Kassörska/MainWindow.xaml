@@ -149,7 +149,8 @@
                             Height="50"
                             Width="50"
                             Foreground="Black"
-                            Content="{Binding Status}"/>
+                            Content="{Binding Status}"
+                            />
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
@@ -194,7 +195,13 @@
                             Height="50"
                             Width="50"
                             Foreground="Black"
-                            Content="{Binding Status}"/>
+                            
+                            >
+                            <Button.Content>
+                                <Path Data="{StaticResource RightArrowImage}"
+                                      Fill="{StaticResource DeepPinkBrush}"/>
+                            </Button.Content>
+                        </Button>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>

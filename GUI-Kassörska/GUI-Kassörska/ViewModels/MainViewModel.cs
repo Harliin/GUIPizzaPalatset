@@ -125,15 +125,6 @@ namespace GUI_Kassörska.ViewModels
 				OngoingOrders.Add(order);
 			}
 
-			//DatabaseList = await repo.ShowOrderByStatusAsync(Order.eStatus.UnderBeställning);
-			//foreach (Order item in DatabaseList)
-			//{
-			//	Order order = new Order();
-			//	order.OrderID = item.OrderID;
-			//	order.Status = item.Status;
-			//	OngoingOrders.Add(order);
-			//}
-
 			return OngoingOrders;
 		}
 
@@ -145,7 +136,7 @@ namespace GUI_Kassörska.ViewModels
 
 		public MainViewModel()
 		{
-			ShowAllOngoingOrders();
+			//ShowAllOngoingOrders();
 			ShowAllReadyOrders();
 			Serve = new RelayCommand(Update);
 		}
