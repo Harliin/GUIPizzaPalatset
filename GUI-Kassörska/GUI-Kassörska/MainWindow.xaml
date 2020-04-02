@@ -194,12 +194,14 @@
                         <Button
                             Height="50"
                             Width="50"
-                            Foreground="Black"
-                            
-                            >
+                            BorderThickness="0"
+                            Background="{x:Null}">
                             <Button.Content>
-                                <Path Data="{StaticResource RightArrowImage}"
-                                      Fill="{StaticResource DeepPinkBrush}"/>
+                                <Binding Source ="{}"
+                                      Path="{StaticResource myDataSource}"
+                                      Data="{StaticResource RightArrowImage}"
+                                      Fill="{StaticResource DeepPinkBrush}"
+                                      Stretch="Uniform"/>
                             </Button.Content>
                         </Button>
                     </StackPanel>
