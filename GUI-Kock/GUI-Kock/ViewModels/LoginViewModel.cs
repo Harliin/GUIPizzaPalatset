@@ -28,7 +28,7 @@ namespace GUI_Kock.ViewModels
 
         public ReactiveCommand<Unit, IRoutableViewModel> LoginCommand { get; private set; }
 
-        private readonly Employee _login;
+        public Employee _employee;
 
         private string _password;
 
@@ -47,7 +47,7 @@ namespace GUI_Kock.ViewModels
             Locator.CurrentMutable.Register(() => new OrderView(), typeof(IViewFor<OrderViewModel>));
             Employees = new ObservableCollection<Employee>();
             Router = state;
-            _login = new Employee();
+            _employee = new Employee();
             //LoginCommand = new RelayCommand(Login);
 
             //Parameter for LoginCommand.
@@ -62,8 +62,11 @@ namespace GUI_Kock.ViewModels
             (n == "VD" && p == "123"));
 
             LoginCommand = ReactiveCommand.CreateFromObservable(() => (Router.Navigate.Execute(new OrderViewModel(Router))), canLogin);
-            this.WhenAnyValue(x => x.Name).Subscribe(n => _login.Name = n);
-            this.WhenAnyValue(x => x.Password).Subscribe(p => _login.Password = p);
+            this.WhenAnyValue(x => x.Name).Subscribe(n => _employee.Name = n);
+            this.WhenAnyValue(x => x.Password).Subscribe(p => _employee.Password = p);
+
+            Locator.CurrentMutable.Register(() => new OrderView(), typeof(IViewFor<OrderViewModel>));
+            GoToOrderView = ReactiveCommand.CreateFromObservable(() => Router.Navigate.Execute(new OrderViewModel(Router)));
         }
 
         public string Name
@@ -83,11 +86,11 @@ namespace GUI_Kock.ViewModels
         /// Gets the Employy instance
         /// </summary>
 
-        public Employee LoginAdmin
+        public Employee LoginEmployee
         {
             get
             {
-                return _login;
+                return _employee;
             }
         }
 
@@ -104,30 +107,26 @@ namespace GUI_Kock.ViewModels
         /// Checks that there's a user in database. Användarnamn: ba1  Lösen: ba1 
         /// </summary>
         /// <returns></returns>
-        //public bool CheckUser()
-        //{
-        //    string AdminName = _userName;
-        //    string password = _password;
+        public bool CheckUser()
+        {
+            string AdminName = Name;
+            string password = Password;
 
-        //    var admins = repo.GetChefs(AdminName, password);
-
-        //    if
-        //    ((AdminName == "Tony" &&)(password == "admin123") ||
-        //    (AdminName == "Giovanni") && (password == "bagare2") ||
-        //    (AdminName == "ba1") && (password == "ba1") ||
-        //    (AdminName == "VD") && (password == "123")) ;
-        //    {
-        //        return true;
-        //    }
-        //    else
-        //    {
-
-        //        Console.WriteLine("Felaktigt inloggning!");
-        //        Console.ReadKey();
-        //        Login();
-        //    }
-        //    return true;
-        //}
+            if
+            ((AdminName == "Tony") && (password == "admin123") ||
+            (AdminName == "Giovanni") && (password == "bagare2") ||
+            (AdminName == "ba1") && (password == "ba1") ||
+            (AdminName == "VD") && (password == "123"))
+            {
+                return true;
+            }
+            else
+            {
+                MessageBox.Show("Felaktigt inloggning!");
+                CheckUser();
+            }
+            return true;
+        }
 
         /// <summary>
         /// Action till LoginCommand
@@ -138,7 +137,7 @@ namespace GUI_Kock.ViewModels
         //    MessageBox.Show("Inloggning lyckades!");
         //    Locator.CurrentMutable.Register(() => new OrderView(), typeof(IViewFor<OrderViewModel>));
         //    GoToOrderView = ReactiveCommand.CreateFromObservable(() => Router.Navigate.Execute(new OrderViewModel(Router)));
-            
+
         //}
 
         public void Populate()

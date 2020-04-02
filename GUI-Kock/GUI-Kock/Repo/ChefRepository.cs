@@ -63,18 +63,18 @@ namespace DB_Kock
                 return pizza;
             }
         }
-        public async Task<IEnumerable<Order>> ShowOrderByStatus(eStatus Status)
+        public IEnumerable<Order> ShowOrderByStatus(eStatus Status)
         {
             using (IDbConnection con = Connection)
             {
-                IEnumerable<Order> orders = await connection.QueryAsync<Order>("\"ShowOrderByStatus\"", new { status = (int)Status }, commandType: CommandType.StoredProcedure);
+                IEnumerable<Order> orders = connection.Query<Order>("\"ShowOrderByStatus\"", new { status = (int)Status }, commandType: CommandType.StoredProcedure);
                 foreach (Order order in orders)
                 {
-                    order.pizza = (await connection.QueryAsync<Pizza>("\"GetOrderPizzas\"", new { inid = order.ID }, commandType: CommandType.StoredProcedure)).ToList();
-                    order.pasta = (await connection.QueryAsync<Pasta>("\"GetOrderPastas\"", new { inid = order.ID }, commandType: CommandType.StoredProcedure)).ToList();
-                    order.sallad = (await connection.QueryAsync<Sallad>("\"GetOrderSallads\"", new { inid = order.ID }, commandType: CommandType.StoredProcedure)).ToList();
-                    order.drink = (await connection.QueryAsync<Drink>("\"GetOrderDrinks\"", new { inid = order.ID }, commandType: CommandType.StoredProcedure)).ToList();
-                    order.extra = (await connection.QueryAsync<Extra>("\"GetOrderExtras\"", new { inid = order.ID }, commandType: CommandType.StoredProcedure)).ToList();
+                    order.pizza = (connection.Query<Pizza>("\"GetOrderPizzas\"", new { inid = order.ID }, commandType: CommandType.StoredProcedure)).ToList();
+                    order.pasta = (connection.Query<Pasta>("\"GetOrderPastas\"", new { inid = order.ID }, commandType: CommandType.StoredProcedure)).ToList();
+                    order.sallad = (connection.Query<Sallad>("\"GetOrderSallads\"", new { inid = order.ID }, commandType: CommandType.StoredProcedure)).ToList();
+                    order.drink = (connection.Query<Drink>("\"GetOrderDrinks\"", new { inid = order.ID }, commandType: CommandType.StoredProcedure)).ToList();
+                    order.extra = (connection.Query<Extra>("\"GetOrderExtras\"", new { inid = order.ID }, commandType: CommandType.StoredProcedure)).ToList();
                 }
                 return orders;
             }
@@ -123,11 +123,11 @@ namespace DB_Kock
             }
         }
 
-        public async Task<IEnumerable<Pizza>> ShowPizzasAsync()
+        public IEnumerable<Pizza> ShowPizzas()
         {
             using (IDbConnection con = Connection)
             {
-                IEnumerable<Pizza> pizzas = await connection.QueryAsync<Pizza>("GetPizzas", commandType: CommandType.StoredProcedure);
+                IEnumerable<Pizza> pizzas = connection.Query<Pizza>("GetPizzas", commandType: CommandType.StoredProcedure);
                 return pizzas;
             }
         }

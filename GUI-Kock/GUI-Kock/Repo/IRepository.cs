@@ -11,7 +11,8 @@ namespace DB_Kock
         Task<IEnumerable<Ingredient>> ShowIngredientsAsync();
         Task<IEnumerable<Pasta>> ShowPastasAsync();
         Task<IEnumerable<PizzaIngredient>> ShowPizzaAndIngredients();
-        Task<IEnumerable<Pizza>> ShowPizzasAsync();
+        IEnumerable<Pizza> ShowPizzas();
         Task<IEnumerable<Sallad>> ShowSalladsAsync();
     }
 }
+

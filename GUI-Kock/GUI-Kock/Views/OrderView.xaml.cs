@@ -2,6 +2,7 @@
 using ReactiveUI;
 using System;
 using System.Collections.Generic;
+using System.Reactive.Disposables;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -25,7 +26,20 @@ namespace GUI_Kock.Views
             InitializeComponent();
             this.WhenActivated(disposables =>
             {
-                this.BindCommand(ViewModel, x => x.GoToLoginView, x => x.exit);
+                this.OneWayBind(ViewModel, x => x.OngoinOrders, view => view.ongoingorder.ItemsSource)
+                .DisposeWith(disposables);
+                ViewModel.PopulateOrders();
+
+                //this.BindCommand(ViewModel, x => x.GoToPreparingView, x => x.orderBtm);
+
+                this.BindCommand(ViewModel, x => x.GoToLoginView, x => x.exit); 
+
+                //this.OneWayBind(ViewModel, x => x._login, view => view.user);
+                ////.DisposeWith(disposables);
+                ///
+
+
+
             });
         }
     }
