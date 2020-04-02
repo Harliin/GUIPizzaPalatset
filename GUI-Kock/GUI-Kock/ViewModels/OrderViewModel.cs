@@ -23,23 +23,23 @@ namespace GUI_Kock.ViewModels
         public ObservableCollection<Order> OngoinOrders { get; private set; }
         public ReactiveCommand<Unit, IRoutableViewModel> GoToPreparingView { get; private set; }
         public ReactiveCommand<Unit, IRoutableViewModel> GoToLoginView { get; private set; }
-
-        public LoginViewModel _login;
-
-        public Employee _admin;
         public ObservableCollection<Pizza> Pizzas { get; }
 
-        public Order SelectedOrders
-        {
-            get
-            {
-                return _selectedOrders;
-            }
-            set
-            {
-                this.RaiseAndSetIfChanged(ref _selectedOrders, value);
-            }
-        }
+        //public Order SelectedOrders
+        //{
+        //    get
+        //    {
+        //        return _selectedOrders;
+        //    }
+        //    set
+        //    {
+        //        this.RaiseAndSetIfChanged(ref _selectedOrders, value);
+        //        if (value != null)
+        //        {
+        //            Router.Navigate.Execute(new PreparingOrderViewModel(Router));
+        //        }
+        //    }
+        //    }
 
 
         #region Routing
@@ -51,11 +51,10 @@ namespace GUI_Kock.ViewModels
 
         public OrderViewModel(RoutingState state, IScreen screen = null)
         {
+            // SelectedOrders = null;
             HostScreen = screen ?? Locator.Current.GetService<IScreen>();
             Router = state;
             OngoinOrders = new ObservableCollection<Order>();
-            _admin = new Employee();
-            _login = new LoginViewModel(Router);
             GoToPreparingViewCommand = new RelayCommand(NavigateToPreparingView);
             Locator.CurrentMutable.Register(() => new PreparingOrderView(), typeof(IViewFor<PreparingOrderViewModel>));
             Locator.CurrentMutable.Register(() => new LoginView(), typeof(IViewFor<LoginViewModel>));
