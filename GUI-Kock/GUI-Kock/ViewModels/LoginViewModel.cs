@@ -26,18 +26,7 @@ namespace GUI_Kock.ViewModels
         public ObservableCollection<Employee> Employees { get; private set; }
 
         public List<string> EmployeeNames { get; private set; }
-        /// <summary>
-        /// Gets the Employy instance
-        /// </summary>
-        public Employee _employee;
-
-        public Employee LoginEmployee
-        {
-            get
-            {
-                return _employee;
-            }
-        }
+        
 
         private string _password;
 
@@ -79,7 +68,6 @@ namespace GUI_Kock.ViewModels
                 Router = state;
             }
             
-            _employee = new Employee();
             EmployeeNames = new List<string>();
             LoginCommand = new RelayCommand(Login); 
         }
