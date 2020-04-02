@@ -115,7 +115,7 @@ namespace GUI_Kassörska.ViewModels
 
 		public async Task<ObservableCollection<Order>> ShowAllOngoingOrders()
 		{
-			DatabaseList = await repo.ShowOrderByStatusAsync(Order.eStatus.Tillagning);
+			DatabaseList = await repo.ShowOrdersWithStatusOneAndTwo();
 			OngoingOrders = new ObservableCollection<Order>();
 			foreach(Order item in DatabaseList)
 			{

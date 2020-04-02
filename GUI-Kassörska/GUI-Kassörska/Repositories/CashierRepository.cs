@@ -71,5 +71,13 @@ namespace GUI_Kassörska
                 return (await connection.QueryAsync<Order>("\"ShowOrders\"", commandType: CommandType.StoredProcedure));
             }
         }
+
+        public async Task<IEnumerable<Order>> ShowOrdersWithStatusOneAndTwo()
+        {
+            using (IDbConnection con = Connection)
+            {
+                return (await connection.QueryAsync<Order>("\"ShowOrdersWithStatusOneAndTwo\"", commandType: CommandType.StoredProcedure));
+            }
+        }
     }
 }
