@@ -26,7 +26,7 @@ namespace GUI_Kock.Views
 
             InitializeComponent();
 
-           // this.DataContext = new OrderViewModel();
+           this.DataContext = new OrderViewModel();
 
             this.WhenActivated(disposables =>
             {

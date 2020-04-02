@@ -24,6 +24,7 @@ namespace GUI_Kock.ViewModels
         public ReactiveCommand<Unit, IRoutableViewModel> GoToPreparingView { get; private set; }
         public ReactiveCommand<Unit, IRoutableViewModel> GoToLoginView { get; private set; }
         public ObservableCollection<Pizza> Pizzas { get; }
+        public RelayCommand GoToPreparingViewCommand { get; set; }
 
         //public Order SelectedOrders
         //{
@@ -45,15 +46,18 @@ namespace GUI_Kock.ViewModels
         #region Routing
         public string UrlPathSegment => "Order";
         public IScreen HostScreen { get; private set; }
-        public RoutingState Router { get; private set; }
+        public static RoutingState Router { get; private set; }
         #endregion
 
 
-        public OrderViewModel(RoutingState state, IScreen screen = null)
+        public OrderViewModel(RoutingState state = null, IScreen screen = null)
         {
             // SelectedOrders = null;
             HostScreen = screen ?? Locator.Current.GetService<IScreen>();
-            Router = state;
+            if (Router == null)
+            {
+                Router = state;
+            }
             OngoinOrders = new ObservableCollection<Order>();
             GoToPreparingViewCommand = new RelayCommand(NavigateToPreparingView);
             Locator.CurrentMutable.Register(() => new PreparingOrderView(), typeof(IViewFor<PreparingOrderViewModel>));
@@ -64,16 +68,12 @@ namespace GUI_Kock.ViewModels
         // <summary>
         // Gets the loginCommand for the ViewModel  
         // </summary>
-        public RelayCommand GoToPreparingViewCommand
-        {
-            get;
-            set;
-        }
+        
 
         public void NavigateToPreparingView()
         {
             MessageBox.Show("OK");
-            Router.Navigate.Execute(new PreparingOrderViewModel(Router));
+            Router.Navigate.Execute(new PreparingOrderViewModel());
         }
 
         public void PopulateOrders()

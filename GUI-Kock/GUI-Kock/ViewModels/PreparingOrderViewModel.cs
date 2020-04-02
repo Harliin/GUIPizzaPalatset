@@ -15,12 +15,12 @@ namespace GUI_Kock.ViewModels
         #region Routing
         public string UrlPathSegment => "Preparing";
         public IScreen HostScreen { get; }
-        public RoutingState Router { get; }
+        public  RoutingState Router => OrderViewModel.Router;
         #endregion
-        public PreparingOrderViewModel(RoutingState state, IScreen screen = null)
+        public PreparingOrderViewModel(IScreen screen = null)
         {
             HostScreen = screen ?? Locator.Current.GetService<IScreen>();
-            Router = state;
+           
             // GoToMainView = ReactiveCommand.CreateFromObservable(() => Router.Navigate.Execute(new MainViewModel(Router)));
 
         }
