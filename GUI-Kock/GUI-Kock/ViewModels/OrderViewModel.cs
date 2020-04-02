@@ -21,10 +21,15 @@ namespace GUI_Kock.ViewModels
 
         public Order _selectedOrders;
         public ObservableCollection<Order> OngoinOrders { get; private set; }
+        
+        public ObservableCollection<Pizza> Pizzas { get; }
+        #region Commands
+        public RelayCommand GoToPreparingViewCommand { get; set; }
         public ReactiveCommand<Unit, IRoutableViewModel> GoToPreparingView { get; private set; }
         public ReactiveCommand<Unit, IRoutableViewModel> GoToLoginView { get; private set; }
-        public ObservableCollection<Pizza> Pizzas { get; }
-        public RelayCommand GoToPreparingViewCommand { get; set; }
+
+        #endregion
+
 
         //public Order SelectedOrders
         //{
@@ -72,7 +77,6 @@ namespace GUI_Kock.ViewModels
 
         public void NavigateToPreparingView()
         {
-            MessageBox.Show("OK");
             Router.Navigate.Execute(new PreparingOrderViewModel());
         }
 
