@@ -97,11 +97,18 @@ namespace GUI_Kock.ViewModels
 
             if (employeeNames.ContainsKey(Name))
             {
-                if (employeeNames.ContainsValue(Password))
+                employeeNames.TryGetValue(Name, out string correctKey);
+                if (Password == correctKey)
                 {
                     return true;
                 }
+                else
+                {
+                    MessageBox.Show("Fel Lösenord!");
+                    return false;
+                }
             }
+            
             return false;
         }
 
