@@ -39,7 +39,8 @@ Sedan började jag med att koppla upp mot databasen.
 fortfarande inte löst att kunna ta bort mat från en färdig order.
 30/3-3/4 Denna veckan har vi fått till så att man kan ta bort mat från en order, vi jobbade även mycket med 
 att få Guin att uppdateras när mat läggs till/tas bort. vilket vi löste tillslut.
-Sedan började vi med att få ner WebApi för valuta kurs samt så har vi fixas kvittot.
+Vi har fixat Web api för att konvertera från SEK till EURO.
+Sedan har jag kommenterade alla viewmodels och hjälpt till på kockterminalen för att få till inlogget och binding.
 
 
 
