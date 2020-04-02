@@ -31,7 +31,7 @@
         <Separator Background="#D70F64" VerticalAlignment="Bottom" />
         <!-- Row 1 -->
         <!-- All the food in order -->
-        <Viewbox Grid.Row="1" Stretch="Uniform">
+        <!--<Viewbox Grid.Row="1" Stretch="None">-->
             <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Hidden">
                 <ItemsControl ItemsSource="{Binding RecieptFoods}">
                     <ItemsControl.ItemsPanel>
@@ -46,43 +46,65 @@
                                     <ColumnDefinition Width="1.5*"/>
                                     <ColumnDefinition Width="1*"/>
                                 </Grid.ColumnDefinitions>
-                                <TextBlock Text="{Binding Name}" Grid.Column="0" HorizontalAlignment="Center" FontSize="25"/>
-                                <TextBlock Text="{Binding Price, StringFormat={}{0} kr}" HorizontalAlignment="Center" FontSize="25" Grid.Column="1" Margin="25 0 0 0"/>
+                                <TextBlock Text="{Binding Name}" Grid.Column="0" HorizontalAlignment="Center" FontSize="35"/>
+                                <TextBlock Text="{Binding Price, StringFormat={}{0} kr}" HorizontalAlignment="Center" FontSize="35" Grid.Column="1" Margin="25 0 0 0"/>
                             </Grid>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
             </ScrollViewer>
-        </Viewbox>
+        <!--</Viewbox>-->
         
 
         <!-- Row 2 -->
         <Separator Grid.Row="2" Background="#D70F64" VerticalAlignment="Top"/>
-        <Viewbox Grid.Row="2" Stretch="Uniform">
-            <DockPanel>
-                <!-- Order ID-->
-                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0 5 0 0" DockPanel.Dock="Top">
-                    <TextBlock Text="Ditt Order ID: " FontSize="25" FontWeight="DemiBold" />
-                    <TextBlock Text="{Binding OrderID}" FontSize="25" FontWeight="DemiBold"/>
-                </StackPanel>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="0.5*"/>
+            </Grid.ColumnDefinitions>
+        
+        
+            <!-- Column 0 -->
+            <Viewbox Grid.Row="2" Grid.Column="0" Stretch="Uniform" HorizontalAlignment="Left">
+                <DockPanel>
+                    <!-- Order ID-->
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10 5 0 0" DockPanel.Dock="Top">
+                        <TextBlock Text="Ditt Order ID: " FontSize="25" FontWeight="DemiBold" />
+                        <TextBlock Text="{Binding OrderID}" FontSize="25" FontWeight="DemiBold"/>
+                    </StackPanel>
 
-                <StackPanel Orientation="Vertical" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 15 0 0">
-                    <!-- Price in SEK -->
-                    <StackPanel Orientation="Horizontal" Grid.Row="2" >
-                        <TextBlock Text="Totalt pris i SEK: " FontSize="20" FontWeight="DemiBold" />
-                        <TextBlock Text="{Binding SEKPrice, StringFormat={}{0} kr}" FontSize="20" FontWeight="DemiBold"/>
+                    <StackPanel Orientation="Vertical" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 15 0 0">
+                        <!-- Price in SEK -->
+                        <StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Left" Margin="10 0 0 0">
+                            <TextBlock Text="Totalt pris i SEK: " FontSize="20" FontWeight="DemiBold" />
+                            <TextBlock Text="{Binding SEKPrice, StringFormat={}{0} kr}" FontSize="20" FontWeight="DemiBold"/>
+                        </StackPanel>
+                        <!-- Price in EURO-->
+                        <StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10 0 0 0">
+                            <TextBlock Text="Totalt pris i EURO: " FontSize="20" FontWeight="DemiBold" />
+                            <TextBlock Text="{Binding EuroPrice, StringFormat={}{0} euro}" FontSize="20" FontWeight="DemiBold"/>
+                        </StackPanel>
                     </StackPanel>
-                    <!-- Price in EURO-->
-                    <StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <TextBlock Text="Totalt pris i EURO: " FontSize="20" FontWeight="DemiBold" />
-                        <TextBlock Text="{Binding EuroPrice, StringFormat={}{0} euro}" FontSize="20" FontWeight="DemiBold"/>
-                    </StackPanel>
-                </StackPanel>
-            </DockPanel>
+                </DockPanel>
+            </Viewbox>
+
             
-        </Viewbox>
-        
-        
+                <Viewbox Grid.Column="1" Margin="1 5 2 1">
+                <Grid>
+                    <Button Background="#D70F64" Height="110" Width="84" Command="{Binding CheckoutCommand}">
+                        <StackPanel>
+                            <materialDesign:PackIcon Kind="ShoppingCartArrowRight" Foreground="White"
+                                                     Width="30" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            <TextBlock Text="Betala" FontSize="15" FontWeight="DemiBold"
+                            Foreground="White" VerticalAlignment="Bottom"/>
+                        </StackPanel>
+                    </Button>
+
+                </Grid>
+            </Viewbox>
+                
+        </Grid>
         
         
     </Grid>

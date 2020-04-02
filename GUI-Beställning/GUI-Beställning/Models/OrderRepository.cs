@@ -83,11 +83,11 @@ namespace GUI_Beställning.Models.Data
                 connection.Query<Pizza>("\"sp_OrderPizza\"", new { orderid = orderID, pizzaid = pizzaID }, commandType: CommandType.StoredProcedure);
             }
         }
-        public async Task UpdateOrderStatus(int orderID)
+        public void UpdateOrderStatus(int orderID)
         {
             using (IDbConnection con = Connection)
             {
-                await connection.QueryAsync<Order>("\"UpdateOrderStatus\"", new { inid = orderID }, commandType: CommandType.StoredProcedure);
+                 connection.Query<Order>("\"UpdateOrderStatus\"", new { inid = orderID }, commandType: CommandType.StoredProcedure);
             }
         }
         public void AddPastaToOrder(int orderID, int pastaID)

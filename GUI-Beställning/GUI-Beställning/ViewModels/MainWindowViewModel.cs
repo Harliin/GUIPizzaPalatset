@@ -108,13 +108,22 @@ namespace GUI_Beställning.ViewModels
 
         }
 
+
+        #region Command Methods
+        /// <summary>
+        /// Method gets called uppon to update GUI
+        /// </summary>
         public void OrderChanged()
         {
             this.Order.Clear();
             var list = ShowOrder();
             this.Order.AddRange(list);
         }
-        
+
+        /// <summary>
+        /// method to Navigate from PaymentView to RecieptView
+        /// </summary>
+        /// <param name="parameter"></param>
         public void PaymentCommandMethod(object parameter)
         {
             if (Order.Count != 0)
@@ -122,5 +131,22 @@ namespace GUI_Beställning.ViewModels
                 Router.Navigate.Execute(new ReceiptViewModel(this));
             }
         }
+
+        /// <summary>
+        /// method to reset everything for the next customer.
+        /// </summary>
+        /// <param name="parameter"></param>
+        public void CheckoutCommandMethod(object parameter)
+        {
+            repo.UpdateOrderStatus(OrderID);
+            Order.Clear();
+
+            //todoo
+            //OrderID++;
+            //repo.CreateNewOrder(OrderID);
+
+        }
+
+        #endregion
     }
 }

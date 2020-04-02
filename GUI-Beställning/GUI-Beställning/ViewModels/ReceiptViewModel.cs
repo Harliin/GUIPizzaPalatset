@@ -1,4 +1,5 @@
 ﻿using GUI_Beställning.Models.Data;
+using GUI_Beställning.ViewModels.Commands;
 using ReactiveUI;
 using Splat;
 using System;
@@ -26,13 +27,16 @@ namespace GUI_Beställning.ViewModels
         public static MainWindowViewModel MainWindowViewModel;
         public ObservableCollection<object> RecieptFoods => MainWindowViewModel.Order;
         public int OrderID => MainWindowViewModel.OrderID;
-        public float SEKPrice => MainWindowViewModel.TotalPrice;
+        public double SEKPrice => MainWindowViewModel.TotalPrice;
 
-        public float EuroPrice { get; set; }
+        public double EuroPrice { get; set; }
 
         #endregion
 
-        
+        #region Commands
+        public RelayCommand CheckoutCommand { get; set; }
+        #endregion
+
         public ReceiptViewModel(MainWindowViewModel viewModel = null,IScreen screen = null)
         {
             HostScreen = screen ?? Locator.Current.GetService<IScreen>();
@@ -42,6 +46,7 @@ namespace GUI_Beställning.ViewModels
                 MainWindowViewModel = viewModel;
             }
             EuroRateAsync();
+            CheckoutCommand = new RelayCommand(MainWindowViewModel.CheckoutCommandMethod);
         }
    
         public void EuroRateAsync()
@@ -58,9 +63,8 @@ namespace GUI_Beställning.ViewModels
 
             if(rates.Rates.TryGetValue("SEK", out float rate))
             {
-                EuroPrice = (SEKPrice / rate);   
+                EuroPrice = Math.Round((SEKPrice / rate),2);
             }
-           // return EuroPrice;
         }
     }
 }
