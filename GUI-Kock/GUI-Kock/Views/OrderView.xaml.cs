@@ -23,22 +23,20 @@ namespace GUI_Kock.Views
     {
         public OrderView()
         {
+
             InitializeComponent();
+
+            this.DataContext = new OrderViewModel();
+
             this.WhenActivated(disposables =>
             {
                 this.OneWayBind(ViewModel, x => x.OngoinOrders, view => view.ongoingorder.ItemsSource)
                 .DisposeWith(disposables);
                 ViewModel.PopulateOrders();
 
-                //this.BindCommand(ViewModel, x => x.GoToPreparingView, x => x.orderBtm);
+                //this.BindCommand(ViewModel, x => x.GoToPreparingViewCommand, x => x.orderBtm);
 
                 this.BindCommand(ViewModel, x => x.GoToLoginView, x => x.exit); 
-
-                //this.OneWayBind(ViewModel, x => x._login, view => view.user);
-                ////.DisposeWith(disposables);
-                ///
-
-
 
             });
         }

@@ -9,6 +9,8 @@ using DB_Kock;
 using Food;
 using System.Collections.ObjectModel;
 using DynamicData;
+using GUI_Kock.ViewModels.Commands;
+using System.Windows;
 
 namespace GUI_Kock.ViewModels
 {
@@ -47,7 +49,6 @@ namespace GUI_Kock.ViewModels
         #endregion
 
 
-
         public OrderViewModel(RoutingState state, IScreen screen = null)
         {
             HostScreen = screen ?? Locator.Current.GetService<IScreen>();
@@ -55,13 +56,25 @@ namespace GUI_Kock.ViewModels
             OngoinOrders = new ObservableCollection<Order>();
             _admin = new Employee();
             _login = new LoginViewModel(Router);
-
-            //Registrerar din nästa view. denna behövs för att kunna koppla den mot ett command
+            GoToPreparingViewCommand = new RelayCommand(NavigateToPreparingView);
             Locator.CurrentMutable.Register(() => new PreparingOrderView(), typeof(IViewFor<PreparingOrderViewModel>));
-            GoToPreparingView = ReactiveCommand.CreateFromObservable(() => Router.Navigate.Execute(new PreparingOrderViewModel(Router)));
-
             Locator.CurrentMutable.Register(() => new LoginView(), typeof(IViewFor<LoginViewModel>));
             GoToLoginView = ReactiveCommand.CreateFromObservable(() => Router.Navigate.Execute(new LoginViewModel(Router)));
+        }
+
+        // <summary>
+        // Gets the loginCommand for the ViewModel  
+        // </summary>
+        public RelayCommand GoToPreparingViewCommand
+        {
+            get;
+            set;
+        }
+
+        public void NavigateToPreparingView()
+        {
+            MessageBox.Show("OK");
+            Router.Navigate.Execute(new PreparingOrderViewModel(Router));
         }
 
         public void PopulateOrders()
