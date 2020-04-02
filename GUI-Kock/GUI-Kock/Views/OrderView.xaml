@@ -44,9 +44,9 @@
                                         <StackPanel Orientation="Vertical">
                                             <StackPanel Orientation="Horizontal">
                                                 <TextBlock Text="Order #" Foreground="Black" Margin=" 15 10 5 50" TextAlignment="Center"/>
-                                                <TextBlock Foreground="Black" Margin=" 0 10 0 50" Text="{Binding ID}" TextAlignment="Center"></TextBlock>
+                                                <TextBlock Text="{Binding ID}" Foreground="Black" Margin=" 0 10 0 50" TextAlignment="Center"></TextBlock>
                                             </StackPanel>
-                                            <TextBlock Margin="10" Text="{Binding Pizza}" TextAlignment="Center"></TextBlock>
+                                            <TextBlock Margin="10" Text="{Binding pizza}" TextAlignment="Center"></TextBlock>
                                         </StackPanel>
                                     </Button>
                                 </Border> 
