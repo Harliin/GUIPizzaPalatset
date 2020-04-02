@@ -15,10 +15,13 @@ namespace GUI_Beställning.ViewModels
 
         #endregion
 
+        /// <summary>
+        /// Default Constructor
+        /// </summary>
+        /// <param name="screen"></param>
         public WelcomeViewModel(IScreen screen = null)
         {
             HostScreen = screen ?? Locator.Current.GetService<IScreen>();
-            //MainWindowViewModel.OrderID++; sedan för att öka till nästa order
         }
     }
 }

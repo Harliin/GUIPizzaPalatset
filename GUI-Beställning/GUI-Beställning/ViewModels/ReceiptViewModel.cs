@@ -37,6 +37,11 @@ namespace GUI_Beställning.ViewModels
         public RelayCommand CheckoutCommand { get; set; }
         #endregion
 
+        /// <summary>
+        /// Default Constructor
+        /// </summary>
+        /// <param name="viewModel"></param>
+        /// <param name="screen"></param>
         public ReceiptViewModel(MainWindowViewModel viewModel = null,IScreen screen = null)
         {
             HostScreen = screen ?? Locator.Current.GetService<IScreen>();
@@ -45,11 +50,16 @@ namespace GUI_Beställning.ViewModels
             {
                 MainWindowViewModel = viewModel;
             }
-            EuroRateAsync();
+            EuroRate();
+
             CheckoutCommand = new RelayCommand(MainWindowViewModel.CheckoutCommandMethod);
         }
    
-        public void EuroRateAsync()
+        /// <summary>
+        /// WebApi To get the current exchangerate,
+        /// from Euro to sek
+        /// </summary>
+        public void EuroRate()
         {
            
             ExchangeRates rates = new ExchangeRates();

@@ -17,11 +17,32 @@ namespace GUI_Beställning.ViewModels
         public IScreen HostScreen { get; }
 
         #endregion
+
+        #region Properties
         public OrderRepository repo = new OrderRepository();
         public static MainWindowViewModel MainWindowViewModel;
 
-        public RelayCommand AddPizzaCommand { get; set; }
+        private ObservableCollection<Pizza> pizzas;
+        public ObservableCollection<Pizza> Pizzas
+        {
+            get { return pizzas; }
+            set
+            {
+                var pizzaIE = repo.GetPizzas();
+                pizzas = new ObservableCollection<Pizza>(pizzaIE.ToList());
+            }
+        }
+        #endregion
 
+        #region Commands
+        public RelayCommand AddPizzaCommand { get; set; }
+        #endregion
+
+        /// <summary>
+        /// Default Constructor
+        /// </summary>
+        /// <param name="viewModel"></param>
+        /// <param name="screen"></param>
         public PizzaMenuViewModel(MainWindowViewModel viewModel = null ,IScreen screen = null)
         {
             AddPizzaCommand = new RelayCommand(AddPizzaToOrder);
@@ -36,17 +57,11 @@ namespace GUI_Beställning.ViewModels
             }
         }
 
-        private ObservableCollection<Pizza> pizzas;
-        public ObservableCollection<Pizza> Pizzas
-        {
-            get { return pizzas; }
-            set
-            {
-                var pizzaIE = repo.GetPizzas();
-                pizzas = new ObservableCollection<Pizza>(pizzaIE.ToList());
-            }
-        }
-
+        #region Command Methods
+        /// <summary>
+        /// Method to add a pizza to Order
+        /// </summary>
+        /// <param name="Pizza"></param>
         private void AddPizzaToOrder(object Pizza)
         {
             Pizza pizza = (Pizza)Pizza;
@@ -54,7 +69,9 @@ namespace GUI_Beställning.ViewModels
 
             MainWindowViewModel.OrderChanged();
         }
+
+        #endregion
     }
 
-    
+
 }

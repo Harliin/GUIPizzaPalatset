@@ -18,8 +18,7 @@ namespace GUI_Beställning.ViewModels
 {
     public class MainWindowViewModel : ReactiveObject, IScreen
     {
-        //public event EventHandler<string> OrderChanged;
-        //public event CollectionChangeEventHandler OrderChanged;
+        #region Properties
         public OrderRepository repo = new OrderRepository();
         public RoutingState Router { get; }
         public Order CurrentOrder { get; set; }
@@ -30,6 +29,7 @@ namespace GUI_Beställning.ViewModels
 
         public int TotalPrice { get; set; }
         public static int OrderID { get; set; }
+        #endregion
 
         #region Commands
         public ReactiveCommand<Unit, IRoutableViewModel> PizzaMenu { get; }
@@ -42,9 +42,11 @@ namespace GUI_Beställning.ViewModels
 
         #endregion
 
+        /// <summary>
+        /// Default Constructor
+        /// </summary>
         public MainWindowViewModel()
         {
-            
             OrderID = 125;
 
             Router = new RoutingState();
@@ -87,6 +89,7 @@ namespace GUI_Beställning.ViewModels
             
         }
 
+        #region Methods
 
         /// <summary>
         /// Adds all the foods in a order to a observable collection
@@ -121,8 +124,9 @@ namespace GUI_Beställning.ViewModels
             this.Order.AddRange(list);
         }
 
+
         /// <summary>
-        /// method to Navigate from PaymentView to RecieptView
+        /// Command Method to Navigate from PaymentView to RecieptView
         /// </summary>
         /// <param name="parameter"></param>
         public void PaymentCommandMethod(object parameter)
@@ -132,6 +136,7 @@ namespace GUI_Beställning.ViewModels
                 Router.Navigate.Execute(new ReceiptViewModel(this));
             }
         }
+
 
         /// <summary>
         /// method to reset everything for the next customer.
@@ -148,6 +153,7 @@ namespace GUI_Beställning.ViewModels
             MessageBox.Show("*Skriver ut kvitto*");
             Router.Navigate.Execute(new WelcomeViewModel());
         }
+        #endregion
 
         #endregion
     }

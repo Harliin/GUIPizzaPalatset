@@ -20,11 +20,21 @@ namespace GUI_Beställning.ViewModels
 
         #endregion
 
-        
+        #region Properties
         public OrderRepository repo = new OrderRepository();
         public ObservableCollection<Extra> Extras { get; set; }
         public static MainWindowViewModel MainWindowViewModel;
+        #endregion
+
+        #region Commands
         public RelayCommand AddExtraCommand { get; set; }
+        #endregion
+
+        /// <summary>
+        /// Default Constructor
+        /// </summary>
+        /// <param name="viewModel"></param>
+        /// <param name="screen"></param>
         public ExtraMenuViewModel(MainWindowViewModel viewModel =null,IScreen screen = null)
         {
             HostScreen = screen ?? Locator.Current.GetService<IScreen>();
@@ -38,6 +48,10 @@ namespace GUI_Beställning.ViewModels
             }
         }
 
+        /// <summary>
+        /// Command Method to add Extra to order
+        /// </summary>
+        /// <param name="Extra"></param>
         private void AddExtraToOrder(object Extra)
         {
             Extra extra = (Extra)Extra;

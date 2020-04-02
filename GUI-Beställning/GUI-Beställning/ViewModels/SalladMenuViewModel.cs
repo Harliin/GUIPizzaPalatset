@@ -16,12 +16,22 @@ namespace GUI_Beställning.ViewModels
         public IScreen HostScreen { get; }
 
         #endregion
+
+        #region Properties
         public OrderRepository repo = new OrderRepository();
         public static MainWindowViewModel MainWindowViewModel;
         public ObservableCollection<Sallad> Sallads { get; set; }
+        #endregion
 
+        #region Commands
         public RelayCommand AddSalladCommand { get; set; }
+        #endregion
 
+        /// <summary>
+        /// Default Constructor
+        /// </summary>
+        /// <param name="viewModel"></param>
+        /// <param name="screen"></param>
         public SalladMenuViewModel(MainWindowViewModel viewModel = null, IScreen screen = null)
         {
             HostScreen = screen ?? Locator.Current.GetService<IScreen>();
@@ -35,6 +45,10 @@ namespace GUI_Beställning.ViewModels
             }
         }
         
+        /// <summary>
+        /// Command Method to add Sallad to Order
+        /// </summary>
+        /// <param name="Sallad"></param>
         private void AddSalladToOrder(object Sallad)
         {
             Sallad sallad = (Sallad)Sallad;
