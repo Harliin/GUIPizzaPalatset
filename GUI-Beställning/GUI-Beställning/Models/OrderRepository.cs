@@ -68,11 +68,11 @@ namespace GUI_Beställning.Models.Data
             }
                 connection.Query<Extra>("\"RemoveExtraFromOrder\"", new { orderid = orderID, extraid = extraID }, commandType: CommandType.StoredProcedure);
         }
-        public async Task<IEnumerable<Order>> CreateNewOrder()
+        public IEnumerable<Order> CreateNewOrder()
         {
             using (IDbConnection con = Connection)
             {
-                IEnumerable<Order> order = (await connection.QueryAsync<Order>("\"CreateNewOrder\"", commandType: CommandType.StoredProcedure));
+                IEnumerable<Order> order = ( connection.Query<Order>("\"CreateNewOrder\"", commandType: CommandType.StoredProcedure));
                 return order;
             }
         }

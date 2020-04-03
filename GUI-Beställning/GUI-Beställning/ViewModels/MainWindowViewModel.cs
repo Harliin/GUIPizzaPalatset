@@ -47,8 +47,11 @@ namespace GUI_Beställning.ViewModels
         /// </summary>
         public MainWindowViewModel()
         {
-            OrderID = 125;
-
+            if (OrderID == 0)
+            {
+                GetNewOrderID();
+            }
+            
             Router = new RoutingState();
             #region Navigation Reactive UI
 
@@ -144,14 +147,24 @@ namespace GUI_Beställning.ViewModels
         /// <param name="parameter"></param>
         public void CheckoutCommandMethod(object parameter)
         {
-            //repo.UpdateOrderStatus(OrderID);
+            //Ändrar ordern sstatus och rensar sedan listan order
+            repo.UpdateOrderStatus(OrderID);
             Order.Clear();
+            TotalPrice = 0;
+            this.RaisePropertyChanged(nameof(TotalPrice));
 
-            //todoo
-            //OrderID++;
-            //repo.CreateNewOrder(OrderID);
+            //Hämtar det nya OrderIDt
+            GetNewOrderID();
+            
+            //Navigerar tillbaka till start.
             MessageBox.Show("*Skriver ut kvitto*");
             Router.Navigate.Execute(new WelcomeViewModel());
+        }
+
+        private void GetNewOrderID()
+        {
+            var newOrder = (repo.CreateNewOrder()).ToList();
+            OrderID = newOrder[0].ID;
         }
         #endregion
 
