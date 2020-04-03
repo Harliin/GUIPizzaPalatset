@@ -11,7 +11,7 @@ using static GUI_Kassörska.ViewModels.Order;
 
 namespace GUI_Kassörska.ViewModels
 {
-	public class MainViewModel : INotifyPropertyChanged // ObservableObject
+	public class MainViewModel : INotifyPropertyChanged
 	{
 		public event PropertyChangedEventHandler PropertyChanged;
 
@@ -131,18 +131,20 @@ namespace GUI_Kassörska.ViewModels
 			return OngoingOrders;
 		}
 
-		private async void Update(object u)
-		{
-			await repo.UpdateOrderStatus(OrderID);
-			await ShowAllReadyOrders();
-		}
-
 		public Task<int> GetOrderStatus(int orderNumber)
 		{
 			var orderStatus = repo.ShowOrderByID(orderNumber);
 
 			return orderStatus;
 		}
+
+		private async void Update(object u)
+		{
+			await repo.UpdateOrderStatus(OrderID);
+			await ShowAllReadyOrders();
+		}
+
+		
 
 		public MainViewModel()
 		{
