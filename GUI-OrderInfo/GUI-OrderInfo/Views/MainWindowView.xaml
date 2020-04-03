@@ -28,9 +28,9 @@
             <Label Content="PIZZERIA PALATSET" FontSize="36" FontWeight="Bold" 
                Grid.ColumnSpan="2" HorizontalAlignment="Center" Foreground="Red"/>
             <TextBlock Text="Pågående ordrar" Grid.Column="0" HorizontalAlignment="Center"
-                   Grid.Row="1" FontWeight="Bold" FontSize="24" Margin="0 10 0 0"/>
-            <TextBlock Text="Färdiga ordrar" Grid.Column="1" HorizontalAlignment="Center"
                    Grid.Row="1" FontWeight="Bold" FontSize="24" Margin="0 10 0 0" />
+            <TextBlock Text="Färdiga ordrar" Grid.Column="1" HorizontalAlignment="Center"
+                   Grid.Row="1" FontWeight="Bold" FontSize="24" Margin="0 10 0 0"/>
 
             <!--Här visas pågående ordrar-->
             <Border Grid.Column="0" Grid.Row="2" Background="White" Margin="20" CornerRadius="5">

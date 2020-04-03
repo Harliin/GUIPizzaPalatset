@@ -17,10 +17,10 @@ namespace GUI_OrderInfo.Views
 
             this.WhenActivated(disposables =>
             {
-                this.OneWayBind(ViewModel, oo => oo.OngoingOrders, o => o.txbOngoing.ItemsSource)
+                this.OneWayBind(ViewModel, ongoing => ongoing.OngoingOrders, o => o.txbOngoing.ItemsSource)
                 .DisposeWith(disposables);
 
-                this.OneWayBind(ViewModel, co => co.CompleteOrder, c => c.txbComplete.ItemsSource)
+                this.OneWayBind(ViewModel, complete => complete.CompleteOrder, c => c.txbComplete.ItemsSource)
                 .DisposeWith(disposables);
 
                 ViewModel.Populate();

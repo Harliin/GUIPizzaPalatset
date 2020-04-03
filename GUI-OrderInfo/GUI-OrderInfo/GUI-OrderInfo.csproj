@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Views\Images\Pizzeria_Palatset_Logo.jfif" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Models\" />
   </ItemGroup>
 
@@ -16,6 +20,10 @@
     <PackageReference Include="Npgsql" Version="4.1.3.1" />
     <PackageReference Include="ReactiveUI.WPF" Version="11.2.3" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Views\Images\Pizzeria_Palatset_Logo.jfif" />
   </ItemGroup>
 
 </Project>

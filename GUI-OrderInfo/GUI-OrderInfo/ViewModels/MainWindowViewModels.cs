@@ -44,10 +44,10 @@ namespace GUI_OrderInfo.ViewModels
 
         public void Populate()
         {
-            OrderInfoRepository repository = new OrderInfoRepository();
+            OrderInfoRepository repo = new OrderInfoRepository();
 
-            OngoingOrders.AddRange(repository.OngoingOrder());
-            CompleteOrder.AddRange(repository.OngoingOrder());
+            OngoingOrders.AddRange(repo.OngoingOrder());
+            CompleteOrder.AddRange(repo.CompleteOrder());
         }
 
         #endregion
