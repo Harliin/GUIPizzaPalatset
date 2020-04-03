@@ -52,11 +52,12 @@ namespace GUI_Kassörska.ViewModels
 		}
 
 
-		public ObservableCollection<Order> OngoingOrders { get; set; }
+		//public ObservableCollection<Order> OngoingOrders { get; set; }
 		public ObservableCollection<Order> PaidOrders { get; set; }
 
 		public ObservableCollection<Order> CookingOrders { get; set; }
 
+		//Gör som på PaidOrders och CookingOrders
 		private Order currentOrder;
 
 		public Order CurrentOrder
