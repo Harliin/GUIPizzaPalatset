@@ -9,13 +9,16 @@ namespace GUI_OrderInfo
 {
     public class OrderInfoRepository : IRepository
     {
+        // Connection properties
         private string ConnectionString { get; }
         private IDbConnection connection { get; set; }
 
+        #region Connection string constructor
         public OrderInfoRepository()
         {
             ConnectionString = "Data Source=SQL6009.site4now.net;Initial Catalog=DB_A53DDD_Grupp1;User Id=DB_A53DDD_Grupp1_admin;Password=Password123;";
         }
+        #endregion
 
         private IDbConnection Connection
         {
@@ -27,6 +30,7 @@ namespace GUI_OrderInfo
             }
         }
 
+        #region Metoder för Stored Procedures
         public IEnumerable<Order> OngoingOrder()
         {
             using (IDbConnection con = Connection)
@@ -43,5 +47,6 @@ namespace GUI_OrderInfo
                 return completeOrder;
             }
         }
+        #endregion
     }
 }

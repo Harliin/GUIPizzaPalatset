@@ -1,38 +1,55 @@
 ﻿using DB_OrderInfo.Food;
-using GUI_OrderInfo.Views;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
+using DynamicData;
+using ReactiveUI;
+using System.Collections.ObjectModel;
+using System.Windows;
 
 namespace GUI_OrderInfo.ViewModels
 {
-    public class MainWindowViewModels
+    public class MainWindowViewModels : ReactiveObject //, IScreen
     {
-        public List<Order> OngoingOrders { get; }
-        public List<Order> CompleteOrder { get; }
+        #region ObservableCollections metoder
+        public ObservableCollection<Order> OngoingOrders { get; }
 
-        public MainWindowViewModels()
+        public ObservableCollection<Order> CompleteOrder { get; }
+        #endregion
+
+        #region routing
+
+        public RoutingState Router { get; }
+        public Window ThisWindow { get; set; }
+
+        #endregion
+
+        #region Constructor
+
+        public MainWindowViewModels(Window thisWindow)
+        {
+            // Initialize the Router.
+            Router = new RoutingState();
+
+            this.ThisWindow = thisWindow;
+
+
+            OrderInfoRepository repository = new OrderInfoRepository();
+
+            OngoingOrders = new ObservableCollection<Order>();
+            CompleteOrder = new ObservableCollection<Order>();
+
+        }
+
+        #endregion
+
+        #region Populate metod
+
+        public void Populate()
         {
             OrderInfoRepository repository = new OrderInfoRepository();
 
-            OngoingOrders = repository.OngoingOrder().ToList();
-            CompleteOrder = repository.CompleteOrder().ToList();
-
-            //Printar ut pågående ordrar
-            foreach (Order ongoingOrder in repository.OngoingOrder())
-            {
-                MainWindowView ongoing = new MainWindowView();
-                ongoing.txbOngoing.Text = ongoingOrder.ToString();
-            }
-
-            // Printar ut färdiga ordrar 
-            foreach (Order completeOrder in repository.CompleteOrder())
-            {
-                MainWindowView complete = new MainWindowView();
-                complete.txbComplete.Text = completeOrder.ToString();
-            }
-
-            Thread.Sleep(3000); // uppdateras varje 3 sekunder
+            OngoingOrders.AddRange(repository.OngoingOrder());
+            CompleteOrder.AddRange(repository.OngoingOrder());
         }
+
+        #endregion
     }
 }
