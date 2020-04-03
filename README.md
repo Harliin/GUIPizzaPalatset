@@ -1,6 +1,8 @@
 # GUIPizzaPalatset
 PizzaPalatset projekt uppgift med GUI
 
+FONTFAMILY:
+Cooper Black
 
 FÄRGER:
 
