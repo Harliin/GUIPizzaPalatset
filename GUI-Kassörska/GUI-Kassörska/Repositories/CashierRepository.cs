@@ -58,8 +58,7 @@ namespace GUI_Kassörska
         {
             using (IDbConnection con = Connection)
             {
-                await connection.QueryAsync<Order>("\"DeleteOrder\"",
-                new { @inid = orderNumber }, commandType: CommandType.StoredProcedure);
+                await connection.QueryAsync<Order>("\"DeleteOrder\"", new { @inid = orderNumber }, commandType: CommandType.StoredProcedure);
             }
         }
 
@@ -71,12 +70,20 @@ namespace GUI_Kassörska
                 return (await connection.QueryAsync<Order>("\"ShowOrders\"", commandType: CommandType.StoredProcedure));
             }
         }
-
+        
         public async Task<IEnumerable<Order>> ShowOrdersWithStatusOneAndTwo()
         {
             using (IDbConnection con = Connection)
             {
-                return (await connection.QueryAsync<Order>("\"ShowOrdersWithStatusOneAndTwo\"", commandType: CommandType.StoredProcedure));
+                return (await connection.QueryAsync<Order>("\"ShowOrdersWithStatusOneAndTwo\"", commandType: CommandType.StoredProcedure)); //Lägg till två @inid
+            }
+        }
+
+        public async Task<IEnumerable<Order>> ShowOrderByID(int orderNumber)
+        {
+            using (IDbConnection con = Connection)
+            {
+                return (await connection.QueryAsync<Order>("\"ShowOrderByID\"", new { @inid = orderNumber }, commandType: CommandType.StoredProcedure));
             }
         }
     }

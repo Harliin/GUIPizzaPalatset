@@ -134,6 +134,11 @@ namespace GUI_Kassörska.ViewModels
 			await ShowAllReadyOrders();
 		}
 
+		public int GetOrderStatus(int orderNumber)
+		{
+			var orderID = repo.ShowOrderByID(orderNumber)
+		}
+
 		public MainViewModel()
 		{
 			//ShowAllOngoingOrders();
