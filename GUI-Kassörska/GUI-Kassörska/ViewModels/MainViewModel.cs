@@ -7,6 +7,7 @@ using System.Linq;
 using System.Collections;
 using System.Threading.Tasks;
 using GUI_Kassörska.Command;
+using static GUI_Kassörska.ViewModels.Order;
 
 namespace GUI_Kassörska.ViewModels
 {
@@ -134,9 +135,11 @@ namespace GUI_Kassörska.ViewModels
 			await ShowAllReadyOrders();
 		}
 
-		public int GetOrderStatus(int orderNumber)
+		public eStatus GetOrderStatus(int orderNumber)
 		{
-			var orderID = repo.ShowOrderByID(orderNumber)
+			var orderStatus = repo.ShowOrderByID(orderNumber);
+
+			return orderStatus;
 		}
 
 		public MainViewModel()
