@@ -27,7 +27,6 @@
 
   <ItemGroup>
     <Resource Include="Images\pizzalogga2.png" />
-    <Resource Include="Views\Images\pizzalogga2.png" />
     <Resource Include="Views\Images\PizzaLogo.png" />
     <Resource Include="Views\Images\salad.png" />
   </ItemGroup>
