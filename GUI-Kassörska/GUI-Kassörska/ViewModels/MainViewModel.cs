@@ -15,6 +15,8 @@ namespace GUI_Kassörska.ViewModels
 	{
 		public event PropertyChangedEventHandler PropertyChanged;
 
+		public CashierRepository repo = new CashierRepository();
+
 		public void OnPropertyChanged(string propertyName)
 		{
 			if(PropertyChanged != null)
@@ -146,10 +148,7 @@ namespace GUI_Kassörska.ViewModels
 		{
 			//ShowAllOngoingOrders();
 			ShowAllReadyOrders();
-
 			Serve = new RelayCommand(Update);
 		}
-
-		public CashierRepository repo = new CashierRepository();
 	}
 }
