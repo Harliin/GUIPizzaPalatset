@@ -97,7 +97,7 @@
                 <Image Grid.Row="0" Source="Images/pizzalogga2.png" Width="125" Height="125"/>
             </Viewbox>
             
-
+            <!-- Pizza Button -->
             <Viewbox Grid.Row="1" Grid.Column="0" Stretch="Fill">
                 <Grid>
                     <materialDesign:PackIcon Kind="Pizza" Width="12" Height="15" FontSize="20"  HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 4 0 2" Foreground="#D70F64"/>
@@ -106,6 +106,7 @@
                 </Grid>
 
             </Viewbox>
+            <!-- Pasta Button -->
             <Viewbox Grid.Row="2" Stretch="Fill">
                 <Grid>
                     <materialDesign:PackIcon Kind="Pasta" Width="12" Height="15"  HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 4 0 2" Foreground="#D70F64"/>
@@ -113,13 +114,15 @@
                     <Button x:Name="GoPastaMenu" Foreground="#D70F64" Background="{x:Null}" VerticalAlignment="Top" HorizontalAlignment="Stretch"/>
                 </Grid>
             </Viewbox>
+            <!-- Sallad Button -->
             <Viewbox Grid.Row="3" Stretch="Fill" >
                 <Grid>
-                    <materialDesign:PackIcon Kind="Apple" Width="12" Height="15"  HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 4 0 2" Foreground="#D70F64"/>
+                    <Image Source="Images/salad.png" Width="12" Height="15" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 4 0 2"/>
                     <TextBlock Text="Sallad" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="6" FontWeight="Bold" Foreground="#D70F64" Margin="0 3 0 4"/>
                     <Button x:Name="GoSalladMenu" Foreground="#D70F64" Background="{x:Null}" VerticalAlignment="Top" HorizontalAlignment="Stretch"/>
                 </Grid>
             </Viewbox>
+            <!-- Drink Button -->
             <Viewbox Grid.Row="4" Stretch="Fill">
                 <Grid>
                     <materialDesign:PackIcon Kind="Drink" Width="12" Height="15"  HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 4 0 2" Foreground="#D70F64"/>
@@ -127,7 +130,7 @@
                     <Button x:Name="GoDrinkMenu" Foreground="#D70F64" Background="{x:Null}" VerticalAlignment="Top" HorizontalAlignment="Stretch"/>
                 </Grid>
             </Viewbox>
-
+            <!-- Extra Button -->
             <Viewbox Grid.Row="5" Stretch="Fill">
                 <Grid>
                     <materialDesign:PackIcon Kind="AddCircle" Width="12" Height="15"  HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 4 0 2" Foreground="#D70F64"/>

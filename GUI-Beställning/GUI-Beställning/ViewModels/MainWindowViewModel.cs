@@ -47,6 +47,7 @@ namespace GUI_Beställning.ViewModels
         /// </summary>
         public MainWindowViewModel()
         {
+            //Only for starting of with a OrderID
             if (OrderID == 0)
             {
                 GetNewOrderID();
