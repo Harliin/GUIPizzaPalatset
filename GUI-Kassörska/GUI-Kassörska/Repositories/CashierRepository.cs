@@ -85,7 +85,7 @@ namespace GUI_Kassörska
             {
                 var result = await connection.QueryAsync<Order>("\"ShowOrderByID\"", new { @inid = orderNumber }, commandType: CommandType.StoredProcedure);
                 var order = result.First();
-                return order.OrderID;
+                return order.ID;
             }
         }
     }

@@ -9,7 +9,7 @@ namespace GUI_Kassörska.ViewModels
 {
     public class Order
     {
-        public int OrderID { get; set; }
+        public int ID { get; set; }
         public eStatus Status { get; set; }
         public int EmployeeID { get; set; }
         public enum eStatus { UnderBeställning = 1, Tillagning = 2, Klar = 3, Avhämtad = 4 }

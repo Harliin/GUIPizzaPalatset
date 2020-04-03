@@ -52,17 +52,10 @@ namespace GUI_Kassörska.ViewModels
 		}
 
 
-		private ObservableCollection<Order> ongoingOrders;
+		public ObservableCollection<Order> OngoingOrders { get; set; }
+		public ObservableCollection<Order> PaidOrders { get; set; }
 
-		public ObservableCollection<Order> OngoingOrders
-		{
-			get { return ongoingOrders; }
-			set
-			{
-				ongoingOrders = value;
-				OnPropertyChanged("OngoingOrders");
-			}
-		}
+		public ObservableCollection<Order> CookingOrders { get; set; }
 
 		private Order currentOrder;
 
@@ -72,7 +65,7 @@ namespace GUI_Kassörska.ViewModels
 			set
 			{
 				currentOrder = value;
-				OrderID = CurrentOrder.OrderID;
+				OrderID = CurrentOrder.ID;
 				OnPropertyChanged("CurrentOrder");
 			}
 		}
@@ -108,7 +101,7 @@ namespace GUI_Kassörska.ViewModels
 			foreach (Order item in DatabaseList)
 			{
 				Order order = new Order();
-				order.OrderID = item.OrderID;
+				order.ID = item.ID;
 				order.Status = item.Status;
 				ReadyOrders.Add(order);
 			}
@@ -116,19 +109,33 @@ namespace GUI_Kassörska.ViewModels
 			return ReadyOrders;
 		}
 
-		public async Task<ObservableCollection<Order>> ShowAllOngoingOrders()
+		public async Task ShowAllOngoingOrders()
 		{
-			DatabaseList = await repo.ShowOrdersWithStatusOneAndTwo();
-			OngoingOrders = new ObservableCollection<Order>();
-			foreach(Order item in DatabaseList)
-			{
-				Order order = new Order();
-				order.OrderID = item.OrderID;
-				order.Status = item.Status;
-				OngoingOrders.Add(order);
-			}
+			//DatabaseList = await repo.ShowOrdersWithStatusOneAndTwo();
+			//OngoingOrders = new ObservableCollection<Order>();
+			//foreach(Order item in DatabaseList)
+			//{
+			//	Order order = new Order();
+			//	order.OrderID = item.OrderID;
+			//	order.Status = item.Status;
+			//	OngoingOrders.Add(order);
+			//}
 
-			return OngoingOrders;
+			//return OngoingOrders;
+
+			var list = (await repo.ShowAllOrdersAsync()).ToList();
+
+			list.ForEach(item => 
+			{
+				if (item.Status == eStatus.UnderBeställning)
+				{
+					PaidOrders.Add(item);
+				}
+				else if(item.Status == eStatus.Tillagning)
+				{
+					CookingOrders.Add(item);
+				}	 
+			});
 		}
 
 		public Task<int> GetOrderStatus(int orderNumber)
@@ -148,8 +155,11 @@ namespace GUI_Kassörska.ViewModels
 
 		public MainViewModel()
 		{
+			PaidOrders = new ObservableCollection<Order>();
+			CookingOrders = new ObservableCollection<Order>();
 			//ShowAllOngoingOrders();
 			ShowAllReadyOrders();
+			ShowAllOngoingOrders();
 			Serve = new RelayCommand(Update);
 		}
 	}
