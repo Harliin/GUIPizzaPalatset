@@ -24,7 +24,7 @@
         <Viewbox>
             <DockPanel>
                 <TextBlock Text="Tack för din beställning!" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="25" FontWeight="DemiBold" Margin="0 5 0 0" DockPanel.Dock="Top"/>
-                <TextBlock Text="Din Order: " VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="25" FontWeight="DemiBold" Margin="0 10 0 0"/>
+                <TextBlock Text="Din Order: " VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="25" Margin="0 10 0 0"/>
             </DockPanel>
         </Viewbox>
         
@@ -70,20 +70,20 @@
                 <DockPanel>
                     <!-- Order ID-->
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10 5 0 0" DockPanel.Dock="Top">
-                        <TextBlock Text="Ditt Order ID: " FontSize="25" FontWeight="DemiBold" />
-                        <TextBlock Text="{Binding OrderID}" FontSize="25" FontWeight="DemiBold"/>
+                        <TextBlock Text="Ditt Order ID: " FontSize="25" FontWeight="Light"/>
+                        <TextBlock Text="{Binding OrderID}" FontSize="25" FontWeight="Light"/>
                     </StackPanel>
 
                     <StackPanel Orientation="Vertical" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 15 0 0">
                         <!-- Price in SEK -->
                         <StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Left" Margin="10 0 0 0">
-                            <TextBlock Text="Totalt pris i SEK: " FontSize="20" FontWeight="DemiBold" />
-                            <TextBlock Text="{Binding SEKPrice, StringFormat={}{0} kr}" FontSize="20" FontWeight="DemiBold"/>
+                            <TextBlock Text="Totalt pris i SEK: " FontSize="20" FontWeight="ExtraLight"/>
+                            <TextBlock Text="{Binding SEKPrice, StringFormat={}{0} kr}" FontSize="20" FontWeight="ExtraLight"/>
                         </StackPanel>
                         <!-- Price in EURO-->
                         <StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10 0 0 0">
-                            <TextBlock Text="Totalt pris i EURO: " FontSize="20" FontWeight="DemiBold" />
-                            <TextBlock Text="{Binding EuroPrice, StringFormat={}{0} euro}" FontSize="20" FontWeight="DemiBold"/>
+                            <TextBlock Text="Totalt pris i EURO: " FontSize="20" FontWeight="ExtraLight" />
+                            <TextBlock Text="{Binding EuroPrice, StringFormat={}{0} euro}" FontSize="20" FontWeight="ExtraLight"/>
                         </StackPanel>
                     </StackPanel>
                 </DockPanel>
@@ -96,7 +96,7 @@
                         <StackPanel>
                             <materialDesign:PackIcon Kind="ShoppingCartArrowRight" Foreground="White"
                                                     Width="30" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                            <TextBlock Text="Kvitto" FontSize="15" FontWeight="DemiBold"
+                            <TextBlock Text="Kvitto" FontSize="15"
                         Foreground="White" VerticalAlignment="Bottom"/>
                         </StackPanel>
                     </Button>

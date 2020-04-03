@@ -9,7 +9,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        mc:Ignorable="d"
+        mc:Ignorable="d" FontFamily="Cooper Black"
         Title="MainWindowView" Height="680" Width="600" MaxWidth="1000" MaxHeight="1000" MinHeight="500" MinWidth="400">
     
     <Grid>
@@ -41,10 +41,10 @@
                 </Grid.ColumnDefinitions>
 
                 <Viewbox Stretch="Uniform" HorizontalAlignment="Left">
-                    <Label Content="Nuvarande order :" FontSize="15" FontWeight="Bold"/>
+                    <Label Content="Nuvarande order :" FontSize="15" Foreground="Black"/>
                 </Viewbox>
                 <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Hidden" Margin="3">
-                    <ItemsControl x:Name="Order" FontSize="16" FontWeight="DemiBold">
+                    <ItemsControl x:Name="Order" FontSize="16">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding Name}"/>
@@ -58,14 +58,13 @@
                         <ColumnDefinition Width="1.3*"/>
                     </Grid.ColumnDefinitions>
                     <Viewbox Grid.Column="0" Stretch="Uniform">
-                        <TextBlock Grid.Column="0" Text="Totalsumma :" FontSize="15" FontWeight="DemiBold" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                        <TextBlock Grid.Column="0" Text="Totalsumma :" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Right"/>
                     </Viewbox>
                     <Viewbox Grid.Column="1" Stretch="Uniform">
                         <DockPanel>
                             <TextBlock x:Name="TotalPrice" FontSize="15" Padding="3" Grid.Column="2" 
                                        HorizontalAlignment="Left" FontWeight="DemiBold" DockPanel.Dock="Left"/>
-                            <TextBlock Text="kr" DockPanel.Dock="Right" FontSize="15" Padding="3" VerticalAlignment="Center"
-                                       FontWeight="DemiBold"/>
+                            <TextBlock Text="kr" DockPanel.Dock="Right" FontSize="15" Padding="3" VerticalAlignment="Center"/>
                         </DockPanel>
                         
                     </Viewbox>
@@ -73,7 +72,7 @@
                 <Viewbox Grid.Column="1" Grid.Row="1" Stretch="Uniform" >
                     <Grid>
                         <materialDesign:PackIcon Kind="Payment" Width="120" Height="90" Foreground="#D70F64" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 0 0 25"/>
-                        <TextBlock Text="Betala/Ändra" VerticalAlignment="Bottom" HorizontalAlignment="Center" Foreground="Black" FontSize="20" FontWeight="DemiBold" Margin="0 0 0 10"/>
+                        <TextBlock Text="Betala/Ändra" VerticalAlignment="Bottom" HorizontalAlignment="Center" Foreground="Black" FontSize="20" Margin="0 0 0 10"/>
                         <Button x:Name="GoPaymentMenu" Background="{x:Null}" Width="130" Height="110"/>
                     </Grid>
                 </Viewbox>
@@ -94,14 +93,14 @@
             </Grid.RowDefinitions>
             
             <Viewbox>
-                <Image Grid.Row="0" Source="Images/pizzalogga2.png" Width="125" Height="125"/>
+                <Image Grid.Row="0" Source="Images/PizzaLogo.png" Width="125" Height="125"/>
             </Viewbox>
             
             <!-- Pizza Button -->
             <Viewbox Grid.Row="1" Grid.Column="0" Stretch="Fill">
                 <Grid>
                     <materialDesign:PackIcon Kind="Pizza" Width="12" Height="15" FontSize="20"  HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 4 0 2" Foreground="#D70F64"/>
-                    <TextBlock Text="Pizza" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="6" FontWeight="Bold" Foreground="#D70F64" Margin="0 3 0 4"/>
+                    <TextBlock Text="Pizza" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="6" FontWeight="DemiBold" Foreground="#D70F64" Margin="0 3 0 4"/>
                     <Button x:Name="GoPizzaMenu" Foreground="#D70F64" Background="{x:Null}" VerticalAlignment="Top" HorizontalAlignment="Stretch"/>
                 </Grid>
 
@@ -110,7 +109,7 @@
             <Viewbox Grid.Row="2" Stretch="Fill">
                 <Grid>
                     <materialDesign:PackIcon Kind="Pasta" Width="12" Height="15"  HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 4 0 2" Foreground="#D70F64"/>
-                    <TextBlock Text="Pasta" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="6" FontWeight="Bold" Foreground="#D70F64" Margin="0 3 0 4"/>
+                    <TextBlock Text="Pasta" VerticalAlignment="Bottom" FontWeight="DemiBold" HorizontalAlignment="Center" FontSize="6" Foreground="#D70F64" Margin="0 3 0 4"/>
                     <Button x:Name="GoPastaMenu" Foreground="#D70F64" Background="{x:Null}" VerticalAlignment="Top" HorizontalAlignment="Stretch"/>
                 </Grid>
             </Viewbox>
@@ -118,7 +117,7 @@
             <Viewbox Grid.Row="3" Stretch="Fill" >
                 <Grid>
                     <Image Source="Images/salad.png" Width="12" Height="15" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 4 0 2"/>
-                    <TextBlock Text="Sallad" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="6" FontWeight="Bold" Foreground="#D70F64" Margin="0 3 0 4"/>
+                    <TextBlock Text="Sallad" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="6" FontWeight="DemiBold" Foreground="#D70F64" Margin="0 3 0 4"/>
                     <Button x:Name="GoSalladMenu" Foreground="#D70F64" Background="{x:Null}" VerticalAlignment="Top" HorizontalAlignment="Stretch"/>
                 </Grid>
             </Viewbox>
@@ -126,7 +125,7 @@
             <Viewbox Grid.Row="4" Stretch="Fill">
                 <Grid>
                     <materialDesign:PackIcon Kind="Drink" Width="12" Height="15"  HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 4 0 2" Foreground="#D70F64"/>
-                    <TextBlock Text="Drink" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="6" FontWeight="Bold" Foreground="#D70F64" Margin="0 3 0 4"/>
+                    <TextBlock Text="Drink" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="6" FontWeight="DemiBold" Foreground="#D70F64" Margin="0 3 0 4"/>
                     <Button x:Name="GoDrinkMenu" Foreground="#D70F64" Background="{x:Null}" VerticalAlignment="Top" HorizontalAlignment="Stretch"/>
                 </Grid>
             </Viewbox>
@@ -134,7 +133,7 @@
             <Viewbox Grid.Row="5" Stretch="Fill">
                 <Grid>
                     <materialDesign:PackIcon Kind="AddCircle" Width="12" Height="15"  HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 4 0 2" Foreground="#D70F64"/>
-                    <TextBlock Text="Extra" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="6" FontWeight="Bold" Foreground="#D70F64" Margin="0 3 0 4"/>
+                    <TextBlock Text="Extra" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="6" FontWeight="DemiBold" Foreground="#D70F64" Margin="0 3 0 4"/>
                     <Button x:Name="GoExtraMenu" Foreground="#D70F64" Background="{x:Null}" VerticalAlignment="Top" HorizontalAlignment="Stretch"/>
                 </Grid>
             </Viewbox>

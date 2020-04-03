@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <None Remove="Images\pizzalogga2.png" />
+    <None Remove="Views\Images\PizzaLogo.png" />
     <None Remove="Views\Images\salad.png" />
     <None Remove="Views\pizzalogga2.png" />
   </ItemGroup>
@@ -27,6 +28,7 @@
   <ItemGroup>
     <Resource Include="Images\pizzalogga2.png" />
     <Resource Include="Views\Images\pizzalogga2.png" />
+    <Resource Include="Views\Images\PizzaLogo.png" />
     <Resource Include="Views\Images\salad.png" />
   </ItemGroup>
 

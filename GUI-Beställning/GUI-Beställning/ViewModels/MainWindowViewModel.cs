@@ -164,8 +164,10 @@ namespace GUI_Beställning.ViewModels
 
         private void GetNewOrderID()
         {
-            var newOrder = (repo.CreateNewOrder()).ToList();
-            OrderID = newOrder[0].ID;
+            //ändra detta sen när man ska skapa nya ordrar
+            //var newOrder = (repo.CreateNewOrder()).ToList();
+            //OrderID = newOrder[0].ID; 
+            OrderID = 160;
         }
         #endregion
 
