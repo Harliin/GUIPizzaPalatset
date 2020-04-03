@@ -79,13 +79,13 @@ namespace GUI_Kassörska
             }
         }
 
-        public async Task<IEnumerable<Order>> ShowOrderByID(int orderNumber)
+        public async Task<int> ShowOrderByID(int orderNumber)
         {
             using (IDbConnection con = Connection)
             {
                 var result = await connection.QueryAsync<Order>("\"ShowOrderByID\"", new { @inid = orderNumber }, commandType: CommandType.StoredProcedure);
-                var orderID = result.First();
-                return orderID;
+                var order = result.First();
+                return order.OrderID;
             }
         }
     }

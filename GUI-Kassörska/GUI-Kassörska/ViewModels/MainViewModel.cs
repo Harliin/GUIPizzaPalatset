@@ -135,7 +135,7 @@ namespace GUI_Kassörska.ViewModels
 			await ShowAllReadyOrders();
 		}
 
-		public eStatus GetOrderStatus(int orderNumber)
+		public Task<int> GetOrderStatus(int orderNumber)
 		{
 			var orderStatus = repo.ShowOrderByID(orderNumber);
 
@@ -146,6 +146,7 @@ namespace GUI_Kassörska.ViewModels
 		{
 			//ShowAllOngoingOrders();
 			ShowAllReadyOrders();
+
 			Serve = new RelayCommand(Update);
 		}
 
