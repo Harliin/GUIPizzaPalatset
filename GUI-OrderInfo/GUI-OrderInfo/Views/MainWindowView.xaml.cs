@@ -24,12 +24,6 @@ namespace GUI_OrderInfo.Views
                 this.OneWayBind(ViewModel, complete => complete.CompleteOrder, c => c.txbComplete.ItemsSource)
                 .DisposeWith(disposables);
 
-                //this.OneWayBind(ViewModel, vm => vm.OngoingOrders, v => v.txbOngoing.ItemsSource)
-                //.DisposeWith(disposables);
-
-                //this.OneWayBind(ViewModel, vm => vm.CompleteOrder, v => v.txbComplete.ItemsSource)
-                //.DisposeWith(disposables);
-
                 ViewModel.Populate();
             });
         }
