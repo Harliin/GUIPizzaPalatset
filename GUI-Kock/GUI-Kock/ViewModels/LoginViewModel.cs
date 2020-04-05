@@ -23,7 +23,7 @@ namespace GUI_Kock.ViewModels
         #region Properties
         public static ChefRepository repo = new ChefRepository();
 
-        public ObservableCollection<Employee> Employees { get; private set; }
+        public static ObservableCollection<Employee> Employees { get; private set; }
 
         public List<string> EmployeeNames { get; private set; }
         
@@ -69,7 +69,7 @@ namespace GUI_Kock.ViewModels
             }
             
             EmployeeNames = new List<string>();
-            LoginCommand = new RelayCommand(Login); 
+            LoginCommand = new RelayCommand(Login);
         }
 
         /// <summary>
@@ -110,7 +110,7 @@ namespace GUI_Kock.ViewModels
             {
                 if (CheckUser())
                 {
-                    Router.Navigate.Execute(new OrderViewModel(Router));
+                    Router.Navigate.Execute(new OrderViewModel());
                 }
             }
         }

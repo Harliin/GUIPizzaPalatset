@@ -19,10 +19,12 @@ namespace GUI_Kock.ViewModels
 
         public ChefRepository repo = new ChefRepository();
 
-        public Order _selectedOrders;
         public ObservableCollection<Order> OngoinOrders { get; private set; }
         
         public ObservableCollection<Pizza> Pizzas { get; }
+
+        public LoginViewModel loginViewModel;
+
         #region Commands
         public RelayCommand GoToPreparingViewCommand { get; set; }
         public ReactiveCommand<Unit, IRoutableViewModel> GoToPreparingView { get; private set; }
@@ -30,39 +32,17 @@ namespace GUI_Kock.ViewModels
 
         #endregion
 
-
-        //public Order SelectedOrders
-        //{
-        //    get
-        //    {
-        //        return _selectedOrders;
-        //    }
-        //    set
-        //    {
-        //        this.RaiseAndSetIfChanged(ref _selectedOrders, value);
-        //        if (value != null)
-        //        {
-        //            Router.Navigate.Execute(new PreparingOrderViewModel(Router));
-        //        }
-        //    }
-        //    }
-
-
         #region Routing
         public string UrlPathSegment => "Order";
         public IScreen HostScreen { get; private set; }
-        public static RoutingState Router { get; private set; }
+        public RoutingState Router => LoginViewModel.Router;
         #endregion
 
 
-        public OrderViewModel(RoutingState state = null, IScreen screen = null)
+        public OrderViewModel(IScreen screen = null)
         {
-            // SelectedOrders = null;
+            loginViewModel = new LoginViewModel();
             HostScreen = screen ?? Locator.Current.GetService<IScreen>();
-            if (Router == null)
-            {
-                Router = state;
-            }
             OngoinOrders = new ObservableCollection<Order>();
             GoToPreparingViewCommand = new RelayCommand(NavigateToPreparingView);
             Locator.CurrentMutable.Register(() => new PreparingOrderView(), typeof(IViewFor<PreparingOrderViewModel>));
@@ -85,6 +65,7 @@ namespace GUI_Kock.ViewModels
             IEnumerable<Order> orders = repo.ShowOrderByStatus(Order.eStatus.Tillagning);
             OngoinOrders.AddRange(orders);
         }
+
 
     }
 }

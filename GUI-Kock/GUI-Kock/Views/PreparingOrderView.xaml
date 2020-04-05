@@ -24,15 +24,15 @@
             </Grid.RowDefinitions>
 
             <Grid Grid.Row="0">
-                <materialDesign:PackIcon Kind="Login" Width="40" Height="40"
-                                     Margin="10" HorizontalAlignment="Right"/>
-                <materialDesign:PackIcon Kind="User" Width="40" Height="40"
-                                     Margin="10" HorizontalAlignment="Left"/>
-                <TextBlock Text="User" FontSize="30" HorizontalAlignment="Left"
-                           Margin="50 10 10 10">
 
+                <Button  x:Name="exit" Content="{materialDesign:PackIcon Kind=Login}" Width="80" Height="40"
+                                     Margin="20 50" HorizontalAlignment="Right" Background="#FFD70F64" BorderBrush="#FFD70F64" FontSize="24" Foreground="#DD0A0000"/>
+                <materialDesign:PackIcon Kind="User" Width="30" Height="30" Margin="10 60 10 10" HorizontalAlignment="Left"/>
+
+                <TextBlock x:Name="user" Text="User" Width="70" Height="30" FontSize="24" HorizontalAlignment="Left" Margin="50 10 10 10">
                 </TextBlock>
             </Grid>
+
 
             <StackPanel Grid.Row="1"
                             Margin="50 50 50 0" Orientation="Vertical">

@@ -23,6 +23,15 @@ namespace GUI_Kock.Views
         public PreparingOrderView()
         {
             InitializeComponent();
+
+            this.WhenActivated(disposables =>
+            {
+
+                this.BindCommand(ViewModel, x => x.GoToLoginView, x => x.exit);
+            });
+
         }
+
     }
+
 }
