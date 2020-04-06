@@ -131,39 +131,37 @@
             Pågående ordrar
         </TextBlock>
 
-        <!--<ListBox
-            Grid.Column="2"
-            Grid.Row="6"
-            Grid.ColumnSpan="2"
-            Grid.RowSpan="10"
-            BorderThickness="0"
-            AlternationCount="2"
-            ItemContainerStyle="{StaticResource alternateBackgroundcolor}"
-            ItemsSource="{Binding OngoingOrders}"
-            SelectedItem="{Binding CurrentOrder}"
-            SelectionMode="Single">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel>
-                        <Button
-                            Height="50"
-                            Width="50"
-                            Foreground="Black"
-                            Content="{Binding Status}"
-                            />
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>-->
         <ScrollViewer Grid.Column="2"
             Grid.Row="6"
             Grid.ColumnSpan="2"
-            Grid.RowSpan="10">
+            Grid.RowSpan="10"
+            VerticalScrollBarVisibility="Hidden">
             <StackPanel Grid.Column="2"
             Grid.Row="6"
             Grid.ColumnSpan="2"
             Grid.RowSpan="10">
-                <!--<ScrollViewer Visibility="Visible">-->
+                <ItemsControl ItemsSource="{Binding CookingOrders}" >
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding ID, StringFormat={}#{0}}" FontSize="30" 
+                                       Margin=" 0 0 20 0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                <Button
+                            Height="50"
+                            Width="50"
+                            BorderThickness="0"
+                            Background="{x:Null}">
+                                    <Button.Content>
+                                        <Path Data="{StaticResource Fryingpan}"
+                                      Fill="{StaticResource DeepPinkBrush}"
+                                      Stretch="Uniform"/>
+                                    </Button.Content>
+                                </Button>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+                
                 <ItemsControl ItemsSource="{Binding PaidOrders}">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
@@ -177,28 +175,6 @@
                             Background="{x:Null}">
                                     <Button.Content>
                                         <Path Data="{StaticResource Payment}"
-                                      Fill="{StaticResource DeepPinkBrush}"
-                                      Stretch="Uniform"/>
-                                    </Button.Content>
-                                </Button>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                </ItemsControl>
-                <!--</ScrollViewer>-->
-                <ItemsControl ItemsSource="{Binding CookingOrders}" >
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="{Binding ID, StringFormat={}{0}#}" FontSize="30" 
-                                       Margin=" 0 0 20 0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                <Button
-                            Height="50"
-                            Width="50"
-                            BorderThickness="0"
-                            Background="{x:Null}">
-                                    <Button.Content>
-                                        <Path Data="{StaticResource UserImage}"
                                       Fill="{StaticResource DeepPinkBrush}"
                                       Stretch="Uniform"/>
                                     </Button.Content>
@@ -233,34 +209,38 @@
             Färdiga ordrar
         </TextBlock>
 
-        <ListBox
-            Grid.Column="6"
+        <ScrollViewer Grid.Column="6"
             Grid.Row="6"
             Grid.ColumnSpan="2"
             Grid.RowSpan="10"
-            BorderThickness="0"
-            AlternationCount="2"
-            ItemContainerStyle="{StaticResource alternateBackgroundcolor}"
-            ItemsSource="{Binding ReadyOrders}"
-            SelectedItem="{Binding CurrentOrder}"
-            SelectionMode="Single">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel>
-                        <Button
+            VerticalScrollBarVisibility="Hidden">
+            <StackPanel Grid.Column="2"
+            Grid.Row="6"
+            Grid.ColumnSpan="2"
+            Grid.RowSpan="10">
+                <ItemsControl ItemsSource="{Binding ReadyOrders}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding ID, StringFormat={}#{0}}" FontSize="30" 
+                                       Margin=" 0 0 20 0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                <Button
                             Height="50"
                             Width="50"
                             BorderThickness="0"
                             Background="{x:Null}">
-                            <Button.Content>
-                                <Path Data="{StaticResource RightArrowImage}"
+                                    <Button.Content>
+                                        <Path Data="{StaticResource RightArrowImage}"
                                       Fill="{StaticResource DeepPinkBrush}"
                                       Stretch="Uniform"/>
-                            </Button.Content>
-                        </Button>
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+                                    </Button.Content>
+                                </Button>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Window>
