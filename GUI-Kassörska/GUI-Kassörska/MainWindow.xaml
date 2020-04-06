@@ -155,12 +155,16 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>-->
-        <StackPanel Grid.Column="2"
+        <ScrollViewer Grid.Column="2"
             Grid.Row="6"
             Grid.ColumnSpan="2"
             Grid.RowSpan="10">
-            <ScrollViewer Visibility="Visible">
-            <ItemsControl ItemsSource="{Binding PaidOrders}">
+            <StackPanel Grid.Column="2"
+            Grid.Row="6"
+            Grid.ColumnSpan="2"
+            Grid.RowSpan="10">
+                <!--<ScrollViewer Visibility="Visible">-->
+                <ItemsControl ItemsSource="{Binding PaidOrders}">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
@@ -181,8 +185,8 @@
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
-            </ScrollViewer>
-            <ItemsControl ItemsSource="{Binding CookingOrders}" >
+                <!--</ScrollViewer>-->
+                <ItemsControl ItemsSource="{Binding CookingOrders}" >
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
@@ -203,7 +207,9 @@
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
-        </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
+        
         
 
         <!-- Separating line -->
