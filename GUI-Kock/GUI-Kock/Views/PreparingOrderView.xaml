@@ -29,7 +29,7 @@
                                      Margin="20 50" HorizontalAlignment="Right" Background="#FFD70F64" BorderBrush="#FFD70F64" FontSize="24" Foreground="#DD0A0000"/>
                 <materialDesign:PackIcon Kind="User" Width="30" Height="30" Margin="10 60 10 10" HorizontalAlignment="Left"/>
 
-                <TextBlock x:Name="user" Text="User" Width="70" Height="30" FontSize="24" HorizontalAlignment="Left" Margin="50 10 10 10">
+                <TextBlock x:Name="user" Text="{Binding Name}" Width="70" Height="30" FontSize="24" HorizontalAlignment="Left" Margin="50 10 10 10">
                 </TextBlock>
             </Grid>
 

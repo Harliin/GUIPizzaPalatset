@@ -110,7 +110,7 @@ namespace GUI_Kock.ViewModels
             {
                 if (CheckUser())
                 {
-                    Router.Navigate.Execute(new OrderViewModel());
+                    Router.Navigate.Execute(new OrderViewModel(Name));
                 }
             }
         }

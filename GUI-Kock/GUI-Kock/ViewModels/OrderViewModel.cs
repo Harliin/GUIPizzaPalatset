@@ -23,7 +23,21 @@ namespace GUI_Kock.ViewModels
         
         public ObservableCollection<Pizza> Pizzas { get; }
 
-        public LoginViewModel loginViewModel;
+        private string _name;
+
+        public string Name
+        {
+            get
+            {
+                return _name;
+            }
+            set
+            {
+                {
+                    this.RaiseAndSetIfChanged(ref _name, value);
+                }
+            }
+        }
 
         #region Commands
         public RelayCommand GoToPreparingViewCommand { get; set; }
@@ -39,9 +53,9 @@ namespace GUI_Kock.ViewModels
         #endregion
 
 
-        public OrderViewModel(IScreen screen = null)
+        public OrderViewModel(string name, IScreen screen = null)
         {
-            loginViewModel = new LoginViewModel();
+            Name = name;
             HostScreen = screen ?? Locator.Current.GetService<IScreen>();
             OngoinOrders = new ObservableCollection<Order>();
             GoToPreparingViewCommand = new RelayCommand(NavigateToPreparingView);
@@ -57,7 +71,8 @@ namespace GUI_Kock.ViewModels
 
         public void NavigateToPreparingView()
         {
-            Router.Navigate.Execute(new PreparingOrderViewModel());
+
+            Router.Navigate.Execute(new PreparingOrderViewModel(Name));
         }
 
         public void PopulateOrders()

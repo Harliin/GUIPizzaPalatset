@@ -2,6 +2,7 @@
 using ReactiveUI;
 using System;
 using System.Collections.Generic;
+using System.Reactive.Disposables;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -28,6 +29,10 @@ namespace GUI_Kock.Views
             {
 
                 this.BindCommand(ViewModel, x => x.GoToLoginView, x => x.exit);
+
+                this.Bind(ViewModel, vm => vm.Name, v => v.user.Text)
+                .DisposeWith(disposables);
+
             });
 
         }

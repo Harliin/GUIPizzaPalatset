@@ -10,6 +10,21 @@ namespace GUI_Kock.ViewModels
 {
     public class PreparingOrderViewModel : ReactiveObject, IRoutableViewModel
     {
+        private string _name;
+
+        public string Name
+        {
+            get
+            {
+                return _name;
+            }
+            set
+            {
+                {
+                    this.RaiseAndSetIfChanged(ref _name, value); this.RaisePropertyChanged(nameof(Name)); }
+            }
+        }
+
 
         public ReactiveCommand<Unit, IRoutableViewModel> GoToLoginView { get; private set; }
 
@@ -18,8 +33,9 @@ namespace GUI_Kock.ViewModels
         public IScreen HostScreen { get; }
         public RoutingState Router => LoginViewModel.Router;
         #endregion
-        public PreparingOrderViewModel(IScreen screen = null)
+        public PreparingOrderViewModel(string name, IScreen screen = null)
         {
+            Name = name;
             HostScreen = screen ?? Locator.Current.GetService<IScreen>();
             Locator.CurrentMutable.Register(() => new LoginView(), typeof(IViewFor<LoginViewModel>));
             GoToLoginView = ReactiveCommand.CreateFromObservable(() => Router.Navigate.Execute(new LoginViewModel(Router)));
