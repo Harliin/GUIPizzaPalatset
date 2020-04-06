@@ -31,11 +31,11 @@ namespace GUI_Kock.Views
 
                 this.BindCommand(ViewModel, x => x.GoToLoginView, x => x.exit);
 
-                this.Bind(ViewModel, vm => vm.Name, v => v.user.Text)
+                this.Bind(ViewModel, vm => vm.EmployeeName, v => v.user.Text)
                 .DisposeWith(disposables);
 
 
-                this.Bind(ViewModel, vm => vm.ID, v => v.orderID.Text)
+                this.OneWayBind(ViewModel, vm => vm.CurrentOrder.pizza, v => v.orderItems.Text)
                 .DisposeWith(disposables);
 
 

@@ -80,18 +80,18 @@ namespace DB_Kock
             }
         }
 
-        public async Task<Order> ShowOrderByID(int id)
+        public Order ShowOrderByID(int id)
         {
             using (IDbConnection con = Connection)
             {
 
-                Order order = (await connection.QueryAsync<Order>("\"ShowOrderByID\"", new { inid = id }, commandType: CommandType.StoredProcedure)).First();
+                Order order = ( connection.Query<Order>("\"ShowOrderByID\"", new { inid = id }, commandType: CommandType.StoredProcedure)).First();
 
-                order.pizza = (await connection.QueryAsync<Pizza>("\"GetOrderPizzas\"", new { inid = order.ID }, commandType: CommandType.StoredProcedure)).ToList();
-                order.pasta = (await connection.QueryAsync<Pasta>("\"GetOrderPastas\"", new { inid = order.ID }, commandType: CommandType.StoredProcedure)).ToList();
-                order.sallad = (await connection.QueryAsync<Sallad>("\"GetOrderSallads\"", new { inid = order.ID }, commandType: CommandType.StoredProcedure)).ToList();
-                order.drink = (await connection.QueryAsync<Drink>("\"GetOrderDrinks\"", new { inid = order.ID }, commandType: CommandType.StoredProcedure)).ToList();
-                order.extra = (await connection.QueryAsync<Extra>("\"GetOrderExtras\"", new { inid = order.ID }, commandType: CommandType.StoredProcedure)).ToList();
+                order.pizza = ( connection.Query<Pizza>("\"GetOrderPizzas\"", new { inid = order.ID }, commandType: CommandType.StoredProcedure)).ToList();
+                order.pasta = ( connection.Query<Pasta>("\"GetOrderPastas\"", new { inid = order.ID }, commandType: CommandType.StoredProcedure)).ToList();
+                order.sallad = ( connection.Query<Sallad>("\"GetOrderSallads\"", new { inid = order.ID }, commandType: CommandType.StoredProcedure)).ToList();
+                order.drink = ( connection.Query<Drink>("\"GetOrderDrinks\"", new { inid = order.ID }, commandType: CommandType.StoredProcedure)).ToList();
+                order.extra = ( connection.Query<Extra>("\"GetOrderExtras\"", new { inid = order.ID }, commandType: CommandType.StoredProcedure)).ToList();
 
                 return order;
             }

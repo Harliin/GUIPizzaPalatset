@@ -7,40 +7,32 @@ using GUI_Kock.Views;
 using System.Reactive;
 using System.Windows;
 using Food;
+using System.Collections.ObjectModel;
+using DynamicData;
+using System.Linq;
+using DB_Kock;
 
 namespace GUI_Kock.ViewModels
 {
     public class PreparingOrderViewModel : ReactiveObject, IRoutableViewModel
     {
-        private string _name;
+        private string _employeename;
 
-        public string Name
+        public string EmployeeName
         {
             get
             {
-                return _name;
+                return _employeename;
             }
             set
             {
-                _name = value;
+                _employeename = value;
             }
         }
 
-            
-        private int _id;
+        public static ChefRepository repos => LoginViewModel.repo;
 
-        public int ID
-        {
-            get
-            {
-                return _id;
-            }
-            set
-            {
-                this.RaiseAndSetIfChanged(ref _id, value);
-            }
-        }
-
+        public Order CurrentOrder { get; private set; }
 
 
         public ReactiveCommand<Unit, IRoutableViewModel> GoToLoginView { get; private set; }
@@ -52,8 +44,8 @@ namespace GUI_Kock.ViewModels
         #endregion
         public PreparingOrderViewModel(string name, Order order, IScreen screen = null)
         {
-            Name = name;
-            //ID = id;
+            EmployeeName = name;
+            CurrentOrder = order;
             HostScreen = screen ?? Locator.Current.GetService<IScreen>();
             Locator.CurrentMutable.Register(() => new LoginView(), typeof(IViewFor<LoginViewModel>));
             GoToLoginView = ReactiveCommand.CreateFromObservable(() => Router.Navigate.Execute(new LoginViewModel(Router)));
