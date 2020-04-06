@@ -141,7 +141,7 @@
             Grid.Row="6"
             Grid.ColumnSpan="2"
             Grid.RowSpan="10">
-                <ItemsControl ItemsSource="{Binding CookingOrders}" >
+                <ItemsControl ItemsSource="{Binding CookingOrders}">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
