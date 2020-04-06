@@ -43,22 +43,7 @@ namespace GUI_Kock.ViewModels
             }
         }
 
-        private string _name;
-
-        public string Name
-        {
-            get
-            {
-                return _name;
-            }
-            set
-            {
-                
-                    //this.RaiseAndSetIfChanged(ref _name, value);
-                    _name = value;
-                
-            }
-        }
+        public static string Name { get; set; }
 
         #region Commands
         public RelayCommand GoToPreparingViewCommand { get; set; }
@@ -74,9 +59,13 @@ namespace GUI_Kock.ViewModels
         #endregion
 
 
-        public OrderViewModel(string name, IScreen screen = null)
+        public OrderViewModel(string name = null, IScreen screen = null)
         {
-            Name = name;
+            if (Name == null)
+            {
+                Name = name;
+            }
+
             HostScreen = screen ?? Locator.Current.GetService<IScreen>();
             OngoinOrders = new ObservableCollection<Order>();
             GoToPreparingViewCommand = new RelayCommand(NavigateToPreparingView);
@@ -88,12 +77,12 @@ namespace GUI_Kock.ViewModels
         // <summary>
         // Gets the loginCommand for the ViewModel  
         // </summary>
-        
 
-        public void NavigateToPreparingView()
+
+        public void NavigateToPreparingView(object parameter)
         {
-
-            Router.Navigate.Execute(new PreparingOrderViewModel(Name, ID));
+            Order temporder = (Order)parameter;
+            Router.Navigate.Execute(new PreparingOrderViewModel(Name, temporder));
         }
 
         public void PopulateOrders()

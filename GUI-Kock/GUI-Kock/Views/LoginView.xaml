@@ -14,7 +14,7 @@
     <StackPanel Margin="50">
         <Border Background="White" Margin="10 20" CornerRadius="5">
             <StackPanel Margin="25">
-                <ComboBox x:Name="userName" Margin="15" Style="{StaticResource MaterialDesignFloatingHintComboBox}" materialDesign:HintAssist.Hint="Användare" >
+                <ComboBox x:Name="userName" Text="{Binding Name}" Margin="15" Style="{StaticResource MaterialDesignFloatingHintComboBox}" materialDesign:HintAssist.Hint="Användare" >
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
                             <ComboBoxItem x:Name="myName" Content="{Binding}" />

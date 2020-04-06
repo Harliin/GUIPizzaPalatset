@@ -33,7 +33,7 @@
             </Grid>
 
             <ScrollViewer VerticalScrollBarVisibility="Auto"  Grid.Row="1" Grid.RowSpan="2" Grid.Column="1">
-            <ItemsControl ItemsSource="{Binding ID}" x:Name="ongoingorder" Grid.Row="1" Grid.RowSpan="2" Grid.Column="1">
+                <ItemsControl ItemsSource="{Binding OngoinOrders}" x:Name="ongoingorder" Grid.Row="1" Grid.RowSpan="2" Grid.Column="1">
                 <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Grid.Row="1" Grid.RowSpan="2" Margin="50 0 50 5 " Orientation="Vertical">

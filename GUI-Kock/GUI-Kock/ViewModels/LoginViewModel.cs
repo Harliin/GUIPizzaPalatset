@@ -29,12 +29,8 @@ namespace GUI_Kock.ViewModels
 
         private string _password;
 
-        private string _userName;
-        public string Name
-        {
-            get { return _userName; }
-            set { this.RaiseAndSetIfChanged(ref _userName, value); this.RaisePropertyChanged(nameof(Name)); }
-        }
+        //private string _userName;
+        public string Name { get; set; }
 
         public string Password
         {
@@ -87,6 +83,7 @@ namespace GUI_Kock.ViewModels
                 employeeNames.TryGetValue(Name, out string correctKey);
                 if (Password == correctKey)
                 {
+                    Name = Name;
                     return true;
                 }
                 else
@@ -103,7 +100,7 @@ namespace GUI_Kock.ViewModels
         /// Action till LoginCommand
         /// </summary>
         /// <returns></returns>
-        public void Login()
+        public void Login(object paramater)
         {
             if (Name != null && Password != null)
             {

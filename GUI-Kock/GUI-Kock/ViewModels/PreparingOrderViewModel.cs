@@ -6,6 +6,7 @@ using System.Text;
 using GUI_Kock.Views;
 using System.Reactive;
 using System.Windows;
+using Food;
 
 namespace GUI_Kock.ViewModels
 {
@@ -49,10 +50,10 @@ namespace GUI_Kock.ViewModels
         public IScreen HostScreen { get; }
         public RoutingState Router => LoginViewModel.Router;
         #endregion
-        public PreparingOrderViewModel(string name, int id, IScreen screen = null)
+        public PreparingOrderViewModel(string name, Order order, IScreen screen = null)
         {
             Name = name;
-            ID = id;
+            //ID = id;
             HostScreen = screen ?? Locator.Current.GetService<IScreen>();
             Locator.CurrentMutable.Register(() => new LoginView(), typeof(IViewFor<LoginViewModel>));
             GoToLoginView = ReactiveCommand.CreateFromObservable(() => Router.Navigate.Execute(new LoginViewModel(Router)));

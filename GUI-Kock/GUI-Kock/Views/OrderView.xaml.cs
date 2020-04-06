@@ -26,7 +26,7 @@ namespace GUI_Kock.Views
 
             InitializeComponent();
 
-            this.DataContext = new OrderViewModel("");
+            this.DataContext = new OrderViewModel();
 
             this.WhenActivated(disposables =>
             {
@@ -37,8 +37,8 @@ namespace GUI_Kock.Views
 
                 this.BindCommand(ViewModel, x => x.GoToLoginView, x => x.exit);
 
-                this.Bind(ViewModel, vm => vm.Name, v => v.user.Text)
-               .DisposeWith(disposables);
+               // this.Bind(ViewModel, vm => vm.Name, v => v.user.Text)
+               //.DisposeWith(disposables);
 
             });
         }
