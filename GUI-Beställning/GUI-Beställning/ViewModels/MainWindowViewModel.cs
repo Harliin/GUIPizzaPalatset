@@ -126,7 +126,7 @@ namespace GUI_Beställning.ViewModels
                 CurrentOrder.sallad.ForEach(sallad => { OrderList.Add(sallad); TotalPrice += sallad.Price; });
                 CurrentOrder.drink.ForEach(drink => { OrderList.Add(drink); TotalPrice += drink.Price; });
                 CurrentOrder.extra.ForEach(extra => { OrderList.Add(extra); TotalPrice += extra.Price; });
-                this.RaisePropertyChanged(nameof(TotalPrice));
+                await Dispatcher.InvokeAsync(() => this.RaisePropertyChanged(nameof(TotalPrice)));
                 await Dispatcher.InvokeAsync(Order.Clear);
                 await Dispatcher.InvokeAsync(() => Order.AddRange(OrderList));
           
@@ -155,7 +155,7 @@ namespace GUI_Beställning.ViewModels
         /// Command Method to Navigate from PaymentView to RecieptView
         /// </summary>
         /// <param name="parameter"></param>
-        public void PaymentCommandMethod(object parameter)
+        public async void PaymentCommandMethod(object parameter)
         {
                 if (Order.Count != 0)
                 {

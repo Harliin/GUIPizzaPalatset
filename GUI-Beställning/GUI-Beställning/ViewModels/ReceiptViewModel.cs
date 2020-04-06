@@ -30,7 +30,7 @@ namespace GUI_Beställning.ViewModels
         public int OrderID => MainWindowViewModel.OrderID;
         public double SEKPrice => MainWindowViewModel.TotalPrice;
 
-        public Dispatcher Dispatcher => MainWindowViewModel.Dispatcher;
+        public Dispatcher Dispatcher = MainWindowViewModel.Dispatcher;
         public double EuroPrice { get; set; }
 
 
@@ -82,7 +82,7 @@ namespace GUI_Beställning.ViewModels
         //}
 
         // WebApi Som är async
-        private async Task EuroRateAsync()
+        private async void EuroRateAsync()
         {
             ExchangeRates rates = new ExchangeRates();
             using (HttpClient httpClient = new HttpClient())
