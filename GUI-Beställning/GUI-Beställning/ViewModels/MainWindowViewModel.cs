@@ -10,7 +10,9 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Reactive;
+using System.Reactive.Threading.Tasks;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
@@ -72,7 +74,7 @@ namespace GUI_Beställning.ViewModels
 
             Locator.CurrentMutable.Register(() => new ReceiptView(), typeof(IViewFor<ReceiptViewModel>));
 
-
+            
             PizzaMenu = ReactiveCommand.CreateFromObservable(() => Router.Navigate.Execute(new PizzaMenuViewModel(this)));
 
             PastaMenu = ReactiveCommand.CreateFromObservable(() => Router.Navigate.Execute(new PastaMenuViewModel(this)));
@@ -88,8 +90,9 @@ namespace GUI_Beställning.ViewModels
             Router.Navigate.Execute(new WelcomeViewModel());
 
             #endregion
-
-            this.Order = new ObservableCollection<object>(ShowOrder());
+            //var order = ShowOrder();
+            this.Order = new ObservableCollection<object>();
+            Task.Run(() => ShowOrder());
             
         }
 
@@ -98,11 +101,15 @@ namespace GUI_Beställning.ViewModels
         /// <summary>
         /// Adds all the foods in a order to a observable collection
         /// </summary>
-        public List<object> ShowOrder()
+        public async void ShowOrder()
         {
+            //await Task.Run(() =>
+            //{
+               
+            //});
             TotalPrice = 0;
             List<object> OrderList = new List<object>();
-            var ordersIE = repo.ShowOrderByID(OrderID);
+            var ordersIE = await repo.ShowOrderByID(OrderID);
             var temp = ordersIE.ToList();
 
             CurrentOrder = temp[0];
@@ -112,7 +119,10 @@ namespace GUI_Beställning.ViewModels
             CurrentOrder.drink.ForEach(drink => { OrderList.Add(drink); TotalPrice += drink.Price; });
             CurrentOrder.extra.ForEach(extra => { OrderList.Add(extra); TotalPrice += extra.Price; });
             this.RaisePropertyChanged(nameof(TotalPrice));
-            return OrderList;
+            Order.Clear();
+            Order.AddRange(OrderList);
+
+            //return OrderList;
 
         }
 
@@ -121,11 +131,12 @@ namespace GUI_Beställning.ViewModels
         /// <summary>
         /// Method gets called uppon to update GUI
         /// </summary>
-        public void OrderChanged()
+        public async void OrderChanged()
         {
-            this.Order.Clear();
-            var list = ShowOrder();
-            this.Order.AddRange(list);
+            Task.Run(() => ShowOrder());
+            //this.Order.Clear();
+            //var list = ShowOrder();
+            //this.Order.AddRange(list);
         }
 
 
@@ -133,12 +144,16 @@ namespace GUI_Beställning.ViewModels
         /// Command Method to Navigate from PaymentView to RecieptView
         /// </summary>
         /// <param name="parameter"></param>
-        public void PaymentCommandMethod(object parameter)
+        public async Task PaymentCommandMethod(object parameter)
         {
-            if (Order.Count != 0)
+            await Task.Run(() =>
             {
-                Router.Navigate.Execute(new ReceiptViewModel(this));
-            }
+                if (Order.Count != 0)
+                {
+                    Router.Navigate.Execute(new ReceiptViewModel(this));
+                }
+            });
+            
         }
 
 
@@ -162,7 +177,7 @@ namespace GUI_Beställning.ViewModels
             Router.Navigate.Execute(new WelcomeViewModel());
         }
 
-        private void GetNewOrderID()
+        private async void GetNewOrderID()
         {
             //ändra detta sen när man ska skapa nya ordrar
             //var newOrder = (repo.CreateNewOrder()).ToList();
