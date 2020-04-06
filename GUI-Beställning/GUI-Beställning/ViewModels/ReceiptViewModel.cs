@@ -59,6 +59,7 @@ namespace GUI_Beställning.ViewModels
         /// WebApi To get the current exchangerate,
         /// from Euro to sek
         /// </summary>
+        /// WebApi som inte är Async
         public void EuroRate()
         {
            
@@ -76,5 +77,28 @@ namespace GUI_Beställning.ViewModels
                 EuroPrice = Math.Round((SEKPrice / rate),2);
             }
         }
+
+        // WebApi Som är async
+        //private async Task GetOrdersAsync()
+        //{
+        //    ExchangeRates rates = new ExchangeRates();
+        //    using (HttpClient httpClient = new HttpClient())
+        //    {
+        //        //httpClient.DefaultRequestHeaders.Add(HeaderNames.Authorization, "Bearer " + GetJWT());
+        //        string uri = "https://api.exchangeratesapi.io/latest";
+
+        //        HttpResponseMessage response = await httpClient.GetAsync(uri);
+        //        if (response.IsSuccessStatusCode)
+        //        {
+        //            StreamReader reader = new StreamReader(await response.Content.ReadAsStreamAsync(), Encoding.UTF8);
+        //            string dataFromWebapi = reader.ReadToEnd();
+        //            rates = System.Text.Json.JsonSerializer.Deserialize<ExchangeRates>(dataFromWebapi);
+        //        }
+        //    }
+        //    if(rates.Rates.TryGetValue("SEK", out float rate))
+        //    {
+        //        EuroPrice = Math.Round((SEKPrice / rate), 2);
+        //    }
+        //}
     }
 }
