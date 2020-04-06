@@ -12,6 +12,7 @@ using System.Linq;
 using System.Reactive;
 using System.Reactive.Threading.Tasks;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
@@ -53,10 +54,11 @@ namespace GUI_Beställning.ViewModels
         {
             Dispatcher = Dispatcher.CurrentDispatcher;
             //Only for starting of with a OrderID
-            if (OrderID == 0)
-            {
-               Task.Run(() => GetNewOrderID());
-            }
+            //if (OrderID == 0)
+            //{
+            //   Task.Run(() => GetNewOrderID());
+            //}
+            GetNewOrderID();
             
             Router = new RoutingState();
             #region Navigation Reactive UI
@@ -95,7 +97,8 @@ namespace GUI_Beställning.ViewModels
             #endregion
             //var order = ShowOrder();
             this.Order = new ObservableCollection<object>();
-            Task.Run(() => ShowOrder());
+            //Task.Run(() => ShowOrder());
+            ShowOrder();
             
         }
 
@@ -105,25 +108,29 @@ namespace GUI_Beställning.ViewModels
         /// Adds all the foods in a order to a observable collection
         /// </summary>
         public async void ShowOrder()
-        {
+         {
             //await Task.Run(() =>
             //{
-               
-            //});
-            TotalPrice = 0;
-            List<object> OrderList = new List<object>();
-            var ordersIE = await repo.ShowOrderByID(OrderID);
-            var temp = ordersIE.ToList();
 
-            CurrentOrder = temp[0];
-            CurrentOrder.pizza.ForEach(pizza => { OrderList.Add(pizza); TotalPrice += pizza.Price; });
-            CurrentOrder.pasta.ForEach(pasta => { OrderList.Add(pasta); TotalPrice += pasta.Price; });
-            CurrentOrder.sallad.ForEach(sallad => { OrderList.Add(sallad); TotalPrice += sallad.Price; });
-            CurrentOrder.drink.ForEach(drink => { OrderList.Add(drink); TotalPrice += drink.Price; });
-            CurrentOrder.extra.ForEach(extra => { OrderList.Add(extra); TotalPrice += extra.Price; });
-            this.RaisePropertyChanged(nameof(TotalPrice));
-            await Dispatcher.InvokeAsync(Order.Clear); 
-            await Dispatcher.InvokeAsync(() => { Order.AddRange(OrderList); });
+            //});
+           
+                TotalPrice = 0;
+                List<object> OrderList = new List<object>();
+                var ordersIE =  await repo.ShowOrderByID(OrderID);
+                var temp = ordersIE.ToList();
+                CurrentOrder = new Order();
+
+                CurrentOrder = temp[0];
+                CurrentOrder.pizza.ForEach(pizza => { OrderList.Add(pizza); TotalPrice += pizza.Price; });
+                CurrentOrder.pasta.ForEach(pasta => { OrderList.Add(pasta); TotalPrice += pasta.Price; });
+                CurrentOrder.sallad.ForEach(sallad => { OrderList.Add(sallad); TotalPrice += sallad.Price; });
+                CurrentOrder.drink.ForEach(drink => { OrderList.Add(drink); TotalPrice += drink.Price; });
+                CurrentOrder.extra.ForEach(extra => { OrderList.Add(extra); TotalPrice += extra.Price; });
+                this.RaisePropertyChanged(nameof(TotalPrice));
+                await Dispatcher.InvokeAsync(Order.Clear);
+                await Dispatcher.InvokeAsync(() => Order.AddRange(OrderList));
+          
+            
 
             //return OrderList;
 
@@ -185,7 +192,7 @@ namespace GUI_Beställning.ViewModels
             //ändra detta sen när man ska skapa nya ordrar
             //var newOrder = (repo.CreateNewOrder()).ToList();
             //OrderID = newOrder[0].ID; 
-            await Dispatcher.InvokeAsync(() => OrderID = 160);
+            OrderID = 160;
         }
         #endregion
 

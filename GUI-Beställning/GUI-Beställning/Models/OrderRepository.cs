@@ -187,7 +187,7 @@ namespace GUI_Beställning.Models.Data
                 return extra;
             }
         }
-        public async Task< IEnumerable<Order>> ShowOrderByID(int orderID)
+        public async Task<IEnumerable<Order>> ShowOrderByID(int orderID)
         {
             using (IDbConnection con = Connection)
             {

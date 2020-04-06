@@ -46,7 +46,7 @@ namespace GUI_Beställning.ViewModels
             HostScreen = screen ?? Locator.Current.GetService<IScreen>();
 
             Pizzas = new ObservableCollection<Pizza>();
-            Task.Run(ShowPizzas);
+            ShowPizzas();
 
             if(MainWindowViewModel == null)
             {
@@ -54,11 +54,11 @@ namespace GUI_Beställning.ViewModels
             }
         }
 
-        public async void ShowPizzas()
+        public async Task ShowPizzas()
         {
             var pizzaIE = await repo.GetPizzas();
-            Pizzas.Clear();
-            Pizzas.AddRange(pizzaIE.ToList());
+            this.Pizzas.Clear();
+            this.Pizzas.AddRange(pizzaIE.ToList());
         }
 
         #region Command Methods

@@ -30,8 +30,9 @@ namespace GUI_Beställning.ViewModels
         public int OrderID => MainWindowViewModel.OrderID;
         public double SEKPrice => MainWindowViewModel.TotalPrice;
 
-        public static Dispatcher Dispatcher = MainWindowViewModel.Dispatcher;
+        public Dispatcher Dispatcher => MainWindowViewModel.Dispatcher;
         public double EuroPrice { get; set; }
+
 
         #endregion
 
@@ -46,14 +47,13 @@ namespace GUI_Beställning.ViewModels
         /// <param name="screen"></param>
         public ReceiptViewModel(MainWindowViewModel viewModel = null,IScreen screen = null)
         {
-            Dispatcher = Dispatcher.CurrentDispatcher;
             HostScreen = screen ?? Locator.Current.GetService<IScreen>();
 
             if (MainWindowViewModel == null)
             {
                 MainWindowViewModel = viewModel;
             }
-            Task.Run(EuroRateAsync);
+            EuroRateAsync();
             
             CheckoutCommand = new RelayCommand(MainWindowViewModel.CheckoutCommandMethod);
         }
