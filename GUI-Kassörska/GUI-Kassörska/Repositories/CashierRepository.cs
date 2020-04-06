@@ -35,55 +35,57 @@ namespace GUI_Kassörska
         }
 
         //Visa order med statusnummer
-        public async IEnumerable<Order> ShowOrderByStatusAsync(eStatus status)
+        public IEnumerable<Order> ShowOrderByStatus(eStatus status)
         {
             using (IDbConnection con = Connection)
             {
-                return (await connection.QueryAsync<Order>("\"ShowOrderByStatus\"", new { status = (int)status }, commandType: CommandType.StoredProcedure));
+                IEnumerable<Order> ordersByStatus = connection.Query<Order>("\"ShowOrderByStatus\"", new { status = (int)status }, commandType: CommandType.StoredProcedure));
+                return ordersByStatus;
             }
         }
 
         //Uppdatera orderns status
-        public async Task UpdateOrderStatus(int orderNumber)
+        public void UpdateOrderStatus(int orderNumber)
         {
             using (IDbConnection con = Connection)
             {
-                await connection.QueryAsync<Order>("\"UpdateOrderStatus\"",
+                connection.Query<Order>("\"UpdateOrderStatus\"",
                 new { @inid = orderNumber }, commandType: CommandType.StoredProcedure);
             }
         }
 
         //Ta bort order
-        public async Task DeleteOrder(int orderNumber)
+        public void DeleteOrder(int orderNumber)
         {
             using (IDbConnection con = Connection)
             {
-                await connection.QueryAsync<Order>("\"DeleteOrder\"", new { @inid = orderNumber }, commandType: CommandType.StoredProcedure);
+                connection.Query<Order>("\"DeleteOrder\"", new { @inid = orderNumber }, commandType: CommandType.StoredProcedure);
             }
         }
 
         //Visa alla ordrar
-        public async Task<IEnumerable<Order>> ShowAllOrdersAsync()
+        public IEnumerable<Order> ShowAllOrdersAsync()
         {
             using (IDbConnection con = Connection)
             {
-                return (await connection.QueryAsync<Order>("\"ShowOrders\"", commandType: CommandType.StoredProcedure));
+                IEnumerable<Order> allOrders = connection.Query<Order>("\"ShowOrders\"", commandType: CommandType.StoredProcedure));
+                return allOrders;
             }
         }
         
-        public async Task<IEnumerable<Order>> ShowOrdersWithStatusOneAndTwo()
-        {
-            using (IDbConnection con = Connection)
-            {
-                return (await connection.QueryAsync<Order>("\"ShowOrdersWithStatusOneAndTwo\"", commandType: CommandType.StoredProcedure));
-            }
-        }
+        //public async Task<IEnumerable<Order>> ShowOrdersWithStatusOneAndTwo()
+        //{
+        //    using (IDbConnection con = Connection)
+        //    {
+        //        return (await connection.QueryAsync<Order>("\"ShowOrdersWithStatusOneAndTwo\"", commandType: CommandType.StoredProcedure));
+        //    }
+        //}
 
-        public async Task<int> ShowOrderByID(int orderNumber)
+        public int ShowOrderByID(int orderNumber)
         {
             using (IDbConnection con = Connection)
             {
-                var result = await connection.QueryAsync<Order>("\"ShowOrderByID\"", new { @inid = orderNumber }, commandType: CommandType.StoredProcedure);
+                var result = connection.Query<Order>("\"ShowOrderByID\"", new { @inid = orderNumber }, commandType: CommandType.StoredProcedure);
                 var order = result.First();
                 return order.ID;
             }
