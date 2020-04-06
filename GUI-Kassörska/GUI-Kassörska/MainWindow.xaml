@@ -159,7 +159,7 @@
             Grid.Row="6"
             Grid.ColumnSpan="2"
             Grid.RowSpan="10">
-            <ScrollViewer VerticalScrollBarVisibility="Visible">
+            <ScrollViewer Visibility="Visible">
                 <ItemsControl ItemsSource="{Binding PaidOrders}">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
