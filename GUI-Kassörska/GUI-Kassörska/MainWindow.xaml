@@ -79,22 +79,22 @@
 
         <!-- Logo -->
         <Viewbox
-            Grid.Column="3"
-            Grid.RowSpan="2"
+            Grid.Column="2"
+            Grid.RowSpan="3"
             Stretch="Fill">
-            <Image Source="{StaticResource Logo}"/>
+            <Image Grid.Row="0" Source="Images/PizzaLogo.png" Width="125" Height="125"/>
         </Viewbox>
         
-        <!-- Header -->
+        <!-- Header --><!--
         <TextBlock
             FontSize="80"
             Grid.ColumnSpan="10"
             Grid.RowSpan="2"
             HorizontalAlignment="Center">
             PizzaPalatset
-        </TextBlock>
+        </TextBlock>-->
 
-        <!-- User: User image, log in, log out -->
+        <!-- User: User image, log in, log out --><!--
         <StackPanel
             Grid.Column="8"
             Grid.ColumnSpan="2"
@@ -118,7 +118,7 @@
                 Fill="{StaticResource DarkGreyBrush}"
                 Data="{StaticResource LogOutImage}"/>
             </Button>
-        </StackPanel>
+        </StackPanel>-->
 
         <!-- Ongoing orders -->
         <TextBlock
