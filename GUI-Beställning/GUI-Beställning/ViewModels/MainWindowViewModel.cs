@@ -15,6 +15,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Threading;
 
 namespace GUI_Beställning.ViewModels
 {
@@ -27,6 +28,7 @@ namespace GUI_Beställning.ViewModels
         public PaymentViewModel PaymentVM { get; set; }
         public PizzaMenuViewModel PizzaVM { get; set; }
         public ObservableCollection<object> Order { get; set; }
+        public static Dispatcher Dispatcher { get; set; }
 
 
         public int TotalPrice { get; set; }
@@ -49,6 +51,7 @@ namespace GUI_Beställning.ViewModels
         /// </summary>
         public MainWindowViewModel()
         {
+            Dispatcher = Dispatcher.CurrentDispatcher;
             //Only for starting of with a OrderID
             if (OrderID == 0)
             {
@@ -119,8 +122,8 @@ namespace GUI_Beställning.ViewModels
             CurrentOrder.drink.ForEach(drink => { OrderList.Add(drink); TotalPrice += drink.Price; });
             CurrentOrder.extra.ForEach(extra => { OrderList.Add(extra); TotalPrice += extra.Price; });
             this.RaisePropertyChanged(nameof(TotalPrice));
-            Order.Clear();
-            Order.AddRange(OrderList);
+            await Dispatcher.InvokeAsync(Order.Clear); 
+            await Dispatcher.InvokeAsync(() => { Order.AddRange(OrderList); });
 
             //return OrderList;
 
