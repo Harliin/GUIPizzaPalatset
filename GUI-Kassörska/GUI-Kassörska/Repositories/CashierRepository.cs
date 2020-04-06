@@ -35,7 +35,7 @@ namespace GUI_Kassörska
         }
 
         //Visa order med statusnummer
-        public async Task<IEnumerable<Order>> ShowOrderByStatusAsync(eStatus status)
+        public async IEnumerable<Order> ShowOrderByStatusAsync(eStatus status)
         {
             using (IDbConnection con = Connection)
             {

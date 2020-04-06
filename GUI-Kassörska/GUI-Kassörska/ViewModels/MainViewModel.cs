@@ -51,49 +51,15 @@ namespace GUI_Kassörska.ViewModels
 			}
 		}
 
-
-		//public ObservableCollection<Order> OngoingOrders { get; set; }
 		public ObservableCollection<Order> PaidOrders { get; set; }
 
 		public ObservableCollection<Order> CookingOrders { get; set; }
 
-		//Gör som på PaidOrders och CookingOrders
-		private Order currentOrder;
+		public Order CurrentOrder { get; set; }
 
-		public Order CurrentOrder
-		{
-			get { return currentOrder; }
-			set
-			{
-				currentOrder = value;
-				OrderID = CurrentOrder.ID;
-				OnPropertyChanged("CurrentOrder");
-			}
-		}
+		public int Status { get; set; }
 
-		private int status;
-
-		public int Status
-		{
-			get { return status; }
-			set
-			{
-				status = value;
-				OnPropertyChanged("Status");
-			}
-		}
-
-		private int orderID;
-
-		public int OrderID
-		{
-			get { return orderID; }
-			set
-			{
-				orderID = value;
-				OnPropertyChanged("OrderID");
-			}
-		}
+		public int OrderID { get; set; }
 
 		public async Task<ObservableCollection<Order>> ShowAllReadyOrders()
 		{
