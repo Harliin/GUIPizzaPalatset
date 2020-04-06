@@ -69,54 +69,54 @@ namespace GUI_Beställning.Models.Data
             }
                 
         }
-        public IEnumerable<Order> CreateNewOrder()
+        public async Task<IEnumerable<Order>> CreateNewOrder()
         {
             using (IDbConnection con = Connection)
             {
-                IEnumerable<Order> order = ( connection.Query<Order>("\"CreateNewOrder\"", commandType: CommandType.StoredProcedure));
+                IEnumerable<Order> order = (await connection.QueryAsync<Order>("\"CreateNewOrder\"", commandType: CommandType.StoredProcedure));
                 return order;
             }
         }
-        public void AddPizzaToOrder(int orderID, int pizzaID)
+        public async Task AddPizzaToOrder(int orderID, int pizzaID)
         {
             using (IDbConnection con = Connection)
             {
-                connection.Query<Pizza>("\"sp_OrderPizza\"", new { orderid = orderID, pizzaid = pizzaID }, commandType: CommandType.StoredProcedure);
+                await connection.QueryAsync<Pizza>("\"sp_OrderPizza\"", new { orderid = orderID, pizzaid = pizzaID }, commandType: CommandType.StoredProcedure);
             }
         }
-        public void UpdateOrderStatus(int orderID)
+        public async Task UpdateOrderStatus(int orderID)
         {
             using (IDbConnection con = Connection)
             {
-                 connection.Query<Order>("\"UpdateOrderStatus\"", new { inid = orderID }, commandType: CommandType.StoredProcedure);
+                await connection.QueryAsync<Order>("\"UpdateOrderStatus\"", new { inid = orderID }, commandType: CommandType.StoredProcedure);
             }
         }
-        public void AddPastaToOrder(int orderID, int pastaID)
+        public async Task AddPastaToOrder(int orderID, int pastaID)
         {
             using (IDbConnection con = Connection)
             {
-                connection.Query<Pasta>("\"sp_OrderPasta\"", new { orderid = orderID, pastaid = pastaID }, commandType: CommandType.StoredProcedure);
+                await connection.QueryAsync<Pasta>("\"sp_OrderPasta\"", new { orderid = orderID, pastaid = pastaID }, commandType: CommandType.StoredProcedure);
             }
         }
-        public void AddSalladToOrder(int orderID, int salladID)
+        public async Task AddSalladToOrder(int orderID, int salladID)
         {
             using (IDbConnection con = Connection)
             {
-                connection.Query<Sallad>("\"sp_OrderSallad\"", new { orderid = orderID, salladid = salladID }, commandType: CommandType.StoredProcedure);
+                await connection.QueryAsync<Sallad>("\"sp_OrderSallad\"", new { orderid = orderID, salladid = salladID }, commandType: CommandType.StoredProcedure);
             }
         }
-        public void AddDrinkToOrder(int orderID, int drinkID)
+        public async Task AddDrinkToOrder(int orderID, int drinkID)
         {
             using (IDbConnection con = Connection)
             {
-                connection.Query<Drink>("\"sp_OrderDrink\"", new { orderid = orderID, drinkid = drinkID }, commandType: CommandType.StoredProcedure);
+                await connection.QueryAsync<Drink>("\"sp_OrderDrink\"", new { orderid = orderID, drinkid = drinkID }, commandType: CommandType.StoredProcedure);
             }
         }
-        public void AddExtraToOrder(int orderID, int extraID)
+        public async Task AddExtraToOrder(int orderID, int extraID)
         {
             using (IDbConnection con = Connection)
             {
-                connection.Query<Extra>("\"sp_OrderExtra\"", new { orderid = orderID, extraid = extraID }, commandType: CommandType.StoredProcedure);
+                await connection.QueryAsync<Extra>("\"sp_OrderExtra\"", new { orderid = orderID, extraid = extraID }, commandType: CommandType.StoredProcedure);
             }
         }
         public async Task AddOrderToReceipt( string Json, int totalPrice, DateTime Date)
@@ -135,14 +135,14 @@ namespace GUI_Beställning.Models.Data
                 return pizza;
             }
         }
-        public IEnumerable<Pizza> GetPizzas()
+        public async Task<IEnumerable<Pizza>> GetPizzas()
         {
             using (IDbConnection con = Connection)
             {
-                IEnumerable<Pizza> pizzas = connection.Query<Pizza>("\"ShowPizzas\"", commandType: CommandType.StoredProcedure);
+                IEnumerable<Pizza> pizzas = await connection.QueryAsync<Pizza>("\"ShowPizzas\"", commandType: CommandType.StoredProcedure);
                 foreach (Pizza pizza in pizzas)
                 {
-                    pizza.Ingredients = (connection.Query<Ingredient>("\"ShowPizzaIngredientsByID\"", new { inid = pizza.ID }, commandType: CommandType.StoredProcedure)).ToList();
+                    pizza.Ingredients = (await connection.QueryAsync<Ingredient>("\"ShowPizzaIngredientsByID\"", new { inid = pizza.ID }, commandType: CommandType.StoredProcedure)).ToList();
                 }
                 return pizzas;
             }
@@ -247,44 +247,44 @@ namespace GUI_Beställning.Models.Data
                 return ingredients;
             }
         }
-        public IEnumerable<Pasta> ShowPastas()
+        public async Task<IEnumerable<Pasta>> ShowPastas()
         {
             using (IDbConnection con = Connection)
             {
-                IEnumerable<Pasta> pastas = connection.Query<Pasta>("\"ShowPastas\"", commandType: CommandType.StoredProcedure);
+                IEnumerable<Pasta> pastas = await connection.QueryAsync<Pasta>("\"ShowPastas\"", commandType: CommandType.StoredProcedure);
                 return pastas;
             }
         }
-        public IEnumerable<Sallad> ShowSallads()
+        public async Task<IEnumerable<Sallad>> ShowSallads()
         {
             using (IDbConnection con = Connection)
             {
-                IEnumerable<Sallad> sallads = connection.Query<Sallad>("\"ShowSallads\"", commandType: CommandType.StoredProcedure);
+                IEnumerable<Sallad> sallads = await connection.QueryAsync<Sallad>("\"ShowSallads\"", commandType: CommandType.StoredProcedure);
                 return sallads;
             }
         }
-        public IEnumerable<Drink> ShowDrinks()
+        public async Task<IEnumerable<Drink>> ShowDrinks()
         {
             using (IDbConnection con = Connection)
             {
-                IEnumerable<Drink> drinks = connection.Query<Drink>("\"ShowDrinks\"", commandType: CommandType.StoredProcedure);
+                IEnumerable<Drink> drinks = await connection.QueryAsync<Drink>("\"ShowDrinks\"", commandType: CommandType.StoredProcedure);
                 return drinks;
             }
         }
-        public IEnumerable<Extra> ShowExtra()
+        public async Task<IEnumerable<Extra>> ShowExtra()
         {
             using (IDbConnection con = Connection)
             {
-                IEnumerable<Extra> drinks = connection.Query<Extra>("\"ShowExtras\"", commandType: CommandType.StoredProcedure);
+                IEnumerable<Extra> drinks = await connection.QueryAsync<Extra>("\"ShowExtras\"", commandType: CommandType.StoredProcedure);
                 return drinks;
             }
         }
 
-        public IEnumerable<Order> ShowOrders()
+        public async Task<IEnumerable<Order>> ShowOrders()
         {
             using (IDbConnection con = Connection)
             {
-                IEnumerable<Order> orders = connection.Query<Order>("\"ShowOrders\"", commandType: CommandType.StoredProcedure);
+                IEnumerable<Order> orders = await connection.QueryAsync<Order>("\"ShowOrders\"", commandType: CommandType.StoredProcedure);
                 return orders;
             }
         }
