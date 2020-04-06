@@ -1,4 +1,5 @@
-﻿using GUI_Beställning.Models.Data;
+﻿using DynamicData;
+using GUI_Beställning.Models.Data;
 using GUI_Beställning.ViewModels.Commands;
 using ReactiveUI;
 using Splat;
@@ -8,6 +9,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace GUI_Beställning.ViewModels
 {
@@ -38,24 +40,31 @@ namespace GUI_Beställning.ViewModels
         public ExtraMenuViewModel(MainWindowViewModel viewModel =null,IScreen screen = null)
         {
             HostScreen = screen ?? Locator.Current.GetService<IScreen>();
-            var extrasIE = repo.ShowExtra();
-            Extras = new ObservableCollection<Extra>(extrasIE.ToList());
+            
+            Extras = new ObservableCollection<Extra>();
             AddExtraCommand = new RelayCommand(AddExtraToOrder);
+            Task.Run(ShowExtras);
 
             if (MainWindowViewModel == null)
             {
                 MainWindowViewModel = viewModel;
             }
         }
+        public async void ShowExtras()
+        {
+            var extrasIE = await repo.ShowExtra();
+            Extras.Clear();
+            Extras.AddRange(extrasIE.ToList());
+        }
 
         /// <summary>
         /// Command Method to add Extra to order
         /// </summary>
         /// <param name="Extra"></param>
-        private void AddExtraToOrder(object Extra)
+        private async void AddExtraToOrder(object Extra)
         {
             Extra extra = (Extra)Extra;
-            repo.AddExtraToOrder(MainWindowViewModel.OrderID, extra.ID);
+            await repo.AddExtraToOrder(MainWindowViewModel.OrderID, extra.ID);
             MainWindowViewModel.OrderChanged();
         }
     }
