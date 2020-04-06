@@ -48,6 +48,7 @@ fortfarande inte löst att kunna ta bort mat från en färdig order.
 att få Guin att uppdateras när mat läggs till/tas bort. vilket vi löste tillslut.
 Vi har fixat Web api för att konvertera från SEK till EURO.
 Sedan har jag kommenterade alla viewmodels och hjälpt till på kockterminalen för att få till inlogget och binding.
+6/4 Gjorde hela Programmet med Async, och beställningsterminalen är nu färdig.
 
 
 
