@@ -17,6 +17,13 @@ Pontus:
 11/3 Fortsatte med view och gjorde alla viewmodels.
 13-20/3 Jobbat med reactiveui respons. Kopplat ihop med databasen och försökt få till så vi kan lägga till ordrar. 
         Det funkar nu. Nästa steg är att fixa betalningsknappen och få ut alla ordrar korrekt
+23-27/3 Jobbat mycket med betalningsskärmen och att kunna visa vilka ordrar man har där.
+fortfarande inte löst att kunna ta bort mat från en färdig order.
+30/3-3/4 Denna veckan har vi fått till så att man kan ta bort mat från en order, vi jobbade även mycket med 
+att få Guin att uppdateras när mat läggs till/tas bort. vilket vi löste tillslut.
+Vi har fixat Web api för att konvertera från SEK till EURO.
+6/4. Vi gjorde hela programmet Async, Beställningsterminalen är ni färdigställd.
+
 
 Elchin:
 2/3 Började skissa på InfoOrder  terminal i Adobe XD
