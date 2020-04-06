@@ -156,14 +156,10 @@ namespace GUI_Beställning.ViewModels
         /// <param name="parameter"></param>
         public async void PaymentCommandMethod(object parameter)
         {
-            await Task.Run(() =>
-            {
                 if (Order.Count != 0)
                 {
                     Router.Navigate.Execute(new ReceiptViewModel(this));
                 }
-            });
-            
         }
 
 
