@@ -100,7 +100,8 @@ namespace GUI_Beställning.ViewModels
             }
             if (rates.Rates.TryGetValue("SEK", out float rate))
             {
-                EuroPrice = Math.Round((SEKPrice / rate), 2);
+                await Dispatcher.InvokeAsync(() =>  EuroPrice = Math.Round((SEKPrice / rate), 2));
+                await Dispatcher.InvokeAsync(() => this.RaisePropertyChanged(nameof(EuroPrice)));
             }
         }
     }

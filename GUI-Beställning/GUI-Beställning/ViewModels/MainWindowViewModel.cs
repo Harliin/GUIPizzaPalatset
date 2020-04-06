@@ -109,11 +109,6 @@ namespace GUI_Beställning.ViewModels
         /// </summary>
         public async Task ShowOrder()
          {
-            //await Task.Run(() =>
-            //{
-
-            //});
-           
                 TotalPrice = 0;
                 List<object> OrderList = new List<object>();
                 var ordersIE =  await repo.ShowOrderByID(OrderID);
@@ -130,10 +125,6 @@ namespace GUI_Beställning.ViewModels
                 await Dispatcher.InvokeAsync(Order.Clear);
                 await Dispatcher.InvokeAsync(() => Order.AddRange(OrderList));
           
-            
-
-            //return OrderList;
-
         }
 
 
@@ -143,11 +134,7 @@ namespace GUI_Beställning.ViewModels
         /// </summary>
         public async Task OrderChanged()
         {
-            //await Task.Run(ShowOrder);
             await ShowOrder();
-            //this.Order.Clear();
-            //var list = ShowOrder();
-            //this.Order.AddRange(list);
         }
 
 
@@ -187,9 +174,8 @@ namespace GUI_Beställning.ViewModels
         private async Task GetNewOrderID()
         {
             //ändra detta sen när man ska skapa nya ordrar
-            //var newOrder = (repo.CreateNewOrder()).ToList();
-            //OrderID = newOrder[0].ID; 
-            OrderID = 160;
+            var newOrder = (await repo.CreateNewOrder()).ToList();
+            OrderID = newOrder[0].ID;
         }
         #endregion
 
