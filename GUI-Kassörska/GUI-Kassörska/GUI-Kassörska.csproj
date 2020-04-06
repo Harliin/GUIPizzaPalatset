@@ -8,13 +8,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Page Remove="Images\userLogo.xaml" />
-    <Page Remove="Styles\Colors.xaml" />
-    <Page Remove="Styles\Images.xaml" />
+    <None Remove="Images\PizzaLogo.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Images\userLogo.xaml" />
+    <Page Remove="Styles\Colors.xaml" />
+    <Page Remove="Styles\Images.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -23,6 +22,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Images\PizzaLogo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Styles\Colors.xaml">
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

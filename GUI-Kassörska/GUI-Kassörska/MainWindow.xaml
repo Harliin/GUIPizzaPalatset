@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GUI_Kassörska"
         mc:Ignorable="d"
-        Title="MainWindow"
-        Height="800"
-        Width="1000"
-        MinHeight="800"
-        MinWidth="600"
+        Title="Cashier"
+        Height="1080"
+        Width="1920"
+        MinHeight="768"
+        MinWidth="1024"
         FontFamily="SegoeUI">
 <!-- Sätt höjden till 1080 och bredden till 1920 -->
     <Window.Resources>
@@ -78,12 +78,12 @@
         </Grid.RowDefinitions>
 
         <!-- Logo -->
-        <!--<Viewbox
+        <Viewbox
             Grid.Column="3"
             Grid.RowSpan="2"
             Stretch="Fill">
-            <Image Grid.Row="0" Source="C:\Users\RolfC\Documents\TestGitHub\GUIPizzaPalatset\GUI-Kassörska\GUI-Kassörska\Images\pizzalogga2.png" Width="125" Height="125"/>
-        </Viewbox>-->
+            <Image Source="{StaticResource Logo}"/>
+        </Viewbox>
         
         <!-- Header -->
         <TextBlock
@@ -185,8 +185,6 @@
                 </ItemsControl>
             </StackPanel>
         </ScrollViewer>
-        
-        
 
         <!-- Separating line -->
         <Line
@@ -239,7 +237,6 @@
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
-
             </StackPanel>
         </ScrollViewer>
     </Grid>
