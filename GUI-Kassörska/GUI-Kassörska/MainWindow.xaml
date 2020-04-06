@@ -159,6 +159,7 @@
             Grid.Row="6"
             Grid.ColumnSpan="2"
             Grid.RowSpan="10">
+            <ScrollViewer Visibility="Visible">
             <ItemsControl ItemsSource="{Binding PaidOrders}">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
@@ -180,7 +181,8 @@
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
-                <ItemsControl ItemsSource="{Binding CookingOrders}" >
+            </ScrollViewer>
+            <ItemsControl ItemsSource="{Binding CookingOrders}" >
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
