@@ -58,7 +58,7 @@ namespace GUI_Beställning.ViewModels
             //{
             //   Task.Run(() => GetNewOrderID());
             //}
-            GetNewOrderID();
+            Task.Run(GetNewOrderID);
             
             Router = new RoutingState();
             #region Navigation Reactive UI
@@ -98,7 +98,7 @@ namespace GUI_Beställning.ViewModels
             //var order = ShowOrder();
             this.Order = new ObservableCollection<object>();
             //Task.Run(() => ShowOrder());
-            ShowOrder();
+            Task.Run(ShowOrder);
             
         }
 
@@ -107,7 +107,7 @@ namespace GUI_Beställning.ViewModels
         /// <summary>
         /// Adds all the foods in a order to a observable collection
         /// </summary>
-        public async void ShowOrder()
+        public async Task ShowOrder()
          {
             //await Task.Run(() =>
             //{
@@ -143,7 +143,8 @@ namespace GUI_Beställning.ViewModels
         /// </summary>
         public async Task OrderChanged()
         {
-            await Task.Run(ShowOrder);
+            //await Task.Run(ShowOrder);
+            await ShowOrder();
             //this.Order.Clear();
             //var list = ShowOrder();
             //this.Order.AddRange(list);
@@ -154,7 +155,7 @@ namespace GUI_Beställning.ViewModels
         /// Command Method to Navigate from PaymentView to RecieptView
         /// </summary>
         /// <param name="parameter"></param>
-        public async void PaymentCommandMethod(object parameter)
+        public void PaymentCommandMethod(object parameter)
         {
                 if (Order.Count != 0)
                 {

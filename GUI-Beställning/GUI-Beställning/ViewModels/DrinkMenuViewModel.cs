@@ -65,7 +65,7 @@ namespace GUI_Beställning.ViewModels
         {
             Drink drink = (Drink)Drink;
             await repo.AddDrinkToOrder(MainWindowViewModel.OrderID, drink.ID);
-            MainWindowViewModel.OrderChanged();
+            await MainWindowViewModel.OrderChanged();
         }
     }
 }

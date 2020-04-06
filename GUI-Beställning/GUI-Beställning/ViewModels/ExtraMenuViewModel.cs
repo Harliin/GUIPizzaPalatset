@@ -68,7 +68,7 @@ namespace GUI_Beställning.ViewModels
         {
             Extra extra = (Extra)Extra;
             await repo.AddExtraToOrder(MainWindowViewModel.OrderID, extra.ID);
-            MainWindowViewModel.OrderChanged();
+            await MainWindowViewModel.OrderChanged();
         }
     }
 }

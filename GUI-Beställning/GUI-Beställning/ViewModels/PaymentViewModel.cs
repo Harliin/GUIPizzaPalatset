@@ -94,7 +94,7 @@ namespace GUI_Beställning.ViewModels
                     Extra extra = (Extra)parameter;
                     await repo.RemoveExtraFromOrder(OrderID, extra.ID);
                 }
-                MainWindowViewModel.OrderChanged();
+                await MainWindowViewModel.OrderChanged();
             //});
             
         }
