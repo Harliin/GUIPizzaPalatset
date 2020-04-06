@@ -134,13 +134,14 @@
 
         <ScrollViewer Grid.Column="2"
             Grid.Row="6"
-            Grid.ColumnSpan="3"
+            Grid.ColumnSpan="2"
             Grid.RowSpan="10"
             VerticalScrollBarVisibility="Hidden">
-            <StackPanel Grid.Column="2"
-            Grid.Row="6"
-            Grid.ColumnSpan="3"
-            Grid.RowSpan="10">
+            <StackPanel
+                Grid.Column="2"
+                Grid.Row="6"
+                Grid.ColumnSpan="2"
+                Grid.RowSpan="10">
                 <ItemsControl ItemsSource="{Binding CookingOrders}">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
@@ -151,25 +152,34 @@
                                                  UniformCornerRadius="5"
                                                  BorderThickness="50"
                                                  materialDesign:ShadowAssist.ShadowDepth="Depth3">
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="{Binding ID, StringFormat={}#{0}}"
-                                               FontSize="30" 
-                                               Margin="0 0 20 0"
-                                               VerticalAlignment="Center"
-                                               HorizontalAlignment="Center"/>
-                                    <Button
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <StackPanel Orientation="Horizontal" Grid.ColumnSpan="2">
+                                        <TextBlock
+                                            Text="{Binding ID, StringFormat={}#{0}}"
+                                            FontSize="30" 
+                                            Margin="0 0 20 0"
+                                            VerticalAlignment="Center"
+                                            HorizontalAlignment="Center"/>
+                                        <Button
+                                            Grid.Column="2"
                                             Height="100"
                                             Width="100"
                                             BorderThickness="0"
                                             Background="{x:Null}"
-                                            HorizontalAlignment="Right">
-                                        <Button.Content>
-                                            <Path Data="{StaticResource Fryingpan}"
+                                             HorizontalAlignment="Right">
+                                            <Button.Content>
+                                                <Path Data="{StaticResource Fryingpan}"
                                                   Fill="{StaticResource DeepPinkBrush}"
                                                   Stretch="Uniform"/>
-                                        </Button.Content>
-                                    </Button>
-                                </StackPanel>
+                                            </Button.Content>
+                                        </Button>
+                                    </StackPanel>
+                                </Grid>
                             </materialDesign:Card>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
