@@ -144,6 +144,7 @@
                 <ItemsControl ItemsSource="{Binding CookingOrders}">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
+                            <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth3">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="{Binding ID, StringFormat={}#{0}}" FontSize="30" 
                                        Margin=" 0 0 20 0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
@@ -159,6 +160,7 @@
                                     </Button.Content>
                                 </Button>
                             </StackPanel>
+                            </materialDesign:Card>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
@@ -220,21 +222,23 @@
                 <ItemsControl ItemsSource="{Binding ReadyOrders}">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="{Binding ID, StringFormat={}#{0}}" FontSize="30" 
+                            <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth3">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding ID, StringFormat={}#{0}}" FontSize="30" 
                                        Margin=" 0 0 20 0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                <Button
+                                    <Button
                             Height="50"
                             Width="50"
                             BorderThickness="0"
                             Background="{x:Null}">
-                                    <Button.Content>
-                                        <Path Data="{StaticResource RightArrowImage}"
+                                        <Button.Content>
+                                            <Path Data="{StaticResource RightArrowImage}"
                                       Fill="{StaticResource DeepPinkBrush}"
                                       Stretch="Uniform"/>
-                                    </Button.Content>
-                                </Button>
-                            </StackPanel>
+                                        </Button.Content>
+                                    </Button>
+                                </StackPanel>
+                            </materialDesign:Card>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
