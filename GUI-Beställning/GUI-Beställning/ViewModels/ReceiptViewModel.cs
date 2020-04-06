@@ -84,7 +84,7 @@ namespace GUI_Beställning.ViewModels
         //    ExchangeRates rates = new ExchangeRates();
         //    using (HttpClient httpClient = new HttpClient())
         //    {
-        //        //httpClient.DefaultRequestHeaders.Add(HeaderNames.Authorization, "Bearer " + GetJWT());
+        //        
         //        string uri = "https://api.exchangeratesapi.io/latest";
 
         //        HttpResponseMessage response = await httpClient.GetAsync(uri);
