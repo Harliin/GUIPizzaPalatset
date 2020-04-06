@@ -5,7 +5,7 @@ using ReactiveUI;
 using Splat;
 using System.Collections.ObjectModel;
 using System.Linq;
-
+using System.Windows.Threading;
 
 namespace GUI_Beställning.ViewModels
 {
@@ -24,6 +24,7 @@ namespace GUI_Beställning.ViewModels
         public static MainWindowViewModel MainWindowViewModel;
         public ObservableCollection<Pasta> Pastas { get; set; }
 
+        public Dispatcher Dispatcher = MainWindowViewModel.Dispatcher;
         #endregion
 
         #region Commands
@@ -39,9 +40,8 @@ namespace GUI_Beställning.ViewModels
         {
             AddPastaCommand = new RelayCommand(AddPastaToOrder);
             HostScreen = screen ?? Locator.Current.GetService<IScreen>();
-            
-            Pastas = new ObservableCollection<Pasta>();
 
+            ShowPastas();
             if (MainWindowViewModel == null)
             {
                 MainWindowViewModel = viewModel;
@@ -49,9 +49,10 @@ namespace GUI_Beställning.ViewModels
         }
         public async void ShowPastas()
         {
+            Pastas = new ObservableCollection<Pasta>();
             var PastaIE = await repo.ShowPastas();
-            Pastas.Clear();
-            Pastas.AddRange(PastaIE.ToList());
+            await Dispatcher.InvokeAsync(Pastas.Clear);
+            await Dispatcher.InvokeAsync(() => { Pastas.AddRange(PastaIE.ToList()); });
         }
         /// <summary>
         /// CommandMethod to add Pasta to order
@@ -61,7 +62,7 @@ namespace GUI_Beställning.ViewModels
         {
             Pasta pasta = (Pasta)Pasta;
             await repo.AddPastaToOrder(MainWindowViewModel.OrderID, pasta.ID);
-            MainWindowViewModel.OrderChanged();
+            await MainWindowViewModel.OrderChanged();
         }
     }
 }

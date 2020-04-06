@@ -45,7 +45,7 @@ namespace GUI_Beställning.ViewModels
 
             HostScreen = screen ?? Locator.Current.GetService<IScreen>();
 
-            Pizzas = new ObservableCollection<Pizza>();
+            
             ShowPizzas();
 
             if(MainWindowViewModel == null)
@@ -54,11 +54,12 @@ namespace GUI_Beställning.ViewModels
             }
         }
 
-        public async Task ShowPizzas()
+        public async void ShowPizzas()
         {
+            Pizzas = new ObservableCollection<Pizza>();
             var pizzaIE = await repo.GetPizzas();
-            this.Pizzas.Clear();
-            this.Pizzas.AddRange(pizzaIE.ToList());
+            await Dispatcher.InvokeAsync(Pizzas.Clear);
+            await Dispatcher.InvokeAsync(() => { Pizzas.AddRange(pizzaIE.ToList()); });
         }
 
         #region Command Methods
@@ -71,7 +72,7 @@ namespace GUI_Beställning.ViewModels
             Pizza pizza = (Pizza)Pizza;
             await repo.AddPizzaToOrder(MainWindowViewModel.OrderID, pizza.ID);
 
-            await Task.Run(MainWindowViewModel.OrderChanged);
+            await MainWindowViewModel.OrderChanged();
         }
 
         #endregion
