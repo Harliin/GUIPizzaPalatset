@@ -33,12 +33,12 @@
             </Grid>
 
             <ScrollViewer VerticalScrollBarVisibility="Auto"  Grid.Row="1" Grid.RowSpan="2" Grid.Column="1">
-            <ItemsControl x:Name="ongoingorder" Grid.Row="1" Grid.RowSpan="2" Grid.Column="1">
+            <ItemsControl ItemsSource="{Binding ID}" x:Name="ongoingorder" Grid.Row="1" Grid.RowSpan="2" Grid.Column="1">
                 <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Grid.Row="1" Grid.RowSpan="2" Margin="50 0 50 5 " Orientation="Vertical">
                                 <Border Margin="30 5 30 5" Background="White" CornerRadius="7">
-                                    <Button x:Name="orderBtm" Command="{Binding Path=DataContext.GoToPreparingViewCommand, ElementName=thisWindow}" Background="#FFF" Height="50" Foreground="White" BorderBrush="White">
+                                    <Button x:Name="orderBtm" CommandParameter="{Binding}" Command="{Binding Path=DataContext.GoToPreparingViewCommand, ElementName=thisWindow}" Background="#FFF" Height="50" Foreground="White" BorderBrush="White">
                                         <StackPanel Orientation="Vertical">
                                             <StackPanel Orientation="Horizontal">
                                                 <TextBlock Text="Order #" Foreground="Black" Margin=" 15 10 5 50" TextAlignment="Center"/>

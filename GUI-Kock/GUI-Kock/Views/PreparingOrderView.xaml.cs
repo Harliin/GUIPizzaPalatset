@@ -23,6 +23,7 @@ namespace GUI_Kock.Views
     {
         public PreparingOrderView()
         {
+
             InitializeComponent();
 
             this.WhenActivated(disposables =>
@@ -32,6 +33,11 @@ namespace GUI_Kock.Views
 
                 this.Bind(ViewModel, vm => vm.Name, v => v.user.Text)
                 .DisposeWith(disposables);
+
+
+                this.Bind(ViewModel, vm => vm.ID, v => v.orderID.Text)
+                .DisposeWith(disposables);
+
 
             });
 

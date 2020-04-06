@@ -33,14 +33,12 @@ namespace GUI_Kock.Views
                 this.OneWayBind(ViewModel, x => x.OngoinOrders, view => view.ongoingorder.ItemsSource)
                 .DisposeWith(disposables);
                 ViewModel.PopulateOrders();
+                    
 
                 this.BindCommand(ViewModel, x => x.GoToLoginView, x => x.exit);
 
                 this.Bind(ViewModel, vm => vm.Name, v => v.user.Text)
                .DisposeWith(disposables);
-
-                //this.OneWayBind(ViewModel, x => x.loginViewModel, view => view.user)
-                //.DisposeWith(disposables);
 
             });
         }

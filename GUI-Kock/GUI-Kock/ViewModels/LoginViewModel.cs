@@ -25,8 +25,7 @@ namespace GUI_Kock.ViewModels
 
         public static ObservableCollection<Employee> Employees { get; private set; }
 
-        public List<string> EmployeeNames { get; private set; }
-        
+        public List<string> EmployeeNames { get; private set; }        
 
         private string _password;
 

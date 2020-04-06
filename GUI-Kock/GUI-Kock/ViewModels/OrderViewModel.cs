@@ -11,17 +11,37 @@ using System.Collections.ObjectModel;
 using DynamicData;
 using GUI_Kock.ViewModels.Commands;
 using System.Windows;
+using System.Linq;
 
 namespace GUI_Kock.ViewModels
 {
     public class OrderViewModel : ReactiveObject, IRoutableViewModel
     {
+        public List<string> EmployeeNames { get; private set; }
 
         public ChefRepository repo = new ChefRepository();
 
         public ObservableCollection<Order> OngoinOrders { get; private set; }
         
         public ObservableCollection<Pizza> Pizzas { get; }
+
+        private int _id;
+
+        public int ID
+        {
+            get
+            {
+                return _id;
+            }
+            set
+            {
+                { 
+
+                this.RaiseAndSetIfChanged(ref _id, value);
+                }
+
+            }
+        }
 
         private string _name;
 
@@ -33,9 +53,10 @@ namespace GUI_Kock.ViewModels
             }
             set
             {
-                {
-                    this.RaiseAndSetIfChanged(ref _name, value);
-                }
+                
+                    //this.RaiseAndSetIfChanged(ref _name, value);
+                    _name = value;
+                
             }
         }
 
@@ -72,7 +93,7 @@ namespace GUI_Kock.ViewModels
         public void NavigateToPreparingView()
         {
 
-            Router.Navigate.Execute(new PreparingOrderViewModel(Name));
+            Router.Navigate.Execute(new PreparingOrderViewModel(Name, ID));
         }
 
         public void PopulateOrders()
