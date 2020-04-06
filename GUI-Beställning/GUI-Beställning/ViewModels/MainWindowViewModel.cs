@@ -141,9 +141,9 @@ namespace GUI_Beställning.ViewModels
         /// <summary>
         /// Method gets called uppon to update GUI
         /// </summary>
-        public async void OrderChanged()
+        public async Task OrderChanged()
         {
-            await Task.Run(() => ShowOrder());
+            await Task.Run(ShowOrder);
             //this.Order.Clear();
             //var list = ShowOrder();
             //this.Order.AddRange(list);

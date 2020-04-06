@@ -10,6 +10,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Threading;
 
 namespace GUI_Beställning.ViewModels
 {
@@ -26,6 +27,8 @@ namespace GUI_Beställning.ViewModels
         public OrderRepository repo = new OrderRepository();
         public ObservableCollection<Extra> Extras { get; set; }
         public static MainWindowViewModel MainWindowViewModel;
+
+        public Dispatcher Dispatcher = MainWindowViewModel.Dispatcher;
         #endregion
 
         #region Commands
@@ -43,7 +46,7 @@ namespace GUI_Beställning.ViewModels
             
             Extras = new ObservableCollection<Extra>();
             AddExtraCommand = new RelayCommand(AddExtraToOrder);
-            Task.Run(ShowExtras);
+            ShowExtras();
 
             if (MainWindowViewModel == null)
             {
@@ -53,8 +56,8 @@ namespace GUI_Beställning.ViewModels
         public async void ShowExtras()
         {
             var extrasIE = await repo.ShowExtra();
-            Extras.Clear();
-            Extras.AddRange(extrasIE.ToList());
+            await Dispatcher.InvokeAsync(Extras.Clear);
+            await Dispatcher.InvokeAsync(() => Extras.AddRange(extrasIE.ToList()));
         }
 
         /// <summary>

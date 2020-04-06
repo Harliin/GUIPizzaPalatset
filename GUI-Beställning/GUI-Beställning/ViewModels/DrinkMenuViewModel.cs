@@ -7,6 +7,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Windows.Threading;
 
 namespace GUI_Beställning.ViewModels
 {
@@ -24,6 +25,7 @@ namespace GUI_Beställning.ViewModels
 
         public static MainWindowViewModel MainWindowViewModel;
         public ObservableCollection<Drink> Drinks { get; set; }
+        public Dispatcher Dispatcher = MainWindowViewModel.Dispatcher;
         #endregion
 
         #region Commands
@@ -40,7 +42,7 @@ namespace GUI_Beställning.ViewModels
             HostScreen = screen ?? Locator.Current.GetService<IScreen>();
             
             Drinks = new ObservableCollection<Drink>();
-            Task.Run(ShowDrinks);
+            ShowDrinks();
             AddDrinkCommand = new RelayCommand(AddDrinkToOrder);
 
             if (MainWindowViewModel == null)
@@ -52,8 +54,8 @@ namespace GUI_Beställning.ViewModels
         public async void ShowDrinks()
         {
             var drinksIE = await repo.ShowDrinks();
-            Drinks.Clear();
-            Drinks.AddRange(drinksIE.ToList());
+            await Dispatcher.InvokeAsync(Drinks.Clear);
+            await Dispatcher.InvokeAsync(() => Drinks.AddRange(drinksIE.ToList()));
         }
         /// <summary>
         /// Command Method to add Drink to order
