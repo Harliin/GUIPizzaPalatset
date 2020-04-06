@@ -33,40 +33,41 @@ namespace GUI_Beställning.Models.Data
             }
         }
         // Beställnings Repositorys
-        public void RemovePizzaFromOrder(int orderID, int pizzaID)
+        public async Task RemovePizzaFromOrder(int orderID, int pizzaID)
         {
             using (IDbConnection con = Connection)
             {
-                connection.Query<Pizza>("\"RemovePizzaFromOrder\"", new { orderid = orderID, pizzaid = pizzaID }, commandType: CommandType.StoredProcedure);
+               await connection.QueryAsync<Pizza>("\"RemovePizzaFromOrder\"", new { orderid = orderID, pizzaid = pizzaID }, commandType: CommandType.StoredProcedure);
             }
         }
-        public void RemovePastaFromOrder(int orderID, int pastaID)
+        public async Task RemovePastaFromOrder(int orderID, int pastaID)
         {
             using (IDbConnection con = Connection)
             {
-                 connection.Query<Pasta>("\"RemovePastaFromOrder\"", new { orderid = orderID, pastaid = pastaID }, commandType: CommandType.StoredProcedure);
+                 await connection.QueryAsync<Pasta>("\"RemovePastaFromOrder\"", new { orderid = orderID, pastaid = pastaID }, commandType: CommandType.StoredProcedure);
             }
         }
-        public void RemoveSalladFromOrder(int orderID, int salladID)
+        public async Task RemoveSalladFromOrder(int orderID, int salladID)
         {
             using (IDbConnection con = Connection)
             {
-                connection.Query<Sallad>("\"RemoveSalladFromOrder\"", new { orderid = orderID, salladid = salladID }, commandType: CommandType.StoredProcedure);
+                await connection.QueryAsync<Sallad>("\"RemoveSalladFromOrder\"", new { orderid = orderID, salladid = salladID }, commandType: CommandType.StoredProcedure);
             }
         }
-        public void RemoveDrinkFromOrder(int orderID, int drinkID)
+        public async Task RemoveDrinkFromOrder(int orderID, int drinkID)
         {
             using (IDbConnection con = Connection)
             {
-                 connection.Query<Drink>("\"RemoveDrinkFromOrder\"", new { orderid = orderID, drinkid = drinkID }, commandType: CommandType.StoredProcedure);
+                 await connection.QueryAsync<Drink>("\"RemoveDrinkFromOrder\"", new { orderid = orderID, drinkid = drinkID }, commandType: CommandType.StoredProcedure);
             }
         }
-        public void RemoveExtraFromOrder(int orderID, int extraID)
+        public async Task RemoveExtraFromOrder(int orderID, int extraID)
         {
             using (IDbConnection con = Connection)
             {
+                await connection.QueryAsync<Extra>("\"RemoveExtraFromOrder\"", new { orderid = orderID, extraid = extraID }, commandType: CommandType.StoredProcedure);
             }
-                connection.Query<Extra>("\"RemoveExtraFromOrder\"", new { orderid = orderID, extraid = extraID }, commandType: CommandType.StoredProcedure);
+                
         }
         public IEnumerable<Order> CreateNewOrder()
         {

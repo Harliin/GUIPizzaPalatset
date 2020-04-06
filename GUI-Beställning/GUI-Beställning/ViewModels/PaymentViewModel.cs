@@ -35,7 +35,7 @@ namespace GUI_Beställning.ViewModels
 
         #region Commands
         public RelayCommand RemoveCommand { get; set; }
-        public ReactiveCommand<Unit, Unit> PaymentCommand { get; }
+        public RelayCommand PaymentCommand { get; set; }
         #endregion
 
         /// <summary>
@@ -54,8 +54,8 @@ namespace GUI_Beställning.ViewModels
 
             //Commands
 
-            RemoveCommand = new RelayCommand(await Task.Run(() => RemoveFoodFromOrder));
-            PaymentCommand = ReactiveCommand.CreateFromTask(MainWindowViewModel.PaymentCommandMethod);
+            RemoveCommand = new RelayCommand(RemoveFoodFromOrder);
+            PaymentCommand = new RelayCommand(MainWindowViewModel.PaymentCommandMethod);
         }
 
     
@@ -63,40 +63,39 @@ namespace GUI_Beställning.ViewModels
         /// Method To remove Food From a Order
         /// </summary>
         /// <param name="parameter"></param>
-        public async Task RemoveFoodFromOrder(object parameter)
+        public async void RemoveFoodFromOrder(object parameter)
         {
-            await Task.Run(() =>
-            {
+            //await Task.Run(() =>
+            //{
                 var Type = parameter.GetType();
 
                 if (Type == typeof(Pizza))
                 {
                     Pizza pizza = (Pizza)parameter;
-                    repo.RemovePizzaFromOrder(OrderID, pizza.ID);
+                    await repo.RemovePizzaFromOrder(OrderID, pizza.ID);
                 }
                 else if (Type == typeof(Pasta))
                 {
                     Pasta pasta = (Pasta)parameter;
-                    repo.RemovePastaFromOrder(OrderID, pasta.ID);
+                    await repo.RemovePastaFromOrder(OrderID, pasta.ID);
                 }
                 else if (Type == typeof(Sallad))
                 {
                     Sallad sallad = (Sallad)parameter;
-                    repo.RemoveSalladFromOrder(OrderID, sallad.ID);
+                    await repo.RemoveSalladFromOrder(OrderID, sallad.ID);
                 }
                 else if (Type == typeof(Drink))
                 {
                     Drink drink = (Drink)parameter;
-                    repo.RemoveDrinkFromOrder(OrderID, drink.ID);
+                    await repo.RemoveDrinkFromOrder(OrderID, drink.ID);
                 }
                 else if (Type == typeof(Extra))
                 {
                     Extra extra = (Extra)parameter;
-                    repo.RemoveExtraFromOrder(OrderID, extra.ID);
+                    await repo.RemoveExtraFromOrder(OrderID, extra.ID);
                 }
                 MainWindowViewModel.OrderChanged();
-            });
-            
+            //});
             
         }
 

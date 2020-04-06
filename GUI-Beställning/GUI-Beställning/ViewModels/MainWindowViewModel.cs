@@ -52,7 +52,7 @@ namespace GUI_Beställning.ViewModels
             //Only for starting of with a OrderID
             if (OrderID == 0)
             {
-                GetNewOrderID();
+               Task.Run(() => GetNewOrderID());
             }
             
             Router = new RoutingState();
@@ -133,7 +133,7 @@ namespace GUI_Beställning.ViewModels
         /// </summary>
         public async void OrderChanged()
         {
-            Task.Run(() => ShowOrder());
+            await Task.Run(() => ShowOrder());
             //this.Order.Clear();
             //var list = ShowOrder();
             //this.Order.AddRange(list);
@@ -144,7 +144,7 @@ namespace GUI_Beställning.ViewModels
         /// Command Method to Navigate from PaymentView to RecieptView
         /// </summary>
         /// <param name="parameter"></param>
-        public async Task PaymentCommandMethod(object parameter)
+        public async void PaymentCommandMethod(object parameter)
         {
             await Task.Run(() =>
             {
