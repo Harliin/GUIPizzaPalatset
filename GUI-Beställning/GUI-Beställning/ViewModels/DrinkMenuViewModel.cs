@@ -1,10 +1,12 @@
-﻿using GUI_Beställning.Models.Data;
+﻿using DynamicData;
+using GUI_Beställning.Models.Data;
 using GUI_Beställning.ViewModels.Commands;
 using ReactiveUI;
 using Splat;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace GUI_Beställning.ViewModels
 {
@@ -36,8 +38,9 @@ namespace GUI_Beställning.ViewModels
         public DrinkMenuViewModel(MainWindowViewModel viewModel = null, IScreen screen = null)
         {
             HostScreen = screen ?? Locator.Current.GetService<IScreen>();
-            var drinksIE = repo.ShowDrinks();
-            Drinks = new ObservableCollection<Drink>(drinksIE.ToList());
+            
+            Drinks = new ObservableCollection<Drink>();
+            Task.Run(ShowDrinks);
             AddDrinkCommand = new RelayCommand(AddDrinkToOrder);
 
             if (MainWindowViewModel == null)
@@ -46,14 +49,20 @@ namespace GUI_Beställning.ViewModels
             }
         }
 
+        public async void ShowDrinks()
+        {
+            var drinksIE = await repo.ShowDrinks();
+            Drinks.Clear();
+            Drinks.AddRange(drinksIE.ToList());
+        }
         /// <summary>
         /// Command Method to add Drink to order
         /// </summary>
         /// <param name="Drink"></param>
-        private void AddDrinkToOrder(object Drink)
+        private async void AddDrinkToOrder(object Drink)
         {
             Drink drink = (Drink)Drink;
-            repo.AddDrinkToOrder(MainWindowViewModel.OrderID, drink.ID);
+            await repo.AddDrinkToOrder(MainWindowViewModel.OrderID, drink.ID);
             MainWindowViewModel.OrderChanged();
         }
     }

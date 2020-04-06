@@ -164,28 +164,28 @@ namespace GUI_Beställning.ViewModels
         /// method to reset everything for the next customer.
         /// </summary>
         /// <param name="parameter"></param>
-        public void CheckoutCommandMethod(object parameter)
+        public async void CheckoutCommandMethod(object parameter)
         {
             //Ändrar ordern sstatus och rensar sedan listan order
-            repo.UpdateOrderStatus(OrderID);
-            Order.Clear();
+            await repo.UpdateOrderStatus(OrderID);
+            await Dispatcher.InvokeAsync(Order.Clear);
             TotalPrice = 0;
-            this.RaisePropertyChanged(nameof(TotalPrice));
+            await Dispatcher.InvokeAsync(() => this.RaisePropertyChanged(nameof(TotalPrice)));
 
             //Hämtar det nya OrderIDt
-            GetNewOrderID();
+            await GetNewOrderID();
             
             //Navigerar tillbaka till start.
-            MessageBox.Show("*Skriver ut kvitto*");
+            await Dispatcher.InvokeAsync(() => MessageBox.Show("*Skriver ut kvitto*"));
             Router.Navigate.Execute(new WelcomeViewModel());
         }
 
-        private async void GetNewOrderID()
+        private async Task GetNewOrderID()
         {
             //ändra detta sen när man ska skapa nya ordrar
             //var newOrder = (repo.CreateNewOrder()).ToList();
             //OrderID = newOrder[0].ID; 
-            OrderID = 160;
+            await Dispatcher.InvokeAsync(() => OrderID = 160);
         }
         #endregion
 

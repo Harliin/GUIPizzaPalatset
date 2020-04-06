@@ -6,6 +6,9 @@ using System.Linq;
 using GUI_Beställning.ViewModels.Commands;
 using System;
 using System.ComponentModel;
+using System.Windows.Threading;
+using System.Threading.Tasks;
+using DynamicData;
 
 namespace GUI_Beställning.ViewModels
 {
@@ -22,16 +25,9 @@ namespace GUI_Beställning.ViewModels
         public OrderRepository repo = new OrderRepository();
         public static MainWindowViewModel MainWindowViewModel;
 
-        private ObservableCollection<Pizza> pizzas;
-        public ObservableCollection<Pizza> Pizzas
-        {
-            get { return pizzas; }
-            set
-            {
-                var pizzaIE = repo.GetPizzas();
-                pizzas = new ObservableCollection<Pizza>(pizzaIE.ToList());
-            }
-        }
+        public ObservableCollection<Pizza> Pizzas { get; set; }
+
+        public Dispatcher Dispatcher => MainWindowViewModel.Dispatcher;
         #endregion
 
         #region Commands
@@ -50,6 +46,7 @@ namespace GUI_Beställning.ViewModels
             HostScreen = screen ?? Locator.Current.GetService<IScreen>();
 
             Pizzas = new ObservableCollection<Pizza>();
+            Task.Run(ShowPizzas);
 
             if(MainWindowViewModel == null)
             {
@@ -57,17 +54,24 @@ namespace GUI_Beställning.ViewModels
             }
         }
 
+        public async void ShowPizzas()
+        {
+            var pizzaIE = await repo.GetPizzas();
+            Pizzas.Clear();
+            Pizzas.AddRange(pizzaIE.ToList());
+        }
+
         #region Command Methods
         /// <summary>
         /// Method to add a pizza to Order
         /// </summary>
         /// <param name="Pizza"></param>
-        private void AddPizzaToOrder(object Pizza)
+        private async void AddPizzaToOrder(object Pizza)
         {
             Pizza pizza = (Pizza)Pizza;
-            repo.AddPizzaToOrder(MainWindowViewModel.OrderID, pizza.ID);
+            await repo.AddPizzaToOrder(MainWindowViewModel.OrderID, pizza.ID);
 
-            MainWindowViewModel.OrderChanged();
+            await Task.Run(MainWindowViewModel.OrderChanged);
         }
 
         #endregion

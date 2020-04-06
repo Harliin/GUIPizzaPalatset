@@ -1,4 +1,5 @@
-﻿using GUI_Beställning.Models.Data;
+﻿using DynamicData;
+using GUI_Beställning.Models.Data;
 using GUI_Beställning.ViewModels.Commands;
 using ReactiveUI;
 using Splat;
@@ -38,23 +39,28 @@ namespace GUI_Beställning.ViewModels
         {
             AddPastaCommand = new RelayCommand(AddPastaToOrder);
             HostScreen = screen ?? Locator.Current.GetService<IScreen>();
-            var PastaIE = repo.ShowPastas();
-            Pastas = new ObservableCollection<Pasta>(PastaIE.ToList());
+            
+            Pastas = new ObservableCollection<Pasta>();
 
             if (MainWindowViewModel == null)
             {
                 MainWindowViewModel = viewModel;
             }
         }
-
+        public async void ShowPastas()
+        {
+            var PastaIE = await repo.ShowPastas();
+            Pastas.Clear();
+            Pastas.AddRange(PastaIE.ToList());
+        }
         /// <summary>
         /// CommandMethod to add Pasta to order
         /// </summary>
         /// <param name="Pasta"></param>
-        private void AddPastaToOrder(object Pasta)
+        private async void AddPastaToOrder(object Pasta)
         {
             Pasta pasta = (Pasta)Pasta;
-            repo.AddPastaToOrder(MainWindowViewModel.OrderID, pasta.ID);
+            await repo.AddPastaToOrder(MainWindowViewModel.OrderID, pasta.ID);
             MainWindowViewModel.OrderChanged();
         }
     }
