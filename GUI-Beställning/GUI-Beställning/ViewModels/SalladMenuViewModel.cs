@@ -1,10 +1,11 @@
-﻿using GUI_Beställning.Models.Data;
+﻿using DynamicData;
+using GUI_Beställning.Models.Data;
 using GUI_Beställning.ViewModels.Commands;
 using ReactiveUI;
 using Splat;
 using System.Collections.ObjectModel;
 using System.Linq;
-
+using System.Windows.Threading;
 
 namespace GUI_Beställning.ViewModels
 {
@@ -21,6 +22,7 @@ namespace GUI_Beställning.ViewModels
         public OrderRepository repo = new OrderRepository();
         public static MainWindowViewModel MainWindowViewModel;
         public ObservableCollection<Sallad> Sallads { get; set; }
+        public static Dispatcher Dispatcher = MainWindowViewModel.Dispatcher;
         #endregion
 
         #region Commands
@@ -35,10 +37,8 @@ namespace GUI_Beställning.ViewModels
         public SalladMenuViewModel(MainWindowViewModel viewModel = null, IScreen screen = null)
         {
             HostScreen = screen ?? Locator.Current.GetService<IScreen>();
-
+           
             AddSalladCommand = new RelayCommand(AddSalladToOrder);
-            var SalladIE = repo.ShowSallads();
-            Sallads = new ObservableCollection<Sallad>(SalladIE.ToList());
             if(MainWindowViewModel == null)
             {
                 MainWindowViewModel = viewModel;
@@ -49,10 +49,20 @@ namespace GUI_Beställning.ViewModels
         /// Command Method to add Sallad to Order
         /// </summary>
         /// <param name="Sallad"></param>
-        private void AddSalladToOrder(object Sallad)
+        /// 
+
+        public async void ShowSallad()
+        {
+            Sallads = new ObservableCollection<Sallad>();
+            var SalladIE = await repo.ShowSallads();
+            await Dispatcher.InvokeAsync(Sallads.Clear);
+            await Dispatcher.InvokeAsync(() => { Sallads.AddRange(SalladIE.ToList()); });
+
+        }
+        private async void AddSalladToOrder(object Sallad)
         {
             Sallad sallad = (Sallad)Sallad;
-            repo.AddSalladToOrder(MainWindowViewModel.OrderID, sallad.ID);
+            await repo.AddSalladToOrder(MainWindowViewModel.OrderID, sallad.ID);
             MainWindowViewModel.OrderChanged();
         }
     }

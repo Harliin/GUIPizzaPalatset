@@ -11,6 +11,7 @@ using System.Net.Http;
 using System.Reactive;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Threading;
 
 namespace GUI_Beställning.ViewModels
 {
@@ -29,6 +30,7 @@ namespace GUI_Beställning.ViewModels
         public int OrderID => MainWindowViewModel.OrderID;
         public double SEKPrice => MainWindowViewModel.TotalPrice;
 
+        public static Dispatcher Dispatcher = MainWindowViewModel.Dispatcher;
         public double EuroPrice { get; set; }
 
         #endregion
@@ -44,14 +46,15 @@ namespace GUI_Beställning.ViewModels
         /// <param name="screen"></param>
         public ReceiptViewModel(MainWindowViewModel viewModel = null,IScreen screen = null)
         {
+            Dispatcher = Dispatcher.CurrentDispatcher;
             HostScreen = screen ?? Locator.Current.GetService<IScreen>();
 
             if (MainWindowViewModel == null)
             {
                 MainWindowViewModel = viewModel;
             }
-            EuroRate();
-
+            Task.Run(EuroRateAsync);
+            
             CheckoutCommand = new RelayCommand(MainWindowViewModel.CheckoutCommandMethod);
         }
    
@@ -60,45 +63,45 @@ namespace GUI_Beställning.ViewModels
         /// from Euro to sek
         /// </summary>
         /// WebApi som inte är Async
-        public void EuroRate()
-        {
-           
-            ExchangeRates rates = new ExchangeRates();
-            using (WebClient webClient = new WebClient())
-            {
-                string uri = "https://api.exchangeratesapi.io/latest?symbols=SEK";
-                webClient.BaseAddress = uri;
-                var json = webClient.DownloadString(uri);
-                rates = System.Text.Json.JsonSerializer.Deserialize<ExchangeRates>(json);
-            }
-
-            if(rates.Rates.TryGetValue("SEK", out float rate))
-            {
-                EuroPrice = Math.Round((SEKPrice / rate),2);
-            }
-        }
-
-        // WebApi Som är async
-        //private async Task GetOrdersAsync()
+        //public void EuroRate()
         //{
+           
         //    ExchangeRates rates = new ExchangeRates();
-        //    using (HttpClient httpClient = new HttpClient())
+        //    using (WebClient webClient = new WebClient())
         //    {
-        //        //httpClient.DefaultRequestHeaders.Add(HeaderNames.Authorization, "Bearer " + GetJWT());
-        //        string uri = "https://api.exchangeratesapi.io/latest";
-
-        //        HttpResponseMessage response = await httpClient.GetAsync(uri);
-        //        if (response.IsSuccessStatusCode)
-        //        {
-        //            StreamReader reader = new StreamReader(await response.Content.ReadAsStreamAsync(), Encoding.UTF8);
-        //            string dataFromWebapi = reader.ReadToEnd();
-        //            rates = System.Text.Json.JsonSerializer.Deserialize<ExchangeRates>(dataFromWebapi);
-        //        }
+        //        string uri = "https://api.exchangeratesapi.io/latest?symbols=SEK";
+        //        webClient.BaseAddress = uri;
+        //        var json = webClient.DownloadString(uri);
+        //        rates = System.Text.Json.JsonSerializer.Deserialize<ExchangeRates>(json);
         //    }
+
         //    if(rates.Rates.TryGetValue("SEK", out float rate))
         //    {
-        //        EuroPrice = Math.Round((SEKPrice / rate), 2);
+        //        EuroPrice = Math.Round((SEKPrice / rate),2);
         //    }
         //}
+
+        // WebApi Som är async
+        private async Task EuroRateAsync()
+        {
+            ExchangeRates rates = new ExchangeRates();
+            using (HttpClient httpClient = new HttpClient())
+            {
+                //httpClient.DefaultRequestHeaders.Add(HeaderNames.Authorization, "Bearer " + GetJWT());
+                string uri = "https://api.exchangeratesapi.io/latest";
+
+                HttpResponseMessage response = await httpClient.GetAsync(uri);
+                if (response.IsSuccessStatusCode)
+                {
+                    StreamReader reader = new StreamReader(await response.Content.ReadAsStreamAsync(), Encoding.UTF8);
+                    string dataFromWebapi = reader.ReadToEnd();
+                    rates = System.Text.Json.JsonSerializer.Deserialize<ExchangeRates>(dataFromWebapi);
+                }
+            }
+            if (rates.Rates.TryGetValue("SEK", out float rate))
+            {
+                EuroPrice = Math.Round((SEKPrice / rate), 2);
+            }
+        }
     }
 }
