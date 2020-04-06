@@ -39,7 +39,7 @@ namespace GUI_Kassörska
         {
             using (IDbConnection con = Connection)
             {
-                IEnumerable<Order> ordersByStatus = connection.Query<Order>("\"ShowOrderByStatus\"", new { status = (int)status }, commandType: CommandType.StoredProcedure));
+                IEnumerable<Order> ordersByStatus = connection.Query<Order>("\"ShowOrderByStatus\"", new { status = (int)status }, commandType: CommandType.StoredProcedure);
                 return ordersByStatus;
             }
         }
@@ -64,11 +64,11 @@ namespace GUI_Kassörska
         }
 
         //Visa alla ordrar
-        public IEnumerable<Order> ShowAllOrdersAsync()
+        public IEnumerable<Order> ShowAllOrders()
         {
             using (IDbConnection con = Connection)
             {
-                IEnumerable<Order> allOrders = connection.Query<Order>("\"ShowOrders\"", commandType: CommandType.StoredProcedure));
+                IEnumerable<Order> allOrders = connection.Query<Order>("\"ShowOrders\"", commandType: CommandType.StoredProcedure);
                 return allOrders;
             }
         }

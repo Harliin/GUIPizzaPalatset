@@ -61,9 +61,9 @@ namespace GUI_Kassörska.ViewModels
 
 		public int OrderID { get; set; }
 
-		public async Task<ObservableCollection<Order>> ShowAllReadyOrders()
+		public ObservableCollection<Order> ShowAllReadyOrders()
 		{
-			DatabaseList = await repo.ShowOrderByStatusAsync(Order.eStatus.Klar);
+			DatabaseList = repo.ShowOrderByStatus(Order.eStatus.Klar);
 			ReadyOrders = new ObservableCollection<Order>();
 			foreach (Order item in DatabaseList)
 			{
@@ -90,7 +90,7 @@ namespace GUI_Kassörska.ViewModels
 
 			//return OngoingOrders;
 
-			var list = (await repo.ShowAllOrdersAsync()).ToList();
+			var list = repo.ShowAllOrders().ToList();
 
 			list.ForEach(item => 
 			{
@@ -105,7 +105,7 @@ namespace GUI_Kassörska.ViewModels
 			});
 		}
 
-		public Task<int> GetOrderStatus(int orderNumber)
+		public int GetOrderStatus(int orderNumber)
 		{
 			var orderStatus = repo.ShowOrderByID(orderNumber);
 
@@ -114,11 +114,9 @@ namespace GUI_Kassörska.ViewModels
 
 		private async void Update(object u)
 		{
-			await repo.UpdateOrderStatus(OrderID);
-			await ShowAllReadyOrders();
+			repo.UpdateOrderStatus(OrderID);
+			ShowAllReadyOrders();
 		}
-
-		
 
 		public MainViewModel()
 		{
