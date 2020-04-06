@@ -12,7 +12,7 @@
         MinHeight="768"
         MinWidth="1024"
         FontFamily="Cooper Black">
-<!-- Sätt höjden till 1080 och bredden till 1920 -->
+    <!-- Sätt höjden till 1080 och bredden till 1920 -->
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -26,14 +26,14 @@
         </ResourceDictionary>
     </Window.Resources>
     <Grid>
-        
+
         <!-- Alternate between colors in orderlists -->
         <Grid.Resources>
             <AlternationConverter x:Key="BackgroundConverter">
                 <SolidColorBrush Color="#DFA4BD"/>
                 <SolidColorBrush Color="#FFFFFF"/>
             </AlternationConverter>
-            
+
             <Style x:Key="alternateBackgroundcolor" TargetType="{x:Type ItemsControl}">
                 <Setter Property="Background" 
               Value="{Binding RelativeSource={RelativeSource Self},
@@ -80,22 +80,22 @@
 
         <!-- Logo -->
         <Viewbox
-            Grid.Column="2"
-            Grid.RowSpan="3"
-            Stretch="Fill">
+            Grid.Column="9"
+            Grid.RowSpan="3">
             <Image Grid.Row="0" Source="Images/PizzaLogo.png" Width="125" Height="125"/>
         </Viewbox>
-        
-        <!-- Header --><!--
+
+        <!-- Header -->
         <TextBlock
             FontSize="80"
             Grid.ColumnSpan="10"
             Grid.RowSpan="2"
             HorizontalAlignment="Center">
             PizzaPalatset
-        </TextBlock>-->
+        </TextBlock>
 
-        <!-- User: User image, log in, log out --><!--
+        <!-- User: User image, log in, log out -->
+        <!--
         <StackPanel
             Grid.Column="8"
             Grid.ColumnSpan="2"
@@ -127,7 +127,7 @@
             Grid.Row="5"
             Grid.ColumnSpan="3"
             VerticalAlignment="Bottom"
-            FontSize="45"
+            FontSize="40"
             FontWeight="Bold">
             Pågående ordrar
         </TextBlock>
@@ -144,45 +144,50 @@
                 <ItemsControl ItemsSource="{Binding CookingOrders}">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth3">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="{Binding ID, StringFormat={}#{0}}" FontSize="30" 
+                            <materialDesign:Card Margin="5" Background="#FFFFFF" BorderBrush="#D70F64" 
+                                                     Foreground="#D70F64" UniformCornerRadius="5" BorderThickness="50" materialDesign:ShadowAssist.ShadowDepth="Depth3">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding ID, StringFormat={}#{0}}" FontSize="30" 
                                        Margin=" 0 0 20 0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                <Button
-                            Height="50"
-                            Width="50"
-                            BorderThickness="0"
-                            Background="{x:Null}">
-                                    <Button.Content>
-                                        <Path Data="{StaticResource Fryingpan}"
+                                    <Button
+                                    Height="50"
+                                    Width="50"
+                                    BorderThickness="0"
+                                    Background="{x:Null}">
+                                        <Button.Content>
+                                            <Path Data="{StaticResource Fryingpan}"
                                       Fill="{StaticResource DeepPinkBrush}"
-                                      Stretch="Uniform"/>
-                                    </Button.Content>
-                                </Button>
-                            </StackPanel>
+                                      Stretch="Uniform"
+                                      HorizontalAlignment="Right"/>
+                                        </Button.Content>
+                                    </Button>
+                                </StackPanel>
                             </materialDesign:Card>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
-                
+
                 <ItemsControl ItemsSource="{Binding PaidOrders}">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="{Binding ID, StringFormat={}#{0}}" FontSize="30" 
+                            <materialDesign:Card Margin="5" Background="#FFFFFF" BorderBrush="#D70F64" 
+                                                     Foreground="#D70F64" UniformCornerRadius="5" BorderThickness="5" materialDesign:ShadowAssist.ShadowDepth="Depth3">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding ID, StringFormat={}#{0}}" FontSize="30" 
                                        Margin=" 0 0 20 0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                <Button
-                            Height="50"
-                            Width="50"
-                            BorderThickness="0"
-                            Background="{x:Null}">
-                                    <Button.Content>
-                                        <Path Data="{StaticResource Payment}"
-                                      Fill="{StaticResource DeepPinkBrush}"
-                                      Stretch="Uniform"/>
-                                    </Button.Content>
-                                </Button>
-                            </StackPanel>
+                                    <Button
+                                        Height="50"
+                                        Width="50"
+                                        BorderThickness="0"
+                                        Background="{x:Null}">
+                                        <Button.Content>
+                                            <Path Data="{StaticResource Payment}"
+                                                  Fill="{StaticResource DeepPinkBrush}"
+                                                  Stretch="Uniform"/>
+                                        </Button.Content>
+                                    </Button>
+                                </StackPanel>
+                            </materialDesign:Card>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
@@ -222,7 +227,8 @@
                 <ItemsControl ItemsSource="{Binding ReadyOrders}">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth3">
+                            <materialDesign:Card Margin="5" Background="#FFFFFF" BorderBrush="#D70F64" 
+                                                     Foreground="#D70F64" UniformCornerRadius="5" BorderThickness="5" materialDesign:ShadowAssist.ShadowDepth="Depth3">
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock Text="{Binding ID, StringFormat={}#{0}}" FontSize="30" 
                                        Margin=" 0 0 20 0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
@@ -230,6 +236,7 @@
                             Height="50"
                             Width="50"
                             BorderThickness="0"
+                                        HorizontalAlignment="Right"
                             Background="{x:Null}">
                                         <Button.Content>
                                             <Path Data="{StaticResource RightArrowImage}"
