@@ -25,7 +25,7 @@ namespace GUI_Kassörska.ViewModels
 			}
 		}
 
-		public RelayCommand Serve { get; set; }
+		public RelayCommand UpdateOrderStatusCommand { get; set; }
 
 		private IEnumerable databaseList;
 
@@ -125,7 +125,7 @@ namespace GUI_Kassörska.ViewModels
 			//ShowAllOngoingOrders();
 			ShowAllReadyOrders();
 			ShowAllOngoingOrders();
-			Serve = new RelayCommand(Update);
+			UpdateOrderStatusCommand = new RelayCommand(Update);
 		}
 	}
 }
