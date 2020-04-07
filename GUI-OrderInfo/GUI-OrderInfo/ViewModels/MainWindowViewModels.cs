@@ -6,7 +6,7 @@ using System.Windows;
 
 namespace GUI_OrderInfo.ViewModels
 {
-    public class MainWindowViewModels : ReactiveObject //, IScreen
+    public class MainWindowViewModels : ReactiveObject
     {
         #region ObservableCollections metoder
         public ObservableCollection<Order> OngoingOrders { get; }
@@ -45,6 +45,10 @@ namespace GUI_OrderInfo.ViewModels
         public void Populate()
         {
             OrderInfoRepository repo = new OrderInfoRepository();
+
+
+            //this.RaiseAndSetIfChanged(ref _userName, value);
+
 
             OngoingOrders.AddRange(repo.OngoingOrder());
             CompleteOrder.AddRange(repo.CompleteOrder());

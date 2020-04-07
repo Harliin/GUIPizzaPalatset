@@ -3,7 +3,7 @@
     public interface IRepository
     {
         /*
-         * Användas inte i det hät programmet 
+         * Används inte i det hät programmet 
         */
 
         //AddIngredientToPizzaAsync(int pizzaID, int[] ingridients);

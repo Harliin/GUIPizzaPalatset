@@ -15,17 +15,18 @@ namespace GUI_OrderInfo.Views
 
             InitializeComponent();
 
-            this.WhenActivated(disposables =>
             {
+                this.WhenActivated(disposables =>
+                {
+                    this.OneWayBind(ViewModel, ongoing => ongoing.OngoingOrders,
+                        o => o.txbOngoing.ItemsSource).DisposeWith(disposables);
 
-                this.OneWayBind(ViewModel, ongoing => ongoing.OngoingOrders, o => o.txbOngoing.ItemsSource)
-                .DisposeWith(disposables);
+                    this.OneWayBind(ViewModel, complete => complete.CompleteOrder,
+                        c => c.txbComplete.ItemsSource).DisposeWith(disposables);
 
-                this.OneWayBind(ViewModel, complete => complete.CompleteOrder, c => c.txbComplete.ItemsSource)
-                .DisposeWith(disposables);
-
-                ViewModel.Populate();
-            });
+                    ViewModel.Populate();
+                });
+            }
         }
     }
 }
