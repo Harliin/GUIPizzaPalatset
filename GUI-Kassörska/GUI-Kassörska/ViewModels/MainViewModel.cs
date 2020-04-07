@@ -112,7 +112,7 @@ namespace GUI_Kassörska.ViewModels
 			return orderStatus;
 		}
 
-		private async void Update(object u)
+		private void Update(object u)
 		{
 			repo.UpdateOrderStatus(OrderID);
 			ShowAllReadyOrders();
