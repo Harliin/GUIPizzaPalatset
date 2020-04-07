@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using GUI_Kassörska.Command;
 using static GUI_Kassörska.ViewModels.Order;
 
+
 namespace GUI_Kassörska.ViewModels
 {
 	public class MainViewModel : INotifyPropertyChanged

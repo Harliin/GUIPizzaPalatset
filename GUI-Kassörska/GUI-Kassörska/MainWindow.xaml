@@ -27,22 +27,7 @@
     </Window.Resources>
     <Grid>
 
-        <!-- Alternate between colors in orderlists -->
-        <Grid.Resources>
-            <AlternationConverter x:Key="BackgroundConverter">
-                <SolidColorBrush Color="#DFA4BD"/>
-                <SolidColorBrush Color="#FFFFFF"/>
-            </AlternationConverter>
-
-            <Style x:Key="alternateBackgroundcolor" TargetType="{x:Type ItemsControl}">
-                <Setter Property="Background" 
-              Value="{Binding RelativeSource={RelativeSource Self},
-                     Path=(ItemsControl.AlternationIndex),
-                     Converter={StaticResource BackgroundConverter}}"/>
-            </Style>
-        </Grid.Resources>
-
-        <!-- Grid- och rowdefinitions -->
+        <!-- Grid- and rowdefinitions -->
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
@@ -295,7 +280,7 @@
                                             HorizontalAlignment="Right"
                                             Padding="5 0 5 0"
                                             Grid.Column="2"
-                                            Command="{Binding Path=DataContext.UpdateOrderStatusCommand, ElementName=myControl}" CommandParameter="{Binding}">
+                                            Command="{Binding UpdateOrderStatusCommand}" CommandParameter="{Binding}">
                                             <Button.Content>
                                                 <Path
                                                     Data="{StaticResource RightArrowImage}"
