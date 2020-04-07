@@ -1,8 +1,6 @@
 ﻿using GUI_OrderInfo.ViewModels;
 using ReactiveUI;
-using System;
 using System.Reactive.Disposables;
-using System.Windows.Threading;
 
 namespace GUI_OrderInfo.Views
 {
@@ -11,13 +9,13 @@ namespace GUI_OrderInfo.Views
     /// </summary>
     public partial class MainWindowView : ReactiveWindow<MainWindowViewModels>
     {
-        
+        #region Constructor
         public MainWindowView()
         {
             this.ViewModel = new MainWindowViewModels(this);
 
             InitializeComponent();
-      
+
             this.WhenActivated(disposables =>
             {
                 this.OneWayBind(ViewModel, ongoing => ongoing.OngoingOrders,
@@ -27,7 +25,8 @@ namespace GUI_OrderInfo.Views
                     c => c.txbComplete.ItemsSource).DisposeWith(disposables);
 
             });
-                
+
         }
+        #endregion
     }
 }
