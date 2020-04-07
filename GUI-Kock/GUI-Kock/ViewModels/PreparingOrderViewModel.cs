@@ -36,6 +36,7 @@ namespace GUI_Kock.ViewModels
 
 
         public ReactiveCommand<Unit, IRoutableViewModel> GoToLoginView { get; private set; }
+        public ReactiveCommand<Unit, IRoutableViewModel> GoToOrderView { get; private set; }
 
         #region Routing
         public string UrlPathSegment => "Preparing";
@@ -48,7 +49,9 @@ namespace GUI_Kock.ViewModels
             CurrentOrder = order;
             HostScreen = screen ?? Locator.Current.GetService<IScreen>();
             Locator.CurrentMutable.Register(() => new LoginView(), typeof(IViewFor<LoginViewModel>));
+            Locator.CurrentMutable.Register(() => new OrderView(), typeof(IViewFor<OrderViewModel>));
             GoToLoginView = ReactiveCommand.CreateFromObservable(() => Router.Navigate.Execute(new LoginViewModel(Router)));
+            GoToOrderView = ReactiveCommand.CreateFromObservable(() => Router.Navigate.Execute(new OrderViewModel()));
 
         }
 

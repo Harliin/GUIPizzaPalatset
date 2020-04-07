@@ -34,36 +34,34 @@
                 </TextBlock>
             </Grid>
 
-             <StackPanel Grid.Row="1" Grid.RowSpan="2" Margin="50 0 50 5 " Orientation="Vertical">
-                    <Border Margin="30 5 30 5" Background="White" CornerRadius="7">
-                        <Button x:Name="orderBtm" Command="{Binding Path=DataContext.GoToPreparingViewCommand, ElementName=thisWindow}" Background="#FFF" Height="50" Foreground="White" BorderBrush="White">
-                            <StackPanel Orientation="Vertical">
-                               <StackPanel Orientation="Horizontal">
-                                <TextBlock x:Name="orderItems" Text="{Binding}" Foreground="Black" Margin=" 15 10 5 50" TextAlignment="Center"/>
-                               </StackPanel>
-                            </StackPanel>
-                        </Button>
-                    </Border>
-             </StackPanel>
-
-            <StackPanel Orientation="Horizontal" Grid.Row="2">
-                <Border
-                    x:Name="TimerBtm" Margin="230 20 0 0" Background="#FF314455" CornerRadius="7">
-                    <TextBlock Margin="10" Text="Sätt timer" VerticalAlignment="Center" Foreground="White">
-                    </TextBlock>
+            
+             <StackPanel Grid.Row="1" Margin="50 0 50 5 " Orientation="Vertical">
+                <Border Margin="30 5 30 5" Background="White" CornerRadius="7">
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock x:Name="orderItems" Text="{Binding}" Foreground="Black" Margin=" 15 10 5 50" TextAlignment="Center"/>
+                    </StackPanel>
                 </Border>
 
-                <Border
-                    x:Name="ReadyBtm" Margin="10 20 0 0" Width="60" Background="#FF314455" CornerRadius="7">
-                    <TextBlock Margin="10" Text="Klar" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White">
-                    </TextBlock>
+                <Border Margin="30 5 30 5" Background="White" CornerRadius="7">
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock x:Name="ingred" Text="{Binding}" Foreground="Black" Margin=" 15 10 5 50" TextAlignment="Center"/>
+                    </StackPanel>
                 </Border>
+
+                <Button x:Name="TimerBtm" Margin="200 20 30 0" Width="100"  Background="#314455" BorderBrush="#314455"
+                        Content="Sätt timer" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White">
+                </Button>
+
+                <Button x:Name="ReadyBtm" Margin="200 10 30 0" Width="100" Background="#314455" BorderBrush="#314455"
+                        Content="Klar" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White">
+                </Button>
+
+
+                <Button x:Name="goBack" Content="{materialDesign:PackIcon Kind=ArrowBack}" Width="80" Height="40"
+                          HorizontalAlignment="Left" Background="#FFD70F64" BorderBrush="#FFD70F64" FontSize="24" Foreground="#DD0A0000"/>
 
             </StackPanel>
 
-            <StackPanel Orientation="Vertical" Grid.Row="4" Margin="0 250 0 0">
-                <materialDesign:PackIcon Kind="ArrowBack" Width="50" Height="50" />
-            </StackPanel>
 
         </Grid>
     </Border>

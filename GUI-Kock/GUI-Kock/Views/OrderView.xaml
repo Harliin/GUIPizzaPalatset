@@ -10,7 +10,7 @@
       xmlns:reactiveui="http://reactiveui.net"
       mc:Ignorable="d" 
       x:Name="thisWindow"
-      d:DesignHeight="600" d:DesignWidth="450">
+      d:DesignHeight="600" d:DesignWidth="400">
 
     <Border Background="#FFD70F64">
         <Grid>
