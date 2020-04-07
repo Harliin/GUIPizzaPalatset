@@ -26,11 +26,13 @@ Vi har fixat Web api för att konvertera från SEK till EURO.
 
 
 Elchin:
-2/3 Började skissa på InfoOrder  terminal i Adobe XD
-4/3 Fortsatte med InfoOrder  terminal i Adobe XD
-5/3 Började koda InfoOrder  terminal i VS.
-10/3 Designen är klar. 
-12/3 Försöker förbätra program utseende och strukturera koden enligt MVVM.
+2/03 Började skissa på InfoOrder  terminal i Adobe XD
+4/03 Fortsatte med InfoOrder  terminal i Adobe XD
+5/03 Började koda InfoOrder  terminal i VS.
+10/03 Designen är klar. 
+12/03 Försöker förbätra program utseende och strukturera koden enligt MVVM.
+2/04 Äntligen lyckades koppla programmet till databasen.
+7/04 Fixade skärm uppdatering med DespatcherClock. Programmet är klart.
 
 
 Jonathan:
