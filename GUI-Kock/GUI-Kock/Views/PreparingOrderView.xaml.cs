@@ -35,10 +35,14 @@ namespace GUI_Kock.Views
 
                 this.BindCommand(ViewModel, x => x.UpdateOrder, x => x.readyBtm);
 
+                this.BindCommand(ViewModel, x => x.Timer, x => x.timerBtm);
 
                 this.Bind(ViewModel, vm => vm.EmployeeName, v => v.user.Text)
                 .DisposeWith(disposables);
 
+                this.OneWayBind(ViewModel, x => x.OrderItems, view => view.orderItems.Text)
+                 .DisposeWith(disposables);
+                ViewModel.ShowOrderItems();
 
                 this.OneWayBind(ViewModel, vm => vm.CurrentOrder.pizza, v => v.orderItems.Text)
                 .DisposeWith(disposables);

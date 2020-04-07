@@ -53,13 +53,13 @@ namespace DB_Kock
             }
         }
 
-        public async Task<Pizza> GetPizzaByID(int pizzaID)
+        public Pizza GetPizzaByID(int pizzaID)
         {
             using (IDbConnection con = Connection)
             {
-                Pizza pizza = (await connection.QueryAsync<Pizza>("\"ShowPizzaByID\"", new { inid = pizzaID }, commandType: CommandType.StoredProcedure)).First();
+                Pizza pizza = (connection.Query<Pizza>("\"ShowPizzaByID\"", new { inid = pizzaID }, commandType: CommandType.StoredProcedure)).First();
 
-                pizza.Ingredients = (await connection.QueryAsync<Ingredient>("\"ShowPizzaIngredientsByID\"", new { inid = pizza.ID }, commandType: CommandType.StoredProcedure)).ToList();
+                pizza.Ingredients = (connection.Query<Ingredient>("\"ShowPizzaIngredientsByID\"", new { inid = pizza.ID }, commandType: CommandType.StoredProcedure)).ToList();
                 return pizza;
             }
         }
@@ -132,11 +132,11 @@ namespace DB_Kock
             }
         }
 
-        public async Task<IEnumerable<Ingredient>> ShowIngredientsAsync()
+        public IEnumerable<Ingredient> ShowIngredientsAsync()
         {
             using (IDbConnection con = Connection)
             {
-                IEnumerable<Ingredient> ingredients = await connection.QueryAsync<Ingredient>("\"GetIngredients\"", commandType: CommandType.StoredProcedure);
+                IEnumerable<Ingredient> ingredients = connection.Query<Ingredient>("\"GetIngredients\"", commandType: CommandType.StoredProcedure);
                 return ingredients;
             }
         }

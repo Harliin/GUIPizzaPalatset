@@ -33,10 +33,16 @@ namespace GUI_Kock.ViewModels
 
         public static ChefRepository repos => LoginViewModel.repo;
 
+        public List<string> OrderItems { get; private set; }
+
         public Order CurrentOrder { get; private set; }
+
+        public ObservableCollection<Pizza> pizzas { get; }
 
         #region Commands
         public RelayCommand UpdateOrder { get; set; }
+
+        public RelayCommand Timer { get; set; }
         public ReactiveCommand<Unit, IRoutableViewModel> GoToLoginView { get; private set; }
         public ReactiveCommand<Unit, IRoutableViewModel> GoToOrderView { get; private set; }
 
@@ -57,14 +63,35 @@ namespace GUI_Kock.ViewModels
             GoToLoginView = ReactiveCommand.CreateFromObservable(() => Router.Navigate.Execute(new LoginViewModel(Router)));
             GoToOrderView = ReactiveCommand.CreateFromObservable(() => Router.Navigate.Execute(new OrderViewModel()));
             UpdateOrder = new RelayCommand(UpdateOrderStatus);
-
+            Timer = new RelayCommand(TimerOn);
+            pizzas = new ObservableCollection<Pizza>();
+            OrderItems = new List<string>();
         }
 
-        public void UpdateOrderStatus(object parameter)
+        private void UpdateOrderStatus(object parameter)
         {
             repos.UpdateOrderStatus(CurrentOrder.ID);
             Router.Navigate.Execute(new OrderViewModel());
         }
+
+        private void TimerOn(object parameter)
+        {
+            System.Threading.Thread.Sleep(5000);
+            Console.Beep(500, 2000);
+        }
+
+        public void ShowOrderItems()//Printar ut bara pizza
+        {
+            Order order = repos.ShowOrderByID(CurrentOrder.ID);
+            var pizzaItem = order.pizza;
+            pizzas.AddRange(pizzaItem);
+            var templist = pizzaItem.ToList();
+            templist.ForEach(x => OrderItems.Add(x.Name));
+
+        }
+
+
+
 
     }
 }
