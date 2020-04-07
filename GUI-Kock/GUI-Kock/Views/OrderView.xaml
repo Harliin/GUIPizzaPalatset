@@ -17,22 +17,21 @@
 
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
+                <RowDefinition Height="50" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <Grid Grid.Row="0">
-                <Button  x:Name="exit" Content="{materialDesign:PackIcon Kind=Login}" Width="80" Height="40"
-                                     Margin="20" HorizontalAlignment="Right" Background="#FFD70F64" BorderBrush="#FFD70F64" FontSize="24" Foreground="#DD0A0000"/>
-                <materialDesign:PackIcon Kind="User" Width="30" Height="30" Margin="10 55 10 0" HorizontalAlignment="Left"/>
-
-                <TextBlock x:Name="user" Text="{Binding Name}" Width="70" Height="30" FontSize="22" HorizontalAlignment="Left" Margin="40 15 10 10">
+            <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="50 0 10 0">
+                <materialDesign:PackIcon Kind="User" Width="30" Height="30" Margin="30 0 0 0" VerticalAlignment="Center"/>
+                <TextBlock x:Name="user" Text="{Binding Name}" Width="70" Height="30" FontSize="22" Margin="0 5 10 0">
                 </TextBlock>
-            </Grid>
+                <Button  x:Name="exit" Content="{materialDesign:PackIcon Kind=Login}" Width="80" Height="40"
+                                     Margin="110 0 10 0" VerticalAlignment="Center" Background="#FFD70F64" BorderBrush="#FFD70F64" FontSize="24" Foreground="#DD0A0000"/>
+            </StackPanel>
 
-            <ScrollViewer VerticalScrollBarVisibility="Auto"  Grid.Row="1" Grid.RowSpan="2" Grid.Column="1">
+            <ScrollViewer VerticalScrollBarVisibility="Auto"  Grid.Row="1" Grid.RowSpan="4" Grid.Column="1" Margin="0 5 0 20">
                 <ItemsControl ItemsSource="{Binding OngoinOrders}" x:Name="ongoingorder" Grid.Row="1" Grid.RowSpan="2" Grid.Column="1">
                 <ItemsControl.ItemTemplate>
                         <DataTemplate>
@@ -42,7 +41,7 @@
                                         <StackPanel Orientation="Vertical">
                                             <StackPanel Orientation="Horizontal">
                                                 <TextBlock Text="Order #" Foreground="Black" Margin=" 15 10 5 50" TextAlignment="Center"/>
-                                                <TextBlock Text="{Binding ID}" Foreground="Black" Margin=" 0 10 0 50" TextAlignment="Center"></TextBlock>
+                                                <TextBlock Text="{Binding ID}" Foreground="Black" Margin=" 0 10 0 50" VerticalAlignment="Center" TextAlignment="Center"></TextBlock>
                                             </StackPanel>
                                         </StackPanel>
                                     </Button>

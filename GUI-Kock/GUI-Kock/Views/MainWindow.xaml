@@ -9,7 +9,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:reactiveui="http://reactiveui.net"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="450" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Background="#FFD70F64">
+        Title="MainWindow" Height="600" Width="450" FontFamily="Cooper Black" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Background="#FFD70F64">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -20,14 +20,13 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="15"/>
-            <RowDefinition Height="auto"/>
+            <RowDefinition Height="90"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <StackPanel Margin="50">
-            <!-- Add logo -->
-            <!-- <Images Source="/Images/PizzaPalatset.svg" 
-                   Width="96" Height="96" /> -->
-        
+
+        <!--Logo -->
+        <StackPanel Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Grid.RowSpan="1">
+            <Image Source="Images/PizzaLogo.png" Height="100" Width="150" HorizontalAlignment="Center" ></Image>
         </StackPanel>
         <reactiveui:RoutedViewHost
             Grid.Row="2" 
