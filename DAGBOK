@@ -32,7 +32,7 @@ Elchin:
 10/03 Designen är klar. 
 12/03 Försöker förbätra program utseende och strukturera koden enligt MVVM.
 2/04 Äntligen lyckades koppla programmet till databasen.
-7/04 Fixade skärm uppdatering med DespatcherClock. Programmet är klart.
+7/04 Fixade skärm uppdatering med DispatcherTimer. Programmet är klart.
 
 
 Jonathan:
