@@ -118,6 +118,11 @@ namespace GUI_Kassörska.ViewModels
 			ShowAllReadyOrders();
 		}
 
+		public void UpdateOrderStatusCommandMethod(object parameter)
+		{
+
+		}
+
 		public MainViewModel()
 		{
 			PaidOrders = new ObservableCollection<Order>();
