@@ -33,7 +33,7 @@ namespace GUI_Kock.ViewModels
 
         public static ChefRepository repos => LoginViewModel.repo;
 
-        public List<string> OrderItems { get; private set; }
+        public List<string> PizzaItems { get; private set; }
 
         public Order CurrentOrder { get; private set; }
 
@@ -65,7 +65,7 @@ namespace GUI_Kock.ViewModels
             UpdateOrder = new RelayCommand(UpdateOrderStatus);
             Timer = new RelayCommand(TimerOn);
             pizzas = new ObservableCollection<Pizza>();
-            OrderItems = new List<string>();
+            PizzaItems = new List<string>();
         }
 
         private void UpdateOrderStatus(object parameter)
@@ -80,13 +80,13 @@ namespace GUI_Kock.ViewModels
             Console.Beep(500, 2000);
         }
 
-        public void ShowOrderItems()//Printar ut bara pizza
+        public void ShowPizzas()//Printar ut pizzas
         {
             Order order = repos.ShowOrderByID(CurrentOrder.ID);
             var pizzaItem = order.pizza;
             pizzas.AddRange(pizzaItem);
             var templist = pizzaItem.ToList();
-            templist.ForEach(x => OrderItems.Add(x.Name));
+            templist.ForEach(x => PizzaItems.Add(x.Name));
 
         }
 
