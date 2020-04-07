@@ -33,6 +33,9 @@ namespace GUI_Kock.Views
 
                 this.BindCommand(ViewModel, x => x.GoToOrderView, x => x.goBack);
 
+                this.BindCommand(ViewModel, x => x.UpdateOrder, x => x.readyBtm);
+
+
                 this.Bind(ViewModel, vm => vm.EmployeeName, v => v.user.Text)
                 .DisposeWith(disposables);
 

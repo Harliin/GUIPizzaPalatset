@@ -106,11 +106,11 @@ namespace DB_Kock
             }
         }
 
-        public async Task UpdateOrderStatus(int id)
+        public void UpdateOrderStatus(int id)
         {
             using (IDbConnection con = Connection)
             {
-                await connection.QueryAsync<Order>("\"UpdateOrderStatus\"", new { inid = id }, commandType: CommandType.StoredProcedure);
+                connection.Query<Order>("\"UpdateOrderStatus\"", new { inid = id }, commandType: CommandType.StoredProcedure);
             }
         }
 

@@ -11,6 +11,7 @@ using System.Collections.ObjectModel;
 using DynamicData;
 using System.Linq;
 using DB_Kock;
+using GUI_Kock.ViewModels.Commands;
 
 namespace GUI_Kock.ViewModels
 {
@@ -34,9 +35,12 @@ namespace GUI_Kock.ViewModels
 
         public Order CurrentOrder { get; private set; }
 
-
+        #region Commands
+        public RelayCommand UpdateOrder { get; set; }
         public ReactiveCommand<Unit, IRoutableViewModel> GoToLoginView { get; private set; }
         public ReactiveCommand<Unit, IRoutableViewModel> GoToOrderView { get; private set; }
+
+        #endregion
 
         #region Routing
         public string UrlPathSegment => "Preparing";
@@ -52,7 +56,14 @@ namespace GUI_Kock.ViewModels
             Locator.CurrentMutable.Register(() => new OrderView(), typeof(IViewFor<OrderViewModel>));
             GoToLoginView = ReactiveCommand.CreateFromObservable(() => Router.Navigate.Execute(new LoginViewModel(Router)));
             GoToOrderView = ReactiveCommand.CreateFromObservable(() => Router.Navigate.Execute(new OrderViewModel()));
+            UpdateOrder = new RelayCommand(UpdateOrderStatus);
 
+        }
+
+        public void UpdateOrderStatus(object parameter)
+        {
+            repos.UpdateOrderStatus(CurrentOrder.ID);
+            Router.Navigate.Execute(new OrderViewModel());
         }
 
     }

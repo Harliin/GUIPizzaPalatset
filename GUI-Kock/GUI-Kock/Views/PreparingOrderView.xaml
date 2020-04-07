@@ -52,7 +52,7 @@
                         Content="Sätt timer" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White">
                 </Button>
 
-                <Button x:Name="ReadyBtm" Margin="10 0 0 0" Width="100" Background="#314455" BorderBrush="#314455"
+                <Button x:Name="readyBtm" Margin="10 0 0 0" Width="100" Background="#314455" BorderBrush="#314455"
                         Content="Klar" HorizontalAlignment="Center"  VerticalAlignment="Center" Foreground="White">
                 </Button>
                 </StackPanel>
