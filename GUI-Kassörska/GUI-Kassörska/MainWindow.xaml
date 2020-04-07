@@ -89,8 +89,9 @@
         <TextBlock
             FontSize="80"
             Grid.ColumnSpan="10"
-            Grid.RowSpan="2"
-            HorizontalAlignment="Center">
+            Grid.RowSpan="3"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center">
             PizzaPalatset
         </TextBlock>
 
@@ -124,8 +125,9 @@
         <!-- Ongoing orders -->
         <TextBlock
             Grid.Column="2"
-            Grid.Row="5"
+            Grid.Row="4"
             Grid.ColumnSpan="3"
+            Grid.RowSpan="2"
             VerticalAlignment="Bottom"
             FontSize="40"
             FontWeight="Bold">
@@ -145,41 +147,43 @@
                 <ItemsControl ItemsSource="{Binding CookingOrders}">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <materialDesign:Card Margin="5"
-                                                 Background="#FFFFFF"
-                                                 BorderBrush="#D70F64" 
-                                                 Foreground="#D70F64"
-                                                 UniformCornerRadius="5"
-                                                 BorderThickness="50"
-                                                 materialDesign:ShadowAssist.ShadowDepth="Depth3">
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="*"/>
-                                    </Grid.ColumnDefinitions>
-                                    <StackPanel Orientation="Horizontal" Grid.ColumnSpan="2">
+                            <materialDesign:Card
+                                    Margin="5"
+                                    Background="#FFFFFF"
+                                    BorderBrush="#D70F64" 
+                                    Foreground="#D70F64"
+                                    UniformCornerRadius="5"
+                                    BorderThickness="50"
+                                    materialDesign:ShadowAssist.ShadowDepth="Depth3">
+                                <StackPanel>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
                                         <TextBlock
                                             Text="{Binding ID, StringFormat={}#{0}}"
                                             FontSize="30" 
-                                            Margin="0 0 20 0"
+                                            Margin="0 0 0 0"
                                             VerticalAlignment="Center"
                                             HorizontalAlignment="Center"/>
                                         <Button
-                                            Grid.Column="2"
-                                            Height="100"
-                                            Width="100"
+                                            Height="50"
+                                            Width="50"
                                             BorderThickness="0"
                                             Background="{x:Null}"
-                                             HorizontalAlignment="Right">
+                                            HorizontalAlignment="Right"
+                                            Padding="5 0 5 0"
+                                            Grid.Column="2">
                                             <Button.Content>
                                                 <Path Data="{StaticResource Fryingpan}"
                                                   Fill="{StaticResource DeepPinkBrush}"
                                                   Stretch="Uniform"/>
                                             </Button.Content>
                                         </Button>
-                                    </StackPanel>
-                                </Grid>
+                                    </Grid>
+                                </StackPanel>
                             </materialDesign:Card>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
@@ -225,10 +229,11 @@
         <!-- Ready orders -->
         <TextBlock
             Grid.Column="6"
-            Grid.Row="5"
+            Grid.Row="4"
             Grid.ColumnSpan="3"
+            Grid.RowSpan="2"
             VerticalAlignment="Bottom"
-            FontSize="45"
+            FontSize="40"
             FontWeight="Bold">
             Färdiga ordrar
         </TextBlock>

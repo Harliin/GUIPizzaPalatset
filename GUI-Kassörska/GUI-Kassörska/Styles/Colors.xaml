@@ -3,5 +3,4 @@
     <Color x:Key="DarkGrey">#707070</Color>
     <Color x:Key="DeepPink">#D71365</Color>
     <Color x:Key="LightPink">#E072A0</Color>
-    <Color x:Key="Blue" R="0x00" G="0x8C" B="0xFF" A="0xFF" />
 </ResourceDictionary>
