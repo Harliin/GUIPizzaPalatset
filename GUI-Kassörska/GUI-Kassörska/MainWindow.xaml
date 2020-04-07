@@ -192,22 +192,42 @@
                 <ItemsControl ItemsSource="{Binding PaidOrders}">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <materialDesign:Card Margin="5" Background="#FFFFFF" BorderBrush="#D70F64" 
-                                                     Foreground="#D70F64" UniformCornerRadius="5" BorderThickness="5" materialDesign:ShadowAssist.ShadowDepth="Depth3">
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="{Binding ID, StringFormat={}#{0}}" FontSize="30" 
-                                       Margin=" 0 0 20 0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                    <Button
-                                        Height="50"
-                                        Width="50"
-                                        BorderThickness="0"
-                                        Background="{x:Null}">
-                                        <Button.Content>
-                                            <Path Data="{StaticResource Payment}"
+                            <materialDesign:Card
+                                    Margin="5"
+                                    Background="#FFFFFF"
+                                    BorderBrush="#D70F64" 
+                                    Foreground="#D70F64"
+                                    UniformCornerRadius="5"
+                                    BorderThickness="50"
+                                    materialDesign:ShadowAssist.ShadowDepth="Depth3">
+                                <StackPanel>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock
+                                            Text="{Binding ID, StringFormat={}#{0}}"
+                                            FontSize="30" 
+                                            Margin="0 0 0 0"
+                                            VerticalAlignment="Center"
+                                            HorizontalAlignment="Center"/>
+                                        <Button
+                                            Height="50"
+                                            Width="50"
+                                            BorderThickness="0"
+                                            Background="{x:Null}"
+                                            HorizontalAlignment="Right"
+                                            Padding="5 0 5 0"
+                                            Grid.Column="2">
+                                            <Button.Content>
+                                                <Path Data="{StaticResource Payment}"
                                                   Fill="{StaticResource DeepPinkBrush}"
                                                   Stretch="Uniform"/>
-                                        </Button.Content>
-                                    </Button>
+                                            </Button.Content>
+                                        </Button>
+                                    </Grid>
                                 </StackPanel>
                             </materialDesign:Card>
                         </DataTemplate>
@@ -250,23 +270,42 @@
                 <ItemsControl ItemsSource="{Binding ReadyOrders}">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <materialDesign:Card Margin="5" Background="#FFFFFF" BorderBrush="#D70F64" 
-                                                     Foreground="#D70F64" UniformCornerRadius="5" BorderThickness="5" materialDesign:ShadowAssist.ShadowDepth="Depth3">
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="{Binding ID, StringFormat={}#{0}}" FontSize="30" 
-                                       Margin=" 0 0 20 0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                    <Button
-                            Height="50"
-                            Width="50"
-                            BorderThickness="0"
-                                        HorizontalAlignment="Right"
-                            Background="{x:Null}">
-                                        <Button.Content>
-                                            <Path Data="{StaticResource RightArrowImage}"
-                                      Fill="{StaticResource DeepPinkBrush}"
-                                      Stretch="Uniform"/>
-                                        </Button.Content>
-                                    </Button>
+                            <materialDesign:Card
+                                    Margin="5"
+                                    Background="#FFFFFF"
+                                    BorderBrush="#D70F64" 
+                                    Foreground="#D70F64"
+                                    UniformCornerRadius="5"
+                                    BorderThickness="50"
+                                    materialDesign:ShadowAssist.ShadowDepth="Depth3">
+                                <StackPanel>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock
+                                            Text="{Binding ID, StringFormat={}#{0}}"
+                                            FontSize="30" 
+                                            Margin="0 0 0 0"
+                                            VerticalAlignment="Center"
+                                            HorizontalAlignment="Center"/>
+                                        <Button
+                                            Height="50"
+                                            Width="50"
+                                            BorderThickness="0"
+                                            Background="{x:Null}"
+                                            HorizontalAlignment="Right"
+                                            Padding="5 0 5 0"
+                                            Grid.Column="2">
+                                            <Button.Content>
+                                                <Path Data="{StaticResource RightArrowImage}"
+                                                  Fill="{StaticResource DeepPinkBrush}"
+                                                  Stretch="Uniform"/>
+                                            </Button.Content>
+                                        </Button>
+                                    </Grid>
                                 </StackPanel>
                             </materialDesign:Card>
                         </DataTemplate>
