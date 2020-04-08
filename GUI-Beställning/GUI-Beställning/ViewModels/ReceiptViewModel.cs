@@ -87,15 +87,13 @@ namespace GUI_Beställning.ViewModels
             ExchangeRates rates = new ExchangeRates();
             using (HttpClient httpClient = new HttpClient())
             {
-                //httpClient.DefaultRequestHeaders.Add(HeaderNames.Authorization, "Bearer " + GetJWT());
-                string uri = "https://api.exchangeratesapi.io/latest";
-
+                string uri = "https://api.exchangeratesapi.io/latest?=SEK";
                 HttpResponseMessage response = await httpClient.GetAsync(uri);
                 if (response.IsSuccessStatusCode)
                 {
                     StreamReader reader = new StreamReader(await response.Content.ReadAsStreamAsync(), Encoding.UTF8);
-                    string dataFromWebapi = reader.ReadToEnd();
-                    rates = System.Text.Json.JsonSerializer.Deserialize<ExchangeRates>(dataFromWebapi);
+                    string WebApiRates = reader.ReadToEnd();
+                    rates = System.Text.Json.JsonSerializer.Deserialize<ExchangeRates>(WebApiRates);
                 }
             }
             if (rates.Rates.TryGetValue("SEK", out float rate))
