@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GUI_Kassörska"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        x:Name="ThisWindow"
         mc:Ignorable="d"
         Title="Cashier"
         Height="1080"
@@ -134,13 +135,14 @@
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <materialDesign:Card
-                                    Margin="8"
-                                    Background="#FFFFFF"
-                                    BorderBrush="#D70F64" 
-                                    Foreground="#D70F64"
-                                    UniformCornerRadius="5"
-                                    BorderThickness="50"
-                                    materialDesign:ShadowAssist.ShadowDepth="Depth3">
+                                Margin="8"
+                                Background="#FFFFFF"
+                                BorderBrush="#D70F64" 
+                                Foreground="#D70F64"
+                                UniformCornerRadius="5"
+                                BorderThickness="50"
+                                materialDesign:ShadowAssist.ShadowDepth="Depth3"
+                                Width="245">
                                 <StackPanel>
                                     <Grid>
                                         <Grid.ColumnDefinitions>
@@ -236,14 +238,13 @@
             Färdiga ordrar
         </TextBlock>
 
-        <ListBox
+        <ItemsControl
             Grid.Column="6"
             Grid.Row="6"
             Grid.ColumnSpan="2"
             Grid.RowSpan="10"
             ItemsSource="{Binding ReadyOrders}"
-            SelectedItem="{Binding CurrentOrder}"
-            SelectionMode="Single"
+
             ScrollViewer.VerticalScrollBarVisibility="Hidden">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
@@ -254,7 +255,8 @@
                         UniformCornerRadius="5"
                         BorderThickness="50"
                         materialDesign:ShadowAssist.ShadowDepth="Depth3"
-                        Width="245">
+                        Width="245"
+                        Margin="8">
                         <StackPanel>
                             <Grid>
                                 <Grid.ColumnDefinitions>
@@ -276,7 +278,9 @@
                                     Background="{x:Null}"
                                     HorizontalAlignment="Right"
                                     Padding="5 0 5 0"
-                                    Grid.Column="2">
+                                    Grid.Column="2"
+                                    CommandParameter="{Binding}"
+                                    Command="{Binding DataContext.UpdateOrderStatusCommand, ElementName=ThisWindow}">
                                     <Button.Content>
                                         <Path
                                             Data="{StaticResource RightArrowImage}"
@@ -289,20 +293,8 @@
                     </materialDesign:Card>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
-        </ListBox>
+        </ItemsControl>
 
-        <materialDesign:Card
-            Grid.Column="8"
-            Grid.Row="16"
-            Background="#FFFFFF"
-            BorderBrush="#D70F64" 
-            Foreground="#D70F64"
-            UniformCornerRadius="5"
-            materialDesign:ShadowAssist.ShadowDepth="Depth3">
-            <Button
-                Command="{Binding UpdateOrderStatusCommand}"
-                Content="Servera"/>
-        </materialDesign:Card>
         <!--<TextBlock
             Grid.Column="8"
             Grid.Row="18"

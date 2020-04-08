@@ -146,7 +146,8 @@ namespace GUI_Kassörska.ViewModels
 
 		private void Update(object u)
 		{
-			repo.UpdateOrderStatus(ID);
+			Order order = (Order)u;
+			repo.UpdateOrderStatus(order.ID);
 			ShowAllReadyOrders();
 		}
 
