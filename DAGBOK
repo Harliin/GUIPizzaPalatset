@@ -65,7 +65,8 @@ Thomas:
 25-26/3 Fortsätter försöka koppla upp mot databasen...
 1/4 Lyckades äntligen få till databaskopplingen
 2-3/4 Försöker få bilderna i orderlistorna att ändras beroende på orderstatus
-5-6/4 Snyggar till utseendet, lägger symboler rätt och fixar till typsnitt
+5/4 Snyggar till utseendet, lägger symboler rätt och fixar till typsnitt
+6/4 Ska fixa så att knapparna i listan på färdiga ordrar försvinner från listan när de trycks på. Och försöka implementera web-api.
 
 Simon:
 
