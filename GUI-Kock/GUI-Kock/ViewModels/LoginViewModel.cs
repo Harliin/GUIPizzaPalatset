@@ -69,6 +69,7 @@ namespace GUI_Kock.ViewModels
 
         #endregion
 
+        #region Command metoder
         /// <summary>
         /// Checks if the Password and user is correct
         /// </summary>
@@ -123,7 +124,7 @@ namespace GUI_Kock.ViewModels
             var templist = employee.ToList();
             templist.ForEach(x => EmployeeNames.Add(x.Name));
         }
-
+        #endregion
     }
 }
 
