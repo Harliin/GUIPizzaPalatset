@@ -23,8 +23,6 @@ namespace GUI_Kock.Views
     {
         public PreparingOrderView()
         {
-            DataContext = new PreparingOrderViewModel();
-
             InitializeComponent();
 
             this.WhenActivated(disposables =>
@@ -32,17 +30,19 @@ namespace GUI_Kock.Views
 
                 this.BindCommand(ViewModel, x => x.GoToLoginView, x => x.exit);
 
-               // this.BindCommand(ViewModel, x => x.GoToOrderView, x => x.goBack);
+                this.BindCommand(ViewModel, x => x.GoToOrderView, x => x.goBack);
 
-               // this.BindCommand(ViewModel, x => x.UpdateOrder, x => x.readyBtm);
+                this.BindCommand(ViewModel, x => x.UpdateOrder, x => x.readyBtm);
 
-               // this.BindCommand(ViewModel, x => x.Timer, x => x.timerBtm);
+                // this.BindCommand(ViewModel, x => x.Timer, x => x.timerBtm);
 
                 this.Bind(ViewModel, vm => vm.EmployeeName, v => v.user.Text)
                 .DisposeWith(disposables);
 
-                this.OneWayBind(ViewModel, x => x.EmployeeName, view => view.currentorder.ItemsSource)
+                this.OneWayBind(ViewModel, x => x.orderItems, view => view.currentorder.ItemsSource)
                  .DisposeWith(disposables);
+
+
 
 
 

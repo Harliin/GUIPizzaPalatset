@@ -37,6 +37,10 @@ namespace GUI_Kock.ViewModels
 
         public ObservableCollection<object> orderItems { get; }
 
+        public ObservableCollection<object> pizzas { get; }
+
+        public Pizza  pizzaItem { get; private set; }
+
         #region Commands
         public RelayCommand UpdateOrder { get; set; }
 
@@ -51,12 +55,12 @@ namespace GUI_Kock.ViewModels
         public IScreen HostScreen { get; }
         public RoutingState Router => LoginViewModel.Router;
         #endregion
-        public PreparingOrderViewModel(Order order = null, string name = null, IScreen screen = null)
+
+
+        public PreparingOrderViewModel(Order order, string name = null, IScreen screen = null)
         {
-            if (CurrentOrder== null)
-            {
-                CurrentOrder = order;
-            }
+
+            CurrentOrder = order;
 
             if (EmployeeName == null)
             {
@@ -70,7 +74,9 @@ namespace GUI_Kock.ViewModels
             GoToOrderView = ReactiveCommand.CreateFromObservable(() => Router.Navigate.Execute(new OrderViewModel()));
             UpdateOrder = new RelayCommand(UpdateOrderStatus);
             Timer = new RelayCommand(TimerOn);
-            orderItems = new ObservableCollection<object>(ShowOrder());
+            orderItems = new ObservableCollection<object>();
+            ShowOrderItem();
+            this.pizzas = new ObservableCollection<object>(ShowIngredients());
         }
 
         private void UpdateOrderStatus(object parameter)
@@ -86,21 +92,24 @@ namespace GUI_Kock.ViewModels
         }
 
 
-        public List<object> ShowOrder()
+        public void ShowOrderItem()
         {
-            List<object> OrderList = new List<object>();
-            var ordersIE = repos.ShowOrderByID(CurrentOrder.ID);
-            var temp = ordersIE.ToList();
-
-            CurrentOrder = temp[0];
-            CurrentOrder.pizza.ForEach(pizza => { OrderList.Add(pizza); });
-            CurrentOrder.pasta.ForEach(pasta => { OrderList.Add(pasta); });
-            CurrentOrder.sallad.ForEach(sallad => { OrderList.Add(sallad); });
-            CurrentOrder.drink.ForEach(drink => { OrderList.Add(drink); });
-            CurrentOrder.extra.ForEach(extra => { OrderList.Add(extra); });
-            return OrderList;
+            CurrentOrder.pizza.ForEach(pizza => { orderItems.Add(pizza); });
+            CurrentOrder.pasta.ForEach(pasta => { orderItems.Add(pasta); });
+            CurrentOrder.sallad.ForEach(sallad => { orderItems.Add(sallad); });
+            CurrentOrder.drink.ForEach(drink => { orderItems.Add(drink); });
+            CurrentOrder.extra.ForEach(extra => { orderItems.Add(extra); });
 
         }
+
+        public List<object> ShowIngredients()
+        {
+            List<object> pizzaList = new List<object>();
+
+            CurrentOrder.pizza.ForEach(pizza => { pizzaList.Add(pizza.ID); });
+            return pizzaList;
+        }
+
 
     }
 }

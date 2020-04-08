@@ -35,7 +35,7 @@
             </Grid>
 
             <ScrollViewer Grid.Row="1" Grid.RowSpan="2" VerticalScrollBarVisibility="Auto">
-                <ItemsControl ItemsSource="{Binding EmployeeName}" x:Name="currentorder" Grid.Row="1" Grid.RowSpan="2">
+                <ItemsControl ItemsSource="{Binding orderItems}" x:Name="currentorder" Grid.Row="1" Grid.RowSpan="2">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <!--<ItemsControl ItemsSource="{Binding Pizza}">
@@ -46,16 +46,23 @@
                                 <!--Order Item-->
                                 <Border Margin="0 20 0 5" Background="White" CornerRadius="7" Width="250">
                                     <StackPanel Orientation="Vertical">
-                                        <TextBlock Text="{Binding ID}" Foreground="Black" Margin=" 15 10 5 50" TextAlignment="Center"/>
+                                        <TextBlock Text="{Binding Name}" Foreground="Black" Margin="0 10 0 0" TextAlignment="Center" FontWeight="Bold"/>
+                                        <ItemsControl ItemsSource="{Binding Pizza}">
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Text="{Binding Ingredients}" Foreground="Black"  Margin=" 15 0 5 10" TextAlignment="Center" />
+                                                </DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                        </ItemsControl>
                                     </StackPanel>
                                 </Border>
 
                                 <!--Ingredients-->
-                                <Border Margin="0 5 0 20" Background="White" CornerRadius="7" >
+                                <!--<Border Margin="0 5 0 20" Background="White" CornerRadius="7" >
                                     <StackPanel Orientation="Vertical">
                                         <TextBlock Text="Ingredients" Foreground="Black"  Margin=" 15 0 5 0" TextAlignment="Center" FontWeight="Bold"/>
                                     </StackPanel>
-                                </Border>
+                                </Border>-->
 
                                   <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                                      <Button Command="{Binding Path=DataContext.Timer, ElementName=thisWindow}" Width="100"  Background="#314455" BorderBrush="#314455"
@@ -78,13 +85,13 @@
             </ScrollViewer>
 
             <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 30 0 0">
-                
-                <Button Command="{Binding Path=DataContext.GoToOrderView, ElementName=thisWindow}" Content="{materialDesign:PackIcon Kind=ArrowBack}"  Width="80" Height="40"
+
+                <Button x:Name="goBack" Command="{Binding Path=DataContext.GoToOrderView, ElementName=thisWindow}" Content="{materialDesign:PackIcon Kind=ArrowBack}"  Width="80" Height="40"
                               HorizontalAlignment="Left" Background="#FFD70F64" BorderBrush="#FFD70F64" FontSize="24" Foreground="#DD0A0000">
                 </Button>
 
 
-                <Button Command="{Binding Path=DataContext.UpdateOrder, ElementName=thisWindow}" Margin="40 0 0 0" Width="100" Background="#314455" BorderBrush="#314455"
+                <Button  x:Name="readyBtm" Command="{Binding Path=DataContext.UpdateOrder, ElementName=thisWindow}" Margin="40 0 0 0" Width="100" Background="#314455" BorderBrush="#314455"
                                 Content="Klar order" HorizontalAlignment="Right"  VerticalAlignment="Center" Foreground="White">
                 </Button>
 
