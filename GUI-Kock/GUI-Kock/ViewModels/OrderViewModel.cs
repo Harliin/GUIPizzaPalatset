@@ -82,7 +82,7 @@ namespace GUI_Kock.ViewModels
         public void NavigateToPreparingView(object parameter)
         {
             Order temporder = (Order)parameter;
-            Router.Navigate.Execute(new PreparingOrderViewModel(Name, temporder));
+            Router.Navigate.Execute(new PreparingOrderViewModel(temporder, Name));
         }
 
         public void PopulateOrders()

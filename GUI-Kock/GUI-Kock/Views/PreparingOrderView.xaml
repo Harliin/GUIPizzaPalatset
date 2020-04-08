@@ -34,36 +34,43 @@
                 </StackPanel>
             </Grid>
 
-            
-            <StackPanel Grid.Row="1" Grid.RowSpan="4" Margin="0 0 0 0 " Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top">
-                <Border Margin="0 20 0 5" Background="White" CornerRadius="7" Width="250">
-                    <StackPanel Orientation="Vertical">
-                        <TextBlock x:Name="orderItems" Text="{Binding Name}" Foreground="Black" Margin=" 15 10 5 50" TextAlignment="Center"/>
-                    </StackPanel>
-                </Border>
-                
-                <Border Margin="0 5 0 20" Background="White" CornerRadius="7" >
-                    <StackPanel Orientation="Vertical">
-                        <TextBlock x:Name="pizzaName" Text="Test" Foreground="Black"  Margin=" 15 0 5 0" TextAlignment="Center" FontWeight="Bold"/>
-                        <TextBlock x:Name="ingred" Text="Ing" Foreground="Black"  Margin=" 15 0 5 5" TextAlignment="Center"/>
-                    </StackPanel>
-                </Border>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <Button x:Name="timerBtm" Width="100"  Background="#314455" BorderBrush="#314455"
-                        Content="Sätt timer" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White">
-                </Button>
+            <ItemsControl ItemsSource="{Binding CurrentOrder}" x:Name="currentorder" Grid.Row="1" Grid.RowSpan="4">
 
-                <Button x:Name="readyBtm" Margin="40 0 0 0" Width="100" Background="#314455" BorderBrush="#314455"
-                        Content="Klar" HorizontalAlignment="Right"  VerticalAlignment="Center" Foreground="White">
-                </Button>
-                </StackPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Margin="0 0 0 0 " Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top">
+                            <Border Margin="0 20 0 5" Background="White" CornerRadius="7" Width="250">
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock x:Name="orderItems" Text="{Binding Name}" Foreground="Black" Margin=" 15 10 5 50" TextAlignment="Center"/>
+                                </StackPanel>
+                            </Border>
+
+                            <Border Margin="0 5 0 20" Background="White" CornerRadius="7" >
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock x:Name="pizzaName" Text="Test" Foreground="Black"  Margin=" 15 0 5 0" TextAlignment="Center" FontWeight="Bold"/>
+                                    <TextBlock x:Name="ingred" Text="Ing" Foreground="Black"  Margin=" 15 0 5 5" TextAlignment="Center"/>
+                                </StackPanel>
+                            </Border>
+                            
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <Button Command="{Binding Path=DataContext.Timer, ElementName=thisWindow}" Width="100"  Background="#314455" BorderBrush="#314455"
+                                 Content="Sätt timer" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White">
+                                </Button>
+
+                                <Button Command="{Binding Path=DataContext.UpdateOrder, ElementName=thisWindow}" Margin="40 0 0 0" Width="100" Background="#314455" BorderBrush="#314455"
+                                Content="Klar" HorizontalAlignment="Right"  VerticalAlignment="Center" Foreground="White">
+                                </Button>
+                            </StackPanel>
 
 
-                <Button x:Name="goBack" Content="{materialDesign:PackIcon Kind=ArrowBack}" Margin="0 30 0 0" Width="80" Height="40"
-                          HorizontalAlignment="Left" Background="#FFD70F64" BorderBrush="#FFD70F64" FontSize="24" Foreground="#DD0A0000">
-                </Button>
+                            <Button Command="{Binding Path=DataContext.GoToOrderView, ElementName=thisWindow}" Content="{materialDesign:PackIcon Kind=ArrowBack}" Margin="0 30 0 0" Width="80" Height="40"
+                              HorizontalAlignment="Left" Background="#FFD70F64" BorderBrush="#FFD70F64" FontSize="24" Foreground="#DD0A0000">
+                            </Button>
 
-             </StackPanel>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
 
 
         </Grid>

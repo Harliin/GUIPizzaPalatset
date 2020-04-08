@@ -53,10 +53,18 @@ namespace GUI_Kock.ViewModels
         public IScreen HostScreen { get; }
         public RoutingState Router => LoginViewModel.Router;
         #endregion
-        public PreparingOrderViewModel(string name, Order order, IScreen screen = null)
+        public PreparingOrderViewModel(Order order = null, string name = null, IScreen screen = null)
         {
-            EmployeeName = name;
-            CurrentOrder = order;
+            if (CurrentOrder== null)
+            {
+                CurrentOrder = order;
+            }
+
+            if (EmployeeName == null)
+            {
+                EmployeeName = name;
+            }
+
             HostScreen = screen ?? Locator.Current.GetService<IScreen>();
             Locator.CurrentMutable.Register(() => new LoginView(), typeof(IViewFor<LoginViewModel>));
             Locator.CurrentMutable.Register(() => new OrderView(), typeof(IViewFor<OrderViewModel>));
@@ -79,17 +87,6 @@ namespace GUI_Kock.ViewModels
             System.Threading.Thread.Sleep(5000);
             Console.Beep(500, 2000);
         }
-
-        public void ShowPizzas()//Printar ut pizzas
-        {
-            Order order = repos.ShowOrderByID(CurrentOrder.ID);
-            var pizzaItem = order.pizza;
-            pizzas.AddRange(pizzaItem);
-            var templist = pizzaItem.ToList();
-            templist.ForEach(x => PizzaItems.Add(x.Name));
-
-        }
-
 
 
 
