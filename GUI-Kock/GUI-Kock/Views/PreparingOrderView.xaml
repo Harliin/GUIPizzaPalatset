@@ -20,7 +20,7 @@
                 <RowDefinition Height="50" />
                 <RowDefinition Height="50" />
                 <RowDefinition Height="200" />
-                <RowDefinition Height="80" />
+                <RowDefinition Height="100" />
                 <RowDefinition Height="auto" />
             </Grid.RowDefinitions>
 
@@ -61,7 +61,13 @@
                 </ItemsControl>
             </ScrollViewer>
 
-            <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 30 0 0">
+            <StackPanel Grid.Row="3" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="120 0 0 50">
+                <Button x:Name="timerBtm" Command="{Binding Timer}" Width="100"  Background="#314455" BorderBrush="#314455"
+                                        Content="Sätt timer" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White">
+                </Button>
+            </StackPanel>
+
+            <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 40 0 0">
 
                 <Button x:Name="goBack" Command="{Binding Path=DataContext.GoToOrderView, ElementName=thisWindow}" Content="{materialDesign:PackIcon Kind=ArrowBack}"  Width="80" Height="40"
                               HorizontalAlignment="Left" Background="#FFD70F64" BorderBrush="#FFD70F64" FontSize="24" Foreground="#DD0A0000">
