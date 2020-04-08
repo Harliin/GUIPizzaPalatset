@@ -8,7 +8,8 @@ using System.Collections;
 using System.Threading.Tasks;
 using GUI_Kassörska.Command;
 using static GUI_Kassörska.ViewModels.Order;
-
+using GUI_Kassörska.Models.Data;
+using System.Net;
 
 namespace GUI_Kassörska.ViewModels
 {

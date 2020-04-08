@@ -154,10 +154,11 @@
                                             VerticalAlignment="Center"
                                             HorizontalAlignment="Center"/>
                                         <Path
-                                            Height="50"
-                                            Width="50"
+                                            Height="40"
+                                            Width="40"
                                             HorizontalAlignment="Right"
                                             Grid.Column="2"
+                                            Margin="5"
                                             Data="{StaticResource Fryingpan}"
                                             Fill="{StaticResource DeepPinkBrush}"
                                             Stretch="Uniform"/>
