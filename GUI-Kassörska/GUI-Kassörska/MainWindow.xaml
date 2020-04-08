@@ -134,7 +134,7 @@
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <materialDesign:Card
-                                    Margin="5"
+                                    Margin="8"
                                     Background="#FFFFFF"
                                     BorderBrush="#D70F64" 
                                     Foreground="#D70F64"
