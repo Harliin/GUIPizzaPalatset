@@ -194,22 +194,17 @@
                                             Margin="0 0 0 0"
                                             VerticalAlignment="Center"
                                             HorizontalAlignment="Center"/>
-                                        <Button
+                                        <Viewbox
                                             Height="50"
                                             Width="50"
-                                            BorderThickness="0"
-                                            Background="{x:Null}"
                                             HorizontalAlignment="Right"
-                                            Padding="5 0 5 0"
                                             Grid.Column="2">
-                                            <Button.Content>
-                                                <materialDesign:PackIcon
-                                                    Width="40"
-                                                    Height="40"
-                                                    Kind="Payment"
-                                                    Foreground="{StaticResource DeepPinkBrush}"/>
-                                            </Button.Content>
-                                        </Button>
+                                            <materialDesign:PackIcon
+                                            Width="40"
+                                            Height="40"
+                                            Kind="Payment"
+                                            Foreground="{StaticResource DeepPinkBrush}"/>
+                                        </Viewbox>
                                     </Grid>
                                 </StackPanel>
                             </materialDesign:Card>
@@ -308,11 +303,11 @@
                 Command="{Binding UpdateOrderStatusCommand}"
                 Content="Servera"/>
         </materialDesign:Card>
-        <TextBlock
+        <!--<TextBlock
             Grid.Column="8"
             Grid.Row="18"
             Text="{Binding EuroPrice, StringFormat={}{0} euro}"
             FontSize="20"
-            FontWeight="ExtraLight"/>
+            FontWeight="ExtraLight"/>-->
     </Grid>
 </Window>
