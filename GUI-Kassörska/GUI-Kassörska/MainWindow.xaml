@@ -13,7 +13,7 @@
         MinHeight="768"
         MinWidth="1024"
         FontFamily="Cooper Black">
-    <!-- Sätt höjden till 1080 och bredden till 1920 -->
+
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -80,34 +80,6 @@
             VerticalAlignment="Center">
             PizzaPalatset
         </TextBlock>
-
-
-        <!-- User: User image, log in, log out -->
-        <!--
-        <StackPanel
-            Grid.Column="8"
-            Grid.ColumnSpan="2"
-            Grid.Row="1"
-            Orientation="Horizontal">
-            <Path 
-                Fill="{StaticResource DeepPinkBrush}"
-                Data="{StaticResource UserImage}"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Center"/>
-            <TextBlock
-                FontSize="40"
-                Padding="5"
-                VerticalAlignment="Center">User</TextBlock>
-            <Button
-                Background="#FFFFFF"
-                BorderThickness="0"
-                HorizontalAlignment="Right"
-                VerticalAlignment="Center">
-                <Path
-                Fill="{StaticResource DarkGreyBrush}"
-                Data="{StaticResource LogOutImage}"/>
-            </Button>
-        </StackPanel>-->
 
         <!-- Ongoing orders -->
         <TextBlock
@@ -176,13 +148,14 @@
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <materialDesign:Card
-                                    Margin="5"
-                                    Background="#FFFFFF"
-                                    BorderBrush="#D70F64" 
-                                    Foreground="#D70F64"
-                                    UniformCornerRadius="5"
-                                    BorderThickness="50"
-                                    materialDesign:ShadowAssist.ShadowDepth="Depth3">
+                                Margin="5"
+                                Background="#FFFFFF"
+                                BorderBrush="#D70F64" 
+                                Foreground="#D70F64"
+                                UniformCornerRadius="5"
+                                BorderThickness="50"
+                                materialDesign:ShadowAssist.ShadowDepth="Depth3"
+                                Width="245">
                                 <StackPanel>
                                     <Grid>
                                         <Grid.ColumnDefinitions>
@@ -294,12 +267,5 @@
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
-
-        <!--<TextBlock
-            Grid.Column="8"
-            Grid.Row="18"
-            Text="{Binding EuroPrice, StringFormat={}{0} euro}"
-            FontSize="20"
-            FontWeight="ExtraLight"/>-->
     </Grid>
 </Window>

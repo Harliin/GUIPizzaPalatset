@@ -17,8 +17,6 @@ namespace GUI_Kassörska.ViewModels
 	{
 		public event PropertyChangedEventHandler PropertyChanged;
 
-		public CashierRepository repo = new CashierRepository();
-
 		public void OnPropertyChanged(string propertyName)
 		{
 			if(PropertyChanged != null)
@@ -29,6 +27,7 @@ namespace GUI_Kassörska.ViewModels
 
 		public RelayCommand UpdateOrderStatusCommand { get; set; }
 
+		#region Properties
 		private IEnumerable databaseList;
 
 		public IEnumerable DatabaseList
@@ -52,8 +51,6 @@ namespace GUI_Kassörska.ViewModels
 				OnPropertyChanged("ReadyOrders");
 			}
 		}
-
-		public double EuroPrice { get; set; }
 
 		public ObservableCollection<Order> PaidOrders { get; set; }
 
@@ -91,7 +88,11 @@ namespace GUI_Kassörska.ViewModels
 				OnPropertyChanged("ReadyOrders");
 			}
 		}
+		#endregion
 
+		#region Repository Methods
+
+		public CashierRepository repo = new CashierRepository();
 
 		public ObservableCollection<Order> ShowAllReadyOrders()
 		{
@@ -132,30 +133,19 @@ namespace GUI_Kassörska.ViewModels
 			return orderStatus;
 		}
 
-		private void Update(object u)
+        #endregion
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="u"></param>
+        private void Update(object u)
 		{
 			Order order = (Order)u;
 			repo.UpdateOrderStatus(order.ID);
 			ShowAllReadyOrders();
 		}
 
-		public void EuroRate()
-		{
-			float SEKPrice = 10;
-			ExchangeRates rates = new ExchangeRates();
-			using (WebClient webClient = new WebClient())
-			{
-				string uri = "https://api.exchangeratesapi.io/latest";
-				webClient.BaseAddress = uri;
-				var json = webClient.DownloadString(uri);
-				rates = System.Text.Json.JsonSerializer.Deserialize<ExchangeRates>(json);
-			}
-
-			if (rates.Rates.TryGetValue("SEK", out float rate))
-			{
-				EuroPrice = Math.Round((SEKPrice / rate), 2);
-			}
-		}
 
 		public MainViewModel()
 		{
