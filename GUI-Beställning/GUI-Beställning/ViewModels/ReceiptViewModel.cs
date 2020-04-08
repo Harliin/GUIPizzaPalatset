@@ -87,7 +87,7 @@ namespace GUI_Beställning.ViewModels
             ExchangeRates rates = new ExchangeRates();
             using (HttpClient httpClient = new HttpClient())
             {
-                string uri = "https://api.exchangeratesapi.io/latest?=SEK";
+                string uri = "https://api.exchangeratesapi.io/latest?symbols=SEK";
                 HttpResponseMessage response = await httpClient.GetAsync(uri);
                 if (response.IsSuccessStatusCode)
                 {
