@@ -28,8 +28,6 @@ namespace GUI_Kock.ViewModels
         public List<string> EmployeeNames { get; private set; }        
 
         private string _password;
-
-        //private string _userName;
         public string Name { get; set; }
 
         public string Password
@@ -53,6 +51,8 @@ namespace GUI_Kock.ViewModels
         public static RoutingState Router { get; private set; }
         #endregion
 
+        #region Default Constructor
+
         public LoginViewModel(RoutingState state = null, IScreen screen = null)
         {
             HostScreen = screen ?? Locator.Current.GetService<IScreen>();
@@ -67,8 +67,10 @@ namespace GUI_Kock.ViewModels
             LoginCommand = new RelayCommand(Login);
         }
 
+        #endregion
+
         /// <summary>
-        /// Checks if the Pasword and user is correct
+        /// Checks if the Password and user is correct
         /// </summary>
         /// <returns></returns>
         public bool CheckUser()
@@ -110,6 +112,7 @@ namespace GUI_Kock.ViewModels
                 }
             }
         }
+
         /// <summary>
         /// Populates the Employee list and employeenames list
         /// </summary>

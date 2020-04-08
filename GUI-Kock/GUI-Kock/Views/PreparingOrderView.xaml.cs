@@ -25,8 +25,6 @@ namespace GUI_Kock.Views
         {
             InitializeComponent();
 
-           // DataContext = new PreparingOrderViewModel();
-
             this.WhenActivated(disposables =>
             {
 
@@ -36,17 +34,11 @@ namespace GUI_Kock.Views
 
                 this.BindCommand(ViewModel, x => x.UpdateOrder, x => x.readyBtm);
 
-                //this.BindCommand(ViewModel, x => x.Timer, x => x.timerbtm);
-
                 this.Bind(ViewModel, vm => vm.EmployeeName, v => v.user.Text)
                 .DisposeWith(disposables);
 
                 this.OneWayBind(ViewModel, x => x.orderItems, view => view.currentorder.ItemsSource)
                  .DisposeWith(disposables);
-
-
-
-
 
             });
 

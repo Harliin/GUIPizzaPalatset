@@ -17,6 +17,7 @@ namespace GUI_Kock.ViewModels
 {
     public class PreparingOrderViewModel : ReactiveObject, IRoutableViewModel
     {
+        #region Properties
         private string _employeename;
 
         public string EmployeeName
@@ -37,6 +38,7 @@ namespace GUI_Kock.ViewModels
 
         public ObservableCollection<object> orderItems { get; }
 
+        #endregion
 
         #region Commands
         public RelayCommand UpdateOrder { get; set; }
@@ -53,7 +55,7 @@ namespace GUI_Kock.ViewModels
         public RoutingState Router => LoginViewModel.Router;
         #endregion
 
-
+        #region Default Constructor
         public PreparingOrderViewModel(Order order, string name = null, IScreen screen = null)
         {
 
@@ -73,9 +75,11 @@ namespace GUI_Kock.ViewModels
             Timer = new RelayCommand(TimerOn);
             orderItems = new ObservableCollection<object>();
             ShowOrderItem();
-           // this.pizzas = new ObservableCollection<object>(ShowIngredients());
         }
 
+        #endregion
+
+        #region Command metoder
         private void UpdateOrderStatus(object parameter)
         {
             //access only if there's no orderItems
@@ -89,7 +93,6 @@ namespace GUI_Kock.ViewModels
             Console.Beep(500, 2000);
         }
 
-
         public void ShowOrderItem()
         {
             CurrentOrder.pizza.ForEach(pizza => { orderItems.Add(pizza); });
@@ -100,11 +103,6 @@ namespace GUI_Kock.ViewModels
 
         }
 
-
-        public void CheckOrderItem()
-        {
-
-        }
-
+        #endregion
     }
 }

@@ -37,9 +37,6 @@ namespace GUI_Kock.Views
 
                 this.BindCommand(ViewModel, x => x.GoToLoginView, x => x.exit);
 
-               // this.Bind(ViewModel, vm => vm.Name, v => v.user.Text)
-               //.DisposeWith(disposables);
-
             });
         }
     }

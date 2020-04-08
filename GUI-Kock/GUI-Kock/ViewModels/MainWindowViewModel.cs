@@ -13,29 +13,27 @@ namespace GUI_Kock.ViewModels
 {
     public class MainWindowViewModel : ReactiveObject, IScreen
     {
-        public RoutingState Router { get; }
 
-        //Command to navigate to another view
+        #region Commands
+        public RoutingState Router { get; }
         public ReactiveCommand<Unit, IRoutableViewModel> GoToView { get; }
 
-        public Window thisWindow { get; set; }
+        #endregion
 
+        #region Properties
+        public Window thisWindow { get; set; }
+        #endregion
+
+        #region Default Constructor
         public MainWindowViewModel(Window thisWindow)
         {
             // Initialize the Router.
             Router = new RoutingState();
-
             this.thisWindow = thisWindow;
-
-
-            // Instead of registering views manually, you 
-            // can use custom IViewLocator implementation,
-            // see "View Location" section for details.
-            //
             Locator.CurrentMutable.Register(() => new LoginView(), typeof(IViewFor<LoginViewModel>));
-
             Router.Navigate.Execute(new LoginViewModel(Router));
         }
+        #endregion
     }
-    
+
 }

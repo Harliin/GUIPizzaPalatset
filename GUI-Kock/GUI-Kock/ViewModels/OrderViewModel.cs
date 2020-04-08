@@ -17,6 +17,7 @@ namespace GUI_Kock.ViewModels
 {
     public class OrderViewModel : ReactiveObject, IRoutableViewModel
     {
+        #region Properties
         public List<string> EmployeeNames { get; private set; }
 
         public ChefRepository repo = new ChefRepository();
@@ -45,6 +46,8 @@ namespace GUI_Kock.ViewModels
 
         public static string Name { get; set; }
 
+        #endregion
+
         #region Commands
         public RelayCommand GoToPreparingViewCommand { get; set; }
         public ReactiveCommand<Unit, IRoutableViewModel> GoToPreparingView { get; private set; }
@@ -58,7 +61,7 @@ namespace GUI_Kock.ViewModels
         public RoutingState Router => LoginViewModel.Router;
         #endregion
 
-
+        #region Default Constructor
         public OrderViewModel(string name = null, IScreen screen = null)
         {
             if (Name == null)
@@ -74,11 +77,9 @@ namespace GUI_Kock.ViewModels
             GoToLoginView = ReactiveCommand.CreateFromObservable(() => Router.Navigate.Execute(new LoginViewModel(Router)));
         }
 
-        // <summary>
-        // Gets the loginCommand for the ViewModel  
-        // </summary>
+        #endregion
 
-
+        #region Command metoder
         public void NavigateToPreparingView(object parameter)
         {
             Order temporder = (Order)parameter;
@@ -90,7 +91,7 @@ namespace GUI_Kock.ViewModels
             IEnumerable<Order> orders = repo.ShowOrderByStatus(Order.eStatus.Tillagning);
             OngoinOrders.AddRange(orders);
         }
-
+        #endregion
 
     }
 }
