@@ -248,18 +248,17 @@
             Grid.RowSpan="10"
             ItemsSource="{Binding ReadyOrders}"
             SelectedItem="{Binding CurrentOrder}"
-            SelectionMode="Single"
-            >
+            SelectionMode="Single">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <materialDesign:Card
-                            Margin="5"
-                            Background="#FFFFFF"
-                            BorderBrush="#D70F64" 
-                            Foreground="#D70F64"
-                            UniformCornerRadius="5"
-                            BorderThickness="50"
-                            materialDesign:ShadowAssist.ShadowDepth="Depth3"
+                        Margin="0"
+                        Background="#FFFFFF"
+                        BorderBrush="#D70F64" 
+                        Foreground="#D70F64"
+                        UniformCornerRadius="5"
+                        BorderThickness="50"
+                        materialDesign:ShadowAssist.ShadowDepth="Depth3"
                         Width="245">
                         <StackPanel>
                             <Grid>
@@ -296,14 +295,19 @@
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ListBox>
-        <Button 
-            Panel.ZIndex="3"
-            Grid.Column="8"
-            Background="Purple"
-        Grid.Row="16"
-        Command="{Binding UpdateOrderStatusCommand}"
-            Content="Servera"/>
 
+        <materialDesign:Card
+            Grid.Column="8"
+            Grid.Row="16"
+            Background="#FFFFFF"
+            BorderBrush="#D70F64" 
+            Foreground="#D70F64"
+            UniformCornerRadius="5"
+            materialDesign:ShadowAssist.ShadowDepth="Depth3">
+            <Button
+                Command="{Binding UpdateOrderStatusCommand}"
+                Content="Servera"/>
+        </materialDesign:Card>
         <TextBlock
             Grid.Column="8"
             Grid.Row="18"
