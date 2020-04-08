@@ -25,6 +25,8 @@ namespace GUI_Kock.Views
         {
             InitializeComponent();
 
+           // DataContext = new PreparingOrderViewModel();
+
             this.WhenActivated(disposables =>
             {
 

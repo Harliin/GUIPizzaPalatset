@@ -78,6 +78,7 @@ namespace GUI_Kock.ViewModels
 
         private void UpdateOrderStatus(object parameter)
         {
+            //access only if there's no orderItems
             repos.UpdateOrderStatus(CurrentOrder.ID);
             Router.Navigate.Execute(new OrderViewModel());
         }
@@ -96,6 +97,12 @@ namespace GUI_Kock.ViewModels
             CurrentOrder.sallad.ForEach(sallad => { orderItems.Add(sallad); });
             CurrentOrder.drink.ForEach(drink => { orderItems.Add(drink); });
             CurrentOrder.extra.ForEach(extra => { orderItems.Add(extra); });
+
+        }
+
+
+        public void CheckOrderItem()
+        {
 
         }
 

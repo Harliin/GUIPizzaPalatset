@@ -37,16 +37,13 @@
             <ScrollViewer Grid.Row="1" Grid.RowSpan="2" VerticalScrollBarVisibility="Auto">
                 <ItemsControl ItemsSource="{Binding orderItems}" x:Name="currentorder" Grid.Row="1" Grid.RowSpan="2">
                     <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <!--<ItemsControl ItemsSource="{Binding Pizza}">
-                                <ItemsControl.ItemTemplate>
-                                    <DataTemplate>-->
-                            <StackPanel Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top">
+                            <DataTemplate>
+                                <StackPanel Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top">
 
-                                <!--Order Item-->
-                                <Border Margin="0 20 0 5" Background="White" CornerRadius="7" Width="250">
+                                    <!--Order Item-->
+                                    <Border Margin="0 20 0 5" Background="White" CornerRadius="7" Width="250">
                                     <StackPanel Orientation="Vertical">
-                                        <!--<TextBlock Text="{Binding Name}" Foreground="Black" Margin="0 10 0 10" TextAlignment="Center" FontWeight="Bold"/>-->
+                                        <TextBlock Text="{Binding Name}" Foreground="Black" Margin="0 10 0 10" TextAlignment="Center" FontWeight="Bold"/>
                                         <ItemsControl ItemsSource="{Binding Pizza}">
                                             <ItemsControl.ItemTemplate>
                                                 <DataTemplate>
@@ -59,30 +56,19 @@
                                     </StackPanel>
                                 </Border>
 
-                                <!--Ingredients-->
-                                <!--<Border Margin="0 5 0 20" Background="White" CornerRadius="7" >
-                                    <StackPanel Orientation="Vertical">
-                                        <TextBlock Text="Ingredients" Foreground="Black"  Margin=" 15 0 5 0" TextAlignment="Center" FontWeight="Bold"/>
-                                    </StackPanel>
-                                </Border>-->
-
-                                  <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                     <Button Command="{Binding Path=DataContext.Timer, ElementName=thisWindow}" Width="100"  Background="#314455" BorderBrush="#314455"
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                        <Button Command="{Binding Path=DataContext.Timer, ElementName=thisWindow}" Width="100"  Background="#314455" BorderBrush="#314455"
                                         Content="Sätt timer" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White">
-                                     </Button>
+                                        </Button>
 
-                                    <!--Sätt Command att order item är inte synligt efter klick-->
-                                    <Button Margin="40 0 0 0" Width="100" Background="#314455" BorderBrush="#314455"
+                                        <Button Margin="40 0 0 0" Width="100" Background="#314455" BorderBrush="#314455"
                                                  Content="Klar" HorizontalAlignment="Right"  VerticalAlignment="Center" Foreground="White">
-                                    </Button>
-                                  </StackPanel>
+                                        </Button>
+                                    </StackPanel>
 
-                                        </StackPanel>
-                                    <!--</DataTemplate>
-                                </ItemsControl.ItemTemplate>
-                            </ItemsControl>-->
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
                 </ItemsControl>
             </ScrollViewer>
 
