@@ -53,15 +53,45 @@ namespace GUI_Kassörska.ViewModels
 			}
 		}
 
+		public double EuroPrice { get; set; }
+
 		public ObservableCollection<Order> PaidOrders { get; set; }
 
 		public ObservableCollection<Order> CookingOrders { get; set; }
 
-		public Order CurrentOrder { get; set; }
+		private Order currentOrder;
+
+		public Order CurrentOrder
+		{
+			get { return currentOrder; }
+			set
+			{
+				if (currentOrder == value || value == null)
+					return;
+
+				currentOrder = value;
+
+				if (currentOrder.ID != 0)
+					ID = currentOrder.ID;
+
+				OnPropertyChanged("CurrentOrder");
+			}
+		}
 
 		public int Status { get; set; }
 
-		public int OrderID { get; set; }
+		private int id;
+
+		public int ID
+		{
+			get { return id; }
+			set
+			{
+				id = value;
+				OnPropertyChanged("ReadyOrders");
+			}
+		}
+
 
 		public ObservableCollection<Order> ShowAllReadyOrders()
 		{
@@ -78,7 +108,7 @@ namespace GUI_Kassörska.ViewModels
 			return ReadyOrders;
 		}
 
-		public async Task ShowAllOngoingOrders()
+		public void ShowAllOngoingOrders()
 		{
 			//DatabaseList = await repo.ShowOrdersWithStatusOneAndTwo();
 			//OngoingOrders = new ObservableCollection<Order>();
@@ -116,18 +146,37 @@ namespace GUI_Kassörska.ViewModels
 
 		private void Update(object u)
 		{
-			repo.UpdateOrderStatus(OrderID);
+			repo.UpdateOrderStatus(ID);
 			ShowAllReadyOrders();
 		}
 
+		//public void EuroRate()
+		//{
+		//	float SEKPrice = 10;
+		//	ExchangeRates rates = new ExchangeRates();
+		//	using (WebClient webClient = new WebClient())
+		//	{
+		//		string uri = "https://api.exchangeratesapi.io/history?start_at=2018-01-01&end_at=2018-09-01&symbols=EUR";
+		//		webClient.BaseAddress = uri;
+		//		var json = webClient.DownloadString(uri);
+		//		rates = System.Text.Json.JsonSerializer.Deserialize<ExchangeRates>(json);
+		//	}
+
+		//	if (rates.Rates.TryGetValue("SEK", out float rate))
+		//	{
+		//		EuroPrice = Math.Round((SEKPrice / rate), 2);
+		//	}
+		//}
+
 		public MainViewModel()
 		{
+			UpdateOrderStatusCommand = new RelayCommand(Update);
 			PaidOrders = new ObservableCollection<Order>();
 			CookingOrders = new ObservableCollection<Order>();
 			//ShowAllOngoingOrders();
 			ShowAllReadyOrders();
 			ShowAllOngoingOrders();
-			UpdateOrderStatusCommand = new RelayCommand(Update);
+			
 		}
 	}
 }
