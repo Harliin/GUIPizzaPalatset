@@ -110,18 +110,6 @@ namespace GUI_Kassörska.ViewModels
 
 		public void ShowAllOngoingOrders()
 		{
-			//DatabaseList = await repo.ShowOrdersWithStatusOneAndTwo();
-			//OngoingOrders = new ObservableCollection<Order>();
-			//foreach(Order item in DatabaseList)
-			//{
-			//	Order order = new Order();
-			//	order.OrderID = item.OrderID;
-			//	order.Status = item.Status;
-			//	OngoingOrders.Add(order);
-			//}
-
-			//return OngoingOrders;
-
 			var list = repo.ShowAllOrders().ToList();
 
 			list.ForEach(item => 
@@ -151,33 +139,31 @@ namespace GUI_Kassörska.ViewModels
 			ShowAllReadyOrders();
 		}
 
-		//public void EuroRate()
-		//{
-		//	float SEKPrice = 10;
-		//	ExchangeRates rates = new ExchangeRates();
-		//	using (WebClient webClient = new WebClient())
-		//	{
-		//		string uri = "https://api.exchangeratesapi.io/history?start_at=2018-01-01&end_at=2018-09-01&symbols=EUR";
-		//		webClient.BaseAddress = uri;
-		//		var json = webClient.DownloadString(uri);
-		//		rates = System.Text.Json.JsonSerializer.Deserialize<ExchangeRates>(json);
-		//	}
+		public void EuroRate()
+		{
+			float SEKPrice = 10;
+			ExchangeRates rates = new ExchangeRates();
+			using (WebClient webClient = new WebClient())
+			{
+				string uri = "https://api.exchangeratesapi.io/latest";
+				webClient.BaseAddress = uri;
+				var json = webClient.DownloadString(uri);
+				rates = System.Text.Json.JsonSerializer.Deserialize<ExchangeRates>(json);
+			}
 
-		//	if (rates.Rates.TryGetValue("SEK", out float rate))
-		//	{
-		//		EuroPrice = Math.Round((SEKPrice / rate), 2);
-		//	}
-		//}
+			if (rates.Rates.TryGetValue("SEK", out float rate))
+			{
+				EuroPrice = Math.Round((SEKPrice / rate), 2);
+			}
+		}
 
 		public MainViewModel()
 		{
 			UpdateOrderStatusCommand = new RelayCommand(Update);
 			PaidOrders = new ObservableCollection<Order>();
 			CookingOrders = new ObservableCollection<Order>();
-			//ShowAllOngoingOrders();
 			ShowAllReadyOrders();
 			ShowAllOngoingOrders();
-			
 		}
 	}
 }
