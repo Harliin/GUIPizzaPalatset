@@ -248,11 +248,11 @@
             Grid.RowSpan="10"
             ItemsSource="{Binding ReadyOrders}"
             SelectedItem="{Binding CurrentOrder}"
-            SelectionMode="Single">
+            SelectionMode="Single"
+            ScrollViewer.VerticalScrollBarVisibility="Hidden">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <materialDesign:Card
-                        Margin="0"
                         Background="#FFFFFF"
                         BorderBrush="#D70F64" 
                         Foreground="#D70F64"
