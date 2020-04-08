@@ -37,7 +37,7 @@ namespace GUI_Kock.ViewModels
 
         public Order CurrentOrder { get; private set; }
 
-        public ObservableCollection<Pizza> pizzas { get; }
+        public ObservableCollection<object> orderItems { get; }
 
         #region Commands
         public RelayCommand UpdateOrder { get; set; }
@@ -72,7 +72,7 @@ namespace GUI_Kock.ViewModels
             GoToOrderView = ReactiveCommand.CreateFromObservable(() => Router.Navigate.Execute(new OrderViewModel()));
             UpdateOrder = new RelayCommand(UpdateOrderStatus);
             Timer = new RelayCommand(TimerOn);
-            pizzas = new ObservableCollection<Pizza>();
+            orderItems = new ObservableCollection<object>();
             PizzaItems = new List<string>();
         }
 
@@ -87,6 +87,7 @@ namespace GUI_Kock.ViewModels
             System.Threading.Thread.Sleep(5000);
             Console.Beep(500, 2000);
         }
+
 
 
 

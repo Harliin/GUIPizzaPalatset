@@ -41,12 +41,9 @@ namespace GUI_Kock.Views
                 this.Bind(ViewModel, vm => vm.EmployeeName, v => v.user.Text)
                 .DisposeWith(disposables);
 
-                this.OneWayBind(ViewModel, x => x.CurrentOrder, view => view.currentorder.ItemsSource)
+                this.OneWayBind(ViewModel, x => x.EmployeeName, view => view.currentorder.ItemsSource)
                  .DisposeWith(disposables);
 
-
-                //this.OneWayBind(ViewModel, vm => vm.CurrentOrder.pizza, v => v.orderItems.Text)
-                //.DisposeWith(disposables);
 
 
             });
