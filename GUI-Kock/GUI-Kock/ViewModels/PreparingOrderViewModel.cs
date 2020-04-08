@@ -76,7 +76,7 @@ namespace GUI_Kock.ViewModels
             Timer = new RelayCommand(TimerOn);
             orderItems = new ObservableCollection<object>();
             ShowOrderItem();
-            this.pizzas = new ObservableCollection<object>(ShowIngredients());
+           // this.pizzas = new ObservableCollection<object>(ShowIngredients());
         }
 
         private void UpdateOrderStatus(object parameter)
@@ -102,13 +102,13 @@ namespace GUI_Kock.ViewModels
 
         }
 
-        public List<object> ShowIngredients()
-        {
-            List<object> pizzaList = new List<object>();
+        //public List<object> ShowIngredients()
+        //{
+        //    List<object> pizzaList = new List<object>();
 
-            CurrentOrder.pizza.ForEach(pizza => { pizzaList.Add(pizza.ID); });
-            return pizzaList;
-        }
+        //    CurrentOrder.pizza.ForEach(pizza => { pizzaList.Add(pizza.ID); });
+        //    return pizzaList;
+        //}
 
 
     }
