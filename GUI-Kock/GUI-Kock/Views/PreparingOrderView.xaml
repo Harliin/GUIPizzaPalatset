@@ -41,7 +41,7 @@
                                 <StackPanel Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top">
 
                                     <!--Order Item-->
-                                    <Border Margin="0 20 0 5" Background="White" CornerRadius="7" Width="250">
+                                <Border Margin="0 20 0 5" Background="White" CornerRadius="7" Width="250">
                                     <StackPanel Orientation="Vertical">
                                         <TextBlock Text="{Binding Name}" Foreground="Black" Margin="0 10 0 10" TextAlignment="Center" FontWeight="Bold"/>
                                         <ItemsControl ItemsSource="{Binding Pizza}">
@@ -55,18 +55,7 @@
                                         </ItemsControl>
                                     </StackPanel>
                                 </Border>
-
-                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                        <Button Command="{Binding Path=DataContext.Timer, ElementName=thisWindow}" Width="100"  Background="#314455" BorderBrush="#314455"
-                                        Content="Sätt timer" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White">
-                                        </Button>
-
-                                        <Button Margin="40 0 0 0" Width="100" Background="#314455" BorderBrush="#314455"
-                                                 Content="Klar" HorizontalAlignment="Right"  VerticalAlignment="Center" Foreground="White">
-                                        </Button>
-                                    </StackPanel>
-
-                                </StackPanel>
+                            </StackPanel>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                 </ItemsControl>
@@ -78,16 +67,11 @@
                               HorizontalAlignment="Left" Background="#FFD70F64" BorderBrush="#FFD70F64" FontSize="24" Foreground="#DD0A0000">
                 </Button>
 
-
                 <Button  x:Name="readyBtm" Command="{Binding Path=DataContext.UpdateOrder, ElementName=thisWindow}" Margin="40 0 0 0" Width="100" Background="#314455" BorderBrush="#314455"
                                 Content="Klar order" HorizontalAlignment="Right"  VerticalAlignment="Center" Foreground="White">
                 </Button>
 
             </StackPanel>
-
-
-
-
         </Grid>
     </Border>
 </reactiveui:ReactiveUserControl>

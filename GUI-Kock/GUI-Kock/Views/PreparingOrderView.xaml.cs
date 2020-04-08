@@ -36,7 +36,7 @@ namespace GUI_Kock.Views
 
                 this.BindCommand(ViewModel, x => x.UpdateOrder, x => x.readyBtm);
 
-                // this.BindCommand(ViewModel, x => x.Timer, x => x.timerBtm);
+                //this.BindCommand(ViewModel, x => x.Timer, x => x.timerbtm);
 
                 this.Bind(ViewModel, vm => vm.EmployeeName, v => v.user.Text)
                 .DisposeWith(disposables);
