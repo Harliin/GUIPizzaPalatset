@@ -37,9 +37,6 @@ namespace GUI_Kock.ViewModels
 
         public ObservableCollection<object> orderItems { get; }
 
-        public ObservableCollection<object> pizzas { get; }
-
-        public Pizza  pizzaItem { get; private set; }
 
         #region Commands
         public RelayCommand UpdateOrder { get; set; }
@@ -101,15 +98,6 @@ namespace GUI_Kock.ViewModels
             CurrentOrder.extra.ForEach(extra => { orderItems.Add(extra); });
 
         }
-
-        //public List<object> ShowIngredients()
-        //{
-        //    List<object> pizzaList = new List<object>();
-
-        //    CurrentOrder.pizza.ForEach(pizza => { pizzaList.Add(pizza.ID); });
-        //    return pizzaList;
-        //}
-
 
     }
 }

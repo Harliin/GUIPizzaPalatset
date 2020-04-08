@@ -46,16 +46,12 @@
                                 <!--Order Item-->
                                 <Border Margin="0 20 0 5" Background="White" CornerRadius="7" Width="250">
                                     <StackPanel Orientation="Vertical">
-                                        <TextBlock Text="{Binding Name}" Foreground="Black" Margin="0 10 0 10" TextAlignment="Center" FontWeight="Bold"/>
+                                        <!--<TextBlock Text="{Binding Name}" Foreground="Black" Margin="0 10 0 10" TextAlignment="Center" FontWeight="Bold"/>-->
                                         <ItemsControl ItemsSource="{Binding Pizza}">
                                             <ItemsControl.ItemTemplate>
                                                 <DataTemplate>
-                                                    <ItemsControl ItemsSource="{Binding Ingredients}">
-                                                        <ItemsControl.ItemTemplate>
-                                                            <DataTemplate>
-                                                                <TextBlock Text="{Binding Name}" Foreground="Black"  Margin=" 15 0 5 10" TextAlignment="Center" />
-                                                            </DataTemplate>
-                                                        </ItemsControl.ItemTemplate>
+                                                    <ItemsControl ItemsSource="{Binding Ingredients}" DisplayMemberPath="Name">
+                                                        <TextBlock Text="{Binding}" Foreground="Black"  Margin=" 15 0 5 10" TextAlignment="Center" />
                                                     </ItemsControl>
                                                 </DataTemplate>
                                             </ItemsControl.ItemTemplate>
