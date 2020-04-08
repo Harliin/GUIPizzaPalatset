@@ -17,13 +17,7 @@ namespace GUI_Kassörska.ViewModels
 	{
 		public event PropertyChangedEventHandler PropertyChanged;
 
-		public void OnPropertyChanged(string propertyName)
-		{
-			if(PropertyChanged != null)
-			{
-				PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
+		public CashierRepository repo = new CashierRepository();
 
 		public RelayCommand UpdateOrderStatusCommand { get; set; }
 
@@ -90,9 +84,15 @@ namespace GUI_Kassörska.ViewModels
 		}
 		#endregion
 
-		#region Repository Methods
+		#region Methods
 
-		public CashierRepository repo = new CashierRepository();
+		public void OnPropertyChanged(string propertyName)
+		{
+			if (PropertyChanged != null)
+			{
+				PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
 
 		public ObservableCollection<Order> ShowAllReadyOrders()
 		{
@@ -133,20 +133,16 @@ namespace GUI_Kassörska.ViewModels
 			return orderStatus;
 		}
 
-        #endregion
-
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="u"></param>
-        private void Update(object u)
+		private void Update(object u)
 		{
 			Order order = (Order)u;
 			repo.UpdateOrderStatus(order.ID);
 			ShowAllReadyOrders();
 		}
 
+		#endregion
 
+		#region Default constructor
 		public MainViewModel()
 		{
 			UpdateOrderStatusCommand = new RelayCommand(Update);
@@ -155,5 +151,7 @@ namespace GUI_Kassörska.ViewModels
 			ShowAllReadyOrders();
 			ShowAllOngoingOrders();
 		}
-	}
+
+        #endregion
+    }
 }

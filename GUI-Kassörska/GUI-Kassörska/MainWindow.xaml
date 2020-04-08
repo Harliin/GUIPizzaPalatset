@@ -21,122 +21,121 @@
                 <ResourceDictionary Source="\Styles\Colors.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
-            <SolidColorBrush x:Key="DarkGreyBrush" Color="{StaticResource DarkGrey}" />
-            <SolidColorBrush x:Key="DeepPinkBrush" Color="{StaticResource DeepPink}" />
-            <SolidColorBrush x:Key="LightPinkBrush" Color="{StaticResource LightPink}" />
+            <SolidColorBrush x:Key="DarkGreyBrush"
+                             Color="{StaticResource DarkGrey}" />
+            <SolidColorBrush x:Key="DeepPinkBrush"
+                             Color="{StaticResource DeepPink}" />
+            <SolidColorBrush x:Key="LightPinkBrush"
+                             Color="{StaticResource LightPink}" />
         </ResourceDictionary>
     </Window.Resources>
     <Grid>
 
         <!-- Grid- and rowdefinitions -->
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
         </Grid.RowDefinitions>
 
         <!-- Logo -->
-        <Viewbox
-            Grid.Column="9"
-            Grid.RowSpan="3">
-            <Image Grid.Row="0" Source="Images/PizzaLogo.png" Width="125" Height="125"/>
+        <Viewbox Grid.Column="9"
+                 Grid.RowSpan="3">
+            <Image Grid.Row="0"
+                   Source="Images/PizzaLogo.png"
+                   Width="125"
+                   Height="125" />
         </Viewbox>
 
         <!-- Header -->
-        <TextBlock
-            FontSize="80"
-            Grid.ColumnSpan="10"
-            Grid.RowSpan="3"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center">
+        <TextBlock FontSize="80"
+                   Grid.ColumnSpan="10"
+                   Grid.RowSpan="3"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center">
             PizzaPalatset
         </TextBlock>
 
         <!-- Ongoing orders -->
-        <TextBlock
-            Grid.Column="2"
-            Grid.Row="4"
-            Grid.ColumnSpan="3"
-            Grid.RowSpan="2"
-            VerticalAlignment="Bottom"
-            FontSize="40"
-            FontWeight="Bold">
+        <TextBlock Grid.Column="2"
+                   Grid.Row="4"
+                   Grid.ColumnSpan="3"
+                   Grid.RowSpan="2"
+                   VerticalAlignment="Bottom"
+                   FontSize="40"
+                   FontWeight="Bold">
             Pågående ordrar
         </TextBlock>
 
         <ScrollViewer Grid.Column="2"
-            Grid.Row="6"
-            Grid.ColumnSpan="2"
-            Grid.RowSpan="10"
-            VerticalScrollBarVisibility="Hidden">
-            <StackPanel
-                Grid.Column="2"
-                Grid.Row="6"
-                Grid.ColumnSpan="2"
-                Grid.RowSpan="10">
+                      Grid.Row="6"
+                      Grid.ColumnSpan="2"
+                      Grid.RowSpan="10"
+                      VerticalScrollBarVisibility="Hidden">
+            <StackPanel Grid.Column="2"
+                        Grid.Row="6"
+                        Grid.ColumnSpan="2"
+                        Grid.RowSpan="10">
                 <ItemsControl ItemsSource="{Binding CookingOrders}">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <materialDesign:Card
-                                Margin="8"
-                                Background="#FFFFFF"
-                                BorderBrush="#D70F64" 
-                                Foreground="#D70F64"
-                                UniformCornerRadius="5"
-                                BorderThickness="50"
-                                materialDesign:ShadowAssist.ShadowDepth="Depth3"
-                                Width="245">
+                            <materialDesign:Card Margin="8"
+                                                 Background="#FFFFFF"
+                                                 BorderBrush="#D70F64"
+                                                 Foreground="#D70F64"
+                                                 UniformCornerRadius="5"
+                                                 BorderThickness="50"
+                                                 materialDesign:ShadowAssist.ShadowDepth="Depth3"
+                                                 Width="245">
                                 <StackPanel>
                                     <Grid>
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*"/>
-                                            <ColumnDefinition Width="*"/>
-                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
                                         </Grid.ColumnDefinitions>
-                                        <TextBlock
-                                            Text="{Binding ID, StringFormat={}#{0}}"
-                                            FontSize="30" 
-                                            Margin="0 0 0 0"
-                                            VerticalAlignment="Center"
-                                            HorizontalAlignment="Center"/>
-                                        <Path
-                                            Height="40"
-                                            Width="40"
-                                            HorizontalAlignment="Right"
-                                            Grid.Column="2"
-                                            Margin="5"
-                                            Data="{StaticResource Fryingpan}"
-                                            Fill="{StaticResource DeepPinkBrush}"
-                                            Stretch="Uniform"/>
+                                        <TextBlock Text="{Binding ID, StringFormat={}#{0}}"
+                                                   FontSize="30"
+                                                   Margin="0 0 0 0"
+                                                   VerticalAlignment="Center"
+                                                   HorizontalAlignment="Center" />
+                                        <Path Height="40"
+                                              Width="40"
+                                              HorizontalAlignment="Right"
+                                              Grid.Column="2"
+                                              Margin="5"
+                                              Data="{StaticResource Fryingpan}"
+                                              Fill="{StaticResource DeepPinkBrush}"
+                                              Stretch="Uniform" />
                                     </Grid>
                                 </StackPanel>
                             </materialDesign:Card>
@@ -147,38 +146,34 @@
                 <ItemsControl ItemsSource="{Binding PaidOrders}">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <materialDesign:Card
-                                Margin="5"
-                                Background="#FFFFFF"
-                                BorderBrush="#D70F64" 
-                                Foreground="#D70F64"
-                                UniformCornerRadius="5"
-                                BorderThickness="50"
-                                materialDesign:ShadowAssist.ShadowDepth="Depth3"
-                                Width="245">
+                            <materialDesign:Card Margin="5"
+                                                 Background="#FFFFFF"
+                                                 BorderBrush="#D70F64"
+                                                 Foreground="#D70F64"
+                                                 UniformCornerRadius="5"
+                                                 BorderThickness="50"
+                                                 materialDesign:ShadowAssist.ShadowDepth="Depth3"
+                                                 Width="245">
                                 <StackPanel>
                                     <Grid>
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*"/>
-                                            <ColumnDefinition Width="*"/>
-                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
                                         </Grid.ColumnDefinitions>
-                                        <TextBlock
-                                            Text="{Binding ID, StringFormat={}#{0}}"
-                                            FontSize="30" 
-                                            Margin="0 0 0 0"
-                                            VerticalAlignment="Center"
-                                            HorizontalAlignment="Center"/>
-                                        <Viewbox
-                                            Height="50"
-                                            Width="50"
-                                            HorizontalAlignment="Right"
-                                            Grid.Column="2">
-                                            <materialDesign:PackIcon
-                                            Width="40"
-                                            Height="40"
-                                            Kind="Payment"
-                                            Foreground="{StaticResource DeepPinkBrush}"/>
+                                        <TextBlock Text="{Binding ID, StringFormat={}#{0}}"
+                                                   FontSize="30"
+                                                   Margin="0 0 0 0"
+                                                   VerticalAlignment="Center"
+                                                   HorizontalAlignment="Center" />
+                                        <Viewbox Height="50"
+                                                 Width="50"
+                                                 HorizontalAlignment="Right"
+                                                 Grid.Column="2">
+                                            <materialDesign:PackIcon Width="40"
+                                                                     Height="40"
+                                                                     Kind="Payment"
+                                                                     Foreground="{StaticResource DeepPinkBrush}" />
                                         </Viewbox>
                                     </Grid>
                                 </StackPanel>
@@ -190,75 +185,69 @@
         </ScrollViewer>
 
         <!-- Separating line -->
-        <Line
-            Grid.Column="5"
-            Grid.Row="6"
-            Grid.RowSpan="10"
-            X1="0" Y1="0"  
-            X2="0" Y2="700"  
-            Stroke="#707070"  
-            StrokeThickness="10"/>
+        <Line Grid.Column="5"
+              Grid.Row="6"
+              Grid.RowSpan="10"
+              X1="0"
+              Y1="0"
+              X2="0"
+              Y2="700"
+              Stroke="#707070"
+              StrokeThickness="10" />
 
         <!-- Ready orders -->
-        <TextBlock
-            Grid.Column="6"
-            Grid.Row="4"
-            Grid.ColumnSpan="3"
-            Grid.RowSpan="2"
-            VerticalAlignment="Bottom"
-            FontSize="40"
-            FontWeight="Bold">
+        <TextBlock Grid.Column="6"
+                   Grid.Row="4"
+                   Grid.ColumnSpan="3"
+                   Grid.RowSpan="2"
+                   VerticalAlignment="Bottom"
+                   FontSize="40"
+                   FontWeight="Bold">
             Färdiga ordrar
         </TextBlock>
 
-        <ItemsControl
-            Grid.Column="6"
-            Grid.Row="6"
-            Grid.ColumnSpan="2"
-            Grid.RowSpan="10"
-            ItemsSource="{Binding ReadyOrders}"
-
-            ScrollViewer.VerticalScrollBarVisibility="Hidden">
+        <ItemsControl Grid.Column="6"
+                      Grid.Row="6"
+                      Grid.ColumnSpan="2"
+                      Grid.RowSpan="10"
+                      ItemsSource="{Binding ReadyOrders}"
+                      ScrollViewer.VerticalScrollBarVisibility="Hidden">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <materialDesign:Card
-                        Background="#FFFFFF"
-                        BorderBrush="#D70F64" 
-                        Foreground="#D70F64"
-                        UniformCornerRadius="5"
-                        BorderThickness="50"
-                        materialDesign:ShadowAssist.ShadowDepth="Depth3"
-                        Width="245"
-                        Margin="8">
+                    <materialDesign:Card Background="#FFFFFF"
+                                         BorderBrush="#D70F64"
+                                         Foreground="#D70F64"
+                                         UniformCornerRadius="5"
+                                         BorderThickness="50"
+                                         materialDesign:ShadowAssist.ShadowDepth="Depth3"
+                                         Width="245"
+                                         Margin="8">
                         <StackPanel>
                             <Grid>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                                <TextBlock
-                                    Text="{Binding ID, StringFormat={}#{0}}"
-                                    FontSize="30" 
-                                    Margin="0 0 0 0"
-                                    VerticalAlignment="Center"
-                                    HorizontalAlignment="Center"
-                                    Padding="5"/>
-                                <Button
-                                    Height="50"
-                                    Width="50"
-                                    BorderThickness="0"
-                                    Background="{x:Null}"
-                                    HorizontalAlignment="Right"
-                                    Padding="5 0 5 0"
-                                    Grid.Column="2"
-                                    CommandParameter="{Binding}"
-                                    Command="{Binding DataContext.UpdateOrderStatusCommand, ElementName=ThisWindow}">
+                                <TextBlock Text="{Binding ID, StringFormat={}#{0}}"
+                                           FontSize="30"
+                                           Margin="0 0 0 0"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Center"
+                                           Padding="5" />
+                                <Button Height="50"
+                                        Width="50"
+                                        BorderThickness="0"
+                                        Background="{x:Null}"
+                                        HorizontalAlignment="Right"
+                                        Padding="5 0 5 0"
+                                        Grid.Column="2"
+                                        CommandParameter="{Binding}"
+                                        Command="{Binding DataContext.UpdateOrderStatusCommand, ElementName=ThisWindow}">
                                     <Button.Content>
-                                        <Path
-                                            Data="{StaticResource RightArrowImage}"
-                                            Fill="{StaticResource DeepPinkBrush}"
-                                            Stretch="Uniform"/>
+                                        <Path Data="{StaticResource RightArrowImage}"
+                                              Fill="{StaticResource DeepPinkBrush}"
+                                              Stretch="Uniform" />
                                     </Button.Content>
                                 </Button>
                             </Grid>
