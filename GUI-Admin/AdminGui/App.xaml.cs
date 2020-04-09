@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace GUI_Admin
+namespace AdminGui
 {
     /// <summary>
     /// Interaction logic for App.xaml

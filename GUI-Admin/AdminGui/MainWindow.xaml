@@ -1,0 +1,43 @@
+﻿<Window x:Class="AdminGui.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AdminGui"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+
+    <Grid>
+        
+    <Grid.RowDefinitions>
+        <RowDefinition Height="70"></RowDefinition>
+        <RowDefinition></RowDefinition>
+    </Grid.RowDefinitions>
+
+        <Image Grid.Row="0" Source="Pictuers/Pizzalogo.png" HorizontalAlignment="Right"></Image>
+        <Grid x:Name="Myframe" Grid.Row="0" Grid.ColumnSpan="2">
+            <Rectangle Width="auto" Height="6" Grid.Column="0" Grid.ColumnSpan="4" VerticalAlignment="Bottom">
+                <Rectangle.Fill>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="White" Offset="0.05" />
+                        <GradientStop Color="Gray" Offset="0.40" />
+                        <GradientStop Color="#FF6C6B6B" Offset="0.50" />
+                        <GradientStop Color="Gray" Offset="0.60" />
+                        <GradientStop Color="White" Offset="0.95" />
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+        </Grid>
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="35" FontWeight="Bold" Text="{Binding Title}"/>
+        <Button Width="100" Content="Hem" HorizontalAlignment="Left" Margin="10" Grid.Row="0" Command="{Binding HomeClick}" FontSize="20" BorderBrush="#D70F64" Background="White" BorderThickness="3"/>
+        <Frame Grid.Row="1" Content="{Binding CurrentPage, Converter={local:TypeToPageConverter}}"  NavigationUIVisibility="Hidden">
+            
+
+        </Frame>
+    </Grid>
+    
+
+
+
+
+</Window>

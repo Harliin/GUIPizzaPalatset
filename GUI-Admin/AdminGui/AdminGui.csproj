@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Pictuers\Pizzalogo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.0.30" />
+    <PackageReference Include="MaterialDesignThemes" Version="3.0.1" />
+    <PackageReference Include="ReactiveUI.WPF" Version="11.2.3" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Views\Styles\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Models\Data\Food.csproj" />
+    <None Include="Models\Data\Food.sln" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Pictuers\Pizzalogo.png" />
+  </ItemGroup>
+
+</Project>
