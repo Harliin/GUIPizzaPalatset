@@ -12,7 +12,8 @@
         Width="1920"
         MinHeight="768"
         MinWidth="1024"
-        FontFamily="Cooper Black">
+        FontFamily="Cooper Black"
+        WindowStyle="None">
 
     <Window.Resources>
         <ResourceDictionary>
