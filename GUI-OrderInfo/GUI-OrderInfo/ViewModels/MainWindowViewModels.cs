@@ -54,7 +54,7 @@ namespace GUI_OrderInfo.ViewModels
 
             // Sätter timer för skärm uppdatering om visst interval
             _clock = new DispatcherTimer();
-            _clock.Interval = new TimeSpan(0, 0, 5);
+            _clock.Interval = new TimeSpan(0, 0, 2);
             _clock.Tick += (object sender, EventArgs e) =>
             {
                 Populate();
