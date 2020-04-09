@@ -1,6 +1,18 @@
 # GUIPizzaPalatset
 PizzaPalatset projekt uppgift med GUI
 
+Körning av systemet:
+Alla terminaler ligger i olika mappar. välj vilken terminal du vill köra på master branchen.
+Gå sedan in i dens mapp och tryck på .sln filen för att köra den färdiga lösningen.
+
+Terminalerna är uppdelade såhär:
+GUI - Admin  ( Simon Järnström )
+GUI - Beställning ( Jonathan Harlin , Pontus Petterson )
+GUI - Kock ( Aata Miettinen )
+GUI - Kassörska ( Thomas Carleberg )
+GUI - OrderInfo ( Elchin Jabb )
+
+
 FONTFAMILY:
 Cooper Black
 
