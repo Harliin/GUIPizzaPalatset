@@ -10,7 +10,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d" FontFamily="Cooper Black"
-        Title="MainWindowView" Height="680" Width="600" MaxWidth="1300" MaxHeight="1300" MinHeight="500" MinWidth="400">
+        Title="MainWindowView" Height="680" Width="600" MaxWidth="1300" MaxHeight="1300" MinHeight="500" MinWidth="400" WindowStyle="None" Visibility="Visible">
     
     <Grid>
         <!--#region Grid Specification-->

@@ -63,25 +63,6 @@ namespace GUI_Beställning.ViewModels
         /// from Euro to sek
         /// </summary>
         /// WebApi som inte är Async
-        //public void EuroRate()
-        //{
-           
-        //    ExchangeRates rates = new ExchangeRates();
-        //    using (WebClient webClient = new WebClient())
-        //    {
-        //        string uri = "https://api.exchangeratesapi.io/latest?symbols=SEK";
-        //        webClient.BaseAddress = uri;
-        //        var json = webClient.DownloadString(uri);
-        //        rates = System.Text.Json.JsonSerializer.Deserialize<ExchangeRates>(json);
-        //    }
-
-        //    if(rates.Rates.TryGetValue("SEK", out float rate))
-        //    {
-        //        EuroPrice = Math.Round((SEKPrice / rate),2);
-        //    }
-        //}
-
-        // WebApi Som är async
         private async void EuroRateAsync()
         {
             ExchangeRates rates = new ExchangeRates();
