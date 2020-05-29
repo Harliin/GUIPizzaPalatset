@@ -1,0 +1,111 @@
+﻿<rxui:ReactiveUserControl x:Class="GUI_Beställning.Views.ReceiptView"
+
+        xmlns:vm="clr-namespace:GUI_Beställning.ViewModels"
+        xmlns:rxui="http://reactiveui.net"
+        x:TypeArguments="vm:ReceiptViewModel"
+        
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GUI_Beställning.Views"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d" Background="White"
+        d:DesignHeight ="400" d:DesignWidth ="400">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.7*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Row 0 -->
+        <Viewbox>
+            <DockPanel>
+                <TextBlock Text="Tack för din beställning!" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="25" FontWeight="DemiBold" Margin="0 5 0 0" DockPanel.Dock="Top"/>
+                <TextBlock Text="Din Order: " VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="25" Margin="0 10 0 0"/>
+            </DockPanel>
+        </Viewbox>
+        
+        <Separator Background="#D70F64" VerticalAlignment="Bottom" />
+        <!-- Row 1 -->
+        <!-- All the food in order -->
+        <!--<Viewbox Grid.Row="1" Stretch="None">-->
+            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Hidden">
+                <ItemsControl ItemsSource="{Binding RecieptFoods}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Vertical"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1.5*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="{Binding Name}" Grid.Column="0" HorizontalAlignment="Center" FontSize="35"/>
+                                <TextBlock Text="{Binding Price, StringFormat={}{0} kr}" HorizontalAlignment="Center" FontSize="35" Grid.Column="1" Margin="25 0 0 0"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+        <!--</Viewbox>-->
+        
+
+        <!-- Row 2 -->
+        <Separator Grid.Row="2" Background="#D70F64" VerticalAlignment="Top"/>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="0.5*"/>
+            </Grid.ColumnDefinitions>
+        
+        
+            <!-- Column 0 -->
+            <Viewbox Grid.Row="2" Grid.Column="0" Stretch="Uniform" HorizontalAlignment="Left">
+                <DockPanel>
+                    <!-- Order ID-->
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10 5 0 0" DockPanel.Dock="Top">
+                        <TextBlock Text="Ditt Order ID: " FontSize="25" FontWeight="Light"/>
+                        <TextBlock Text="{Binding OrderID}" FontSize="25" FontWeight="Light"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Vertical" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 15 0 0">
+                        <!-- Price in SEK -->
+                        <StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Left" Margin="10 0 0 0">
+                            <TextBlock Text="Totalt pris i SEK: " FontSize="20" FontWeight="ExtraLight"/>
+                            <TextBlock Text="{Binding SEKPrice, StringFormat={}{0} kr}" FontSize="20" FontWeight="ExtraLight"/>
+                        </StackPanel>
+                        <!-- Price in EURO-->
+                        <StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10 0 0 0">
+                            <TextBlock Text="Totalt pris i EURO: " FontSize="20" FontWeight="ExtraLight" />
+                            <TextBlock Text="{Binding EuroPrice, StringFormat={}{0} euro}" FontSize="20" FontWeight="ExtraLight"/>
+                        </StackPanel>
+                    </StackPanel>
+                </DockPanel>
+            </Viewbox>
+
+            <!-- Column 1 Reciept Button-->
+            <Viewbox Grid.Column="1" Margin="1 5 2 1">
+                <Grid>
+                    <Button Background="#D70F64" Height="110" Width="84" Command="{Binding CheckoutCommand}">
+                        <StackPanel>
+                            <materialDesign:PackIcon Kind="ShoppingCartArrowRight" Foreground="White"
+                                                    Width="30" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            <TextBlock Text="Kvitto" FontSize="15"
+                        Foreground="White" VerticalAlignment="Bottom"/>
+                        </StackPanel>
+                    </Button>
+
+                </Grid>
+            </Viewbox>
+                
+        </Grid>
+        
+        
+    </Grid>
+</rxui:ReactiveUserControl>
